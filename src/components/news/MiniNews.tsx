@@ -12,7 +12,7 @@ export function MiniNews({ item }: { item: News }) {
         <div className="mb-[5px] text-[12.5px] font-semibold text-muted">
           {formatDate(item.publishedAt)}
         </div>
-        <h4 className="font-display text-[18px] font-semibold leading-[1.1]">{item.title}</h4>
+        <h3 className="font-display text-[18px] font-semibold leading-[1.1]">{item.title}</h3>
       </div>
     </div>
   )

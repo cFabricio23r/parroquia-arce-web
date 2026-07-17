@@ -5,6 +5,12 @@ import { describe, it, beforeAll, afterAll, expect } from 'vitest'
 let payload: Payload
 const created: (string | number)[] = []
 
+// Los tests comparten base con el contenido real. Slug es unique: un slug fijo
+// choca con lo cargado desde el CMS y el test queda roto para siempre. Prefijo
+// unico por corrida, igual que news.int.spec.ts.
+const run = `t${Date.now()}`
+const uniq = (s: string) => `${run}-${s}`
+
 describe('Formation collection', () => {
   beforeAll(async () => {
     payload = await getPayload({ config: await config })
@@ -21,14 +27,14 @@ describe('Formation collection', () => {
       collection: 'formation',
       data: {
         title: 'Vivir la fe en lo cotidiano',
-        slug: 'vivir-la-fe-formation-test',
+        slug: uniq('vivir-la-fe'),
         status: 'published',
         category: 'serie',
         audience: 'jovenes',
       },
     })
     created.push(doc.id)
-    expect(doc.slug).toBe('vivir-la-fe-formation-test')
+    expect(doc.slug).toBe(uniq('vivir-la-fe'))
     expect(doc.audience).toBe('jovenes')
   })
 
@@ -52,7 +58,7 @@ describe('Formation collection', () => {
       collection: 'formation',
       data: {
         title: 'Borrador',
-        slug: 'borrador-formation-test',
+        slug: uniq('borrador'),
         status: 'draft',
         category: 'articulo',
         audience: 'familias',
@@ -65,6 +71,6 @@ describe('Formation collection', () => {
       where: { status: { equals: 'published' } },
     })
     expect(res.docs.every((d) => d.status === 'published')).toBe(true)
-    expect(res.docs.some((d) => d.slug === 'borrador-formation-test')).toBe(false)
+    expect(res.docs.some((d) => d.slug === uniq('borrador'))).toBe(false)
   })
 })
