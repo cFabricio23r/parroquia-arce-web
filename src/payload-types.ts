@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     news: News;
+    formation: Formation;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -80,6 +81,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
+    formation: FormationSelect<false> | FormationSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -215,6 +217,49 @@ export interface News {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "formation".
+ */
+export interface Formation {
+  id: number;
+  title: string;
+  /**
+   * Identificador para la URL. Solo minusculas, numeros y guiones.
+   */
+  slug: string;
+  /**
+   * Resumen corto para el listado.
+   */
+  excerpt?: string | null;
+  body?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  category?: ('serie' | 'recurso' | 'articulo' | 'catequesis') | null;
+  audience?: ('jovenes' | 'familias' | 'servidores' | 'general') | null;
+  cover?: (number | null) | Media;
+  resourceFile?: (number | null) | Media;
+  isFeatured?: boolean | null;
+  status: 'draft' | 'published' | 'archived';
+  /**
+   * Fecha que se muestra al publico.
+   */
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -248,6 +293,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'news';
         value: number | News;
+      } | null)
+    | ({
+        relationTo: 'formation';
+        value: number | Formation;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -345,6 +394,25 @@ export interface NewsSelect<T extends boolean = true> {
   body?: T;
   category?: T;
   cover?: T;
+  isFeatured?: T;
+  status?: T;
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "formation_select".
+ */
+export interface FormationSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  excerpt?: T;
+  body?: T;
+  category?: T;
+  audience?: T;
+  cover?: T;
+  resourceFile?: T;
   isFeatured?: T;
   status?: T;
   publishedAt?: T;
