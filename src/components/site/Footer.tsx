@@ -41,7 +41,7 @@ export function Footer() {
               <Link href="/" className="flex flex-none items-center gap-[13px]">
                 <Mark className="bg-white/10" />
                 <span className="inline-flex flex-col leading-[1.08]">
-                  <b className="whitespace-nowrap font-display text-[16.5px] font-semibold text-white">
+                  <b className="whitespace-nowrap font-display text-[16.5px] font-semibold tracking-[.005em] text-white">
                     Inmaculada Concepción
                   </b>
                   <span className="text-[12.5px] text-[#7F95B5]">Ciudad Arce, La Libertad</span>
@@ -62,9 +62,9 @@ export function Footer() {
             </div>
 
             <div>
-              <h5 className="mb-4 font-display text-[18px] font-semibold text-white">
+              <h2 className="mb-4 font-display text-[18px] font-semibold text-white">
                 Vida parroquial
-              </h5>
+              </h2>
               <ul className="flex list-none flex-col gap-[11px] p-0">
                 {VIDA.map((i) => (
                   <li key={i.label}>
@@ -80,7 +80,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h5 className="mb-4 font-display text-[18px] font-semibold text-white">Comunicación</h5>
+              <h2 className="mb-4 font-display text-[18px] font-semibold text-white">Comunicación</h2>
               <ul className="flex list-none flex-col gap-[11px] p-0">
                 {COMUNICACION.map((i) => (
                   <li key={i.label}>
@@ -96,7 +96,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h5 className="mb-4 font-display text-[18px] font-semibold text-white">Contacto</h5>
+              <h2 className="mb-4 font-display text-[18px] font-semibold text-white">Contacto</h2>
               <p className="text-[14.5px] leading-[1.6] text-[#A9BCD8]">
                 Templo parroquial
                 <br />

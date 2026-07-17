@@ -19,7 +19,8 @@ export default async function NoticiasPage() {
   })
 
   return (
-    <main style={{ maxWidth: 760, margin: '0 auto', padding: '48px 24px' }}>
+    // El <main> lo pone el layout: anidar otro es HTML invalido y duplica el landmark.
+    <div style={{ maxWidth: 760, margin: '0 auto', padding: '48px 24px' }}>
       <h1>Noticias y formación</h1>
 
       {docs.length === 0 ? (
@@ -44,6 +45,6 @@ export default async function NoticiasPage() {
           ))}
         </ul>
       )}
-    </main>
+    </div>
   )
 }

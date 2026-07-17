@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import React from 'react'
+import { Container } from '@/components/ui/Container'
 
 export const metadata: Metadata = {
   title: 'Inicio',
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
  */
 export default function HomePage() {
   return (
-    <div className="mx-auto max-w-parish px-[clamp(20px,5vw,56px)]">
+    <Container>
       <div className="py-[clamp(56px,7vw,96px)]">
         <h1 className="font-display text-[clamp(40px,5.4vw,68px)] font-medium leading-[1.02]">
           Parroquia <em className="italic text-blue">Inmaculada Concepción</em>
@@ -21,6 +22,6 @@ export default function HomePage() {
           Ciudad Arce, La Libertad. La portada se construye en la Fase 1C.
         </p>
       </div>
-    </div>
+    </Container>
   )
 }

@@ -91,7 +91,7 @@ export function Header() {
             <Link href="/" className="flex flex-none items-center gap-[13px]">
               <Mark className="bg-blue shadow-[0_8px_18px_-8px_rgba(19,76,146,.6)]" />
               <span className="inline-flex flex-col leading-[1.08]">
-                <b className="whitespace-nowrap font-display text-[16.5px] font-semibold">
+                <b className="whitespace-nowrap font-display text-[16.5px] font-semibold tracking-[.005em]">
                   Inmaculada Concepción
                 </b>
                 <span className="text-[12.5px] text-muted">Parroquia · Ciudad Arce</span>
@@ -149,7 +149,16 @@ export function Header() {
         }`}
         onClick={() => setOpen(false)}
       />
+      {/*
+        `inert` cuando esta cerrado: `translate-x-full` lo saca de pantalla pero lo
+        deja en el arbol de foco y de accesibilidad, asi que sus 10 links quedaban
+        tabulables en TODA carga de pagina y en TODO breakpoint (el drawer no tiene
+        control responsive; solo el boton hamburguesa lo tiene). `inert` no toca
+        transform ni opacity, asi que la animacion de ds.css:229 queda intacta.
+        El demo original tiene el mismo bug.
+      */}
       <aside
+        inert={!open}
         className={`fixed bottom-0 right-0 top-0 z-[90] flex w-[min(86vw,360px)] flex-col bg-white p-[22px] shadow-lg transition-transform duration-[280ms] ease-[cubic-bezier(.3,.8,.3,1)] ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
@@ -169,7 +178,7 @@ export function Header() {
             />
           </svg>
         </button>
-        <nav className="mt-[14px] flex flex-col gap-1">
+        <nav className="mt-[14px] flex flex-col gap-1" aria-label="Móvil">
           {NAV.map((i) => (
             <Link
               key={i.href}

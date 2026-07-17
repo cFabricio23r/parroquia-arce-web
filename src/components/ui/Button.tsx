@@ -3,9 +3,15 @@ import React from 'react'
 
 type Variant = 'primary' | 'navy' | 'sky' | 'amber' | 'soft' | 'ghost' | 'white' | 'outline-light'
 
-/** Base comun: ds.css:106-108 */
+/**
+ * Base comun: ds.css:106-108.
+ * La transition va como propiedad arbitraria y no con `transition-[...] duration-200`
+ * porque ds.css:106 le da a `transform` 120ms y a las otras cuatro 200ms. Con las
+ * utilities de duracion no se puede expresar un tiempo distinto por propiedad, y el
+ * `active:translate-y-px` quedaba corriendo a 200ms.
+ */
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-pill font-bold leading-none whitespace-nowrap transition-[transform,box-shadow,background,color,border-color] duration-200 active:translate-y-px [&_svg]:h-[18px] [&_svg]:w-[18px]'
+  'inline-flex items-center justify-center gap-2 rounded-pill font-bold leading-none whitespace-nowrap [transition:transform_.12s,box-shadow_.2s,background_.2s,color_.2s,border-color_.2s] active:translate-y-px [&_svg]:h-[18px] [&_svg]:w-[18px]'
 
 /** Una entrada por variante de ds.css:109-124. Incluye padding y font-size propios. */
 const variants: Record<Variant, string> = {
