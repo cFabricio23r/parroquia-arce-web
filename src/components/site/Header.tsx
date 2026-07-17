@@ -61,9 +61,16 @@ export function Header() {
               >
                 WhatsApp
               </Link>
+              {/*
+                ds.css:80 declara `.live-pill{ color:#fff }`, pero NO es lo que el
+                demo renderiza: `.topbar a` (ds.css:78) tiene especificidad (0,1,1)
+                contra (0,1,0) y gana, dejandolo en #CBDAEE. Replicamos el render,
+                que es el spec pixel-perfect. Si la intencion era blanco, es una
+                decision de diseno: cambiar aca y en ds.css:78-80.
+              */}
               <Link
                 href="/radio"
-                className="inline-flex items-center gap-2 font-semibold text-white"
+                className="inline-flex items-center gap-2 font-semibold text-[#CBDAEE] transition-colors hover:text-white"
               >
                 <span className="h-2 w-2 rounded-full bg-amber [animation:pulse-live_2s_infinite]" />
                 Radio en vivo
@@ -106,9 +113,15 @@ export function Header() {
               ))}
             </nav>
 
-            <Button href="/horarios" className="hidden lg:inline-flex">
-              Ver horarios
-            </Button>
+            {/*
+              El display va en un wrapper, no en className del Button: `base` ya
+              trae `inline-flex` y Tailwind resuelve el conflicto por orden en la
+              hoja, no en el atributo — `hidden` perdia y el CTA seguia visible
+              bajo 1040px. ds.css:251 lo oculta ahi.
+            */}
+            <div className="hidden lg:block">
+              <Button href="/horarios">Ver horarios</Button>
+            </div>
 
             <button
               className="ml-auto grid h-[46px] w-[46px] place-items-center rounded-[11px] bg-blue-tint lg:hidden"

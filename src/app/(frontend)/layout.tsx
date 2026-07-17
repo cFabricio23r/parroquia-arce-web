@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Newsreader, Hanken_Grotesk } from 'next/font/google'
 import React from 'react'
+import { Header } from '@/components/site/Header'
+import { Footer } from '@/components/site/Footer'
 import './globals.css'
 
 const display = Newsreader({
@@ -33,7 +35,9 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${display.variable} ${sans.variable}`}>
       <body className="bg-white font-sans text-[1rem] leading-[1.55] text-text antialiased">
-        {children}
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   )
