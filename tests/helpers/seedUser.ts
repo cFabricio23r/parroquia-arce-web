@@ -4,6 +4,9 @@ import config from '../../src/payload.config.js'
 export const testUser = {
   email: 'dev@payloadcms.com',
   password: 'test',
+  // `role` es obligatorio desde que Users tiene roles. Los e2e del admin
+  // necesitan permisos plenos.
+  role: 'super-admin' as const,
 }
 
 /**

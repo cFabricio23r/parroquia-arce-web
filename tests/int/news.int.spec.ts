@@ -3,7 +3,8 @@ import config from '@/payload.config'
 import { describe, it, beforeAll, afterAll, expect } from 'vitest'
 
 let payload: Payload
-const created: string[] = []
+// En Postgres los ids son numericos, no strings.
+const created: (string | number)[] = []
 
 describe('News collection', () => {
   beforeAll(async () => {
@@ -26,7 +27,7 @@ describe('News collection', () => {
         category: 'aviso',
       },
     })
-    created.push(doc.id as string)
+    created.push(doc.id)
     expect(doc.slug).toBe('aviso-de-prueba')
     expect(doc.status).toBe('published')
   })
@@ -45,7 +46,7 @@ describe('News collection', () => {
       collection: 'news',
       data: { title: 'Primera', slug: 'slug-repetido', status: 'draft' },
     })
-    created.push(doc.id as string)
+    created.push(doc.id)
 
     await expect(
       payload.create({
@@ -60,7 +61,7 @@ describe('News collection', () => {
       collection: 'news',
       data: { title: 'Borrador oculto', slug: 'borrador-oculto', status: 'draft' },
     })
-    created.push(doc.id as string)
+    created.push(doc.id)
 
     const res = await payload.find({
       collection: 'news',
