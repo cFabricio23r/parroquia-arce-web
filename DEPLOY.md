@@ -58,3 +58,9 @@ Cosas que se comprobaron ejecutando, y que contradicen lo que asumia el plan:
   chars). Hay que sobreescribir `PAYLOAD_SECRET` a mano.
 - **Los tests de integracion corren en serie** (`fileParallelism: false`): comparten una
   sola base y en paralelo chocan creando los mismos enums (Postgres 42710).
+- **Despues de agregar cualquier plugin con componentes de admin hay que correr
+  `npm run generate:importmap`, con el dev server APAGADO.** El plugin `s3Storage`
+  registra `S3ClientUploadHandler`; sin regenerar el importMap, `/admin` revienta en
+  `(payload)/layout.tsx`. Peor: si el dev server esta corriendo, el comando **no hace
+  nada y sale con exito** — no imprime `Generating import map` y deja el archivo igual.
+  Si el comando no imprime esa linea, no corrio: apaga el dev server y repetilo.
