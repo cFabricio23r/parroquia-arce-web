@@ -8,5 +8,9 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./vitest.setup.ts'],
     include: ['tests/int/**/*.int.spec.ts'],
+    // Los tests de integracion comparten UNA sola base (Supabase). En paralelo,
+    // cada archivo dispara su propio `push` de esquema y chocan al crear los
+    // mismos enums (Postgres 42710), ademas de pisarse los datos entre si.
+    fileParallelism: false,
   },
 })
