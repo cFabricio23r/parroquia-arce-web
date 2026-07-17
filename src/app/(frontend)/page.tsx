@@ -1,58 +1,25 @@
-import { headers as getHeaders } from 'next/headers.js'
-import Image from 'next/image'
-import { getPayload } from 'payload'
+import type { Metadata } from 'next'
 import React from 'react'
-import { fileURLToPath } from 'url'
 
-import config from '@/payload.config'
-import './styles.css'
+export const metadata: Metadata = {
+  title: 'Inicio',
+}
 
-export default async function HomePage() {
-  const headers = await getHeaders()
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
-  const { user } = await payload.auth({ headers })
-
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
-
+/**
+ * Placeholder. La home real (`web/content/inicio.html`, 285 lineas) se porta en
+ * Fase 1C, cuando existan las colecciones que alimenta: eventos, sectores, radio.
+ * Hasta entonces esta pagina solo prueba que el chrome y los tokens estan puestos.
+ */
+export default function HomePage() {
   return (
-    <div className="home">
-      <div className="content">
-        <picture>
-          <source srcSet="https://raw.githubusercontent.com/payloadcms/payload/3.x/packages/ui/src/assets/payload-favicon.svg" />
-          <Image
-            alt="Payload Logo"
-            height={65}
-            src="https://raw.githubusercontent.com/payloadcms/payload/3.x/packages/ui/src/assets/payload-favicon.svg"
-            width={65}
-          />
-        </picture>
-        {!user && <h1>Welcome to your new project.</h1>}
-        {user && <h1>Welcome back, {user.email}</h1>}
-        <div className="links">
-          <a
-            className="admin"
-            href={payloadConfig.routes.admin}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Go to admin panel
-          </a>
-          <a
-            className="docs"
-            href="https://payloadcms.com/docs"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Documentation
-          </a>
-        </div>
-      </div>
-      <div className="footer">
-        <p>Update this page by editing</p>
-        <a className="codeLink" href={fileURL}>
-          <code>app/(frontend)/page.tsx</code>
-        </a>
+    <div className="mx-auto max-w-parish px-[clamp(20px,5vw,56px)]">
+      <div className="py-[clamp(56px,7vw,96px)]">
+        <h1 className="font-display text-[clamp(40px,5.4vw,68px)] font-medium leading-[1.02]">
+          Parroquia <em className="italic text-blue">Inmaculada Concepción</em>
+        </h1>
+        <p className="mt-4 max-w-[60ch] text-[19px] text-muted">
+          Ciudad Arce, La Libertad. La portada se construye en la Fase 1C.
+        </p>
       </div>
     </div>
   )
