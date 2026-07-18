@@ -71,6 +71,7 @@ export interface Config {
     media: Media;
     news: News;
     formation: Formation;
+    sectors: Sector;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -82,6 +83,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
     formation: FormationSelect<false> | FormationSelect<true>;
+    sectors: SectorsSelect<false> | SectorsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -260,6 +262,100 @@ export interface Formation {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sectors".
+ */
+export interface Sector {
+  id: number;
+  name: string;
+  /**
+   * Identificador para la URL. Solo minusculas, numeros y guiones.
+   */
+  slug: string;
+  number?: number | null;
+  chapelName?: string | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  history?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Dónde queda. Las coordenadas alimentan el mapa.
+   */
+  location?: {
+    address?: string | null;
+    /**
+     * Longitud, latitud.
+     *
+     * @minItems 2
+     * @maxItems 2
+     */
+    coordinates?: [number, number] | null;
+  };
+  responsibleName?: string | null;
+  assistants?:
+    | {
+        name?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Datos de contacto. Todos opcionales.
+   */
+  contact?: {
+    phone?: string | null;
+    whatsapp?: string | null;
+    email?: string | null;
+    /**
+     * Facebook, YouTube, Instagram, etc.
+     */
+    socialLinks?:
+      | {
+          platform?: ('facebook' | 'youtube' | 'instagram' | 'whatsapp' | 'otro') | null;
+          url?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  cover?: (number | null) | Media;
+  /**
+   * Destacar en la home.
+   */
+  isFeatured?: boolean | null;
+  status: 'draft' | 'published' | 'archived';
+  /**
+   * Fecha que se muestra al publico.
+   */
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -297,6 +393,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'formation';
         value: number | Formation;
+      } | null)
+    | ({
+        relationTo: 'sectors';
+        value: number | Sector;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -413,6 +513,51 @@ export interface FormationSelect<T extends boolean = true> {
   audience?: T;
   cover?: T;
   resourceFile?: T;
+  isFeatured?: T;
+  status?: T;
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sectors_select".
+ */
+export interface SectorsSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  number?: T;
+  chapelName?: T;
+  description?: T;
+  history?: T;
+  location?:
+    | T
+    | {
+        address?: T;
+        coordinates?: T;
+      };
+  responsibleName?: T;
+  assistants?:
+    | T
+    | {
+        name?: T;
+        id?: T;
+      };
+  contact?:
+    | T
+    | {
+        phone?: T;
+        whatsapp?: T;
+        email?: T;
+        socialLinks?:
+          | T
+          | {
+              platform?: T;
+              url?: T;
+              id?: T;
+            };
+      };
+  cover?: T;
   isFeatured?: T;
   status?: T;
   publishedAt?: T;
