@@ -64,3 +64,27 @@ Cosas que se comprobaron ejecutando, y que contradicen lo que asumia el plan:
   `(payload)/layout.tsx`. Peor: si el dev server esta corriendo, el comando **no hace
   nada y sale con exito** — no imprime `Generating import map` y deja el archivo igual.
   Si el comando no imprime esa linea, no corrio: apaga el dev server y repetilo.
+
+## Hechos verificados en el primer deploy real (2026-07-17)
+
+El primer deploy a produccion choco con tres trampas en secuencia. Todas reproducibles;
+resueltas, el sitio quedo vivo en <https://parroquia-arce-web.vercel.app>.
+
+- **El build ve git, NO tu disco.** `Events.ts` estaba en local pero sin commitear.
+  Vercel clona de GitHub y fallo con `Module not found: Can't resolve './collections/Events'`
+  (lo importa `payload.config.ts`). Local compilaba porque el archivo estaba en disco.
+  Antes de deployar: `git status` limpio y `git ls-files` que confirme que todo esta trackeado.
+
+- **Bloqueo por autor del commit (plan Hobby).** Vercel bloquea los deploys disparados por
+  push cuyo email del **autor del commit** no este vinculado a la cuenta. La cuenta de Vercel
+  usa **`fabricio.23@live.com`**. Todo commit que se deploye debe ir firmado con ese email
+  (`git config user.email "fabricio.23@live.com"`). Sintoma exacto: *"The deployment was
+  blocked because the commit author did not have contributing access to the project"*.
+  Workaround puntual: `vercel --prod` por CLI (se atribuye al dueño autenticado, saltea el
+  control) — pero no arregla los push futuros; la firma correcta si.
+
+- **Las paginas del frontend prerenderean contra la DB en tiempo de build.** `/eventos`,
+  `/noticias`, etc. inicializan Payload y consultan la base durante `next build`. Por eso el
+  build necesita `PAYLOAD_SECRET` y `DATABASE_URL` cargadas en Vercel, y la base de prod debe
+  estar **migrada y sembrada ANTES** de cada deploy. Sin `PAYLOAD_SECRET`, el prerender falla
+  con *"missing secret key. A secret key is needed to secure Payload"*.
