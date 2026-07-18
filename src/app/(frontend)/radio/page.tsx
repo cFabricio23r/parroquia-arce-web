@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { getPayload } from 'payload'
+import config from '@/payload.config'
 import { Container } from '@/components/ui/Container'
 import { SectionHead } from '@/components/site/SectionHead'
 import { RadioPlayer } from '@/components/site/RadioPlayer'
@@ -7,18 +9,10 @@ import { Reveal } from '@/components/news/Reveal'
 import { Button } from '@/components/ui/Button'
 
 export const metadata: Metadata = { title: 'Radio parroquial' }
+export const revalidate = 300
 
-// Contenido estatico portado del demo (web/content/radio.html). Se bindea a las
-// colecciones `radioPrograms`/`radioEpisodes` cuando existan (Fase 1B).
-
-const programacion = [
-  ['6:00', 'A.M.', 'Evangelio del día', 'Reflexión y música para empezar la jornada', true],
-  ['12:00', 'M.', 'Ángelus y avisos', 'Oración del mediodía y comunicados parroquiales', false],
-  ['5:00', 'P.M.', 'Una voz desde mi sector', 'Historias y avisos de las comunidades', false],
-  ['7:00', 'P.M.', 'Jóvenes con fe', 'Reflexión y vida juvenil', false],
-  ['8:00', 'P.M.', 'Hora de alabanza', 'Música católica y oración', false],
-  ['9:00', 'P.M.', 'Testimonios que edifican', 'Historias de fe de la comunidad', false],
-]
+// El hero, el player y los programas destacados son editoriales (estaticos). La
+// PROGRAMACION se lee de la coleccion radio-programs.
 
 const destacados = [
   ['Evangelio del día', 'La Palabra de cada jornada con una breve reflexión pastoral.'],
@@ -26,7 +20,15 @@ const destacados = [
   ['Testimonios que edifican', 'Voces reales de la comunidad que inspiran la fe.'],
 ]
 
-export default function RadioPage() {
+export default async function RadioPage() {
+  const payload = await getPayload({ config: await config })
+  const { docs: programas } = await payload.find({
+    collection: 'radio-programs',
+    where: { status: { equals: 'published' } },
+    sort: 'createdAt',
+    limit: 50,
+  })
+
   return (
     <>
       {/* Hero especial navy con el player */}
@@ -74,25 +76,29 @@ export default function RadioPage() {
               lead="Lo que suena cada día en la radio de la parroquia."
             />
           </Reveal>
-          <div className="grid grid-cols-2 gap-4 max-[1040px]:grid-cols-1">
-            {programacion.map(([h, ap, title, desc, live]) => (
-              <Reveal key={title as string}>
-                <div className="grid grid-cols-[auto_1fr_auto] items-center gap-[18px] rounded-lg border border-border bg-white p-[20px_24px]">
-                  <div className="w-[74px] text-center">
-                    <div className="font-display text-[20px] font-semibold leading-none text-blue">
-                      {h}
+          {programas.length === 0 ? (
+            <p className="text-muted">
+              Aún no hay programación publicada. El equipo de comunicaciones la carga desde el panel.
+            </p>
+          ) : (
+            <div className="grid grid-cols-2 gap-4 max-[1040px]:grid-cols-1">
+              {programas.map((prog) => (
+                <Reveal key={prog.id}>
+                  <div className="grid grid-cols-[auto_1fr] items-center gap-[18px] rounded-lg border border-border bg-white p-[20px_24px]">
+                    <div className="w-[80px] text-center font-display text-[18px] font-semibold leading-tight text-blue">
+                      {prog.startTime || '—'}
                     </div>
-                    <div className="text-[11px] font-bold tracking-[.06em] text-muted">{ap}</div>
+                    <div>
+                      <h4 className="font-display text-[19px] font-semibold">{prog.title}</h4>
+                      {prog.description && (
+                        <p className="mt-[3px] text-[14px] text-muted">{prog.description}</p>
+                      )}
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-display text-[19px] font-semibold">{title}</h4>
-                    <p className="mt-[3px] text-[14px] text-muted">{desc}</p>
-                  </div>
-                  {live && <span className="text-[12px] font-bold text-ok">● En vivo</span>}
-                </div>
-              </Reveal>
-            ))}
-          </div>
+                </Reveal>
+              ))}
+            </div>
+          )}
         </Container>
       </section>
 
