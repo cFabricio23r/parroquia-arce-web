@@ -446,6 +446,10 @@ export interface Group {
    */
   slug: string;
   type?: ('pastoral' | 'ministerio' | 'comunidad' | 'servicio' | 'formacion') | null;
+  /**
+   * Texto corto para las tarjetas del listado.
+   */
+  summary?: string | null;
   description?: {
     root: {
       type: string;
@@ -894,6 +898,7 @@ export interface GroupsSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
   type?: T;
+  summary?: T;
   description?: T;
   meeting?:
     | T
