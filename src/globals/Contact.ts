@@ -20,7 +20,19 @@ export const Contact: GlobalConfig = {
     // rename de columna ambiguo que cuelga el dev-push de Payload. El reuso no
     // vale romper el esquema de la base compartida.
     { name: 'address', type: 'textarea', label: 'Dirección' },
-    { name: 'coordinates', type: 'point', label: 'Coordenadas (mapa)' },
+    {
+      name: 'mapUrl',
+      type: 'text',
+      label: 'URL de Google Maps',
+      admin: {
+        description:
+          'Pegá el enlace de "Compartir" de Google Maps. Alimenta el botón "Cómo llegar".',
+      },
+    },
+    // `coordinates` queda oculto: se reemplazo por `mapUrl` (mas simple para un
+    // voluntario). No se borra la columna para no tocar el esquema de la base
+    // compartida; solo se saca del admin.
+    { name: 'coordinates', type: 'point', label: 'Coordenadas (mapa)', admin: { hidden: true } },
     {
       name: 'officeHours',
       type: 'array',

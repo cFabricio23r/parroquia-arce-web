@@ -59,12 +59,25 @@ const shows = [
 export default async function HomePage() {
   const payload = await getPayload({ config: await config })
 
-  const [eventsRes, groupsRes, newsRes, sectorsRes] = await Promise.all([
+  const [eventsRes, groupsRes, newsRes, sectorsRes, homeGlobal, settings] = await Promise.all([
     payload.find({ collection: 'events', where: { status: { equals: 'published' } }, sort: 'startsAt', limit: 4 }),
     payload.find({ collection: 'groups', where: { status: { equals: 'published' } }, sort: 'name', limit: 3 }),
     payload.find({ collection: 'news', where: { status: { equals: 'published' } }, sort: '-publishedAt', limit: 3 }),
     payload.find({ collection: 'sectors', where: { status: { equals: 'published' }, isFeatured: { equals: true } }, limit: 1 }),
+    payload.findGlobal({ slug: 'home' }),
+    payload.findGlobal({ slug: 'settings' }),
   ])
+
+  // Hero editable desde el global `home`. Cada campo cae a su valor editorial
+  // si esta vacio, para que la home nunca quede en blanco.
+  const hero = homeGlobal.hero
+  const heroStats = (hero?.stats ?? []).filter((s) => s.number || s.label)
+  const featuredEvent =
+    homeGlobal.featuredEvent && typeof homeGlobal.featuredEvent === 'object'
+      ? homeGlobal.featuredEvent
+      : null
+  const heroImage = hero?.image && typeof hero.image === 'object' ? hero.image : null
+  const radioLive = settings.radio?.available ?? true
 
   const eventos: [string, string, string, string, string, Variant][] = eventsRes.docs.map((e) => {
     const d = new Date(e.startsAt)
@@ -114,11 +127,17 @@ export default async function HomePage() {
                 Parroquia de Ciudad Arce
               </span>
               <h1 className="my-[22px] font-display text-[clamp(48px,6.2vw,86px)] font-medium leading-[.98] tracking-[-.015em]">
-                Una casa abierta para <em className="italic text-blue">caminar</em> en comunidad
+                {hero?.title ? (
+                  hero.title
+                ) : (
+                  <>
+                    Una casa abierta para <em className="italic text-blue">caminar</em> en comunidad
+                  </>
+                )}
               </h1>
               <p className="max-w-[46ch] text-[19px] text-muted">
-                Inmaculada Concepción de María conecta la vida de la parroquia con cada familia:
-                misa, radio, sectores, grupos, avisos y momentos de encuentro en un solo lugar.
+                {hero?.subtitle ??
+                  'Inmaculada Concepción de María conecta la vida de la parroquia con cada familia: misa, radio, sectores, grupos, avisos y momentos de encuentro en un solo lugar.'}
               </p>
               <div className="mt-[30px] flex flex-wrap gap-[13px]">
                 <Button href="/horarios" variant="navy" size="lg">
@@ -129,12 +148,15 @@ export default async function HomePage() {
                 </Button>
               </div>
               <div className="mt-[38px] flex gap-[34px]">
-                {[
-                  ['8', 'Sectores y ermitas'],
-                  ['12+', 'Grupos y ministerios'],
-                  ['24/7', 'Radio en línea'],
-                ].map(([n, l]) => (
-                  <div key={l}>
+                {(heroStats.length > 0
+                  ? heroStats.map((s) => [s.number ?? '', s.label ?? ''] as const)
+                  : ([
+                      ['8', 'Sectores y ermitas'],
+                      ['12+', 'Grupos y ministerios'],
+                      ['24/7', 'Radio en línea'],
+                    ] as const)
+                ).map(([n, l], i) => (
+                  <div key={`${l}-${i}`}>
                     <div className="font-display text-[40px] font-medium leading-none text-blue">
                       {n}
                     </div>
@@ -146,7 +168,7 @@ export default async function HomePage() {
 
             <Reveal className="relative">
               <div className="overflow-hidden rounded-xl shadow-lg [aspect-ratio:1.28/1]">
-                <MediaImage cover={null} />
+                <MediaImage cover={heroImage} />
               </div>
               <div className="mt-4 grid grid-cols-2 gap-4">
                 <Link
@@ -157,16 +179,23 @@ export default async function HomePage() {
                     Próximo evento
                   </span>
                   <h4 className="my-[9px_0_5px] font-display text-[22px] font-semibold leading-[1.05]">
-                    Vigilia de Pentecostés
+                    {featuredEvent ? featuredEvent.title : 'Vigilia de Pentecostés'}
                   </h4>
-                  <p className="text-[13.5px] text-muted">Sáb 24 de mayo · 6:00 p.m. · Ermita Las Cruces.</p>
+                  <p className="text-[13.5px] text-muted">
+                    {featuredEvent
+                      ? `${new Date(featuredEvent.startsAt).toLocaleDateString('es-SV', { weekday: 'short', day: 'numeric', month: 'long' })} · ${new Date(featuredEvent.startsAt).toLocaleTimeString('es-SV', { hour: 'numeric', minute: '2-digit' })} · ${featuredEvent.locationName}`
+                      : 'Sáb 24 de mayo · 6:00 p.m. · Ermita Las Cruces.'}
+                  </p>
                 </Link>
                 <Link
                   href="/radio"
                   className="rounded-lg border border-white bg-white/[.72] p-5 shadow-md backdrop-blur-[10px]"
                 >
                   <span className="inline-flex items-center gap-[7px] text-[12.5px] font-bold uppercase tracking-[.15em] text-blue">
-                    <span className="h-[7px] w-[7px] rounded-full bg-amber" /> En vivo ahora
+                    <span
+                      className={`h-[7px] w-[7px] rounded-full ${radioLive ? 'bg-amber' : 'bg-muted'}`}
+                    />{' '}
+                    {radioLive ? 'En vivo ahora' : 'Fuera del aire'}
                   </span>
                   <h4 className="my-[9px_0_5px] font-display text-[22px] font-semibold leading-[1.05]">
                     Radio parroquial

@@ -34,6 +34,7 @@ export async function Footer() {
 
   const parishName = contact.parishName || 'Inmaculada Concepción'
   const address = contact.address || 'Ciudad Arce, La Libertad'
+  const mapUrl = contact.mapUrl
   const channels = (contact.channels ?? []).filter((c) => c.url && c.platform)
   const radioLive = settings.radio?.available ?? true
 
@@ -127,6 +128,16 @@ export async function Footer() {
                   </span>
                 ))}
               </p>
+              {mapUrl && (
+                <a
+                  href={mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-[10px] inline-flex items-center gap-[6px] text-[14.5px] font-semibold text-white transition-colors hover:text-amber"
+                >
+                  Cómo llegar →
+                </a>
+              )}
               {channels.length > 0 ? (
                 <ul className="mt-[14px] flex list-none flex-col gap-[9px] p-0">
                   {channels.map((c, i) => (

@@ -1076,6 +1076,10 @@ export interface Contact {
   parishName?: string | null;
   address?: string | null;
   /**
+   * Pegá el enlace de "Compartir" de Google Maps. Alimenta el botón "Cómo llegar".
+   */
+  mapUrl?: string | null;
+  /**
    * @minItems 2
    * @maxItems 2
    */
@@ -1148,6 +1152,7 @@ export interface HomeSelect<T extends boolean = true> {
 export interface ContactSelect<T extends boolean = true> {
   parishName?: T;
   address?: T;
+  mapUrl?: T;
   coordinates?: T;
   officeHours?:
     | T
