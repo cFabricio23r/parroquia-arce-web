@@ -15,6 +15,10 @@ export const Contact: GlobalConfig = {
   },
   fields: [
     { name: 'parishName', type: 'text', label: 'Nombre de la parroquia' },
+    // NO se reusa locationField() aca: el global `contact` ya existe en la DB
+    // con `address`/`coordinates` planos, y anidarlos en `location.*` dispara un
+    // rename de columna ambiguo que cuelga el dev-push de Payload. El reuso no
+    // vale romper el esquema de la base compartida.
     { name: 'address', type: 'textarea', label: 'Dirección' },
     { name: 'coordinates', type: 'point', label: 'Coordenadas (mapa)' },
     {

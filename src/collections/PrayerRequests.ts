@@ -59,5 +59,19 @@ export const PrayerRequests: CollectionConfig = {
         description: 'Solo si la persona autorizó que se lea al aire.',
       },
     },
+    // Auditoria de la revision (DATA_MODEL: reviewed_by / reviewed_at).
+    {
+      name: 'reviewedBy',
+      type: 'relationship',
+      relationTo: 'users',
+      label: 'Revisada por',
+      admin: { position: 'sidebar', readOnly: true },
+    },
+    {
+      name: 'reviewedAt',
+      type: 'date',
+      label: 'Fecha de revisión',
+      admin: { position: 'sidebar', readOnly: true },
+    },
   ],
 }

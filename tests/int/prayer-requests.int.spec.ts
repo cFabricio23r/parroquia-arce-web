@@ -28,7 +28,11 @@ describe('PrayerRequests collection', () => {
 
   it('exige el mensaje', async () => {
     await expect(
-      payload.create({ collection: 'prayer-requests', data: { intentionType: 'general' } }),
+      payload.create({
+        // Falta `message` (required) a proposito.
+        collection: 'prayer-requests',
+        data: { intentionType: 'general' } as never,
+      }),
     ).rejects.toThrow()
   })
 })

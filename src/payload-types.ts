@@ -179,6 +179,10 @@ export interface Media {
    */
   alt: string;
   caption?: string | null;
+  /**
+   * Fotógrafo o fuente, si corresponde.
+   */
+  credit?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -614,6 +618,8 @@ export interface PrayerRequest {
    * Solo si la persona autorizó que se lea al aire.
    */
   allowPublicMention?: boolean | null;
+  reviewedBy?: (number | null) | User;
+  reviewedAt?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -758,6 +764,7 @@ export interface UsersSelect<T extends boolean = true> {
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
   caption?: T;
+  credit?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -978,6 +985,8 @@ export interface PrayerRequestsSelect<T extends boolean = true> {
   intentionType?: T;
   status?: T;
   allowPublicMention?: T;
+  reviewedBy?: T;
+  reviewedAt?: T;
   updatedAt?: T;
   createdAt?: T;
 }

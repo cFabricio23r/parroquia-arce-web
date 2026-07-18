@@ -26,6 +26,12 @@ export const Media: CollectionConfig = {
       name: 'caption',
       type: 'text',
     },
+    {
+      name: 'credit',
+      type: 'text',
+      label: 'Crédito / autor',
+      admin: { description: 'Fotógrafo o fuente, si corresponde.' },
+    },
   ],
   upload: true,
 }
