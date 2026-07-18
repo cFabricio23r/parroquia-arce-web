@@ -189,7 +189,7 @@ export default async function HomePage() {
               <Reveal key={title}>
                 <Link
                   href={href}
-                  className="flex h-full flex-col gap-[13px] rounded-lg border border-border bg-white p-6 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-line-soft hover:shadow-md"
+                  className="flex h-full flex-col gap-[13px] rounded-lg border border-border bg-white p-6 [transition:transform_.16s,box-shadow_.2s,border-color_.2s] hover:-translate-y-1 hover:border-line-soft hover:shadow-md"
                 >
                   <span className="grid h-[50px] w-[50px] place-items-center rounded-[14px] bg-blue-tint text-[22px]" aria-hidden="true">
                     {ic}
@@ -244,7 +244,7 @@ export default async function HomePage() {
                 {sacramentos.map(([bl, title, text]) => (
                   <div
                     key={title}
-                    className="flex flex-col gap-3 rounded-lg border border-border bg-white p-6 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-line-soft hover:shadow-md"
+                    className="flex flex-col gap-3 rounded-lg border border-border bg-white p-6"
                   >
                     <span className="grid h-12 w-12 place-items-center rounded-[13px] bg-blue font-display text-[20px] font-semibold text-white">
                       {bl}
@@ -462,7 +462,7 @@ export default async function HomePage() {
                   <Link
                     key={title}
                     href="/noticias"
-                    className="grid grid-cols-[auto_1fr] items-center gap-4 rounded-lg border border-border bg-white p-[18px_20px] transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-line-soft hover:shadow-md"
+                    className="grid grid-cols-[auto_1fr] items-center gap-4 rounded-lg border border-border bg-white p-[18px_20px] [transition:transform_.16s,box-shadow_.2s,border-color_.2s] hover:-translate-y-1 hover:border-line-soft hover:shadow-md"
                   >
                     <Badge variant={variant} className="self-start">
                       {cat}

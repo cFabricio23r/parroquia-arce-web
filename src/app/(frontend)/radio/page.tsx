@@ -114,7 +114,7 @@ export default async function RadioPage() {
           <div className="grid grid-cols-3 gap-5 max-[1040px]:grid-cols-1">
             {destacados.map(([title, desc]) => (
               <Reveal key={title}>
-                <div className="rounded-lg border border-border bg-white p-[26px] transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-line-soft hover:shadow-md">
+                <div className="rounded-lg border border-border bg-white p-[26px]">
                   <span className="mb-[14px] grid h-12 w-12 place-items-center rounded-[13px] bg-blue-tint text-blue" aria-hidden="true">
                     ♪
                   </span>

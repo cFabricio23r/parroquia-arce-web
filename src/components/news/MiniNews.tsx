@@ -4,7 +4,7 @@ import { newsCategoryVariant, newsCategoryLabel, formatDate } from '@/lib/news-f
 
 export function MiniNews({ item }: { item: News }) {
   return (
-    <div className="grid grid-cols-[auto_1fr] items-center gap-4 rounded-lg border border-border bg-white p-[18px_20px] transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-line-soft hover:shadow-md max-[600px]:grid-cols-1">
+    <div className="grid grid-cols-[auto_1fr] items-center gap-4 rounded-lg border border-border bg-white p-[18px_20px] max-[600px]:grid-cols-1">
       <Badge variant={newsCategoryVariant(item.category)} className="self-start">
         {newsCategoryLabel(item.category)}
       </Badge>

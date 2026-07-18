@@ -102,7 +102,7 @@ export default function HorariosPage() {
           <div className="grid grid-cols-3 gap-5 max-[1040px]:grid-cols-1">
             {sacramentos.map(([bl, title, text, when]) => (
               <Reveal key={title}>
-                <div className="flex h-full flex-col gap-[13px] rounded-lg border border-border bg-white p-[30px] transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-line-soft hover:shadow-md">
+                <div className="flex h-full flex-col gap-[13px] rounded-lg border border-border bg-white p-[30px]">
                   <span className="grid h-[52px] w-[52px] place-items-center rounded-[14px] bg-blue font-display text-[22px] font-semibold text-white">
                     {bl}
                   </span>

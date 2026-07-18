@@ -5,7 +5,7 @@ import { audienceVariant, audienceLabel, formationCategoryLabel } from '@/lib/ne
 
 export function FormationCard({ item }: { item: Formation }) {
   return (
-    <article className="flex flex-col overflow-hidden rounded-lg border border-border bg-white transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-line-soft hover:shadow-md">
+    <article className="flex flex-col overflow-hidden rounded-lg border border-border bg-white">
       <div className="relative h-[160px]">
         <MediaImage cover={item.cover} />
       </div>

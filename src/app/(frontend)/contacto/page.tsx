@@ -40,7 +40,7 @@ export default function ContactoPage() {
                   <a
                     key={title}
                     href="#"
-                    className="flex items-center gap-4 rounded-lg border border-border bg-white p-[20px_22px] transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-line-soft hover:shadow-md"
+                    className="flex items-center gap-4 rounded-lg border border-border bg-white p-[20px_22px] [transition:transform_.16s,box-shadow_.2s,border-color_.2s] hover:-translate-y-1 hover:border-line-soft hover:shadow-md"
                   >
                     <span
                       className="grid h-[50px] w-[50px] flex-none place-items-center rounded-[13px] text-white"
