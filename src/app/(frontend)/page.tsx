@@ -1,20 +1,34 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { getPayload } from 'payload'
+import config from '@/payload.config'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
 import { SectionHead } from '@/components/site/SectionHead'
 import { MediaImage } from '@/components/news/MediaImage'
 import { Reveal } from '@/components/news/Reveal'
+import { newsCategoryVariant, newsCategoryLabel, formatDate } from '@/lib/news-format'
 
 export const metadata: Metadata = { title: 'Inicio' }
+export const revalidate = 300
 
-// Home portada del demo (web/content/inicio.html). Contenido estatico; cada
-// bloque se bindea a su coleccion cuando exista (eventos, sectores, radio,
-// grupos, noticias — Fase 1B). Los links a detalle apuntan por ahora a la
-// pagina de listado correspondiente.
+// Home. El hero, accesos rapidos, misas/sacramentos y shows son editoriales
+// (estaticos). Las secciones de eventos, grupos, noticias y el sector destacado
+// se leen de sus colecciones.
 
 type Variant = 'blue' | 'sky' | 'amber'
+
+const MES_CORTO = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+const eventTypeVariant = (t?: string | null): Variant =>
+  t === 'patronal' || t === 'vigilia' || t === 'novena' ? 'amber' : t === 'reunion' || t === 'jornada' ? 'sky' : 'blue'
+const groupTypeMeta: Record<string, { label: string; variant: Variant }> = {
+  pastoral: { label: 'Pastoral', variant: 'blue' },
+  ministerio: { label: 'Ministerio', variant: 'sky' },
+  comunidad: { label: 'Comunidad', variant: 'sky' },
+  servicio: { label: 'Servicio', variant: 'amber' },
+  formacion: { label: 'Formación', variant: 'blue' },
+}
 
 const quickActions: [string, string, string, string][] = [
   ['🕑', 'Horarios de misa', 'Misas, confesiones y sacramentos de la semana.', '/horarios'],
@@ -36,32 +50,52 @@ const sacramentos = [
   ['✝', 'Matrimonios', 'Acompañamiento y trámites con el equipo de pastoral familiar.'],
 ]
 
-const eventos: [string, string, string, string, string, Variant][] = [
-  ['24', 'May', 'Vigilia de Pentecostés', '6:00 p.m. · Ermita Las Cruces, Sector #8', 'Vigilia', 'amber'],
-  ['29', 'May', 'Hora Santa comunitaria', '7:00 p.m. · Templo parroquial', 'Oración', 'blue'],
-  ['02', 'Jun', 'Reunión de servidores', '5:00 p.m. · Salón parroquial', 'Servicio', 'sky'],
-  ['08', 'Jun', 'Corpus Christi · Procesión', '9:00 a.m. · Desde el templo parroquial', 'Solemnidad', 'amber'],
-]
-
-const grupos: [Variant, string, string, string][] = [
-  ['blue', 'Matrimonios', 'Encuentros Conyugales', 'Un espacio para fortalecer la vida matrimonial desde la fe y la comunidad.'],
-  ['sky', 'Oración', 'Renovación Carismática', 'Encuentros de alabanza, predicación y comunidad para crecer en el Espíritu.'],
-  ['amber', 'Jóvenes', 'Pastoral Juvenil', 'Formación, servicio y misión para jóvenes de toda la parroquia.'],
-]
-
-const noticias: [Variant, string, string, string, string][] = [
-  ['amber', 'Aviso', '20 de mayo', 'Cambio de horario por solemnidad', 'Información oficial para la comunidad parroquial.'],
-  ['blue', 'Formación', '18 de mayo', 'Reflexión semanal del Evangelio', 'Material breve para familias y comunidades.'],
-  ['sky', 'Comunidad', '15 de mayo', 'Crónica de la fiesta patronal', 'Momentos y agradecimientos de toda la parroquia.'],
-]
-
 const shows = [
   ['Una voz desde mi sector', 'Historias y avisos comunitarios', '5:00 p.m.'],
   ['Jóvenes con fe', 'Reflexión y vida juvenil', '7:00 p.m.'],
   ['Hora de alabanza', 'Música católica y oración', '8:00 p.m.'],
 ]
 
-export default function HomePage() {
+export default async function HomePage() {
+  const payload = await getPayload({ config: await config })
+
+  const [eventsRes, groupsRes, newsRes, sectorsRes] = await Promise.all([
+    payload.find({ collection: 'events', where: { status: { equals: 'published' } }, sort: 'startsAt', limit: 4 }),
+    payload.find({ collection: 'groups', where: { status: { equals: 'published' } }, sort: 'name', limit: 3 }),
+    payload.find({ collection: 'news', where: { status: { equals: 'published' } }, sort: '-publishedAt', limit: 3 }),
+    payload.find({ collection: 'sectors', where: { status: { equals: 'published' }, isFeatured: { equals: true } }, limit: 1 }),
+  ])
+
+  const eventos: [string, string, string, string, string, Variant][] = eventsRes.docs.map((e) => {
+    const d = new Date(e.startsAt)
+    const hora = d.toLocaleTimeString('es-SV', { hour: 'numeric', minute: '2-digit' })
+    return [
+      String(d.getDate()).padStart(2, '0'),
+      MES_CORTO[d.getMonth()],
+      e.title,
+      `${hora} · ${e.locationName}`,
+      e.eventType ? e.eventType.replace('-', ' ') : '',
+      eventTypeVariant(e.eventType),
+    ]
+  })
+
+  const grupos: [Variant, string, string, string][] = groupsRes.docs.map((g) => {
+    const meta = g.type ? groupTypeMeta[g.type] : undefined
+    return [meta?.variant ?? 'blue', meta?.label ?? '', g.name, g.summary ?? '']
+  })
+
+  const noticias: [Variant, string, string, string, string][] = newsRes.docs.map((n) => [
+    // news nunca cae en la variante 'live', asi que el cast a Variant es seguro.
+    newsCategoryVariant(n.category) as Variant,
+    newsCategoryLabel(n.category),
+    formatDate(n.publishedAt),
+    n.title,
+    n.excerpt ?? '',
+  ])
+
+  // Sector destacado (isFeatured); si no hay, el primero.
+  const featuredSector = sectorsRes.docs[0]
+
   return (
     <>
       {/* HERO */}
@@ -296,32 +330,38 @@ export default function HomePage() {
               Ver todos los sectores →
             </Link>
           </Reveal>
-          <Reveal>
-            <div className="grid grid-cols-2 items-stretch gap-8 overflow-hidden rounded-xl border border-border bg-white max-[1040px]:grid-cols-1">
-              <div className="relative min-h-[280px]">
-                <MediaImage cover={null} />
-              </div>
-              <div className="flex flex-col p-9">
-                <span className="text-[12.5px] font-bold uppercase tracking-[.15em] text-blue">
-                  Sector destacado
-                </span>
-                <h3 className="my-3 font-display text-[28px] font-medium">
-                  Sector #8 — Ermita Las Cruces
-                </h3>
-                <p className="text-[15px] leading-[1.55] text-muted">
-                  Una comunidad activa con celebraciones, vigilias y actividades pastorales para las
-                  familias del sector. Conoce sus horarios, su capilla y a sus servidores.
-                </p>
-                <div className="my-5 flex flex-wrap gap-2">
-                  <Badge variant="blue">Misa: sábado 5:00 p.m.</Badge>
-                  <Badge variant="sky">3 grupos activos</Badge>
+          {featuredSector && (
+            <Reveal>
+              <div className="grid grid-cols-2 items-stretch gap-8 overflow-hidden rounded-xl border border-border bg-white max-[1040px]:grid-cols-1">
+                <div className="relative min-h-[280px]">
+                  <MediaImage cover={featuredSector.cover} />
                 </div>
-                <div className="mt-auto">
-                  <Button href="/sectores">Ver los sectores</Button>
+                <div className="flex flex-col p-9">
+                  <span className="text-[12.5px] font-bold uppercase tracking-[.15em] text-blue">
+                    Sector destacado
+                  </span>
+                  <h3 className="my-3 font-display text-[28px] font-medium">
+                    {featuredSector.number != null && `Sector #${featuredSector.number} — `}
+                    {featuredSector.name}
+                  </h3>
+                  {featuredSector.summary && (
+                    <p className="text-[15px] leading-[1.55] text-muted">{featuredSector.summary}</p>
+                  )}
+                  <div className="my-5 flex flex-wrap gap-2">
+                    {featuredSector.chapelName && (
+                      <Badge variant="blue">{featuredSector.chapelName}</Badge>
+                    )}
+                    {featuredSector.location?.address && (
+                      <Badge variant="sky">{featuredSector.location.address}</Badge>
+                    )}
+                  </div>
+                  <div className="mt-auto">
+                    <Button href="/sectores">Ver los sectores</Button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          )}
         </Container>
       </section>
 
