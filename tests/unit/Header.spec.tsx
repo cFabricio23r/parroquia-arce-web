@@ -56,4 +56,10 @@ describe('Header', () => {
       'false',
     )
   })
+
+  it('con brand.url renderiza el isotipo del CMS en el encabezado', () => {
+    render(<Header brand={{ url: 'https://cdn.example/iso.png', alt: 'Logo parroquia' }} />)
+    const img = screen.getByRole('img', { name: 'Logo parroquia' })
+    expect(img.getAttribute('src')).toBe('https://cdn.example/iso.png')
+  })
 })

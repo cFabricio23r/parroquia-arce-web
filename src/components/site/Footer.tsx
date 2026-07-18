@@ -37,6 +37,11 @@ export async function Footer() {
   const mapUrl = contact.mapUrl
   const channels = (contact.channels ?? []).filter((c) => c.url && c.platform)
   const radioLive = settings.radio?.available ?? true
+  const isoFooter = settings.marca?.isotipo
+  const brandFooter =
+    isoFooter && typeof isoFooter === 'object'
+      ? { url: isoFooter.url ?? undefined, alt: isoFooter.alt ?? '' }
+      : null
 
   return (
     <footer className="border-t-4 border-amber bg-navy-deep text-[#9FB4D2]">
@@ -62,7 +67,11 @@ export async function Footer() {
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1.1fr]">
             <div>
               <Link href="/" className="flex flex-none items-center gap-[13px]">
-                <Mark className="bg-white/10" />
+                <Mark
+                  className="bg-white/10"
+                  src={brandFooter?.url}
+                  alt={brandFooter?.alt}
+                />
                 <span className="inline-flex flex-col leading-[1.08]">
                   <b className="whitespace-nowrap font-display text-[16.5px] font-semibold tracking-[.005em] text-white">
                     {parishName}
@@ -149,7 +158,6 @@ export async function Footer() {
                         className="text-[14.5px] text-[#A9BCD8] transition-colors hover:text-white"
                       >
                         {PLATFORM_LABEL[c.platform!] ?? c.platform}
-                        {c.label ? ` · ${c.label}` : ''}
                       </a>
                     </li>
                   ))}

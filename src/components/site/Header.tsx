@@ -18,7 +18,22 @@ const NAV = [
   { href: '/contacto', label: 'Contacto' },
 ]
 
-export function Header() {
+const PLATFORM_LABEL: Record<string, string> = {
+  whatsapp: 'WhatsApp',
+  facebook: 'Facebook',
+  youtube: 'YouTube',
+  instagram: 'Instagram',
+}
+
+type TopbarChannel = { platform: string; url: string }
+
+type HeaderProps = {
+  channels?: TopbarChannel[]
+  radioLive?: boolean
+  brand?: { url: string | null; alt: string } | null
+}
+
+export function Header({ channels = [], radioLive = true, brand }: HeaderProps) {
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
@@ -43,37 +58,39 @@ export function Header() {
           <div className="flex h-[42px] items-center justify-between">
             <span>Ciudad Arce, La Libertad · El Salvador</span>
             <div className="flex items-center gap-[22px]">
-              <a
-                href="#"
-                className="hidden text-[#CBDAEE] transition-colors hover:text-white sm:inline"
-              >
-                Facebook
-              </a>
-              <a
-                href="#"
-                className="hidden text-[#CBDAEE] transition-colors hover:text-white sm:inline"
-              >
-                YouTube
-              </a>
-              <Link
-                href="/contacto"
-                className="hidden text-[#CBDAEE] transition-colors hover:text-white sm:inline"
-              >
-                WhatsApp
-              </Link>
+              {/*
+                Canales editables desde el global `contact`. Si un canal no esta
+                cargado (p. ej. WhatsApp), simplemente no se renderiza.
+              */}
+              {channels.map((c, i) => (
+                <a
+                  key={c.url ?? i}
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden text-[#CBDAEE] transition-colors hover:text-white sm:inline"
+                >
+                  {PLATFORM_LABEL[c.platform] ?? c.platform}
+                </a>
+              ))}
               {/*
                 ds.css:80 declara `.live-pill{ color:#fff }`, pero NO es lo que el
                 demo renderiza: `.topbar a` (ds.css:78) tiene especificidad (0,1,1)
                 contra (0,1,0) y gana, dejandolo en #CBDAEE. Replicamos el render,
                 que es el spec pixel-perfect. Si la intencion era blanco, es una
                 decision de diseno: cambiar aca y en ds.css:78-80.
+
+                El estado "en vivo" lo controla `settings.radio.available` desde
+                /admin, igual que el footer.
               */}
               <Link
                 href="/radio"
                 className="inline-flex items-center gap-2 font-semibold text-[#CBDAEE] transition-colors hover:text-white"
               >
-                <span className="h-2 w-2 rounded-full bg-amber [animation:pulse-live_2s_infinite]" />
-                Radio en vivo
+                <span
+                  className={`h-2 w-2 rounded-full ${radioLive ? 'bg-amber [animation:pulse-live_2s_infinite]' : 'bg-[#7F95B5]'}`}
+                />
+                {radioLive ? 'Radio en vivo' : 'Radio · fuera del aire'}
               </Link>
             </div>
           </div>
@@ -89,7 +106,11 @@ export function Header() {
         <Container>
           <div className="flex h-20 items-center gap-6">
             <Link href="/" className="flex flex-none items-center gap-[13px]">
-              <Mark className="bg-blue shadow-[0_8px_18px_-8px_rgba(19,76,146,.6)]" />
+              <Mark
+                className="bg-blue shadow-[0_8px_18px_-8px_rgba(19,76,146,.6)]"
+                src={brand?.url ?? undefined}
+                alt={brand?.alt}
+              />
               <span className="inline-flex flex-col leading-[1.08]">
                 <b className="whitespace-nowrap font-display text-[16.5px] font-semibold tracking-[.005em]">
                   Inmaculada Concepción
