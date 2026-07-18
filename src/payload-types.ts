@@ -295,6 +295,10 @@ export interface Sector {
   slug: string;
   number?: number | null;
   chapelName?: string | null;
+  /**
+   * Texto corto para las tarjetas del listado.
+   */
+  summary?: string | null;
   description?: {
     root: {
       type: string;
@@ -822,6 +826,7 @@ export interface SectorsSelect<T extends boolean = true> {
   slug?: T;
   number?: T;
   chapelName?: T;
+  summary?: T;
   description?: T;
   history?: T;
   location?:

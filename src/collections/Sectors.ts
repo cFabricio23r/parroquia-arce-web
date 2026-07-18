@@ -40,6 +40,12 @@ export const Sectors: CollectionConfig = {
                 { name: 'chapelName', type: 'text', label: 'Nombre de la ermita' },
               ],
             },
+            {
+              name: 'summary',
+              type: 'textarea',
+              label: 'Resumen',
+              admin: { description: 'Texto corto para las tarjetas del listado.' },
+            },
             { name: 'description', type: 'richText', label: 'Descripción' },
             { name: 'history', type: 'richText', label: 'Historia' },
           ],
