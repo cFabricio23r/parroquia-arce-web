@@ -72,6 +72,11 @@ export interface Config {
     news: News;
     formation: Formation;
     sectors: Sector;
+    chapels: Chapel;
+    groups: Group;
+    events: Event;
+    'radio-programs': RadioProgram;
+    'radio-episodes': RadioEpisode;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,6 +89,11 @@ export interface Config {
     news: NewsSelect<false> | NewsSelect<true>;
     formation: FormationSelect<false> | FormationSelect<true>;
     sectors: SectorsSelect<false> | SectorsSelect<true>;
+    chapels: ChapelsSelect<false> | ChapelsSelect<true>;
+    groups: GroupsSelect<false> | GroupsSelect<true>;
+    events: EventsSelect<false> | EventsSelect<true>;
+    'radio-programs': RadioProgramsSelect<false> | RadioProgramsSelect<true>;
+    'radio-episodes': RadioEpisodesSelect<false> | RadioEpisodesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -356,6 +366,233 @@ export interface Sector {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "chapels".
+ */
+export interface Chapel {
+  id: number;
+  name: string;
+  /**
+   * Identificador para la URL. Solo minusculas, numeros y guiones.
+   */
+  slug: string;
+  sector: number | Sector;
+  patronOrDedication?: string | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Una línea por horario.
+   */
+  massSchedule?: string | null;
+  /**
+   * Dónde queda. Las coordenadas alimentan el mapa.
+   */
+  location?: {
+    address?: string | null;
+    /**
+     * Longitud, latitud.
+     *
+     * @minItems 2
+     * @maxItems 2
+     */
+    coordinates?: [number, number] | null;
+  };
+  cover?: (number | null) | Media;
+  status: 'draft' | 'published' | 'archived';
+  /**
+   * Fecha que se muestra al publico.
+   */
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "groups".
+ */
+export interface Group {
+  id: number;
+  name: string;
+  /**
+   * Identificador para la URL. Solo minusculas, numeros y guiones.
+   */
+  slug: string;
+  type?: ('pastoral' | 'ministerio' | 'comunidad' | 'servicio' | 'formacion') | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  meeting?: {
+    day?: string | null;
+    time?: string | null;
+    place?: string | null;
+  };
+  /**
+   * Qué hacer para integrarse al grupo.
+   */
+  howToJoin?: string | null;
+  coordinatorName?: string | null;
+  /**
+   * Datos de contacto. Todos opcionales.
+   */
+  contact?: {
+    phone?: string | null;
+    whatsapp?: string | null;
+    email?: string | null;
+    /**
+     * Facebook, YouTube, Instagram, etc.
+     */
+    socialLinks?:
+      | {
+          platform?: ('facebook' | 'youtube' | 'instagram' | 'whatsapp' | 'otro') | null;
+          url?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  cover?: (number | null) | Media;
+  /**
+   * Destacar en la home.
+   */
+  isFeatured?: boolean | null;
+  status: 'draft' | 'published' | 'archived';
+  /**
+   * Fecha que se muestra al publico.
+   */
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events".
+ */
+export interface Event {
+  id: number;
+  title: string;
+  /**
+   * Identificador para la URL. Solo minusculas, numeros y guiones.
+   */
+  slug: string;
+  eventType?:
+    | (
+        | 'misa'
+        | 'vigilia'
+        | 'hora-santa'
+        | 'jornada'
+        | 'reunion'
+        | 'novena'
+        | 'retiro'
+        | 'sector'
+        | 'grupo'
+        | 'patronal'
+      )
+    | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  startsAt: string;
+  endsAt?: string | null;
+  locationName: string;
+  sector?: (number | null) | Sector;
+  group?: (number | null) | Group;
+  cover?: (number | null) | Media;
+  /**
+   * Destacar en la home.
+   */
+  isFeatured?: boolean | null;
+  status: 'draft' | 'published' | 'archived';
+  /**
+   * Fecha que se muestra al publico.
+   */
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "radio-programs".
+ */
+export interface RadioProgram {
+  id: number;
+  title: string;
+  /**
+   * Identificador para la URL. Solo minusculas, numeros y guiones.
+   */
+  slug: string;
+  description?: string | null;
+  hostName?: string | null;
+  dayOfWeek?: ('lunes' | 'martes' | 'miercoles' | 'jueves' | 'viernes' | 'sabado' | 'domingo' | 'diario') | null;
+  startTime?: string | null;
+  endTime?: string | null;
+  cover?: (number | null) | Media;
+  status: 'draft' | 'published' | 'archived';
+  /**
+   * Fecha que se muestra al publico.
+   */
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "radio-episodes".
+ */
+export interface RadioEpisode {
+  id: number;
+  title: string;
+  /**
+   * Identificador para la URL. Solo minusculas, numeros y guiones.
+   */
+  slug: string;
+  program: number | RadioProgram;
+  description?: string | null;
+  audioUrl?: string | null;
+  status: 'draft' | 'published' | 'archived';
+  /**
+   * Fecha que se muestra al publico.
+   */
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -397,6 +634,26 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'sectors';
         value: number | Sector;
+      } | null)
+    | ({
+        relationTo: 'chapels';
+        value: number | Chapel;
+      } | null)
+    | ({
+        relationTo: 'groups';
+        value: number | Group;
+      } | null)
+    | ({
+        relationTo: 'events';
+        value: number | Event;
+      } | null)
+    | ({
+        relationTo: 'radio-programs';
+        value: number | RadioProgram;
+      } | null)
+    | ({
+        relationTo: 'radio-episodes';
+        value: number | RadioEpisode;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -559,6 +816,122 @@ export interface SectorsSelect<T extends boolean = true> {
       };
   cover?: T;
   isFeatured?: T;
+  status?: T;
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "chapels_select".
+ */
+export interface ChapelsSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  sector?: T;
+  patronOrDedication?: T;
+  description?: T;
+  massSchedule?: T;
+  location?:
+    | T
+    | {
+        address?: T;
+        coordinates?: T;
+      };
+  cover?: T;
+  status?: T;
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "groups_select".
+ */
+export interface GroupsSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  type?: T;
+  description?: T;
+  meeting?:
+    | T
+    | {
+        day?: T;
+        time?: T;
+        place?: T;
+      };
+  howToJoin?: T;
+  coordinatorName?: T;
+  contact?:
+    | T
+    | {
+        phone?: T;
+        whatsapp?: T;
+        email?: T;
+        socialLinks?:
+          | T
+          | {
+              platform?: T;
+              url?: T;
+              id?: T;
+            };
+      };
+  cover?: T;
+  isFeatured?: T;
+  status?: T;
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events_select".
+ */
+export interface EventsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  eventType?: T;
+  description?: T;
+  startsAt?: T;
+  endsAt?: T;
+  locationName?: T;
+  sector?: T;
+  group?: T;
+  cover?: T;
+  isFeatured?: T;
+  status?: T;
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "radio-programs_select".
+ */
+export interface RadioProgramsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  description?: T;
+  hostName?: T;
+  dayOfWeek?: T;
+  startTime?: T;
+  endTime?: T;
+  cover?: T;
+  status?: T;
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "radio-episodes_select".
+ */
+export interface RadioEpisodesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  program?: T;
+  description?: T;
+  audioUrl?: T;
   status?: T;
   publishedAt?: T;
   updatedAt?: T;

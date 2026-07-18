@@ -11,6 +11,11 @@ import { Media } from './collections/Media'
 import { News } from './collections/News'
 import { Formation } from './collections/Formation'
 import { Sectors } from './collections/Sectors'
+import { Groups } from './collections/Groups'
+import { Events } from './collections/Events'
+import { Chapels } from './collections/Chapels'
+import { RadioPrograms } from './collections/RadioPrograms'
+import { RadioEpisodes } from './collections/RadioEpisodes'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -22,7 +27,18 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, News, Formation, Sectors],
+  collections: [
+    Users,
+    Media,
+    News,
+    Formation,
+    Sectors,
+    Chapels,
+    Groups,
+    Events,
+    RadioPrograms,
+    RadioEpisodes,
+  ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
