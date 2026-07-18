@@ -30,4 +30,13 @@ describe('Global Settings (radio)', () => {
       }),
     ).rejects.toThrow()
   })
+
+  it('expone el grupo marca con isotipo y favicon, vacios por defecto', async () => {
+    const settings = await payload.findGlobal({ slug: 'settings' })
+    // El grupo debe materializarse aunque no haya nada subido: es lo que
+    // habilita el fallback (isotipo/favicon null -> SVG e icon por defecto).
+    expect(settings.marca).toBeDefined()
+    expect(settings.marca?.isotipo ?? null).toBeNull()
+    expect(settings.marca?.favicon ?? null).toBeNull()
+  })
 })

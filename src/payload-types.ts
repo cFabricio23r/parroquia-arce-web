@@ -1118,6 +1118,19 @@ export interface Setting {
      */
     streamUrl?: string | null;
   };
+  /**
+   * Logo e icono del sitio. Editables sin un nuevo despliegue.
+   */
+  marca?: {
+    /**
+     * Imagen cuadrada. Reemplaza el logo del encabezado y del pie. Si se deja vacio, se usa el logo por defecto del sitio.
+     */
+    isotipo?: (number | null) | Media;
+    /**
+     * Icono cuadrado y simple para la pestana del navegador. Si se deja vacio, se usa el isotipo o el icono por defecto. Ojo: el navegador guarda el favicon en cache, asi que el cambio puede tardar en verse.
+     */
+    favicon?: (number | null) | Media;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1183,6 +1196,12 @@ export interface SettingsSelect<T extends boolean = true> {
     | {
         available?: T;
         streamUrl?: T;
+      };
+  marca?:
+    | T
+    | {
+        isotipo?: T;
+        favicon?: T;
       };
   updatedAt?: T;
   createdAt?: T;
