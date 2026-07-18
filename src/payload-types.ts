@@ -108,10 +108,12 @@ export interface Config {
   globals: {
     home: Home;
     contact: Contact;
+    settings: Setting;
   };
   globalsSelect: {
     home: HomeSelect<false> | HomeSelect<true>;
     contact: ContactSelect<false> | ContactSelect<true>;
+    settings: SettingsSelect<false> | SettingsSelect<true>;
   };
   locale: null;
   widgets: {
@@ -1098,6 +1100,25 @@ export interface Contact {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "settings".
+ */
+export interface Setting {
+  id: number;
+  radio?: {
+    /**
+     * Si esta apagado, la web muestra la radio como "Fuera del aire" y deshabilita el play.
+     */
+    available?: boolean | null;
+    /**
+     * Enlace directo al audio (Icecast/HLS). El reproductor lo usa para transmitir en vivo.
+     */
+    streamUrl?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "home_select".
  */
 export interface HomeSelect<T extends boolean = true> {
@@ -1142,6 +1163,21 @@ export interface ContactSelect<T extends boolean = true> {
         label?: T;
         url?: T;
         id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "settings_select".
+ */
+export interface SettingsSelect<T extends boolean = true> {
+  radio?:
+    | T
+    | {
+        available?: T;
+        streamUrl?: T;
       };
   updatedAt?: T;
   createdAt?: T;

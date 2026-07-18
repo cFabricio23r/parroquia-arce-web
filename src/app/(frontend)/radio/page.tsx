@@ -28,6 +28,9 @@ export default async function RadioPage() {
     sort: 'createdAt',
     limit: 50,
   })
+  const settings = await payload.findGlobal({ slug: 'settings' })
+  const radioAvailable = settings.radio?.available ?? true
+  const radioStreamUrl = settings.radio?.streamUrl ?? ''
 
   return (
     <>
@@ -62,7 +65,7 @@ export default async function RadioPage() {
                 vida de la comunidad — desde casa, el trabajo o el camino.
               </p>
             </div>
-            <RadioPlayer />
+            <RadioPlayer available={radioAvailable} streamUrl={radioStreamUrl} />
           </div>
         </Container>
       </section>

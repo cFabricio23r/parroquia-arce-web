@@ -19,6 +19,7 @@ import { RadioEpisodes } from './collections/RadioEpisodes'
 import { PrayerRequests } from './collections/PrayerRequests'
 import { Home } from './globals/Home'
 import { Contact } from './globals/Contact'
+import { Settings } from './globals/Settings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -43,7 +44,7 @@ export default buildConfig({
     RadioEpisodes,
     PrayerRequests,
   ],
-  globals: [Home, Contact],
+  globals: [Home, Contact, Settings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
