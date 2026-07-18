@@ -16,6 +16,9 @@ import { Events } from './collections/Events'
 import { Chapels } from './collections/Chapels'
 import { RadioPrograms } from './collections/RadioPrograms'
 import { RadioEpisodes } from './collections/RadioEpisodes'
+import { PrayerRequests } from './collections/PrayerRequests'
+import { Home } from './globals/Home'
+import { Contact } from './globals/Contact'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -38,7 +41,9 @@ export default buildConfig({
     Events,
     RadioPrograms,
     RadioEpisodes,
+    PrayerRequests,
   ],
+  globals: [Home, Contact],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { publishedOnly } from '../access/publishedOnly'
+import { canManageComms } from '../access/roles'
 import { slugField } from '../fields/slug'
 import { publishingFields } from '../fields/publishing'
 
@@ -12,6 +13,9 @@ export const Formation: CollectionConfig = {
   },
   access: {
     read: publishedOnly,
+    create: canManageComms,
+    update: canManageComms,
+    delete: canManageComms,
   },
   fields: [
     {

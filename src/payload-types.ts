@@ -77,6 +77,7 @@ export interface Config {
     events: Event;
     'radio-programs': RadioProgram;
     'radio-episodes': RadioEpisode;
+    'prayer-requests': PrayerRequest;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -94,6 +95,7 @@ export interface Config {
     events: EventsSelect<false> | EventsSelect<true>;
     'radio-programs': RadioProgramsSelect<false> | RadioProgramsSelect<true>;
     'radio-episodes': RadioEpisodesSelect<false> | RadioEpisodesSelect<true>;
+    'prayer-requests': PrayerRequestsSelect<false> | PrayerRequestsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -103,8 +105,14 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    home: Home;
+    contact: Contact;
+  };
+  globalsSelect: {
+    home: HomeSelect<false> | HomeSelect<true>;
+    contact: ContactSelect<false> | ContactSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -593,6 +601,24 @@ export interface RadioEpisode {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prayer-requests".
+ */
+export interface PrayerRequest {
+  id: number;
+  name?: string | null;
+  contact?: string | null;
+  message: string;
+  intentionType?: ('general' | 'salud' | 'difuntos' | 'accion-gracias' | 'familia') | null;
+  status?: ('pendiente' | 'revisada' | 'orada') | null;
+  /**
+   * Solo si la persona autorizó que se lea al aire.
+   */
+  allowPublicMention?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -654,6 +680,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'radio-episodes';
         value: number | RadioEpisode;
+      } | null)
+    | ({
+        relationTo: 'prayer-requests';
+        value: number | PrayerRequest;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -939,6 +969,20 @@ export interface RadioEpisodesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prayer-requests_select".
+ */
+export interface PrayerRequestsSelect<T extends boolean = true> {
+  name?: T;
+  contact?: T;
+  message?: T;
+  intentionType?: T;
+  status?: T;
+  allowPublicMention?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -976,6 +1020,113 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home".
+ */
+export interface Home {
+  id: number;
+  hero?: {
+    title?: string | null;
+    subtitle?: string | null;
+    image?: (number | null) | Media;
+    stats?:
+      | {
+          number?: string | null;
+          label?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * El evento que se muestra en la portada.
+   */
+  featuredEvent?: (number | null) | Event;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact".
+ */
+export interface Contact {
+  id: number;
+  parishName?: string | null;
+  address?: string | null;
+  /**
+   * @minItems 2
+   * @maxItems 2
+   */
+  coordinates?: [number, number] | null;
+  officeHours?:
+    | {
+        label?: string | null;
+        hours?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  channels?:
+    | {
+        platform?: ('whatsapp' | 'facebook' | 'youtube' | 'instagram') | null;
+        label?: string | null;
+        url?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home_select".
+ */
+export interface HomeSelect<T extends boolean = true> {
+  hero?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        image?: T;
+        stats?:
+          | T
+          | {
+              number?: T;
+              label?: T;
+              id?: T;
+            };
+      };
+  featuredEvent?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact_select".
+ */
+export interface ContactSelect<T extends boolean = true> {
+  parishName?: T;
+  address?: T;
+  coordinates?: T;
+  officeHours?:
+    | T
+    | {
+        label?: T;
+        hours?: T;
+        id?: T;
+      };
+  channels?:
+    | T
+    | {
+        platform?: T;
+        label?: T;
+        url?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
