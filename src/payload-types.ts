@@ -1097,6 +1097,26 @@ export interface Contact {
    * @maxItems 2
    */
   coordinates?: [number, number] | null;
+  /**
+   * Alimenta la barra de la portada y la sección de misas de la home.
+   */
+  massSchedule?:
+    | {
+        label?: string | null;
+        time?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Confesiones, bautizos, matrimonios, etc. Aparecen en la sección de misas de la home.
+   */
+  sacraments?:
+    | {
+        title?: string | null;
+        detail?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   officeHours?:
     | {
         label?: string | null;
@@ -1187,6 +1207,20 @@ export interface ContactSelect<T extends boolean = true> {
   address?: T;
   mapUrl?: T;
   coordinates?: T;
+  massSchedule?:
+    | T
+    | {
+        label?: T;
+        time?: T;
+        id?: T;
+      };
+  sacraments?:
+    | T
+    | {
+        title?: T;
+        detail?: T;
+        id?: T;
+      };
   officeHours?:
     | T
     | {

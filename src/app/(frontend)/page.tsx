@@ -55,7 +55,8 @@ const showsFallback: [string, string, string][] = [
 export default async function HomePage() {
   const payload = await getPayload({ config: await config })
 
-  const [eventsRes, groupsRes, newsRes, sectorsRes, radioRes, homeGlobal, settings] = await Promise.all([
+  const [eventsRes, groupsRes, newsRes, sectorsRes, radioRes, homeGlobal, settings, contactGlobal] =
+    await Promise.all([
     payload.find({ collection: 'events', where: { status: { equals: 'published' } }, sort: 'startsAt', limit: 4 }),
     payload.find({ collection: 'groups', where: { status: { equals: 'published' } }, sort: 'name', limit: 3 }),
     payload.find({ collection: 'news', where: { status: { equals: 'published' } }, sort: '-publishedAt', limit: 3 }),
@@ -63,6 +64,7 @@ export default async function HomePage() {
     payload.find({ collection: 'radio-programs', where: { status: { equals: 'published' } }, sort: 'createdAt', limit: 3 }),
     payload.findGlobal({ slug: 'home' }),
     payload.findGlobal({ slug: 'settings' }),
+    payload.findGlobal({ slug: 'contact' }),
   ])
 
   // Hero editable desde el global `home`. Cada campo cae a su valor editorial
@@ -90,6 +92,29 @@ export default async function HomePage() {
       : (eventsRes.docs[0] ?? null)
   const featuredEventCover =
     featuredEvent?.cover && typeof featuredEvent.cover === 'object' ? featuredEvent.cover : null
+
+  // Horarios y sacramentos: editables desde el global Contact, con respaldo
+  // editorial para que la home nunca quede sin datos.
+  const misasData = (contactGlobal.massSchedule ?? [])
+    .filter((m) => m.label || m.time)
+    .map((m) => [m.label ?? '', m.time ?? ''] as [string, string])
+  const misasList: [string, string][] = misasData.length > 0 ? misasData : (misas as [string, string][])
+  const sacramentosData = (contactGlobal.sacraments ?? [])
+    .filter((s) => s.title)
+    .map((s) => [s.title ?? '', s.detail ?? ''] as [string, string])
+  const sacramentosList: [string, string][] =
+    sacramentosData.length > 0 ? sacramentosData : sacramentos.map(([, t, d]) => [t, d] as [string, string])
+
+  // Radio "al aire ahora": primer programa publicado, con respaldo editorial.
+  const radioNow = radioRes.docs[0]
+  const radioNowTitle = radioNow?.title ?? 'Evangelio del día'
+  const radioNowDesc =
+    radioNow?.description ??
+    'Reflexión, música católica y mensajes para acompañar el día desde casa, el trabajo o el camino.'
+
+  // Enlace a YouTube desde los canales oficiales (Contact), si está cargado.
+  const youtubeUrl =
+    (contactGlobal.channels ?? []).find((c) => c.platform === 'youtube' && c.url)?.url ?? null
 
   const eventos: [string, string, string, string, string, Variant][] = eventsRes.docs.map((e) => {
     const d = new Date(e.startsAt)
@@ -166,7 +191,7 @@ export default async function HomePage() {
                 </span>
                 Misas
               </span>
-              {misas.map(([dia, hora]) => (
+              {misasList.map(([dia, hora]) => (
                 <span key={dia} className="text-[14px] text-[#c9d8ec]">
                   <b className="font-semibold text-white">{dia}</b> {hora}
                 </span>
@@ -377,11 +402,8 @@ export default async function HomePage() {
                 <span className="text-[12.5px] font-bold uppercase tracking-[.15em] text-sky-light">
                   {radioLive ? '● Transmitiendo ahora' : '○ Fuera del aire'}
                 </span>
-                <h3 className="my-3 font-display text-[28px] font-medium">Evangelio del día</h3>
-                <p className="text-[15px] text-[#B6C6DD]">
-                  Reflexión, música católica y mensajes para acompañar el día desde casa, el trabajo o
-                  el camino.
-                </p>
+                <h3 className="my-3 font-display text-[28px] font-medium">{radioNowTitle}</h3>
+                <p className="text-[15px] text-[#B6C6DD]">{radioNowDesc}</p>
                 <div className="mt-6 flex flex-wrap gap-[13px]">
                   <Button href="/radio" variant="amber">
                     Escuchar en vivo
@@ -443,7 +465,9 @@ export default async function HomePage() {
                 Transmisiones y <em className="italic text-blue">multimedia</em>
               </h2>
               <Link
-                href="/radio"
+                href={youtubeUrl ?? '/radio'}
+                target={youtubeUrl ? '_blank' : undefined}
+                rel={youtubeUrl ? 'noopener noreferrer' : undefined}
                 className="relative flex min-h-[280px] flex-col justify-end overflow-hidden rounded-xl p-8 text-white transition-transform duration-200 hover:-translate-y-0.5"
                 style={{
                   background:
@@ -492,7 +516,7 @@ export default async function HomePage() {
                   Misas de la semana
                 </h3>
                 <div className="flex flex-col gap-[11px]">
-                  {misas.map(([day, time]) => (
+                  {misasList.map(([day, time]) => (
                     <div
                       key={day}
                       className="flex items-center justify-between gap-4 rounded-md bg-white p-[16px_20px]"
@@ -509,16 +533,16 @@ export default async function HomePage() {
             </Reveal>
             <Reveal>
               <div className="grid grid-cols-2 gap-[18px] max-[600px]:grid-cols-1">
-                {sacramentos.map(([bl, title, text]) => (
+                {sacramentosList.map(([title, detail]) => (
                   <div
                     key={title}
                     className="flex flex-col gap-3 rounded-lg border border-border bg-white p-6"
                   >
                     <span className="grid h-12 w-12 place-items-center rounded-[13px] bg-blue font-display text-[20px] font-semibold text-white">
-                      {bl}
+                      {title.charAt(0).toUpperCase()}
                     </span>
                     <h4 className="font-display text-[20px] font-semibold">{title}</h4>
-                    <p className="text-[14px] leading-[1.45] text-muted">{text}</p>
+                    <p className="text-[14px] leading-[1.45] text-muted">{detail}</p>
                   </div>
                 ))}
               </div>

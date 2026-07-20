@@ -34,6 +34,37 @@ export const Contact: GlobalConfig = {
     // compartida; solo se saca del admin.
     { name: 'coordinates', type: 'point', label: 'Coordenadas (mapa)', admin: { hidden: true } },
     {
+      name: 'massSchedule',
+      type: 'array',
+      label: 'Horario de misas',
+      labels: { singular: 'Misa', plural: 'Misas' },
+      admin: {
+        description: 'Alimenta la barra de la portada y la sección de misas de la home.',
+      },
+      fields: [
+        {
+          type: 'row',
+          fields: [
+            { name: 'label', type: 'text', label: 'Día(s)' },
+            { name: 'time', type: 'text', label: 'Horario' },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'sacraments',
+      type: 'array',
+      label: 'Sacramentos y celebraciones',
+      labels: { singular: 'Sacramento', plural: 'Sacramentos' },
+      admin: {
+        description: 'Confesiones, bautizos, matrimonios, etc. Aparecen en la sección de misas de la home.',
+      },
+      fields: [
+        { name: 'title', type: 'text', label: 'Nombre' },
+        { name: 'detail', type: 'textarea', label: 'Detalle' },
+      ],
+    },
+    {
       name: 'officeHours',
       type: 'array',
       label: 'Horario de oficina',
