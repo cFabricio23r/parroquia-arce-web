@@ -134,13 +134,14 @@ export default async function HomePage() {
     return [meta?.variant ?? 'blue', meta?.label ?? '', g.name, g.summary ?? '']
   })
 
-  const noticias: [Variant, string, string, string, string][] = newsRes.docs.map((n) => [
+  const noticias: [Variant, string, string, string, string, string][] = newsRes.docs.map((n) => [
     // news nunca cae en la variante 'live', asi que el cast a Variant es seguro.
     newsCategoryVariant(n.category) as Variant,
     newsCategoryLabel(n.category),
     formatDate(n.publishedAt),
     n.title,
     n.excerpt ?? '',
+    n.slug,
   ])
 
   // Shows de radio desde la coleccion `radio-programs`; si no hay programacion
@@ -442,10 +443,10 @@ export default async function HomePage() {
                 Noticias y <em className="italic text-blue">formación</em>
               </h2>
               <div className="flex flex-col gap-[14px]">
-                {noticias.map(([variant, cat, dt, title, desc]) => (
+                {noticias.map(([variant, cat, dt, title, desc, slug]) => (
                   <Link
                     key={title}
-                    href="/noticias"
+                    href={`/noticias/${slug}`}
                     className="grid grid-cols-[auto_1fr] items-center gap-4 rounded-lg border border-border bg-white p-[18px_20px] [transition:transform_.16s,box-shadow_.2s,border-color_.2s] hover:-translate-y-1 hover:border-line-soft hover:shadow-md"
                   >
                     <Badge variant={variant} className="self-start">
