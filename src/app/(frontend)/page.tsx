@@ -8,14 +8,17 @@ import { Badge } from '@/components/ui/Badge'
 import { SectionHead } from '@/components/site/SectionHead'
 import { MediaImage } from '@/components/news/MediaImage'
 import { Reveal } from '@/components/news/Reveal'
+import { HeroSlider } from '@/components/site/HeroSlider'
 import { newsCategoryVariant, newsCategoryLabel, formatDate } from '@/lib/news-format'
 
 export const metadata: Metadata = { title: 'Inicio' }
 export const revalidate = 300
 
-// Home. El hero, accesos rapidos, misas/sacramentos y shows son editoriales
-// (estaticos). Las secciones de eventos, grupos, noticias y el sector destacado
-// se leen de sus colecciones.
+// Home. El hero, accesos rapidos y misas/sacramentos son editoriales
+// (estaticos). Las secciones de eventos, grupos, noticias, el sector destacado
+// y los shows de radio se leen de sus colecciones; `shows` (abajo) queda solo
+// como fallback si aun no hay programacion publicada, para que la home nunca
+// quede en blanco.
 
 type Variant = 'blue' | 'sky' | 'amber'
 
@@ -50,7 +53,7 @@ const sacramentos = [
   ['✝', 'Matrimonios', 'Acompañamiento y trámites con el equipo de pastoral familiar.'],
 ]
 
-const shows = [
+const showsFallback: [string, string, string][] = [
   ['Una voz desde mi sector', 'Historias y avisos comunitarios', '5:00 p.m.'],
   ['Jóvenes con fe', 'Reflexión y vida juvenil', '7:00 p.m.'],
   ['Hora de alabanza', 'Música católica y oración', '8:00 p.m.'],
@@ -59,11 +62,12 @@ const shows = [
 export default async function HomePage() {
   const payload = await getPayload({ config: await config })
 
-  const [eventsRes, groupsRes, newsRes, sectorsRes, homeGlobal, settings] = await Promise.all([
+  const [eventsRes, groupsRes, newsRes, sectorsRes, radioRes, homeGlobal, settings] = await Promise.all([
     payload.find({ collection: 'events', where: { status: { equals: 'published' } }, sort: 'startsAt', limit: 4 }),
     payload.find({ collection: 'groups', where: { status: { equals: 'published' } }, sort: 'name', limit: 3 }),
     payload.find({ collection: 'news', where: { status: { equals: 'published' } }, sort: '-publishedAt', limit: 3 }),
     payload.find({ collection: 'sectors', where: { status: { equals: 'published' }, isFeatured: { equals: true } }, limit: 1 }),
+    payload.find({ collection: 'radio-programs', where: { status: { equals: 'published' } }, sort: 'createdAt', limit: 3 }),
     payload.findGlobal({ slug: 'home' }),
     payload.findGlobal({ slug: 'settings' }),
   ])
@@ -71,12 +75,18 @@ export default async function HomePage() {
   // Hero editable desde el global `home`. Cada campo cae a su valor editorial
   // si esta vacio, para que la home nunca quede en blanco.
   const hero = homeGlobal.hero
-  const heroStats = (hero?.stats ?? []).filter((s) => s.number || s.label)
-  const featuredEvent =
-    homeGlobal.featuredEvent && typeof homeGlobal.featuredEvent === 'object'
-      ? homeGlobal.featuredEvent
-      : null
-  const heroImage = hero?.image && typeof hero.image === 'object' ? hero.image : null
+  const heroImages: { url: string; alt: string }[] = (hero?.images ?? [])
+    .map((row) =>
+      row.image && typeof row.image === 'object' && row.image.url
+        ? { url: row.image.url, alt: row.image.alt ?? '' }
+        : null,
+    )
+    .filter((x): x is { url: string; alt: string } => x !== null)
+  // Fallback a la imagen unica legacy si todavia no hay galeria cargada.
+  if (heroImages.length === 0 && hero?.image && typeof hero.image === 'object' && hero.image.url) {
+    heroImages.push({ url: hero.image.url, alt: hero.image.alt ?? '' })
+  }
+  const heroLocation = hero?.location || 'Parroquia Inmaculada Concepción de María · Ciudad Arce'
   const radioLive = settings.radio?.available ?? true
 
   const eventos: [string, string, string, string, string, Variant][] = eventsRes.docs.map((e) => {
@@ -106,106 +116,81 @@ export default async function HomePage() {
     n.excerpt ?? '',
   ])
 
+  // Shows de radio desde la coleccion `radio-programs`; si no hay programacion
+  // publicada, cae al listado editorial para no dejar la seccion vacia.
+  const shows: [string, string, string][] =
+    radioRes.docs.length > 0
+      ? radioRes.docs.map((p) => [p.title, p.description ?? '', p.startTime ?? ''])
+      : showsFallback
+
   // Sector destacado (isFeatured); si no hay, el primero.
   const featuredSector = sectorsRes.docs[0]
 
   return (
     <>
       {/* HERO */}
-      <section
-        className="relative overflow-hidden"
-        style={{
-          background:
-            'radial-gradient(58% 50% at 82% -5%, rgba(97,194,230,.20), transparent 60%), radial-gradient(50% 55% at 0% 100%, rgba(31,149,199,.10), transparent 60%), linear-gradient(180deg, var(--color-bg-soft), #fff)',
-        }}
-      >
+      <section className="pt-8 max-[600px]:pt-4">
         <Container>
-          <div className="grid grid-cols-[1.04fr_.96fr] items-center gap-[52px] pb-20 pt-16 max-[1040px]:grid-cols-1 max-[1040px]:gap-10">
-            <Reveal>
-              <span className="inline-flex items-center gap-[9px] rounded-pill border border-border bg-white px-4 py-2 text-[13px] font-bold text-blue shadow-[0_4px_14px_-8px_rgba(5,23,51,.25)]">
-                <span className="h-2 w-2 rounded-full bg-amber" />
-                Parroquia de Ciudad Arce
+          <HeroSlider images={heroImages}>
+            <div className="max-w-[680px] px-[clamp(24px,5vw,64px)] pb-7 pt-[200px] max-[600px]:pt-[120px]">
+              <span className="mb-4 inline-flex items-center gap-[10px] text-[14.5px] text-[#cfe0f2]">
+                <span className="h-px w-6 bg-amber" />
+                {heroLocation}
               </span>
-              <h1 className="my-[22px] font-display text-[clamp(48px,6.2vw,86px)] font-medium leading-[.98] tracking-[-.015em]">
-                {hero?.title ? (
-                  hero.title
-                ) : (
-                  <>
-                    Una casa abierta para <em className="italic text-blue">caminar</em> en comunidad
-                  </>
-                )}
+              <h1 className="text-balance font-display text-[clamp(38px,5vw,64px)] font-medium leading-[1.03] tracking-[-.02em] text-white">
+                {hero?.title || 'Una comunidad de fe, abierta a tu familia'}
               </h1>
-              <p className="max-w-[46ch] text-[19px] text-muted">
-                {hero?.subtitle ??
-                  'Inmaculada Concepción de María conecta la vida de la parroquia con cada familia: misa, radio, sectores, grupos, avisos y momentos de encuentro en un solo lugar.'}
+              <p className="mt-[18px] max-w-[52ch] text-[clamp(16px,1.4vw,18.5px)] leading-[1.6] text-[#e9f1fb]/90">
+                {hero?.subtitle ||
+                  'Misa, sacramentos, radio parroquial y la vida de nuestros sectores y grupos. Un lugar para encontrarnos, servir y caminar juntos.'}
               </p>
-              <div className="mt-[30px] flex flex-wrap gap-[13px]">
-                <Button href="/horarios" variant="navy" size="lg">
-                  Ver horarios de misa
+              <div className="mt-[26px] flex flex-wrap gap-3">
+                <Button href="/horarios" variant="amber" size="lg">
+                  Horarios de misa
                 </Button>
-                <Button href="/radio" variant="amber" size="lg">
-                  Escuchar radio
+                <Button href="/contacto" variant="outline-light" size="lg">
+                  Conocé la parroquia
                 </Button>
               </div>
-              <div className="mt-[38px] flex gap-[34px]">
-                {(heroStats.length > 0
-                  ? heroStats.map((s) => [s.number ?? '', s.label ?? ''] as const)
-                  : ([
-                      ['8', 'Sectores y ermitas'],
-                      ['12+', 'Grupos y ministerios'],
-                      ['24/7', 'Radio en línea'],
-                    ] as const)
-                ).map(([n, l], i) => (
-                  <div key={`${l}-${i}`}>
-                    <div className="font-display text-[40px] font-medium leading-none text-blue">
-                      {n}
-                    </div>
-                    <div className="mt-1 max-w-[14ch] text-[13px] text-muted">{l}</div>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
+            </div>
 
-            <Reveal className="relative">
-              <div className="overflow-hidden rounded-xl shadow-lg [aspect-ratio:1.28/1]">
-                <MediaImage cover={heroImage} />
-              </div>
-              <div className="mt-4 grid grid-cols-2 gap-4">
-                <Link
-                  href="/eventos"
-                  className="rounded-lg border border-white bg-white/[.72] p-5 shadow-md backdrop-blur-[10px]"
-                >
-                  <span className="text-[12.5px] font-bold uppercase tracking-[.15em] text-blue">
-                    Próximo evento
-                  </span>
-                  <h4 className="my-[9px_0_5px] font-display text-[22px] font-semibold leading-[1.05]">
-                    {featuredEvent ? featuredEvent.title : 'Vigilia de Pentecostés'}
-                  </h4>
-                  <p className="text-[13.5px] text-muted">
-                    {featuredEvent
-                      ? `${new Date(featuredEvent.startsAt).toLocaleDateString('es-SV', { weekday: 'short', day: 'numeric', month: 'long' })} · ${new Date(featuredEvent.startsAt).toLocaleTimeString('es-SV', { hour: 'numeric', minute: '2-digit' })} · ${featuredEvent.locationName}`
-                      : 'Sáb 24 de mayo · 6:00 p.m. · Ermita Las Cruces.'}
-                  </p>
-                </Link>
-                <Link
-                  href="/radio"
-                  className="rounded-lg border border-white bg-white/[.72] p-5 shadow-md backdrop-blur-[10px]"
-                >
-                  <span className="inline-flex items-center gap-[7px] text-[12.5px] font-bold uppercase tracking-[.15em] text-blue">
-                    <span
-                      className={`h-[7px] w-[7px] rounded-full ${radioLive ? 'bg-amber' : 'bg-muted'}`}
-                    />{' '}
-                    {radioLive ? 'En vivo ahora' : 'Fuera del aire'}
-                  </span>
-                  <h4 className="my-[9px_0_5px] font-display text-[22px] font-semibold leading-[1.05]">
-                    Radio parroquial
-                  </h4>
-                  <span className="mt-[10px] grid h-[42px] w-[42px] place-items-center rounded-full bg-amber text-white">
-                    ▶
-                  </span>
-                </Link>
-              </div>
-            </Reveal>
+            {/* Barra de horarios de misa */}
+            <div className="flex flex-wrap items-center gap-x-[26px] gap-y-2 border-t border-white/10 bg-[rgba(5,23,51,.75)] px-[clamp(24px,5vw,64px)] py-[15px]">
+              <span className="inline-flex items-center gap-[9px] text-[14px] font-bold text-white">
+                <span className="grid h-[15px] w-[15px] place-items-center rounded-full border-[1.6px] border-amber">
+                  <span className="h-[5px] w-px bg-amber" />
+                </span>
+                Misas
+              </span>
+              {misas.map(([dia, hora]) => (
+                <span key={dia} className="text-[14px] text-[#c9d8ec]">
+                  <b className="font-semibold text-white">{dia}</b> {hora}
+                </span>
+              ))}
+            </div>
+          </HeroSlider>
+
+          {/* Accesos rápidos con imagen */}
+          <div className="grid grid-cols-3 gap-4 rounded-b-2xl border border-t-0 border-border bg-white p-5 max-[760px]:grid-cols-1">
+            {(
+              [
+                ['/horarios', 'Misas y sacramentos', 'Horarios, confesiones y celebraciones', 'linear-gradient(150deg,#1a4670,var(--color-navy))'],
+                ['/noticias', 'Noticias', 'Lo último de la vida parroquial', 'linear-gradient(150deg,#1f6a8c,var(--color-blue))'],
+                ['/radio', 'Radio parroquial', radioLive ? 'En vivo ahora · escuchá la comunidad' : 'Escuchá la voz de la comunidad', 'linear-gradient(150deg,#b9741f,#7a3f10)'],
+              ] as const
+            ).map(([href, title, desc, bg]) => (
+              <Link
+                key={title}
+                href={href}
+                className="group overflow-hidden rounded-xl border border-border transition-transform duration-200 hover:-translate-y-0.5"
+              >
+                <div className="h-[130px]" style={{ background: bg }} />
+                <div className="px-4 pb-4 pt-[13px]">
+                  <b className="block font-display text-[18.5px] font-medium text-navy">{title}</b>
+                  <span className="mt-[3px] block text-[13px] text-muted">{desc}</span>
+                </div>
+              </Link>
+            ))}
           </div>
         </Container>
       </section>
@@ -413,7 +398,7 @@ export default async function HomePage() {
             <Reveal>
               <div className="rounded-xl border border-white/[.14] bg-white/[.06] p-8">
                 <span className="text-[12.5px] font-bold uppercase tracking-[.15em] text-sky-light">
-                  ● Transmitiendo ahora
+                  {radioLive ? '● Transmitiendo ahora' : '○ Fuera del aire'}
                 </span>
                 <h3 className="my-3 font-display text-[28px] font-medium">Evangelio del día</h3>
                 <p className="text-[15px] text-[#B6C6DD]">

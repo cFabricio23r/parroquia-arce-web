@@ -20,14 +20,37 @@ export const Home: GlobalConfig = {
       type: 'group',
       label: 'Portada',
       fields: [
+        {
+          name: 'location',
+          type: 'text',
+          label: 'Ubicación (línea sobre el título)',
+          admin: {
+            description:
+              'Ej: "Parroquia Inmaculada Concepción · Ciudad Arce". Si se deja vacío se usa un texto por defecto.',
+          },
+        },
         { name: 'title', type: 'text', label: 'Título' },
         { name: 'subtitle', type: 'textarea', label: 'Bajada' },
-        { name: 'image', type: 'upload', relationTo: 'media', label: 'Imagen de portada' },
+        {
+          name: 'images',
+          type: 'array',
+          label: 'Fotos de portada (slider)',
+          labels: { singular: 'Foto', plural: 'Fotos' },
+          admin: {
+            description:
+              'Una o varias fotos del templo o la comunidad. Rotan automáticamente. Si está vacío, se muestra un fondo sobrio.',
+          },
+          fields: [{ name: 'image', type: 'upload', relationTo: 'media', label: 'Foto' }],
+        },
+        // Legacy: reemplazados por `images`/el nuevo diseño. Ocultos para no
+        // confundir al editor; la columna se conserva por la base compartida.
+        { name: 'image', type: 'upload', relationTo: 'media', label: 'Imagen de portada', admin: { hidden: true } },
         {
           name: 'stats',
           type: 'array',
           label: 'Cifras destacadas',
           maxRows: 3,
+          admin: { hidden: true },
           fields: [
             {
               type: 'row',

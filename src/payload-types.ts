@@ -1049,8 +1049,21 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Home {
   id: number;
   hero?: {
+    /**
+     * Ej: "Parroquia Inmaculada Concepción · Ciudad Arce". Si se deja vacío se usa un texto por defecto.
+     */
+    location?: string | null;
     title?: string | null;
     subtitle?: string | null;
+    /**
+     * Una o varias fotos del templo o la comunidad. Rotan automáticamente. Si está vacío, se muestra un fondo sobrio.
+     */
+    images?:
+      | {
+          image?: (number | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
     image?: (number | null) | Media;
     stats?:
       | {
@@ -1142,8 +1155,15 @@ export interface HomeSelect<T extends boolean = true> {
   hero?:
     | T
     | {
+        location?: T;
         title?: T;
         subtitle?: T;
+        images?:
+          | T
+          | {
+              image?: T;
+              id?: T;
+            };
         image?: T;
         stats?:
           | T
