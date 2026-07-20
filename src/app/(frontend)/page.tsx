@@ -82,6 +82,15 @@ export default async function HomePage() {
   const heroLocation = hero?.location || 'Parroquia Inmaculada Concepción de María · Ciudad Arce'
   const radioLive = settings.radio?.available ?? true
 
+  // Evento destacado: el marcado en el CMS, o el proximo evento como respaldo.
+  // Asi la portada nunca muestra un evento inventado.
+  const featuredEvent =
+    homeGlobal.featuredEvent && typeof homeGlobal.featuredEvent === 'object'
+      ? homeGlobal.featuredEvent
+      : (eventsRes.docs[0] ?? null)
+  const featuredEventCover =
+    featuredEvent?.cover && typeof featuredEvent.cover === 'object' ? featuredEvent.cover : null
+
   const eventos: [string, string, string, string, string, Variant][] = eventsRes.docs.map((e) => {
     const d = new Date(e.startsAt)
     const hora = d.toLocaleTimeString('es-SV', { hour: 'numeric', minute: '2-digit' })
@@ -287,23 +296,41 @@ export default async function HomePage() {
               </div>
             </Reveal>
             <Reveal>
-              <div
-                className="relative flex h-full flex-col justify-end overflow-hidden rounded-xl p-9 text-white"
-                style={{ background: 'linear-gradient(160deg, var(--color-blue), var(--color-navy))' }}
-              >
-                <span className="text-[12.5px] font-bold uppercase tracking-[.15em] text-sky-light">
-                  Evento destacado
-                </span>
-                <h3 className="my-3 font-display text-[26px] font-medium leading-[1.08]">
-                  Una noche de oración para toda la comunidad
-                </h3>
-                <p className="mb-5 text-[15px] text-[#D2E2F4]">
-                  Una vigilia que reúne familias, jóvenes y servidores para prepararnos como parroquia
-                  en misión.
-                </p>
-                <Button href="/eventos" variant="white">
-                  Ver la agenda
-                </Button>
+              <div className="relative flex h-full min-h-[300px] flex-col justify-end overflow-hidden rounded-xl text-white">
+                {featuredEventCover ? (
+                  <>
+                    <div className="absolute inset-0">
+                      <MediaImage cover={featuredEventCover} />
+                    </div>
+                    <div
+                      className="absolute inset-0"
+                      aria-hidden="true"
+                      style={{ background: 'linear-gradient(180deg, rgba(5,23,51,.25), rgba(5,23,51,.85))' }}
+                    />
+                  </>
+                ) : (
+                  <div
+                    className="absolute inset-0"
+                    aria-hidden="true"
+                    style={{ background: 'linear-gradient(160deg, var(--color-blue), var(--color-navy))' }}
+                  />
+                )}
+                <div className="relative p-9">
+                  <span className="text-[12.5px] font-bold uppercase tracking-[.15em] text-sky-light">
+                    Evento destacado
+                  </span>
+                  <h3 className="my-3 font-display text-[26px] font-medium leading-[1.08]">
+                    {featuredEvent ? featuredEvent.title : 'Próximos encuentros de la comunidad'}
+                  </h3>
+                  <p className="mb-5 text-[15px] text-[#D2E2F4]">
+                    {featuredEvent
+                      ? `${new Date(featuredEvent.startsAt).toLocaleDateString('es-SV', { weekday: 'long', day: 'numeric', month: 'long' })} · ${new Date(featuredEvent.startsAt).toLocaleTimeString('es-SV', { hour: 'numeric', minute: '2-digit' })} · ${featuredEvent.locationName}`
+                      : 'Mirá la agenda de misas, vigilias y encuentros de la comunidad.'}
+                  </p>
+                  <Button href="/eventos" variant="white">
+                    Ver la agenda
+                  </Button>
+                </div>
               </div>
             </Reveal>
           </div>
@@ -471,14 +498,20 @@ export default async function HomePage() {
               <h2 className="mb-[26px] font-display text-[clamp(32px,4.2vw,52px)] font-medium leading-[1.04] tracking-[-.01em]">
                 Transmisiones y <em className="italic text-blue">multimedia</em>
               </h2>
-              <div className="relative flex min-h-[280px] flex-col justify-end overflow-hidden rounded-xl p-8 text-white">
-                <div className="absolute inset-0">
-                  <MediaImage cover={null} />
-                </div>
+              <Link
+                href="/radio"
+                className="relative flex min-h-[280px] flex-col justify-end overflow-hidden rounded-xl p-8 text-white transition-transform duration-200 hover:-translate-y-0.5"
+                style={{
+                  background:
+                    'linear-gradient(160deg, #16406c, var(--color-navy) 55%, var(--color-navy-deep))',
+                }}
+              >
                 <div
                   className="absolute inset-0"
                   aria-hidden="true"
-                  style={{ background: 'linear-gradient(180deg, rgba(5,23,51,.1), rgba(5,23,51,.72))' }}
+                  style={{
+                    background: 'radial-gradient(90% 70% at 82% 0%, rgba(97,194,230,.22), transparent 55%)',
+                  }}
                 />
                 <span className="relative text-[12.5px] font-bold uppercase tracking-[.15em] text-sky-light">
                   YouTube · En vivo los domingos
@@ -486,7 +519,10 @@ export default async function HomePage() {
                 <h3 className="relative mt-2 font-display text-[24px] font-medium leading-[1.1]">
                   Celebraciones, homilías y momentos especiales de la parroquia
                 </h3>
-              </div>
+                <span className="relative mt-4 text-[14.5px] font-bold text-white">
+                  Ver transmisiones →
+                </span>
+              </Link>
             </Reveal>
           </div>
         </Container>
