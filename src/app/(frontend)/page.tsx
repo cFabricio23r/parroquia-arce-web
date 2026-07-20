@@ -33,13 +33,6 @@ const groupTypeMeta: Record<string, { label: string; variant: Variant }> = {
   formacion: { label: 'Formación', variant: 'blue' },
 }
 
-const quickActions: [string, string, string, string][] = [
-  ['🕑', 'Horarios de misa', 'Misas, confesiones y sacramentos de la semana.', '/horarios'],
-  ['📻', 'Radio parroquial', 'Escucha en vivo la voz de la comunidad.', '/radio'],
-  ['📍', 'Sectores y ermitas', 'Encuentra tu comunidad y sus actividades.', '/sectores'],
-  ['✉️', 'Contacto', 'Ubicación, redes y WhatsApp oficial.', '/contacto'],
-]
-
 const misas = [
   ['Lunes a viernes', '6:00 p.m.'],
   ['Sábado', '5:00 p.m.'],
@@ -132,11 +125,11 @@ export default async function HomePage() {
       <HeroSlider images={heroImages}>
         <Container>
           <div className="max-w-[680px] pb-8 pt-[210px] max-[600px]:pt-[130px]">
-            <span className="mb-4 inline-flex items-center gap-[10px] text-[14.5px] text-[#cfe0f2]">
-              <span className="h-px w-6 bg-amber" />
+            <span className="mb-4 inline-flex items-center gap-[10px] text-[14.5px] font-semibold text-white [text-shadow:0_1px_10px_rgba(5,23,51,.7)]">
+              <span className="h-[2px] w-7 flex-none bg-amber" />
               {heroLocation}
             </span>
-            <h1 className="text-balance font-display text-[clamp(38px,5vw,64px)] font-medium leading-[1.03] tracking-[-.02em] text-white">
+            <h1 className="text-balance font-display text-[clamp(38px,5vw,64px)] font-medium leading-[1.03] tracking-[-.02em] text-white [text-shadow:0_2px_20px_rgba(5,23,51,.45)]">
               {hero?.title || 'Una comunidad de fe, abierta a tu familia'}
             </h1>
             <p className="mt-[18px] max-w-[52ch] text-[clamp(16px,1.4vw,18.5px)] leading-[1.6] text-[#e9f1fb]/90">
@@ -177,10 +170,11 @@ export default async function HomePage() {
       {/* Accesos rápidos con imagen */}
       <section className="py-[clamp(28px,4vw,44px)]">
         <Container>
-          <div className="grid grid-cols-3 gap-4 max-[760px]:grid-cols-1">
+          <div className="grid grid-cols-4 gap-4 max-[980px]:grid-cols-2 max-[560px]:grid-cols-1">
             {(
               [
                 ['/horarios', 'Misas y sacramentos', 'Horarios, confesiones y celebraciones', 'linear-gradient(150deg,#1a4670,var(--color-navy))'],
+                ['/sectores', 'Sectores y ermitas', 'Encontrá tu comunidad más cercana', 'linear-gradient(150deg,#155e7a,var(--color-blue))'],
                 ['/noticias', 'Noticias', 'Lo último de la vida parroquial', 'linear-gradient(150deg,#1f6a8c,var(--color-blue))'],
                 ['/radio', 'Radio parroquial', radioLive ? 'En vivo ahora · escuchá la comunidad' : 'Escuchá la voz de la comunidad', 'linear-gradient(150deg,#b9741f,#7a3f10)'],
               ] as const
@@ -196,29 +190,6 @@ export default async function HomePage() {
                   <span className="mt-[3px] block text-[13px] text-muted">{desc}</span>
                 </div>
               </Link>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* QUICK ACTIONS */}
-      <section className="py-[clamp(56px,7vw,96px)]">
-        <Container>
-          <div className="grid grid-cols-4 gap-[18px] max-[1040px]:grid-cols-2 max-[600px]:grid-cols-1">
-            {quickActions.map(([ic, title, text, href]) => (
-              <Reveal key={title}>
-                <Link
-                  href={href}
-                  className="flex h-full flex-col gap-[13px] rounded-lg border border-border bg-white p-6 [transition:transform_.16s,box-shadow_.2s,border-color_.2s] hover:-translate-y-1 hover:border-line-soft hover:shadow-md"
-                >
-                  <span className="grid h-[50px] w-[50px] place-items-center rounded-[14px] bg-blue-tint text-[22px]" aria-hidden="true">
-                    {ic}
-                  </span>
-                  <h3 className="font-display text-[21px] font-semibold">{title}</h3>
-                  <p className="text-[14px] leading-[1.45] text-muted">{text}</p>
-                  <span className="mt-auto pt-1 text-[14.5px] font-bold text-blue">Ver →</span>
-                </Link>
-              </Reveal>
             ))}
           </div>
         </Container>
@@ -537,9 +508,16 @@ export default async function HomePage() {
                   Encuentra ubicación, redes oficiales y canales de comunicación de la parroquia.
                 </p>
                 <ul className="my-6 flex flex-col gap-3 text-[14.5px]">
-                  <li>📍 Templo parroquial · Ciudad Arce, La Libertad</li>
-                  <li>💬 WhatsApp oficial para consultas pastorales</li>
-                  <li>📺 Facebook y YouTube para transmisiones y avisos</li>
+                  {[
+                    'Templo parroquial · Ciudad Arce, La Libertad',
+                    'WhatsApp oficial para consultas pastorales',
+                    'Facebook y YouTube para transmisiones y avisos',
+                  ].map((linea) => (
+                    <li key={linea} className="flex items-start gap-3">
+                      <span className="mt-[8px] h-[6px] w-[6px] flex-none rounded-full bg-amber" />
+                      {linea}
+                    </li>
+                  ))}
                 </ul>
                 <Button href="/contacto" variant="amber" size="lg">
                   Contactar por WhatsApp
@@ -555,7 +533,7 @@ export default async function HomePage() {
                     'radial-gradient(70% 60% at 30% 20%, rgba(97,194,230,.25), transparent 60%), var(--color-blue-soft)',
                 }}
               >
-                <span className="text-[20px]">📍 Ver ubicación</span>
+                <span className="text-[19px] font-medium">Ver ubicación en el mapa →</span>
               </Link>
             </Reveal>
           </div>

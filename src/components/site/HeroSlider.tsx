@@ -49,12 +49,14 @@ export function HeroSlider({ images, children }: { images: HeroImage[]; children
         />
       )}
 
-      {/* Scrim para legibilidad del texto */}
+      {/* Scrim para legibilidad del texto: vertical (para la barra y el texto)
+          + lateral izquierdo (para que la columna de texto se lea sobre
+          cualquier foto, incluso en las zonas claras de arriba). */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(0deg, rgba(5,23,51,.85) 0%, rgba(5,23,51,.35) 44%, transparent 74%)',
+            'linear-gradient(0deg, rgba(5,23,51,.9) 0%, rgba(5,23,51,.6) 34%, rgba(5,23,51,.28) 58%, rgba(5,23,51,.12) 78%, transparent 100%), linear-gradient(105deg, rgba(5,23,51,.62) 0%, rgba(5,23,51,.28) 34%, transparent 62%)',
         }}
       />
 
