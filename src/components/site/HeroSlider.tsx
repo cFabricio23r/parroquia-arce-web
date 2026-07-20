@@ -26,7 +26,7 @@ export function HeroSlider({ images, children }: { images: HeroImage[]; children
     <div
       role="region"
       aria-label="Portada de la parroquia"
-      className="relative flex min-h-[600px] flex-col justify-end overflow-hidden rounded-t-2xl"
+      className="relative flex min-h-[600px] flex-col justify-end overflow-hidden"
     >
       {has ? (
         images.map((img, i) => (

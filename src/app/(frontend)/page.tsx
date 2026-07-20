@@ -128,34 +128,36 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* HERO */}
-      <section className="pt-8 max-[600px]:pt-4">
+      {/* HERO — full-bleed (edge to edge); el contenido se alinea al container */}
+      <HeroSlider images={heroImages}>
         <Container>
-          <HeroSlider images={heroImages}>
-            <div className="max-w-[680px] px-[clamp(24px,5vw,64px)] pb-7 pt-[200px] max-[600px]:pt-[120px]">
-              <span className="mb-4 inline-flex items-center gap-[10px] text-[14.5px] text-[#cfe0f2]">
-                <span className="h-px w-6 bg-amber" />
-                {heroLocation}
-              </span>
-              <h1 className="text-balance font-display text-[clamp(38px,5vw,64px)] font-medium leading-[1.03] tracking-[-.02em] text-white">
-                {hero?.title || 'Una comunidad de fe, abierta a tu familia'}
-              </h1>
-              <p className="mt-[18px] max-w-[52ch] text-[clamp(16px,1.4vw,18.5px)] leading-[1.6] text-[#e9f1fb]/90">
-                {hero?.subtitle ||
-                  'Misa, sacramentos, radio parroquial y la vida de nuestros sectores y grupos. Un lugar para encontrarnos, servir y caminar juntos.'}
-              </p>
-              <div className="mt-[26px] flex flex-wrap gap-3">
-                <Button href="/horarios" variant="amber" size="lg">
-                  Horarios de misa
-                </Button>
-                <Button href="/contacto" variant="outline-light" size="lg">
-                  Conocé la parroquia
-                </Button>
-              </div>
+          <div className="max-w-[680px] pb-8 pt-[210px] max-[600px]:pt-[130px]">
+            <span className="mb-4 inline-flex items-center gap-[10px] text-[14.5px] text-[#cfe0f2]">
+              <span className="h-px w-6 bg-amber" />
+              {heroLocation}
+            </span>
+            <h1 className="text-balance font-display text-[clamp(38px,5vw,64px)] font-medium leading-[1.03] tracking-[-.02em] text-white">
+              {hero?.title || 'Una comunidad de fe, abierta a tu familia'}
+            </h1>
+            <p className="mt-[18px] max-w-[52ch] text-[clamp(16px,1.4vw,18.5px)] leading-[1.6] text-[#e9f1fb]/90">
+              {hero?.subtitle ||
+                'Misa, sacramentos, radio parroquial y la vida de nuestros sectores y grupos. Un lugar para encontrarnos, servir y caminar juntos.'}
+            </p>
+            <div className="mt-[26px] flex flex-wrap gap-3">
+              <Button href="/horarios" variant="amber" size="lg">
+                Horarios de misa
+              </Button>
+              <Button href="/contacto" variant="outline-light" size="lg">
+                Conocé la parroquia
+              </Button>
             </div>
+          </div>
+        </Container>
 
-            {/* Barra de horarios de misa */}
-            <div className="flex flex-wrap items-center gap-x-[26px] gap-y-2 border-t border-white/10 bg-[rgba(5,23,51,.75)] px-[clamp(24px,5vw,64px)] py-[15px]">
+        {/* Barra de horarios de misa: fondo full-width, contenido en el container */}
+        <div className="border-t border-white/10 bg-[rgba(5,23,51,.75)]">
+          <Container>
+            <div className="flex flex-wrap items-center gap-x-[26px] gap-y-2 py-[15px]">
               <span className="inline-flex items-center gap-[9px] text-[14px] font-bold text-white">
                 <span className="grid h-[15px] w-[15px] place-items-center rounded-full border-[1.6px] border-amber">
                   <span className="h-[5px] w-px bg-amber" />
@@ -168,10 +170,14 @@ export default async function HomePage() {
                 </span>
               ))}
             </div>
-          </HeroSlider>
+          </Container>
+        </div>
+      </HeroSlider>
 
-          {/* Accesos rápidos con imagen */}
-          <div className="grid grid-cols-3 gap-4 rounded-b-2xl border border-t-0 border-border bg-white p-5 max-[760px]:grid-cols-1">
+      {/* Accesos rápidos con imagen */}
+      <section className="py-[clamp(28px,4vw,44px)]">
+        <Container>
+          <div className="grid grid-cols-3 gap-4 max-[760px]:grid-cols-1">
             {(
               [
                 ['/horarios', 'Misas y sacramentos', 'Horarios, confesiones y celebraciones', 'linear-gradient(150deg,#1a4670,var(--color-navy))'],
