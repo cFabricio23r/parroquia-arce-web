@@ -204,63 +204,8 @@ export default async function HomePage() {
         </Container>
       </section>
 
-      {/* MISA + SACRAMENTOS */}
-      <section className="bg-bg-soft py-[clamp(56px,7vw,96px)]">
-        <Container>
-          <Reveal>
-            <SectionHead
-              title="Celebrar juntos"
-              emphasis="durante la semana"
-              lead="Horarios y accesos pastorales visibles desde el primer recorrido, para resolver lo que la comunidad busca más seguido."
-            />
-          </Reveal>
-          <div className="grid grid-cols-[1.05fr_1.25fr] items-start gap-[30px] max-[1040px]:grid-cols-1">
-            <Reveal>
-              <div className="rounded-xl border border-border bg-blue-soft p-[30px]">
-                <span className="text-[12.5px] font-bold uppercase tracking-[.15em] text-blue">
-                  Horarios de misa
-                </span>
-                <h3 className="my-[12px_0_20px] font-display text-[30px] font-medium leading-[1.05]">
-                  Misas de la semana
-                </h3>
-                <div className="flex flex-col gap-[11px]">
-                  {misas.map(([day, time]) => (
-                    <div
-                      key={day}
-                      className="flex items-center justify-between gap-4 rounded-md bg-white p-[16px_20px]"
-                    >
-                      <span className="font-semibold">{day}</span>
-                      <span className="text-right font-extrabold text-blue">{time}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-[22px]">
-                  <Button href="/horarios">Ver todos los horarios y sacramentos</Button>
-                </div>
-              </div>
-            </Reveal>
-            <Reveal>
-              <div className="grid grid-cols-2 gap-[18px] max-[600px]:grid-cols-1">
-                {sacramentos.map(([bl, title, text]) => (
-                  <div
-                    key={title}
-                    className="flex flex-col gap-3 rounded-lg border border-border bg-white p-6"
-                  >
-                    <span className="grid h-12 w-12 place-items-center rounded-[13px] bg-blue font-display text-[20px] font-semibold text-white">
-                      {bl}
-                    </span>
-                    <h4 className="font-display text-[20px] font-semibold">{title}</h4>
-                    <p className="text-[14px] leading-[1.45] text-muted">{text}</p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-          </div>
-        </Container>
-      </section>
-
       {/* EVENTOS */}
-      <section className="py-[clamp(56px,7vw,96px)]">
+      <section className="bg-bg-soft py-[clamp(56px,7vw,96px)]">
         <Container>
           <Reveal className="mb-10 flex items-end justify-between gap-4">
             <h2 className="font-display text-[clamp(32px,4.2vw,52px)] font-medium leading-[1.04] tracking-[-.01em]">
@@ -337,17 +282,23 @@ export default async function HomePage() {
         </Container>
       </section>
 
-      {/* SECTOR DESTACADO */}
-      <section className="bg-bg-soft py-[clamp(56px,7vw,96px)]">
+      {/* SUMATE — sectores + grupos */}
+      <section className="py-[clamp(56px,7vw,96px)]">
         <Container>
-          <Reveal className="mb-10 flex items-end justify-between gap-4">
+          <Reveal className="mb-10 max-w-[640px]">
             <h2 className="font-display text-[clamp(32px,4.2vw,52px)] font-medium leading-[1.04] tracking-[-.01em]">
-              La parroquia vive en <em className="italic text-blue">cada sector</em>
+              Sumate a la <em className="italic text-blue">vida parroquial</em>
             </h2>
+            <p className="mt-3 text-[18px] text-muted">
+              Encontrá tu sector más cercano, sumate a un grupo y caminá con la comunidad.
+            </p>
+          </Reveal>
+          <div className="mb-4 flex items-center justify-between gap-4">
+            <h3 className="font-display text-[24px] font-medium">Sectores y ermitas</h3>
             <Link href="/sectores" className="whitespace-nowrap text-[15.5px] font-bold text-blue">
               Ver todos los sectores →
             </Link>
-          </Reveal>
+          </div>
           {featuredSector && (
             <Reveal>
               <div className="grid grid-cols-2 items-stretch gap-8 overflow-hidden rounded-xl border border-border bg-white max-[1040px]:grid-cols-1">
@@ -380,6 +331,28 @@ export default async function HomePage() {
               </div>
             </Reveal>
           )}
+
+          <div className="mb-4 mt-12 flex items-center justify-between gap-4">
+            <h3 className="font-display text-[24px] font-medium">Grupos y ministerios</h3>
+            <Link href="/grupos" className="whitespace-nowrap text-[15.5px] font-bold text-blue">
+              Ver todos los grupos →
+            </Link>
+          </div>
+          <div className="grid grid-cols-3 gap-[22px] max-[980px]:grid-cols-1">
+            {grupos.map(([variant, cat, title, desc]) => (
+              <Reveal key={title}>
+                <article className="flex h-full flex-col rounded-lg border border-border bg-white p-7">
+                  <Badge variant={variant} className="self-start">
+                    {cat}
+                  </Badge>
+                  <h4 className="my-[14px_0_8px] font-display text-[22px] font-semibold leading-[1.06]">
+                    {title}
+                  </h4>
+                  <p className="text-[14.5px] leading-[1.5] text-muted">{desc}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
         </Container>
       </section>
 
@@ -434,35 +407,6 @@ export default async function HomePage() {
                 </Link>
               ))}
             </Reveal>
-          </div>
-        </Container>
-      </section>
-
-      {/* GRUPOS */}
-      <section className="py-[clamp(56px,7vw,96px)]">
-        <Container>
-          <Reveal className="mb-10 flex items-end justify-between gap-4">
-            <h2 className="font-display text-[clamp(32px,4.2vw,52px)] font-medium leading-[1.04] tracking-[-.01em]">
-              Intégrate a la <em className="italic text-blue">vida parroquial</em>
-            </h2>
-            <Link href="/grupos" className="whitespace-nowrap text-[15.5px] font-bold text-blue">
-              Ver todos los grupos →
-            </Link>
-          </Reveal>
-          <div className="grid grid-cols-3 gap-[22px] max-[980px]:grid-cols-1">
-            {grupos.map(([variant, cat, title, desc]) => (
-              <Reveal key={title}>
-                <article className="flex h-full flex-col rounded-lg border border-border bg-white p-7">
-                  <Badge variant={variant} className="self-start">
-                    {cat}
-                  </Badge>
-                  <h3 className="my-[14px_0_8px] font-display text-[23px] font-semibold leading-[1.06]">
-                    {title}
-                  </h3>
-                  <p className="text-[14.5px] leading-[1.5] text-muted">{desc}</p>
-                </article>
-              </Reveal>
-            ))}
           </div>
         </Container>
       </section>
@@ -528,49 +472,56 @@ export default async function HomePage() {
         </Container>
       </section>
 
-      {/* CONTACTO */}
+      {/* MISA + SACRAMENTOS */}
       <section className="py-[clamp(56px,7vw,96px)]">
         <Container>
-          <div className="grid grid-cols-2 gap-8 max-[1040px]:grid-cols-1">
+          <Reveal>
+            <SectionHead
+              title="Celebrar juntos"
+              emphasis="durante la semana"
+              lead="Los horarios y accesos pastorales que la comunidad busca más seguido, siempre a mano."
+            />
+          </Reveal>
+          <div className="grid grid-cols-[1.05fr_1.25fr] items-start gap-[30px] max-[1040px]:grid-cols-1">
             <Reveal>
-              <div className="rounded-xl border border-border bg-white p-9">
+              <div className="rounded-xl border border-border bg-blue-soft p-[30px]">
                 <span className="text-[12.5px] font-bold uppercase tracking-[.15em] text-blue">
-                  Contacto
+                  Horarios de misa
                 </span>
-                <h2 className="my-3 font-display text-[clamp(28px,3vw,40px)] font-medium">
-                  Estamos para <em className="italic text-blue">servirte</em>
-                </h2>
-                <p className="text-[15px] text-muted">
-                  Encuentra ubicación, redes oficiales y canales de comunicación de la parroquia.
-                </p>
-                <ul className="my-6 flex flex-col gap-3 text-[14.5px]">
-                  {[
-                    'Templo parroquial · Ciudad Arce, La Libertad',
-                    'WhatsApp oficial para consultas pastorales',
-                    'Facebook y YouTube para transmisiones y avisos',
-                  ].map((linea) => (
-                    <li key={linea} className="flex items-start gap-3">
-                      <span className="mt-[8px] h-[6px] w-[6px] flex-none rounded-full bg-amber" />
-                      {linea}
-                    </li>
+                <h3 className="my-[12px_0_20px] font-display text-[30px] font-medium leading-[1.05]">
+                  Misas de la semana
+                </h3>
+                <div className="flex flex-col gap-[11px]">
+                  {misas.map(([day, time]) => (
+                    <div
+                      key={day}
+                      className="flex items-center justify-between gap-4 rounded-md bg-white p-[16px_20px]"
+                    >
+                      <span className="font-semibold">{day}</span>
+                      <span className="text-right font-extrabold text-blue">{time}</span>
+                    </div>
                   ))}
-                </ul>
-                <Button href="/contacto" variant="amber" size="lg">
-                  Contactar por WhatsApp
-                </Button>
+                </div>
+                <div className="mt-[22px]">
+                  <Button href="/horarios">Ver todos los horarios y sacramentos</Button>
+                </div>
               </div>
             </Reveal>
             <Reveal>
-              <Link
-                href="/contacto"
-                className="relative grid h-full min-h-[280px] place-items-center overflow-hidden rounded-xl border border-border font-display text-blue"
-                style={{
-                  background:
-                    'radial-gradient(70% 60% at 30% 20%, rgba(97,194,230,.25), transparent 60%), var(--color-blue-soft)',
-                }}
-              >
-                <span className="text-[19px] font-medium">Ver ubicación en el mapa →</span>
-              </Link>
+              <div className="grid grid-cols-2 gap-[18px] max-[600px]:grid-cols-1">
+                {sacramentos.map(([bl, title, text]) => (
+                  <div
+                    key={title}
+                    className="flex flex-col gap-3 rounded-lg border border-border bg-white p-6"
+                  >
+                    <span className="grid h-12 w-12 place-items-center rounded-[13px] bg-blue font-display text-[20px] font-semibold text-white">
+                      {bl}
+                    </span>
+                    <h4 className="font-display text-[20px] font-semibold">{title}</h4>
+                    <p className="text-[14px] leading-[1.45] text-muted">{text}</p>
+                  </div>
+                ))}
+              </div>
             </Reveal>
           </div>
         </Container>
