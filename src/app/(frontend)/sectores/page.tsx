@@ -6,6 +6,7 @@ import { Container } from '@/components/ui/Container'
 import { PageHero } from '@/components/site/PageHero'
 import { MediaImage } from '@/components/news/MediaImage'
 import { Reveal } from '@/components/news/Reveal'
+import { Icon } from '@/components/ui/Icon'
 
 export const metadata: Metadata = { title: 'Sectores y ermitas' }
 export const revalidate = 300
@@ -56,9 +57,7 @@ export default async function SectoresPage() {
                       </h3>
                       {s.location?.address && (
                         <div className="mt-[7px] flex items-center gap-[7px] text-[13.5px] text-muted">
-                          <span className="text-sky" aria-hidden="true">
-                            📍
-                          </span>
+                          <Icon name="pin" className="h-[15px] w-[15px] flex-none text-sky" />
                           {s.location.address}
                         </div>
                       )}

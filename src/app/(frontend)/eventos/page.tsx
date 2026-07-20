@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getPayload } from 'payload'
+import { Icon } from '@/components/ui/Icon'
 import config from '@/payload.config'
 import type { Event } from '@/payload-types'
 import { Container } from '@/components/ui/Container'
@@ -96,15 +97,18 @@ export default async function EventosPage() {
                         {featured.title}
                       </h2>
                       <div className="mt-[22px] flex flex-wrap items-center gap-5 font-bold">
-                        <span>
-                          📅{' '}
+                        <span className="inline-flex items-center gap-2">
+                          <Icon name="calendar" className="h-[17px] w-[17px] flex-none" />
                           {new Date(featured.startsAt).toLocaleDateString('es-SV', {
                             weekday: 'long',
                             day: 'numeric',
                             month: 'long',
                           })}
                         </span>
-                        <span>📍 {featured.locationName}</span>
+                        <span className="inline-flex items-center gap-2">
+                          <Icon name="pin" className="h-[17px] w-[17px] flex-none" />
+                          {featured.locationName}
+                        </span>
                       </div>
                     </div>
                   </Link>
@@ -138,9 +142,7 @@ export default async function EventosPage() {
                                 {e.title}
                               </h4>
                               <div className="mt-[5px] flex items-center gap-[7px] text-[14.5px] text-muted">
-                                <span className="text-sky" aria-hidden="true">
-                                  📍
-                                </span>
+                                <Icon name="pin" className="h-[15px] w-[15px] flex-none text-sky" />
                                 {d.toLocaleTimeString('es-SV', {
                                   hour: 'numeric',
                                   minute: '2-digit',

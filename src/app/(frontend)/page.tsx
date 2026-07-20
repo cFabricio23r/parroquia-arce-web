@@ -129,9 +129,9 @@ export default async function HomePage() {
     ]
   })
 
-  const grupos: [Variant, string, string, string][] = groupsRes.docs.map((g) => {
+  const grupos: [Variant, string, string, string, string][] = groupsRes.docs.map((g) => {
     const meta = g.type ? groupTypeMeta[g.type] : undefined
-    return [meta?.variant ?? 'blue', meta?.label ?? '', g.name, g.summary ?? '']
+    return [meta?.variant ?? 'blue', meta?.label ?? '', g.name, g.summary ?? '', g.slug]
   })
 
   const noticias: [Variant, string, string, string, string, string][] = newsRes.docs.map((n) => [
@@ -351,7 +351,7 @@ export default async function HomePage() {
                     )}
                   </div>
                   <div className="mt-auto">
-                    <Button href="/sectores">Ver los sectores</Button>
+                    <Button href={`/sectores/${featuredSector.slug}`}>Conocé este sector</Button>
                   </div>
                 </div>
               </div>
@@ -365,9 +365,12 @@ export default async function HomePage() {
             </Link>
           </div>
           <div className="grid grid-cols-3 gap-[22px] max-[980px]:grid-cols-1">
-            {grupos.map(([variant, cat, title, desc]) => (
+            {grupos.map(([variant, cat, title, desc, gslug]) => (
               <Reveal key={title}>
-                <article className="flex h-full flex-col rounded-lg border border-border bg-white p-7">
+                <Link
+                  href={`/grupos/${gslug}`}
+                  className="group flex h-full flex-col rounded-lg border border-border bg-white p-7 transition-transform duration-200 hover:-translate-y-0.5"
+                >
                   <Badge variant={variant} className="self-start">
                     {cat}
                   </Badge>
@@ -375,7 +378,7 @@ export default async function HomePage() {
                     {title}
                   </h4>
                   <p className="text-[14.5px] leading-[1.5] text-muted">{desc}</p>
-                </article>
+                </Link>
               </Reveal>
             ))}
           </div>

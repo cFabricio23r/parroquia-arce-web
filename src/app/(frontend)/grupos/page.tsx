@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getPayload } from 'payload'
+import { Icon } from '@/components/ui/Icon'
 import config from '@/payload.config'
 import { Container } from '@/components/ui/Container'
 import { PageHero } from '@/components/site/PageHero'
@@ -66,17 +67,13 @@ export default async function GruposPage() {
                       <div className="my-[18px] flex flex-col gap-2">
                         {(g.meeting?.day || g.meeting?.time) && (
                           <div className="flex items-center gap-[9px] text-[14px] font-semibold text-[#3A4A60]">
-                            <span className="text-sky" aria-hidden="true">
-                              🕑
-                            </span>
+                            <Icon name="clock" className="h-[15px] w-[15px] flex-none text-sky" />
                             {[g.meeting?.day, g.meeting?.time].filter(Boolean).join(' · ')}
                           </div>
                         )}
                         {g.meeting?.place && (
                           <div className="flex items-center gap-[9px] text-[14px] font-semibold text-[#3A4A60]">
-                            <span className="text-sky" aria-hidden="true">
-                              📍
-                            </span>
+                            <Icon name="pin" className="h-[15px] w-[15px] flex-none text-sky" />
                             {g.meeting.place}
                           </div>
                         )}
