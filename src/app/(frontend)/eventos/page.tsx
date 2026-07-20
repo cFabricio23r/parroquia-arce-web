@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
 import type { Event } from '@/payload-types'
@@ -72,7 +73,10 @@ export default async function EventosPage() {
             <>
               {featured && (
                 <Reveal>
-                  <article className="relative mb-[38px] flex min-h-[360px] flex-col justify-end overflow-hidden rounded-xl p-10 text-white shadow-md">
+                  <Link
+                    href={`/eventos/${featured.slug}`}
+                    className="group relative mb-[38px] flex min-h-[360px] flex-col justify-end overflow-hidden rounded-xl p-10 text-white shadow-md"
+                  >
                     <div className="absolute inset-0">
                       <MediaImage cover={featured.cover} />
                     </div>
@@ -103,7 +107,7 @@ export default async function EventosPage() {
                         <span>📍 {featured.locationName}</span>
                       </div>
                     </div>
-                  </article>
+                  </Link>
                 </Reveal>
               )}
 
@@ -117,7 +121,10 @@ export default async function EventosPage() {
                       const d = new Date(e.startsAt)
                       return (
                         <Reveal key={e.id}>
-                          <article className="grid grid-cols-[auto_1fr_auto] items-center gap-6 rounded-lg border border-border bg-white p-[22px_26px] max-[600px]:grid-cols-[auto_1fr]">
+                          <Link
+                            href={`/eventos/${e.slug}`}
+                            className="group grid grid-cols-[auto_1fr_auto] items-center gap-6 rounded-lg border border-border bg-white p-[22px_26px] transition-transform duration-200 hover:-translate-y-0.5 max-[600px]:grid-cols-[auto_1fr]"
+                          >
                             <span className="grid h-16 w-16 flex-none place-items-center rounded-md bg-blue-tint text-center text-blue">
                               <span className="block font-display text-[26px] font-semibold leading-none">
                                 {String(d.getDate()).padStart(2, '0')}
@@ -146,7 +153,7 @@ export default async function EventosPage() {
                                 {typeLabel(e.eventType)}
                               </Badge>
                             )}
-                          </article>
+                          </Link>
                         </Reveal>
                       )
                     })}

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { Container } from '@/components/ui/Container'
@@ -47,7 +48,10 @@ export default async function GruposPage() {
                 const meta = g.type ? typeMeta[g.type] : undefined
                 return (
                   <Reveal key={g.id}>
-                    <article className="flex h-full flex-col rounded-lg border border-border bg-white p-7">
+                    <Link
+                      href={`/grupos/${g.slug}`}
+                      className="group flex h-full flex-col rounded-lg border border-border bg-white p-7 transition-transform duration-200 hover:-translate-y-0.5"
+                    >
                       {meta && (
                         <Badge variant={meta.variant} className="self-start">
                           {meta.label}
@@ -77,7 +81,7 @@ export default async function GruposPage() {
                           </div>
                         )}
                       </div>
-                    </article>
+                    </Link>
                   </Reveal>
                 )
               })}

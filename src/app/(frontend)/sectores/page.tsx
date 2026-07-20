@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { Container } from '@/components/ui/Container'
@@ -37,7 +38,10 @@ export default async function SectoresPage() {
             <div className="grid grid-cols-3 gap-[22px] max-[980px]:grid-cols-2 max-[600px]:grid-cols-1">
               {docs.map((s) => (
                 <Reveal key={s.id}>
-                  <article className="flex h-full flex-col overflow-hidden rounded-lg border border-border bg-white">
+                  <Link
+                    href={`/sectores/${s.slug}`}
+                    className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-white transition-transform duration-200 hover:-translate-y-0.5"
+                  >
                     <div className="relative h-[170px]">
                       <MediaImage cover={s.cover} />
                       {s.number != null && (
@@ -67,7 +71,7 @@ export default async function SectoresPage() {
                         </div>
                       )}
                     </div>
-                  </article>
+                  </Link>
                 </Reveal>
               ))}
             </div>
