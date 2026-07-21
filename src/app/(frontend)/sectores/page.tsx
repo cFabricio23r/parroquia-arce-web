@@ -41,7 +41,7 @@ export default async function SectoresPage() {
                 <Reveal key={s.id}>
                   <Link
                     href={`/sectores/${s.slug}`}
-                    className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-white transition-transform duration-200 hover:-translate-y-0.5"
+                    className="card-hover group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-white"
                   >
                     <div className="relative h-[170px]">
                       <MediaImage cover={s.cover} />
@@ -64,11 +64,20 @@ export default async function SectoresPage() {
                       {s.summary && (
                         <p className="mt-3 text-[14px] leading-[1.5] text-muted">{s.summary}</p>
                       )}
-                      {s.chapelName && (
-                        <div className="mt-auto pt-[18px] text-[13px] font-bold text-blue">
-                          {s.chapelName}
-                        </div>
-                      )}
+                      <div className="mt-auto pt-[18px]">
+                        {s.chapelName && (
+                          <p className="mb-[10px] text-[13px] font-bold text-blue">
+                            {s.chapelName}
+                          </p>
+                        )}
+                        <span className="inline-flex items-center gap-1.5 text-[14.5px] font-bold text-blue">
+                          Conocer más
+                          <Icon
+                            name="arrow"
+                            className="h-4 w-4 transition-transform duration-150 group-hover:translate-x-[3px]"
+                          />
+                        </span>
+                      </div>
                     </div>
                   </Link>
                 </Reveal>
