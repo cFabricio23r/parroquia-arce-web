@@ -12,35 +12,24 @@ import { HeroSlider } from '@/components/site/HeroSlider'
 import { newsCategoryVariant, newsCategoryLabel, formatDate } from '@/lib/news-format'
 import { svDate, svParts, svStartOfToday, svTime } from '@/lib/sv-date'
 import { eventTypeLabel } from '@/lib/event-types'
+import { deriveSchedule } from '@/lib/parish-schedule'
 import { GroupCard } from '@/components/community/GroupCard'
 
 export const metadata: Metadata = { title: 'Inicio' }
 export const revalidate = 300
 
-// Home. El hero, accesos rapidos y misas/sacramentos son editoriales
-// (estaticos). Las secciones de eventos, grupos, noticias, el sector destacado
-// y los shows de radio se leen de sus colecciones; `shows` (abajo) queda solo
-// como fallback si aun no hay programacion publicada, para que la home nunca
-// quede en blanco.
+// Home. Misas y sacramentos salen del global `contact` y NO tienen respaldo
+// editorial: sin datos cargados la seccion no se renderiza. Un horario
+// inventado manda gente al templo a una hora que no existe. Eventos, grupos,
+// noticias, sector destacado y radio se leen de sus colecciones; `shows`
+// (abajo) sigue teniendo fallback editorial — la radio esta fuera del alcance
+// de esa regla por ahora. Ver 2026-07-21-horarios-sin-datos-inventados-design.
 
 type Variant = 'blue' | 'sky' | 'amber'
 
 const MES_CORTO = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
 const eventTypeVariant = (t?: string | null): Variant =>
   t === 'patronal' || t === 'vigilia' || t === 'novena' ? 'amber' : t === 'reunion' || t === 'jornada' ? 'sky' : 'blue'
-const misas = [
-  ['Lunes a viernes', '6:00 p.m.'],
-  ['Sábado', '5:00 p.m.'],
-  ['Domingo', '7:00 a.m. · 10:00 a.m. · 6:00 p.m.'],
-]
-
-const sacramentos = [
-  ['M', 'Misa y sacramentos', 'Información clara para participar y preparar celebraciones importantes.'],
-  ['C', 'Confesiones', 'Sábados de 4:00 a 5:00 p.m. y por cita en la oficina parroquial.'],
-  ['B', 'Bautizos', 'Preparación mensual. Inscríbete con anticipación en secretaría.'],
-  ['✝', 'Matrimonios', 'Acompañamiento y trámites con el equipo de pastoral familiar.'],
-]
-
 const showsFallback: [string, string, string][] = [
   ['Una voz desde mi sector', 'Historias y avisos comunitarios', '5:00 p.m.'],
   ['Jóvenes con fe', 'Reflexión y vida juvenil', '7:00 p.m.'],
@@ -106,17 +95,40 @@ export default async function HomePage() {
   const featuredEventCover =
     featuredEvent?.cover && typeof featuredEvent.cover === 'object' ? featuredEvent.cover : null
 
-  // Horarios y sacramentos: editables desde el global Contact, con respaldo
-  // editorial para que la home nunca quede sin datos.
-  const misasData = (contactGlobal.massSchedule ?? [])
-    .filter((m) => m.label || m.time)
-    .map((m) => [m.label ?? '', m.time ?? ''] as [string, string])
-  const misasList: [string, string][] = misasData.length > 0 ? misasData : (misas as [string, string][])
-  const sacramentosData = (contactGlobal.sacraments ?? [])
-    .filter((s) => s.title)
-    .map((s) => [s.title ?? '', s.detail ?? ''] as [string, string])
-  const sacramentosList: [string, string][] =
-    sacramentosData.length > 0 ? sacramentosData : sacramentos.map(([, t, d]) => [t, d] as [string, string])
+  // Horarios y sacramentos: solo lo cargado en el CMS. Sin respaldo editorial.
+  const { misas, sacramentos, hasMisas, hasSacramentos } = deriveSchedule(contactGlobal)
+
+  // Accesos rapidos. La tarjeta de misas solo entra si hay horarios cargados;
+  // las columnas se derivan del conteo para no dejar un hueco cuando son 3.
+  type Acceso = { href: string; title: string; desc: string; bg: string }
+  const accesos: Acceso[] = [
+    ...(hasMisas
+      ? [{
+          href: '/#misas',
+          title: 'Misas y sacramentos',
+          desc: 'Horarios, confesiones y celebraciones',
+          bg: 'linear-gradient(150deg,#1a4670,var(--color-navy))',
+        }]
+      : []),
+    {
+      href: '/sectores',
+      title: 'Sectores y ermitas',
+      desc: 'Encontrá tu comunidad más cercana',
+      bg: 'linear-gradient(150deg,#155e7a,var(--color-blue))',
+    },
+    {
+      href: '/noticias',
+      title: 'Noticias',
+      desc: 'Lo último de la vida parroquial',
+      bg: 'linear-gradient(150deg,#1f6a8c,var(--color-blue))',
+    },
+    {
+      href: '/radio',
+      title: 'Radio parroquial',
+      desc: radioLive ? 'En vivo ahora · escuchá la comunidad' : 'Escuchá la voz de la comunidad',
+      bg: 'linear-gradient(150deg,#b9741f,#7a3f10)',
+    },
+  ]
 
   // Radio "al aire ahora": primer programa publicado, con respaldo editorial.
   const radioNow = radioRes.docs[0]
@@ -182,49 +194,56 @@ export default async function HomePage() {
               {hero?.subtitle ||
                 'Misa, sacramentos, radio parroquial y la vida de nuestros sectores y grupos. Un lugar para encontrarnos, servir y caminar juntos.'}
             </p>
+            {/* Sin horarios cargados el CTA de misas desaparece; para que el hero
+                no quede con un solo boton debil, el secundario promueve a ambar. */}
             <div className="mt-[26px] flex flex-wrap gap-3">
-              <Button href="/horarios" variant="amber" size="lg">
-                Horarios de misa
-              </Button>
-              <Button href="/contacto" variant="outline-light" size="lg">
+              {hasMisas && (
+                <Button href="/#misas" variant="amber" size="lg">
+                  Horarios de misa
+                </Button>
+              )}
+              <Button
+                href="/contacto"
+                variant={hasMisas ? 'outline-light' : 'amber'}
+                size="lg"
+              >
                 Conocé la parroquia
               </Button>
             </div>
           </div>
         </Container>
 
-        {/* Barra de horarios de misa: fondo full-width, contenido en el container */}
-        <div className="border-t border-white/10 bg-[rgba(5,23,51,.75)]">
-          <Container>
-            <div className="flex flex-wrap items-center gap-x-[26px] gap-y-2 py-[15px]">
-              <span className="inline-flex items-center gap-[9px] text-[14px] font-bold text-white">
-                <span className="grid h-[15px] w-[15px] place-items-center rounded-full border-[1.6px] border-amber">
-                  <span className="h-[5px] w-px bg-amber" />
+        {/* Barra de horarios de misa: solo si hay horarios cargados en el CMS. */}
+        {hasMisas && (
+          <div className="border-t border-white/10 bg-[rgba(5,23,51,.75)]">
+            <Container>
+              <div className="flex flex-wrap items-center gap-x-[26px] gap-y-2 py-[15px]">
+                <span className="inline-flex items-center gap-[9px] text-[14px] font-bold text-white">
+                  <span className="grid h-[15px] w-[15px] place-items-center rounded-full border-[1.6px] border-amber">
+                    <span className="h-[5px] w-px bg-amber" />
+                  </span>
+                  Misas
                 </span>
-                Misas
-              </span>
-              {misasList.map(([dia, hora]) => (
-                <span key={dia} className="text-[14px] text-[#c9d8ec]">
-                  <b className="font-semibold text-white">{dia}</b> {hora}
-                </span>
-              ))}
-            </div>
-          </Container>
-        </div>
+                {misas.map((m) => (
+                  <span key={m.label} className="text-[14px] text-[#c9d8ec]">
+                    <b className="font-semibold text-white">{m.label}</b> {m.time}
+                  </span>
+                ))}
+              </div>
+            </Container>
+          </div>
+        )}
       </HeroSlider>
 
       {/* Accesos rápidos con imagen */}
       <section className="py-[clamp(28px,4vw,44px)]">
         <Container>
-          <div className="grid grid-cols-4 gap-4 max-[980px]:grid-cols-2 max-[560px]:grid-cols-1">
-            {(
-              [
-                ['/horarios', 'Misas y sacramentos', 'Horarios, confesiones y celebraciones', 'linear-gradient(150deg,#1a4670,var(--color-navy))'],
-                ['/sectores', 'Sectores y ermitas', 'Encontrá tu comunidad más cercana', 'linear-gradient(150deg,#155e7a,var(--color-blue))'],
-                ['/noticias', 'Noticias', 'Lo último de la vida parroquial', 'linear-gradient(150deg,#1f6a8c,var(--color-blue))'],
-                ['/radio', 'Radio parroquial', radioLive ? 'En vivo ahora · escuchá la comunidad' : 'Escuchá la voz de la comunidad', 'linear-gradient(150deg,#b9741f,#7a3f10)'],
-              ] as const
-            ).map(([href, title, desc, bg]) => (
+          <div
+            className={`grid gap-4 max-[980px]:grid-cols-2 max-[560px]:grid-cols-1 ${
+              accesos.length === 4 ? 'grid-cols-4' : 'grid-cols-3'
+            }`}
+          >
+            {accesos.map(({ href, title, desc, bg }) => (
               <Link
                 key={title}
                 href={href}
@@ -500,60 +519,64 @@ export default async function HomePage() {
         </Container>
       </section>
 
-      {/* MISA + SACRAMENTOS */}
-      <section className="py-[clamp(56px,7vw,96px)]">
-        <Container>
-          <Reveal>
-            <SectionHead
-              title="Celebrar juntos"
-              emphasis="durante la semana"
-              lead="Los horarios y accesos pastorales que la comunidad busca más seguido, siempre a mano."
-            />
-          </Reveal>
-          <div className="grid grid-cols-[1.05fr_1.25fr] items-start gap-[30px] max-[1040px]:grid-cols-1">
+      {/* MISA + SACRAMENTOS — solo si hay algo cargado en el CMS. Sin datos no
+          se renderiza: nada de horarios editoriales. */}
+      {(hasMisas || hasSacramentos) && (
+        <section id="misas" className="scroll-mt-24 py-[clamp(56px,7vw,96px)]">
+          <Container>
             <Reveal>
-              <div className="rounded-xl border border-border bg-blue-soft p-[30px]">
-                <span className="text-[12.5px] font-bold uppercase tracking-[.15em] text-blue">
-                  Horarios de misa
-                </span>
-                <h3 className="my-[12px_0_20px] font-display text-[30px] font-medium leading-[1.05]">
-                  Misas de la semana
-                </h3>
-                <div className="flex flex-col gap-[11px]">
-                  {misasList.map(([day, time]) => (
-                    <div
-                      key={day}
-                      className="flex items-center justify-between gap-4 rounded-md bg-white p-[16px_20px]"
-                    >
-                      <span className="font-semibold">{day}</span>
-                      <span className="text-right font-extrabold text-blue">{time}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-[22px]">
-                  <Button href="/horarios">Ver todos los horarios y sacramentos</Button>
-                </div>
-              </div>
+              <SectionHead
+                title="Celebrar juntos"
+                emphasis="durante la semana"
+                lead="Los horarios y accesos pastorales que la comunidad busca más seguido, siempre a mano."
+              />
             </Reveal>
-            <Reveal>
-              <div className="grid grid-cols-2 gap-[18px] max-[600px]:grid-cols-1">
-                {sacramentosList.map(([title, detail]) => (
-                  <div
-                    key={title}
-                    className="flex flex-col gap-3 rounded-lg border border-border bg-white p-6"
-                  >
-                    <span className="grid h-12 w-12 place-items-center rounded-[13px] bg-blue font-display text-[20px] font-semibold text-white">
-                      {title.charAt(0).toUpperCase()}
+            <div className="grid grid-cols-[1.05fr_1.25fr] items-start gap-[30px] max-[1040px]:grid-cols-1">
+              {hasMisas && (
+                <Reveal>
+                  <div className="rounded-xl border border-border bg-blue-soft p-[30px]">
+                    <span className="text-[12.5px] font-bold uppercase tracking-[.15em] text-blue">
+                      Horarios de misa
                     </span>
-                    <h4 className="font-display text-[20px] font-semibold">{title}</h4>
-                    <p className="text-[14px] leading-[1.45] text-muted">{detail}</p>
+                    <h3 className="my-[12px_0_20px] font-display text-[30px] font-medium leading-[1.05]">
+                      Misas de la semana
+                    </h3>
+                    <div className="flex flex-col gap-[11px]">
+                      {misas.map((m) => (
+                        <div
+                          key={m.label}
+                          className="flex items-center justify-between gap-4 rounded-md bg-white p-[16px_20px]"
+                        >
+                          <span className="font-semibold">{m.label}</span>
+                          <span className="text-right font-extrabold text-blue">{m.time}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                ))}
-              </div>
-            </Reveal>
-          </div>
-        </Container>
-      </section>
+                </Reveal>
+              )}
+              {hasSacramentos && (
+                <Reveal>
+                  <div className="grid grid-cols-2 gap-[18px] max-[600px]:grid-cols-1">
+                    {sacramentos.map((s) => (
+                      <div
+                        key={s.title}
+                        className="flex flex-col gap-3 rounded-lg border border-border bg-white p-6"
+                      >
+                        <span className="grid h-12 w-12 place-items-center rounded-[13px] bg-blue font-display text-[20px] font-semibold text-white">
+                          {s.title.charAt(0).toUpperCase()}
+                        </span>
+                        <h4 className="font-display text-[20px] font-semibold">{s.title}</h4>
+                        <p className="text-[14px] leading-[1.45] text-muted">{s.detail}</p>
+                      </div>
+                    ))}
+                  </div>
+                </Reveal>
+              )}
+            </div>
+          </Container>
+        </section>
+      )}
     </>
   )
 }
