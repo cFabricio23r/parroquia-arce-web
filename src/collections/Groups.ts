@@ -5,6 +5,7 @@ import { slugField } from '../fields/slug'
 import { publishingFields } from '../fields/publishing'
 import { contactField } from '../fields/contact'
 import { teamField } from '../fields/team'
+import { perseveranceField } from '../fields/perseverance'
 
 /**
  * Group / Ministry. Organizado en tabs: la info del grupo, los datos de reunion
@@ -52,6 +53,8 @@ export const Groups: CollectionConfig = {
               admin: { description: 'Texto corto para las tarjetas del listado.' },
             },
             { name: 'description', type: 'richText', label: 'Descripción' },
+            { name: 'history', type: 'richText', label: 'Historia' },
+            perseveranceField(),
           ],
         },
         {

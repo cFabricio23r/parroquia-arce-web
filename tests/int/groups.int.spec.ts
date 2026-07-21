@@ -75,6 +75,35 @@ describe('Groups collection', () => {
     expect(doc.team?.[2]?.role).toBeFalsy()
   })
 
+  it('guarda perseverancia con etiqueta por defecto', async () => {
+    const doc = await payload.create({
+      collection: 'groups',
+      data: {
+        name: 'Legión de María',
+        slug: uniq('legion'),
+        status: 'published',
+        perseverance: { count: 45 },
+      },
+    })
+    created.push(doc.id)
+    expect(doc.perseverance?.count).toBe(45)
+    expect(doc.perseverance?.label).toBe('miembros que perseveran')
+  })
+
+  it('permite sobrescribir la etiqueta de perseverancia', async () => {
+    const doc = await payload.create({
+      collection: 'groups',
+      data: {
+        name: 'Pastoral Familiar',
+        slug: uniq('familiar'),
+        status: 'published',
+        perseverance: { count: 12, label: 'familias activas' },
+      },
+    })
+    created.push(doc.id)
+    expect(doc.perseverance?.label).toBe('familias activas')
+  })
+
   it('rechaza un integrante sin nombre', async () => {
     await expect(
       payload.create({

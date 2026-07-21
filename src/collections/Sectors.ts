@@ -6,6 +6,7 @@ import { publishingFields } from '../fields/publishing'
 import { contactField } from '../fields/contact'
 import { locationField } from '../fields/location'
 import { teamField } from '../fields/team'
+import { perseveranceField } from '../fields/perseverance'
 
 /**
  * Sector: la unidad territorial de la parroquia. Es la coleccion mas rica del
@@ -50,6 +51,7 @@ export const Sectors: CollectionConfig = {
             },
             { name: 'description', type: 'richText', label: 'Descripción' },
             { name: 'history', type: 'richText', label: 'Historia' },
+            perseveranceField(),
           ],
         },
         {

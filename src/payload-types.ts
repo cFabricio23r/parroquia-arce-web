@@ -338,6 +338,16 @@ export interface Sector {
     [k: string]: unknown;
   } | null;
   /**
+   * Cuántas personas perseveran hoy. Dejalo vacío si no lo llevan.
+   */
+  perseverance?: {
+    count?: number | null;
+    /**
+     * Ej.: familias, jóvenes, catequistas.
+     */
+    label?: string | null;
+  };
+  /**
    * Dónde queda. Las coordenadas alimentan el mapa.
    */
   location?: {
@@ -493,6 +503,31 @@ export interface Group {
     };
     [k: string]: unknown;
   } | null;
+  history?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Cuántas personas perseveran hoy. Dejalo vacío si no lo llevan.
+   */
+  perseverance?: {
+    count?: number | null;
+    /**
+     * Ej.: familias, jóvenes, catequistas.
+     */
+    label?: string | null;
+  };
   meeting?: {
     day?: string | null;
     time?: string | null;
@@ -878,6 +913,12 @@ export interface SectorsSelect<T extends boolean = true> {
   summary?: T;
   description?: T;
   history?: T;
+  perseverance?:
+    | T
+    | {
+        count?: T;
+        label?: T;
+      };
   location?:
     | T
     | {
@@ -953,6 +994,13 @@ export interface GroupsSelect<T extends boolean = true> {
   type?: T;
   summary?: T;
   description?: T;
+  history?: T;
+  perseverance?:
+    | T
+    | {
+        count?: T;
+        label?: T;
+      };
   meeting?:
     | T
     | {
