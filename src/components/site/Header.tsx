@@ -7,9 +7,8 @@ import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { Mark } from './Mark'
 
-const NAV = [
+const NAV_BASE = [
   { href: '/', label: 'Inicio' },
-  { href: '/horarios', label: 'Horarios' },
   { href: '/sectores', label: 'Sectores' },
   { href: '/grupos', label: 'Grupos' },
   { href: '/eventos', label: 'Eventos' },
@@ -17,6 +16,12 @@ const NAV = [
   { href: '/noticias', label: 'Noticias' },
   { href: '/contacto', label: 'Contacto' },
 ]
+
+/** El item de Horarios solo existe si la parroquia cargo horarios en el CMS. */
+const navFor = (hasSchedule: boolean) =>
+  hasSchedule
+    ? [NAV_BASE[0], { href: '/#misas', label: 'Horarios' }, ...NAV_BASE.slice(1)]
+    : NAV_BASE
 
 const PLATFORM_LABEL: Record<string, string> = {
   whatsapp: 'WhatsApp',
@@ -31,9 +36,11 @@ type HeaderProps = {
   channels?: TopbarChannel[]
   radioLive?: boolean
   brand?: { url: string | null; alt: string } | null
+  /** Requerida a proposito: sin default silencioso que decida por nosotros. */
+  hasSchedule: boolean
 }
 
-export function Header({ channels = [], radioLive = true, brand }: HeaderProps) {
+export function Header({ channels = [], radioLive = true, brand, hasSchedule }: HeaderProps) {
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
@@ -49,6 +56,7 @@ export function Header({ channels = [], radioLive = true, brand }: HeaderProps) 
   useEffect(() => setOpen(false), [pathname])
 
   const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href))
+  const nav = navFor(hasSchedule)
 
   return (
     <>
@@ -120,7 +128,7 @@ export function Header({ channels = [], radioLive = true, brand }: HeaderProps) 
             </Link>
 
             <nav className="mx-auto hidden items-center gap-[2px] lg:flex" aria-label="Principal">
-              {NAV.map((i) => (
+              {nav.map((i) => (
                 <Link
                   key={i.href}
                   href={i.href}
@@ -140,9 +148,11 @@ export function Header({ channels = [], radioLive = true, brand }: HeaderProps) 
               hoja, no en el atributo — `hidden` perdia y el CTA seguia visible
               bajo 1040px. ds.css:251 lo oculta ahi.
             */}
-            <div className="hidden lg:block">
-              <Button href="/horarios">Ver horarios</Button>
-            </div>
+            {hasSchedule && (
+              <div className="hidden lg:block">
+                <Button href="/#misas">Ver horarios</Button>
+              </div>
+            )}
 
             <button
               className="ml-auto grid h-[46px] w-[46px] place-items-center rounded-[11px] bg-blue-tint lg:hidden"
@@ -200,7 +210,7 @@ export function Header({ channels = [], radioLive = true, brand }: HeaderProps) 
           </svg>
         </button>
         <nav className="mt-[14px] flex flex-col gap-1" aria-label="Móvil">
-          {NAV.map((i) => (
+          {nav.map((i) => (
             <Link
               key={i.href}
               href={i.href}
@@ -213,9 +223,11 @@ export function Header({ channels = [], radioLive = true, brand }: HeaderProps) 
             </Link>
           ))}
         </nav>
-        <Button href="/horarios" block className="mt-[18px]">
-          Ver horarios de misa
-        </Button>
+        {hasSchedule && (
+          <Button href="/#misas" block className="mt-[18px]">
+            Ver horarios de misa
+          </Button>
+        )}
       </aside>
     </>
   )
