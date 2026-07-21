@@ -126,3 +126,28 @@
 .richtext strong {
   font-weight: 700;
 }
+
+/* Hover de tarjeta — ds.css:172. Elevacion, sombra y borde, los tres juntos.
+   El repo tenia dos tratamientos conviviendo; este es el unico correcto. Los 4
+   lugares que todavia usan el debil estan anotados como deuda en el vault. */
+.card-hover {
+  transition:
+    transform 0.16s,
+    box-shadow 0.2s,
+    border-color 0.2s;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-line-soft);
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-hover {
+    transition:
+      box-shadow 0.2s,
+      border-color 0.2s;
+  }
+  .card-hover:hover {
+    transform: none;
+  }
+}
