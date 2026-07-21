@@ -14,6 +14,19 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        // La pagina se retiro: su contenido era del demo y nunca lo confirmo la
+        // parroquia. Ver 2026-07-21-horarios-sin-datos-inventados-design.
+        // TEMPORAL a proposito (307): un 308 lo cachea el navegador de forma
+        // agresiva y este diseno contempla que /horarios pueda volver.
+        source: '/horarios',
+        destination: '/',
+        permanent: false,
+      },
+    ]
+  },
   webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {
       '.cjs': ['.cts', '.cjs'],

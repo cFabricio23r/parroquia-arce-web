@@ -10,10 +10,10 @@ describe('Button', () => {
   })
 
   it('renderiza un <a> cuando recibe href', () => {
-    render(<Button href="/horarios">Ver horarios</Button>)
-    const el = screen.getByRole('link', { name: 'Ver horarios' })
+    render(<Button href="/sectores">Ver sectores</Button>)
+    const el = screen.getByRole('link', { name: 'Ver sectores' })
     expect(el.tagName).toBe('A')
-    expect(el.getAttribute('href')).toBe('/horarios')
+    expect(el.getAttribute('href')).toBe('/sectores')
   })
 
   it('aplica la variante primary por defecto', () => {
