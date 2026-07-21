@@ -7,6 +7,9 @@ import config from '@/payload.config'
 import { Container } from '@/components/ui/Container'
 import { Badge } from '@/components/ui/Badge'
 import { MediaImage } from '@/components/news/MediaImage'
+import { PerseveranceStat } from '@/components/community/PerseveranceStat'
+import { TeamList } from '@/components/community/TeamList'
+import { PhotoGallery } from '@/components/community/PhotoGallery'
 
 export const revalidate = 300
 
@@ -47,8 +50,6 @@ export default async function SectorDetalle({ params }: { params: Promise<{ slug
   const item = await getSector(slug)
   if (!item) notFound()
 
-  const assistants = (item.assistants ?? []).map((a) => a.name).filter(Boolean)
-
   return (
     <article>
       <section
@@ -69,9 +70,19 @@ export default async function SectorDetalle({ params }: { params: Promise<{ slug
               <span className="text-text">{item.name}</span>
             </div>
             {item.number != null && <Badge variant="blue">Sector #{item.number}</Badge>}
-            <h1 className="mt-3 max-w-[24ch] text-balance font-display text-[clamp(34px,4.6vw,58px)] font-medium leading-[1.03]">
-              {item.name}
-            </h1>
+            <div className="mt-3 flex items-center gap-4">
+              {item.logo && typeof item.logo === 'object' && item.logo.url && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={item.logo.url}
+                  alt={item.logo.alt}
+                  className="h-16 w-16 shrink-0 object-contain max-[600px]:h-12 max-[600px]:w-12"
+                />
+              )}
+              <h1 className="max-w-[24ch] text-balance font-display text-[clamp(34px,4.6vw,58px)] font-medium leading-[1.03]">
+                {item.name}
+              </h1>
+            </div>
             {item.summary && (
               <p className="mt-4 max-w-[60ch] text-[19px] text-muted">{item.summary}</p>
             )}
@@ -106,6 +117,26 @@ export default async function SectorDetalle({ params }: { params: Promise<{ slug
                   </div>
                 </div>
               )}
+
+              {item.groupPhoto && typeof item.groupPhoto === 'object' && item.groupPhoto.url && (
+                <figure className="mt-10">
+                  <div className="overflow-hidden rounded-xl [aspect-ratio:16/10]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={item.groupPhoto.url}
+                      alt={item.groupPhoto.alt}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  {item.groupPhoto.caption && (
+                    <figcaption className="mt-2 text-[13.5px] text-muted">
+                      {item.groupPhoto.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              )}
+
+              <PhotoGallery images={item.gallery} />
             </div>
             <aside className="max-[980px]:order-first">
               <div className="rounded-xl border border-border bg-bg-soft p-6">
@@ -125,24 +156,13 @@ export default async function SectorDetalle({ params }: { params: Promise<{ slug
                       <dd className="mt-1">{item.location.address}</dd>
                     </div>
                   )}
-                  {item.responsibleName && (
-                    <div>
-                      <dt className="text-[12px] font-bold uppercase tracking-[.1em] text-muted">
-                        Responsable
-                      </dt>
-                      <dd className="mt-1">{item.responsibleName}</dd>
-                    </div>
-                  )}
-                  {assistants.length > 0 && (
-                    <div>
-                      <dt className="text-[12px] font-bold uppercase tracking-[.1em] text-muted">
-                        Colaboradores
-                      </dt>
-                      <dd className="mt-1">{assistants.join(', ')}</dd>
-                    </div>
-                  )}
                 </dl>
               </div>
+              <PerseveranceStat
+                count={item.perseverance?.count}
+                label={item.perseverance?.label}
+              />
+              <TeamList members={item.team} />
             </aside>
           </div>
           <div className="mt-12 border-t border-line-soft pt-6">
