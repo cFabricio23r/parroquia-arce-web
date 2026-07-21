@@ -5,6 +5,9 @@ import { slugField } from '../fields/slug'
 import { publishingFields } from '../fields/publishing'
 import { contactField } from '../fields/contact'
 import { locationField } from '../fields/location'
+import { teamField } from '../fields/team'
+import { perseveranceField } from '../fields/perseverance'
+import { galleryField } from '../fields/gallery'
 
 /**
  * Sector: la unidad territorial de la parroquia. Es la coleccion mas rica del
@@ -49,6 +52,17 @@ export const Sectors: CollectionConfig = {
             },
             { name: 'description', type: 'richText', label: 'Descripción' },
             { name: 'history', type: 'richText', label: 'Historia' },
+            perseveranceField(),
+            {
+              name: 'groups',
+              type: 'relationship',
+              relationTo: 'groups',
+              hasMany: true,
+              label: 'Grupos con presencia',
+              admin: {
+                description: 'Grupos y ministerios que trabajan en este sector.',
+              },
+            },
           ],
         },
         {
@@ -56,29 +70,66 @@ export const Sectors: CollectionConfig = {
           fields: [locationField()],
         },
         {
-          label: 'Responsables y contacto',
+          label: 'Equipo y contacto',
           fields: [
-            { name: 'responsibleName', type: 'text', label: 'Responsable' },
+            teamField(),
+            contactField(),
+            {
+              name: 'responsibleName',
+              type: 'text',
+              label: 'Responsable (campo viejo)',
+              admin: {
+                hidden: true,
+                description: 'Reemplazado por Equipo. Se borra en una obra aparte.',
+              },
+            },
             {
               name: 'assistants',
               type: 'array',
-              label: 'Colaboradores',
+              label: 'Colaboradores (campo viejo)',
               labels: { singular: 'Colaborador/a', plural: 'Colaboradores' },
+              admin: {
+                hidden: true,
+                description: 'Reemplazado por Equipo. Se borra en una obra aparte.',
+              },
               fields: [{ name: 'name', type: 'text', label: 'Nombre' }],
             },
-            contactField(),
+          ],
+        },
+        {
+          label: 'Fotos',
+          fields: [
+            {
+              name: 'logo',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Logo del sector',
+              admin: {
+                description: 'El isotipo o la imagen patronal. Se muestra junto al título.',
+              },
+            },
+            {
+              name: 'cover',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Imagen de portada',
+              admin: {
+                description: 'La imagen ancha de arriba y la de la tarjeta del listado.',
+              },
+            },
+            {
+              name: 'groupPhoto',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Foto de la comunidad',
+              admin: { description: 'La foto con la gente del sector.' },
+            },
+            galleryField(),
           ],
         },
       ],
     },
     // Sidebar
-    {
-      name: 'cover',
-      type: 'upload',
-      relationTo: 'media',
-      label: 'Imagen de portada',
-      admin: { position: 'sidebar' },
-    },
     {
       name: 'isFeatured',
       type: 'checkbox',

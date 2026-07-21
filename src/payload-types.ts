@@ -338,6 +338,20 @@ export interface Sector {
     [k: string]: unknown;
   } | null;
   /**
+   * Cuántas personas perseveran hoy. Dejalo vacío si no lo llevan.
+   */
+  perseverance?: {
+    count?: number | null;
+    /**
+     * Ej.: familias, jóvenes, catequistas.
+     */
+    label?: string | null;
+  };
+  /**
+   * Grupos y ministerios que trabajan en este sector.
+   */
+  groups?: (number | Group)[] | null;
+  /**
    * Dónde queda. Las coordenadas alimentan el mapa.
    */
   location?: {
@@ -350,10 +364,17 @@ export interface Sector {
      */
     coordinates?: [number, number] | null;
   };
-  responsibleName?: string | null;
-  assistants?:
+  /**
+   * El orden manda: poné primero a quien coordina. Se reordena arrastrando.
+   */
+  team?:
     | {
-        name?: string | null;
+        name: string;
+        /**
+         * Ej.: Coordinadora, Asistente, Tesorero.
+         */
+        role?: string | null;
+        photo?: (number | null) | Media;
         id?: string | null;
       }[]
     | null;
@@ -375,65 +396,39 @@ export interface Sector {
         }[]
       | null;
   };
+  /**
+   * Reemplazado por Equipo. Se borra en una obra aparte.
+   */
+  responsibleName?: string | null;
+  /**
+   * Reemplazado por Equipo. Se borra en una obra aparte.
+   */
+  assistants?:
+    | {
+        name?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * El isotipo o la imagen patronal. Se muestra junto al título.
+   */
+  logo?: (number | null) | Media;
+  /**
+   * La imagen ancha de arriba y la de la tarjeta del listado.
+   */
   cover?: (number | null) | Media;
+  /**
+   * La foto con la gente del sector.
+   */
+  groupPhoto?: (number | null) | Media;
+  /**
+   * Varias fotos. Se reordenan arrastrando. El pie de foto sale del campo "Pie de foto" de cada imagen.
+   */
+  gallery?: (number | Media)[] | null;
   /**
    * Destacar en la portada del sitio.
    */
   isFeatured?: boolean | null;
-  status: 'draft' | 'published' | 'archived';
-  /**
-   * Fecha que se muestra al publico.
-   */
-  publishedAt?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "chapels".
- */
-export interface Chapel {
-  id: number;
-  name: string;
-  /**
-   * Identificador para la URL. Solo minusculas, numeros y guiones.
-   */
-  slug: string;
-  sector: number | Sector;
-  patronOrDedication?: string | null;
-  description?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  /**
-   * Una línea por horario.
-   */
-  massSchedule?: string | null;
-  /**
-   * Dónde queda. Las coordenadas alimentan el mapa.
-   */
-  location?: {
-    address?: string | null;
-    /**
-     * Longitud, latitud.
-     *
-     * @minItems 2
-     * @maxItems 2
-     */
-    coordinates?: [number, number] | null;
-  };
-  cover?: (number | null) | Media;
   status: 'draft' | 'published' | 'archived';
   /**
    * Fecha que se muestra al publico.
@@ -473,6 +468,31 @@ export interface Group {
     };
     [k: string]: unknown;
   } | null;
+  history?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Cuántas personas perseveran hoy. Dejalo vacío si no lo llevan.
+   */
+  perseverance?: {
+    count?: number | null;
+    /**
+     * Ej.: familias, jóvenes, catequistas.
+     */
+    label?: string | null;
+  };
   meeting?: {
     day?: string | null;
     time?: string | null;
@@ -482,7 +502,129 @@ export interface Group {
    * Qué hacer para integrarse al grupo.
    */
   howToJoin?: string | null;
+  /**
+   * El orden manda: poné primero a quien coordina. Se reordena arrastrando.
+   */
+  team?:
+    | {
+        name: string;
+        /**
+         * Ej.: Coordinadora, Asistente, Tesorero.
+         */
+        role?: string | null;
+        photo?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Datos de contacto. Todos opcionales.
+   */
+  contact?: {
+    phone?: string | null;
+    whatsapp?: string | null;
+    email?: string | null;
+    /**
+     * Facebook, YouTube, Instagram, etc.
+     */
+    socialLinks?:
+      | {
+          platform?: ('facebook' | 'youtube' | 'instagram' | 'whatsapp' | 'otro') | null;
+          url?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Reemplazado por Equipo. Se borra en una obra aparte.
+   */
   coordinatorName?: string | null;
+  /**
+   * El isotipo del grupo. Se muestra junto al título.
+   */
+  logo?: (number | null) | Media;
+  /**
+   * La imagen ancha de arriba y la de la tarjeta del listado.
+   */
+  cover?: (number | null) | Media;
+  /**
+   * La foto con los miembros.
+   */
+  groupPhoto?: (number | null) | Media;
+  /**
+   * Varias fotos. Se reordenan arrastrando. El pie de foto sale del campo "Pie de foto" de cada imagen.
+   */
+  gallery?: (number | Media)[] | null;
+  /**
+   * Destacar en la portada del sitio.
+   */
+  isFeatured?: boolean | null;
+  status: 'draft' | 'published' | 'archived';
+  /**
+   * Fecha que se muestra al publico.
+   */
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "chapels".
+ */
+export interface Chapel {
+  id: number;
+  name: string;
+  /**
+   * Identificador para la URL. Solo minusculas, numeros y guiones.
+   */
+  slug: string;
+  sector: number | Sector;
+  patronOrDedication?: string | null;
+  /**
+   * Sin año: se repiten todos los años. Se muestran en este orden.
+   */
+  patronalFeasts?:
+    | {
+        /**
+         * Ej.: Fiesta principal, Novena, Procesión.
+         */
+        name: string;
+        day: number;
+        month: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
+        id?: string | null;
+      }[]
+    | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Una línea por horario.
+   */
+  massSchedule?: string | null;
+  /**
+   * Dónde queda. Las coordenadas alimentan el mapa.
+   */
+  location?: {
+    address?: string | null;
+    /**
+     * Longitud, latitud.
+     *
+     * @minItems 2
+     * @maxItems 2
+     */
+    coordinates?: [number, number] | null;
+  };
   /**
    * Datos de contacto. Todos opcionales.
    */
@@ -502,10 +644,6 @@ export interface Group {
       | null;
   };
   cover?: (number | null) | Media;
-  /**
-   * Destacar en la portada del sitio.
-   */
-  isFeatured?: boolean | null;
   status: 'draft' | 'published' | 'archived';
   /**
    * Fecha que se muestra al publico.
@@ -841,17 +979,25 @@ export interface SectorsSelect<T extends boolean = true> {
   summary?: T;
   description?: T;
   history?: T;
+  perseverance?:
+    | T
+    | {
+        count?: T;
+        label?: T;
+      };
+  groups?: T;
   location?:
     | T
     | {
         address?: T;
         coordinates?: T;
       };
-  responsibleName?: T;
-  assistants?:
+  team?:
     | T
     | {
         name?: T;
+        role?: T;
+        photo?: T;
         id?: T;
       };
   contact?:
@@ -868,7 +1014,17 @@ export interface SectorsSelect<T extends boolean = true> {
               id?: T;
             };
       };
+  responsibleName?: T;
+  assistants?:
+    | T
+    | {
+        name?: T;
+        id?: T;
+      };
+  logo?: T;
   cover?: T;
+  groupPhoto?: T;
+  gallery?: T;
   isFeatured?: T;
   status?: T;
   publishedAt?: T;
@@ -884,6 +1040,14 @@ export interface ChapelsSelect<T extends boolean = true> {
   slug?: T;
   sector?: T;
   patronOrDedication?: T;
+  patronalFeasts?:
+    | T
+    | {
+        name?: T;
+        day?: T;
+        month?: T;
+        id?: T;
+      };
   description?: T;
   massSchedule?: T;
   location?:
@@ -891,6 +1055,20 @@ export interface ChapelsSelect<T extends boolean = true> {
     | {
         address?: T;
         coordinates?: T;
+      };
+  contact?:
+    | T
+    | {
+        phone?: T;
+        whatsapp?: T;
+        email?: T;
+        socialLinks?:
+          | T
+          | {
+              platform?: T;
+              url?: T;
+              id?: T;
+            };
       };
   cover?: T;
   status?: T;
@@ -908,6 +1086,13 @@ export interface GroupsSelect<T extends boolean = true> {
   type?: T;
   summary?: T;
   description?: T;
+  history?: T;
+  perseverance?:
+    | T
+    | {
+        count?: T;
+        label?: T;
+      };
   meeting?:
     | T
     | {
@@ -916,7 +1101,14 @@ export interface GroupsSelect<T extends boolean = true> {
         place?: T;
       };
   howToJoin?: T;
-  coordinatorName?: T;
+  team?:
+    | T
+    | {
+        name?: T;
+        role?: T;
+        photo?: T;
+        id?: T;
+      };
   contact?:
     | T
     | {
@@ -931,7 +1123,11 @@ export interface GroupsSelect<T extends boolean = true> {
               id?: T;
             };
       };
+  coordinatorName?: T;
+  logo?: T;
   cover?: T;
+  groupPhoto?: T;
+  gallery?: T;
   isFeatured?: T;
   status?: T;
   publishedAt?: T;

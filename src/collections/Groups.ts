@@ -4,6 +4,9 @@ import { canManageContent } from '../access/roles'
 import { slugField } from '../fields/slug'
 import { publishingFields } from '../fields/publishing'
 import { contactField } from '../fields/contact'
+import { teamField } from '../fields/team'
+import { perseveranceField } from '../fields/perseverance'
+import { galleryField } from '../fields/gallery'
 
 /**
  * Group / Ministry. Organizado en tabs: la info del grupo, los datos de reunion
@@ -51,6 +54,8 @@ export const Groups: CollectionConfig = {
               admin: { description: 'Texto corto para las tarjetas del listado.' },
             },
             { name: 'description', type: 'richText', label: 'Descripción' },
+            { name: 'history', type: 'richText', label: 'Historia' },
+            perseveranceField(),
           ],
         },
         {
@@ -80,20 +85,51 @@ export const Groups: CollectionConfig = {
           ],
         },
         {
-          label: 'Contacto',
+          label: 'Equipo y contacto',
           fields: [
-            { name: 'coordinatorName', type: 'text', label: 'Coordinador/a' },
+            teamField(),
             contactField(),
+            {
+              name: 'coordinatorName',
+              type: 'text',
+              label: 'Coordinador/a (campo viejo)',
+              admin: {
+                hidden: true,
+                description: 'Reemplazado por Equipo. Se borra en una obra aparte.',
+              },
+            },
+          ],
+        },
+        {
+          label: 'Fotos',
+          fields: [
+            {
+              name: 'logo',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Logo del grupo',
+              admin: { description: 'El isotipo del grupo. Se muestra junto al título.' },
+            },
+            {
+              name: 'cover',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Imagen de portada',
+              admin: {
+                description: 'La imagen ancha de arriba y la de la tarjeta del listado.',
+              },
+            },
+            {
+              name: 'groupPhoto',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Foto del grupo',
+              admin: { description: 'La foto con los miembros.' },
+            },
+            galleryField(),
           ],
         },
       ],
-    },
-    {
-      name: 'cover',
-      type: 'upload',
-      relationTo: 'media',
-      label: 'Imagen de portada',
-      admin: { position: 'sidebar' },
     },
     {
       name: 'isFeatured',
