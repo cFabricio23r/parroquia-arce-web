@@ -53,6 +53,16 @@ export const Sectors: CollectionConfig = {
             { name: 'description', type: 'richText', label: 'Descripción' },
             { name: 'history', type: 'richText', label: 'Historia' },
             perseveranceField(),
+            {
+              name: 'groups',
+              type: 'relationship',
+              relationTo: 'groups',
+              hasMany: true,
+              label: 'Grupos con presencia',
+              admin: {
+                description: 'Grupos y ministerios que trabajan en este sector.',
+              },
+            },
           ],
         },
         {

@@ -348,6 +348,10 @@ export interface Sector {
     label?: string | null;
   };
   /**
+   * Grupos y ministerios que trabajan en este sector.
+   */
+  groups?: (number | Group)[] | null;
+  /**
    * Dónde queda. Las coordenadas alimentan el mapa.
    */
   location?: {
@@ -425,92 +429,6 @@ export interface Sector {
    * Destacar en la portada del sitio.
    */
   isFeatured?: boolean | null;
-  status: 'draft' | 'published' | 'archived';
-  /**
-   * Fecha que se muestra al publico.
-   */
-  publishedAt?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "chapels".
- */
-export interface Chapel {
-  id: number;
-  name: string;
-  /**
-   * Identificador para la URL. Solo minusculas, numeros y guiones.
-   */
-  slug: string;
-  sector: number | Sector;
-  patronOrDedication?: string | null;
-  /**
-   * Sin año: se repiten todos los años. Se muestran en este orden.
-   */
-  patronalFeasts?:
-    | {
-        /**
-         * Ej.: Fiesta principal, Novena, Procesión.
-         */
-        name: string;
-        day: number;
-        month: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
-        id?: string | null;
-      }[]
-    | null;
-  description?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  /**
-   * Una línea por horario.
-   */
-  massSchedule?: string | null;
-  /**
-   * Dónde queda. Las coordenadas alimentan el mapa.
-   */
-  location?: {
-    address?: string | null;
-    /**
-     * Longitud, latitud.
-     *
-     * @minItems 2
-     * @maxItems 2
-     */
-    coordinates?: [number, number] | null;
-  };
-  /**
-   * Datos de contacto. Todos opcionales.
-   */
-  contact?: {
-    phone?: string | null;
-    whatsapp?: string | null;
-    email?: string | null;
-    /**
-     * Facebook, YouTube, Instagram, etc.
-     */
-    socialLinks?:
-      | {
-          platform?: ('facebook' | 'youtube' | 'instagram' | 'whatsapp' | 'otro') | null;
-          url?: string | null;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  cover?: (number | null) | Media;
   status: 'draft' | 'published' | 'archived';
   /**
    * Fecha que se muestra al publico.
@@ -640,6 +558,92 @@ export interface Group {
    * Destacar en la portada del sitio.
    */
   isFeatured?: boolean | null;
+  status: 'draft' | 'published' | 'archived';
+  /**
+   * Fecha que se muestra al publico.
+   */
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "chapels".
+ */
+export interface Chapel {
+  id: number;
+  name: string;
+  /**
+   * Identificador para la URL. Solo minusculas, numeros y guiones.
+   */
+  slug: string;
+  sector: number | Sector;
+  patronOrDedication?: string | null;
+  /**
+   * Sin año: se repiten todos los años. Se muestran en este orden.
+   */
+  patronalFeasts?:
+    | {
+        /**
+         * Ej.: Fiesta principal, Novena, Procesión.
+         */
+        name: string;
+        day: number;
+        month: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
+        id?: string | null;
+      }[]
+    | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Una línea por horario.
+   */
+  massSchedule?: string | null;
+  /**
+   * Dónde queda. Las coordenadas alimentan el mapa.
+   */
+  location?: {
+    address?: string | null;
+    /**
+     * Longitud, latitud.
+     *
+     * @minItems 2
+     * @maxItems 2
+     */
+    coordinates?: [number, number] | null;
+  };
+  /**
+   * Datos de contacto. Todos opcionales.
+   */
+  contact?: {
+    phone?: string | null;
+    whatsapp?: string | null;
+    email?: string | null;
+    /**
+     * Facebook, YouTube, Instagram, etc.
+     */
+    socialLinks?:
+      | {
+          platform?: ('facebook' | 'youtube' | 'instagram' | 'whatsapp' | 'otro') | null;
+          url?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  cover?: (number | null) | Media;
   status: 'draft' | 'published' | 'archived';
   /**
    * Fecha que se muestra al publico.
@@ -981,6 +985,7 @@ export interface SectorsSelect<T extends boolean = true> {
         count?: T;
         label?: T;
       };
+  groups?: T;
   location?:
     | T
     | {

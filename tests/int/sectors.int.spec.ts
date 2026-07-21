@@ -78,4 +78,34 @@ describe('Sectors collection', () => {
     expect(doc.team).toHaveLength(2)
     expect(doc.team?.[0]?.name).toBe('Carlos Rivas')
   })
+
+  it('enlaza grupos con presencia en el sector', async () => {
+    const grupo = await payload.create({
+      collection: 'groups',
+      data: { name: 'Grupo del sector', slug: uniq('grupo-sector'), status: 'published' },
+    })
+
+    // try/finally y no un `delete` al final del test: si la asercion falla, el
+    // grupo quedaria publicado para siempre en la base, que es la MISMA que la
+    // de produccion.
+    try {
+      const doc = await payload.create({
+        collection: 'sectors',
+        data: {
+          name: 'Sector con grupos',
+          slug: uniq('sector-grupos'),
+          status: 'published',
+          groups: [grupo.id],
+        },
+      })
+      created.push(doc.id)
+
+      const found = await payload.findByID({ collection: 'sectors', id: doc.id, depth: 1 })
+      const first = found.groups?.[0]
+      const id = typeof first === 'object' && first ? first.id : first
+      expect(id).toBe(grupo.id)
+    } finally {
+      await payload.delete({ collection: 'groups', id: grupo.id }).catch(() => {})
+    }
+  })
 })
