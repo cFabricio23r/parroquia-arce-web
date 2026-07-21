@@ -88,3 +88,69 @@ export function parishNow(date: Date = new Date()): Clock {
 export function dayBefore(day: Day): Day {
   return DAYS[(DAYS.indexOf(day) + DAYS.length - 1) % DAYS.length]
 }
+
+/** Lo minimo que necesita la logica de horarios de un programa. */
+export type ProgramLike = {
+  dayOfWeek?: string | null
+  startTime?: string | null
+  endTime?: string | null
+}
+
+function matchesDay(program: ProgramLike, day: Day): boolean {
+  return program.dayOfWeek === 'diario' || program.dayOfWeek === day
+}
+
+/**
+ * Cuanto dura un programa al que no le cargaron hora de fin.
+ *
+ * Ninguno de los programas del CMS tenia `endTime` (verificado 2026-07-21: los 6
+ * publicados solo tienen hora de inicio). Sin un respaldo, `isOnAir` devolveria
+ * siempre false y el heroe diria "Música católica" las 24 horas. Con 60 minutos la
+ * radio funciona apenas se cargan los inicios, y la parroquia afina despues los
+ * programas que duren distinto.
+ */
+export const DEFAULT_DURATION_MINUTES = 60
+
+const MINUTES_PER_DAY = 24 * 60
+
+/** El fin real de un programa: el cargado, o una hora despues del inicio. */
+function windowOf(program: ProgramLike): { start: number; end: number } | null {
+  const start = toMinutes(program.startTime)
+  if (start === null) return null
+  const end = toMinutes(program.endTime)
+  // `end === start` es un dato mal cargado; se trata igual que si faltara.
+  if (end === null || end === start) {
+    return { start, end: (start + DEFAULT_DURATION_MINUTES) % MINUTES_PER_DAY }
+  }
+  return { start, end }
+}
+
+/**
+ * Si la ventana del programa contiene ese momento.
+ *
+ * `fin > inicio` es una ventana normal del mismo dia. `fin < inicio` significa que
+ * cruza medianoche (23:00-01:00): sigue vigente en la madrugada del dia siguiente.
+ * Un programa que arranca 23:30 y toma la duracion por defecto cae solo en ese
+ * caso, porque el modulo lo hace dar la vuelta.
+ *
+ * El inicio es inclusivo y el fin exclusivo: a las 07:00 en punto el programa de
+ * 06:00-07:00 ya termino y el de 07:00-08:00 ya empezo. Sin solapamiento.
+ */
+export function isOnAir(program: ProgramLike, now: Clock): boolean {
+  const slot = windowOf(program)
+  if (slot === null) return false
+  const { start, end } = slot
+
+  if (end > start) {
+    return matchesDay(program, now.day) && now.minutes >= start && now.minutes < end
+  }
+
+  const startedOnItsDay = matchesDay(program, now.day) && now.minutes >= start
+  const spillsIntoToday = matchesDay(program, dayBefore(now.day)) && now.minutes < end
+  return startedOnItsDay || spillsIntoToday
+}
+
+/** El programa al aire, o null si estamos en un hueco (ahi suena musica). */
+export function findCurrentProgram<T extends ProgramLike>(programs: T[], now: Clock): T | null {
+  return programs.find((program) => isOnAir(program, now)) ?? null
+}

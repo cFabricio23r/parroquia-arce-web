@@ -2,11 +2,21 @@ import { describe, it, expect } from 'vitest'
 import {
   DAYS,
   dayBefore,
+  findCurrentProgram,
   formatTime12h,
+  isOnAir,
   isValidTime,
   parishNow,
   toMinutes,
 } from '@/lib/radio-schedule'
+
+// `endTime` es opcional a proposito: en el CMS real ningun programa lo tiene.
+const prog = (
+  dayOfWeek: string,
+  startTime: string,
+  endTime: string | null = null,
+  title = 'X',
+) => ({ title, dayOfWeek, startTime, endTime })
 
 describe('isValidTime', () => {
   it('acepta horas validas en 24 h', () => {
@@ -99,5 +109,82 @@ describe('dayBefore', () => {
   it('cubre los 7 dias sin agujeros', () => {
     expect(DAYS).toHaveLength(7)
     expect(new Set(DAYS.map(dayBefore)).size).toBe(7)
+  })
+})
+
+describe('isOnAir', () => {
+  it('esta al aire dentro de su ventana, en su dia', () => {
+    expect(isOnAir(prog('martes', '06:00', '07:00'), { day: 'martes', minutes: 390 })).toBe(true)
+  })
+
+  it('no esta al aire el dia equivocado', () => {
+    expect(isOnAir(prog('martes', '06:00', '07:00'), { day: 'lunes', minutes: 390 })).toBe(false)
+  })
+
+  it('justo en la hora de inicio YA cuenta', () => {
+    expect(isOnAir(prog('martes', '06:00', '07:00'), { day: 'martes', minutes: 360 })).toBe(true)
+  })
+
+  it('justo en la hora de fin YA NO cuenta', () => {
+    expect(isOnAir(prog('martes', '06:00', '07:00'), { day: 'martes', minutes: 420 })).toBe(false)
+  })
+
+  it('un programa "diario" suena cualquier dia', () => {
+    expect(isOnAir(prog('diario', '06:00', '07:00'), { day: 'domingo', minutes: 390 })).toBe(true)
+  })
+
+  it('un programa que cruza medianoche sigue al aire en la madrugada siguiente', () => {
+    const nocturno = prog('sabado', '23:00', '01:00')
+    expect(isOnAir(nocturno, { day: 'sabado', minutes: 23 * 60 + 30 })).toBe(true)
+    expect(isOnAir(nocturno, { day: 'domingo', minutes: 30 })).toBe(true)
+    expect(isOnAir(nocturno, { day: 'domingo', minutes: 90 })).toBe(false)
+  })
+
+  it('descarta un programa sin hora de inicio utilizable', () => {
+    expect(isOnAir(prog('martes', '6:00 a.m.', '07:00'), { day: 'martes', minutes: 390 })).toBe(false)
+  })
+})
+
+describe('isOnAir — duracion por defecto', () => {
+  // Ninguno de los 6 programas del CMS tiene hora de fin (verificado 2026-07-21).
+  it('sin hora de fin, el programa dura una hora', () => {
+    const sinFin = prog('diario', '06:00')
+    expect(isOnAir(sinFin, { day: 'martes', minutes: 6 * 60 })).toBe(true)
+    expect(isOnAir(sinFin, { day: 'martes', minutes: 6 * 60 + 59 })).toBe(true)
+    expect(isOnAir(sinFin, { day: 'martes', minutes: 7 * 60 })).toBe(false)
+  })
+
+  it('trata un fin igual al inicio como si faltara', () => {
+    expect(isOnAir(prog('martes', '06:00', '06:00'), { day: 'martes', minutes: 390 })).toBe(true)
+  })
+
+  it('trata un fin mal escrito como si faltara', () => {
+    expect(isOnAir(prog('martes', '06:00', '7 en punto'), { day: 'martes', minutes: 390 })).toBe(true)
+  })
+
+  it('da la vuelta a medianoche cuando el inicio es tarde', () => {
+    const tardio = prog('sabado', '23:30')
+    expect(isOnAir(tardio, { day: 'sabado', minutes: 23 * 60 + 45 })).toBe(true)
+    expect(isOnAir(tardio, { day: 'domingo', minutes: 15 })).toBe(true)
+    expect(isOnAir(tardio, { day: 'domingo', minutes: 45 })).toBe(false)
+  })
+})
+
+describe('findCurrentProgram', () => {
+  it('devuelve el programa que corresponde a ese momento', () => {
+    const programas = [
+      prog('martes', '06:00', '07:00', 'Evangelio'),
+      prog('martes', '07:00', '08:00', 'Sector'),
+    ]
+    expect(findCurrentProgram(programas, { day: 'martes', minutes: 420 })?.title).toBe('Sector')
+  })
+
+  it('devuelve null en el hueco entre programas — ahi suena musica', () => {
+    const programas = [prog('martes', '06:00', '07:00', 'Evangelio')]
+    expect(findCurrentProgram(programas, { day: 'martes', minutes: 600 })).toBeNull()
+  })
+
+  it('devuelve null si no hay programacion cargada', () => {
+    expect(findCurrentProgram([], { day: 'martes', minutes: 600 })).toBeNull()
   })
 })
