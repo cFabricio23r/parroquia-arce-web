@@ -1,5 +1,12 @@
 import { describe, it, expect } from 'vitest'
-import { isValidTime, toMinutes, formatTime12h } from '@/lib/radio-schedule'
+import {
+  DAYS,
+  dayBefore,
+  formatTime12h,
+  isValidTime,
+  parishNow,
+  toMinutes,
+} from '@/lib/radio-schedule'
 
 describe('isValidTime', () => {
   it('acepta horas validas en 24 h', () => {
@@ -51,5 +58,46 @@ describe('formatTime12h', () => {
 
   it('devuelve vacio si el dato esta mal, en vez de romper', () => {
     expect(formatTime12h('6:00 a.m.')).toBe('')
+  })
+})
+
+describe('parishNow', () => {
+  // El Salvador es UTC-6 todo el año (sin horario de verano, verificado).
+  it('traduce un instante UTC a dia y minutos de El Salvador', () => {
+    expect(parishNow(new Date('2026-07-21T12:00:00Z'))).toEqual({
+      day: 'martes',
+      minutes: 6 * 60,
+    })
+  })
+
+  it('cruza al dia siguiente en la medianoche local, no en la UTC', () => {
+    expect(parishNow(new Date('2026-07-22T06:00:00Z'))).toEqual({
+      day: 'miercoles',
+      minutes: 0,
+    })
+  })
+
+  it('ignora el huso del visitante: el mismo instante da el mismo resultado', () => {
+    const instante = new Date('2026-07-22T06:30:00Z')
+    expect(parishNow(instante)).toEqual({ day: 'miercoles', minutes: 30 })
+  })
+
+  it('mapea el domingo, que es el indice 0', () => {
+    expect(parishNow(new Date('2026-07-19T18:00:00Z')).day).toBe('domingo')
+  })
+})
+
+describe('dayBefore', () => {
+  it('retrocede un dia', () => {
+    expect(dayBefore('martes')).toBe('lunes')
+  })
+
+  it('da la vuelta del domingo al sabado', () => {
+    expect(dayBefore('domingo')).toBe('sabado')
+  })
+
+  it('cubre los 7 dias sin agujeros', () => {
+    expect(DAYS).toHaveLength(7)
+    expect(new Set(DAYS.map(dayBefore)).size).toBe(7)
   })
 })
