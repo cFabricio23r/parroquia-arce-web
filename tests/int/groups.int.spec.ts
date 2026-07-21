@@ -129,7 +129,10 @@ describe('Groups collection', () => {
           name: 'Sin nombre',
           slug: uniq('sin-nombre'),
           status: 'draft',
-          team: [{ role: 'Coordinadora' }],
+          // El tipo generado exige `name`. Lo forzamos a proposito: lo que se
+          // esta probando es que Payload lo rechaza en runtime, no en tiempo
+          // de compilacion.
+          team: [{ role: 'Coordinadora' } as { name: string; role: string }],
         },
       }),
     ).rejects.toThrow()
