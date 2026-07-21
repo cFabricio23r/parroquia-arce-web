@@ -1,11 +1,24 @@
 import type { Media } from '@/payload-types'
 import type { Variant } from '@/components/ui/Badge'
 
-/** Los mismos pares tinte/texto que usa `Badge` (ds.css:132-135). */
+/**
+ * Solo el FONDO sale de los tintes de `Badge` (ds.css:132-135). La letra va
+ * siempre en `navy`, y no en el color de acento que usa `Badge`.
+ *
+ * Por que: los pares de `Badge` no llegan a WCAG AA para este tamano.
+ * Verificado — `sky-tint`/`sky` da 3.11:1 y `amber-soft`/`#B96E12` da 3.26:1,
+ * cuando el monograma (21px, peso 600) exige 4.5:1; el piso de "texto grande"
+ * (3:1) pide 24px, o 18.66px en peso 700, y este no califica. Con `navy` los
+ * tres tintes quedan entre 13:1 y 15:1.
+ *
+ * `Badge` sigue con sus pares originales a 12.5px: arreglarlo es otra obra, y
+ * esta no lo toca. Lo que no se hace es propagar el problema a un elemento mas
+ * grande.
+ */
 const tints: Record<Variant, string> = {
-  blue: 'bg-blue-tint text-blue',
-  sky: 'bg-sky-tint text-sky',
-  amber: 'bg-amber-soft text-[#B96E12]',
+  blue: 'bg-blue-tint text-navy',
+  sky: 'bg-sky-tint text-navy',
+  amber: 'bg-amber-soft text-navy',
   live: 'bg-amber text-white',
 }
 
