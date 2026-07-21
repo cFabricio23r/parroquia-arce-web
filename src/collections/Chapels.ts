@@ -4,6 +4,8 @@ import { canManageContent } from '../access/roles'
 import { slugField } from '../fields/slug'
 import { publishingFields } from '../fields/publishing'
 import { locationField } from '../fields/location'
+import { contactField } from '../fields/contact'
+import { patronalFeastsField } from '../fields/patronalFeasts'
 
 /**
  * Chapel / Ermita. Pertenece a un sector (relationship required). El DATA_MODEL
@@ -34,6 +36,7 @@ export const Chapels: CollectionConfig = {
       label: 'Sector',
     },
     { name: 'patronOrDedication', type: 'text', label: 'Patrono / advocación' },
+    patronalFeastsField(),
     { name: 'description', type: 'richText', label: 'Descripción' },
     {
       name: 'massSchedule',
@@ -42,6 +45,7 @@ export const Chapels: CollectionConfig = {
       admin: { description: 'Una línea por horario.' },
     },
     locationField(),
+    contactField(),
     {
       name: 'cover',
       type: 'upload',

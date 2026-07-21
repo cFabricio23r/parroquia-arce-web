@@ -446,6 +446,20 @@ export interface Chapel {
   slug: string;
   sector: number | Sector;
   patronOrDedication?: string | null;
+  /**
+   * Sin año: se repiten todos los años. Se muestran en este orden.
+   */
+  patronalFeasts?:
+    | {
+        /**
+         * Ej.: Fiesta principal, Novena, Procesión.
+         */
+        name: string;
+        day: number;
+        month: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
+        id?: string | null;
+      }[]
+    | null;
   description?: {
     root: {
       type: string;
@@ -477,6 +491,24 @@ export interface Chapel {
      * @maxItems 2
      */
     coordinates?: [number, number] | null;
+  };
+  /**
+   * Datos de contacto. Todos opcionales.
+   */
+  contact?: {
+    phone?: string | null;
+    whatsapp?: string | null;
+    email?: string | null;
+    /**
+     * Facebook, YouTube, Instagram, etc.
+     */
+    socialLinks?:
+      | {
+          platform?: ('facebook' | 'youtube' | 'instagram' | 'whatsapp' | 'otro') | null;
+          url?: string | null;
+          id?: string | null;
+        }[]
+      | null;
   };
   cover?: (number | null) | Media;
   status: 'draft' | 'published' | 'archived';
@@ -1003,6 +1035,14 @@ export interface ChapelsSelect<T extends boolean = true> {
   slug?: T;
   sector?: T;
   patronOrDedication?: T;
+  patronalFeasts?:
+    | T
+    | {
+        name?: T;
+        day?: T;
+        month?: T;
+        id?: T;
+      };
   description?: T;
   massSchedule?: T;
   location?:
@@ -1010,6 +1050,20 @@ export interface ChapelsSelect<T extends boolean = true> {
     | {
         address?: T;
         coordinates?: T;
+      };
+  contact?:
+    | T
+    | {
+        phone?: T;
+        whatsapp?: T;
+        email?: T;
+        socialLinks?:
+          | T
+          | {
+              platform?: T;
+              url?: T;
+              id?: T;
+            };
       };
   cover?: T;
   status?: T;
