@@ -13,8 +13,14 @@ describe('Chapels — fiestas y contacto', () => {
   })
   afterAll(async () => {
     // Borrar en orden inverso para no violar la relacion sector -> ermita.
+    // NO se silencian los fallos: la base de tests es la MISMA que la de
+    // produccion, y un borrado que falla en silencio deja basura para siempre.
     for (const { collection, id } of cleanup.reverse()) {
-      await payload.delete({ collection: collection as never, id }).catch(() => {})
+      try {
+        await payload.delete({ collection: collection as never, id })
+      } catch (e) {
+        console.error(`[cleanup] no se pudo borrar ${collection}/${id}:`, (e as Error).message)
+      }
     }
   })
 
@@ -56,8 +62,14 @@ describe('Chapels — fiestas y contacto', () => {
     })
     cleanup.push({ collection: 'sectors', id: sector.id })
 
-    await expect(
-      payload.create({
+    // No se usa `rejects.toThrow()` a proposito: si Payload NO rechaza, ese
+    // helper falla la asercion y el documento recien creado queda huerfano en la
+    // base de produccion (paso de verdad en la corrida en rojo de este test).
+    // Aca se captura el id primero y se registra para borrado, y recien despues
+    // se asierta.
+    let createdId: string | number | undefined
+    try {
+      const bad = await payload.create({
         collection: 'chapels',
         data: {
           name: 'Ermita mala',
@@ -66,7 +78,13 @@ describe('Chapels — fiestas y contacto', () => {
           status: 'draft',
           patronalFeasts: [{ name: 'Imposible', day: 45, month: '12' }],
         },
-      }),
-    ).rejects.toThrow()
+      })
+      createdId = bad.id
+      cleanup.push({ collection: 'chapels', id: bad.id })
+    } catch {
+      // Esperado: el dia esta fuera de rango.
+    }
+
+    expect(createdId, 'Payload aceptó un día fuera de rango').toBeUndefined()
   })
 })
