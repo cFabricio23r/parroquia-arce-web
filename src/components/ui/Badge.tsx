@@ -1,6 +1,6 @@
 import React from 'react'
 
-type Variant = 'blue' | 'sky' | 'amber' | 'live'
+export type Variant = 'blue' | 'sky' | 'amber' | 'live'
 
 /** ds.css:131 */
 const base =
