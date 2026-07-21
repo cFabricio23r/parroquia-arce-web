@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { getPayload } from 'payload'
+import config from '@/payload.config'
 import { Container } from '@/components/ui/Container'
 import { PageHero } from '@/components/site/PageHero'
 import { ContactForm } from '@/components/site/ContactForm'
@@ -6,22 +8,41 @@ import { Reveal } from '@/components/news/Reveal'
 
 export const metadata: Metadata = { title: 'Contacto' }
 
-// Contenido estatico portado del demo (web/content/contacto.html).
-// TODO: reemplazar los href="#" de los canales por las URLs oficiales reales.
+// Los canales oficiales y el horario de oficina se leen del global `contact`,
+// editable desde /admin (Configuración → Contacto). Sin datos cargados, cada
+// bloque cae a un placeholder para que la pagina nunca quede rota.
 
-const canales = [
-  ['WhatsApp oficial', 'Consultas pastorales y sacramentos', 'var(--color-ok)'],
-  ['Facebook', 'Avisos, transmisiones y comunidad', '#1877F2'],
-  ['YouTube', 'Misas, homilías y formación', '#FF0000'],
-]
+const PLATFORM_META: Record<string, { label: string; description: string; color: string }> = {
+  whatsapp: {
+    label: 'WhatsApp oficial',
+    description: 'Consultas pastorales y sacramentos',
+    color: 'var(--color-ok)',
+  },
+  facebook: { label: 'Facebook', description: 'Avisos, transmisiones y comunidad', color: '#1877F2' },
+  youtube: { label: 'YouTube', description: 'Misas, homilías y formación', color: '#FF0000' },
+  instagram: { label: 'Instagram', description: 'Comunidad y momentos de la parroquia', color: '#E4405F' },
+}
 
-const horario = [
-  ['Martes a sábado', '9:00 a.m. – 12:00 m.'],
-  ['Tarde (mar–sáb)', '2:00 – 5:00 p.m.'],
-  ['Domingo y lunes', 'Cerrado'],
-]
+export default async function ContactoPage() {
+  const payload = await getPayload({ config: await config })
+  const contact = await payload.findGlobal({ slug: 'contact' })
 
-export default function ContactoPage() {
+  const canales = (contact.channels ?? [])
+    .filter((c): c is typeof c & { platform: string; url: string } => !!c.platform && !!c.url)
+    .map((c) => {
+      const meta = PLATFORM_META[c.platform]
+      return {
+        title: meta?.label ?? c.platform,
+        text: c.label || meta?.description || '',
+        color: meta?.color ?? 'var(--color-blue)',
+        url: c.url,
+      }
+    })
+
+  const horario = (contact.officeHours ?? [])
+    .filter((h) => h.label || h.hours)
+    .map((h) => [h.label ?? '', h.hours ?? ''] as const)
+
   return (
     <>
       <PageHero
@@ -35,28 +56,32 @@ export default function ContactoPage() {
         <Container>
           <div className="grid grid-cols-[1fr_1.1fr] items-start gap-10 max-[1040px]:grid-cols-1">
             <Reveal className="flex flex-col gap-[14px]">
-              <div className="flex flex-col gap-[14px]">
-                {canales.map(([title, text, color]) => (
-                  <a
-                    key={title}
-                    href="#"
-                    className="flex items-center gap-4 rounded-lg border border-border bg-white p-[20px_22px] [transition:transform_.16s,box-shadow_.2s,border-color_.2s] hover:-translate-y-1 hover:border-line-soft hover:shadow-md"
-                  >
-                    <span
-                      className="grid h-[50px] w-[50px] flex-none place-items-center rounded-[13px] text-white"
-                      style={{ background: color }}
-                      aria-hidden="true"
-                    />
-                    <div>
-                      <h4 className="font-display text-[19px] font-semibold">{title}</h4>
-                      <p className="text-[14px] text-muted">{text}</p>
-                    </div>
-                    <span className="ml-auto text-blue" aria-hidden="true">
-                      →
-                    </span>
-                  </a>
-                ))}
-              </div>
+              {canales.length > 0 && (
+                <div className="flex flex-col gap-[14px]">
+                  {canales.map((c) => (
+                    <a
+                      key={c.title}
+                      href={c.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-4 rounded-lg border border-border bg-white p-[20px_22px] [transition:transform_.16s,box-shadow_.2s,border-color_.2s] hover:-translate-y-1 hover:border-line-soft hover:shadow-md"
+                    >
+                      <span
+                        className="grid h-[50px] w-[50px] flex-none place-items-center rounded-[13px] text-white"
+                        style={{ background: c.color }}
+                        aria-hidden="true"
+                      />
+                      <div>
+                        <h4 className="font-display text-[19px] font-semibold">{c.title}</h4>
+                        {c.text && <p className="text-[14px] text-muted">{c.text}</p>}
+                      </div>
+                      <span className="ml-auto text-blue" aria-hidden="true">
+                        →
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              )}
 
               <div className="mt-[18px] rounded-lg border border-border bg-white p-[26px]">
                 <h4 className="mb-[14px] font-display text-[20px] font-semibold">
