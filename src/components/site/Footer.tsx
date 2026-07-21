@@ -3,14 +3,18 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
+import { deriveSchedule } from '@/lib/parish-schedule'
 import { Mark } from './Mark'
 
-const VIDA = [
-  { href: '/horarios', label: 'Horarios y sacramentos' },
+const VIDA_BASE = [
   { href: '/sectores', label: 'Sectores y ermitas' },
   { href: '/grupos', label: 'Grupos y ministerios' },
   { href: '/eventos', label: 'Agenda de eventos' },
 ]
+
+/** Horarios encabeza la lista solo si hay horarios cargados en el CMS. */
+const vidaFor = (hasSchedule: boolean) =>
+  hasSchedule ? [{ href: '/#misas', label: 'Horarios y sacramentos' }, ...VIDA_BASE] : VIDA_BASE
 
 const COMUNICACION = [
   { href: '/radio', label: 'Radio parroquial' },
@@ -37,6 +41,8 @@ export async function Footer() {
   const mapUrl = contact.mapUrl
   const channels = (contact.channels ?? []).filter((c) => c.url && c.platform)
   const radioLive = settings.radio?.available ?? true
+  const { hasMisas } = deriveSchedule(contact)
+  const vida = vidaFor(hasMisas)
   const isoFooter = settings.marca?.isotipo
   const brandFooter =
     isoFooter && typeof isoFooter === 'object'
@@ -98,7 +104,7 @@ export async function Footer() {
                 Vida parroquial
               </h2>
               <ul className="flex list-none flex-col gap-[11px] p-0">
-                {VIDA.map((i) => (
+                {vida.map((i) => (
                   <li key={i.label}>
                     <Link
                       href={i.href}

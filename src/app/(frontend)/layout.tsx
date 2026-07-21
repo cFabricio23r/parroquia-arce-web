@@ -5,6 +5,7 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { Header } from '@/components/site/Header'
 import { Footer } from '@/components/site/Footer'
+import { deriveSchedule } from '@/lib/parish-schedule'
 import './globals.css'
 
 const display = Newsreader({
@@ -68,11 +69,13 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     .map((c) => ({ platform: c.platform, url: c.url }))
   const radioLive = settings.radio?.available ?? true
   const { isotipo } = brandFromSettings(settings)
+  // El chrome ofrece horarios solo si la parroquia los cargo en el CMS.
+  const { hasMisas } = deriveSchedule(contact)
 
   return (
     <html lang="es" className={`${display.variable} ${sans.variable}`}>
       <body className="bg-white font-sans text-[1rem] leading-[1.55] text-text antialiased">
-        <Header channels={channels} radioLive={radioLive} brand={isotipo} />
+        <Header channels={channels} radioLive={radioLive} brand={isotipo} hasSchedule={hasMisas} />
         <main>{children}</main>
         <Footer />
       </body>
