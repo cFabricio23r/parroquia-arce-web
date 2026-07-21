@@ -7,9 +7,21 @@ const media = (alt: string): Media =>
   ({ id: 1, alt, url: '/logo.png', updatedAt: '', createdAt: '' }) as Media
 
 describe('CardMark', () => {
-  it('muestra el logo con el alt de la media', () => {
+  it('muestra el logo como imagen decorativa, con alt vacio', () => {
+    const { container } = render(<CardMark logo={media('Logo de JUMI')} name="JUMI" />)
+    const img = container.querySelector('img')
+    expect(img).not.toBeNull()
+    expect(img?.getAttribute('src')).toBe('/logo.png')
+    // El nombre del grupo viene inmediatamente despues, dentro del mismo link:
+    // anunciar tambien el alt del logo seria decirlo dos veces. Ademas, hoy
+    // varios alt cargados son nombres de archivo ("asdasdad.jpeg").
+    expect(img?.getAttribute('alt')).toBe('')
+  })
+
+  it('no expone el logo a los lectores de pantalla', () => {
     render(<CardMark logo={media('Logo de JUMI')} name="JUMI" />)
-    expect(screen.getByAltText('Logo de JUMI')).toBeDefined()
+    expect(screen.queryByAltText('Logo de JUMI')).toBeNull()
+    expect(screen.queryByRole('img')).toBeNull()
   })
 
   it('cae al monograma con la inicial cuando no hay logo', () => {

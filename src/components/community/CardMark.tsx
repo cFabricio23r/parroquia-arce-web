@@ -27,9 +27,17 @@ const tints: Record<Variant, string> = {
  * la inicial sobre el tinte de su tipo.
  *
  * El logo va con `object-contain`, no `cover`: es un isotipo, recortarlo lo
- * arruina. El monograma va `aria-hidden` porque el nombre del grupo viene
- * inmediatamente despues — un lector de pantalla no tiene que oir "C, Consejo
- * Economico".
+ * arruina.
+ *
+ * Tanto el monograma (`aria-hidden`) como el logo (`alt=""`) son DECORATIVOS
+ * aca: el nombre del grupo viene inmediatamente despues, dentro del mismo link,
+ * asi que anunciarlo dos veces es ruido. No es que el `alt` sobre — la
+ * coleccion `media` lo sigue exigiendo y se usa donde la imagen SI carga
+ * significado (`PhotoGallery`, `MediaImage`, la foto de grupo). Aca no lo carga.
+ *
+ * Efecto lateral util: hoy varios logos tienen el nombre del archivo como `alt`
+ * ("asdasdad.jpeg"), y un lector de pantalla los anunciaba antes del nombre real
+ * del grupo. Corregir esos textos en /admin sigue haciendo falta igual.
  *
  * Se usa <img> normal y no next/image, igual que `MediaImage`, para no configurar
  * remotePatterns con el dominio de Supabase.
@@ -49,7 +57,7 @@ export function CardMark({
     return (
       <div className="flex h-[46px] w-[46px] flex-none items-center justify-center overflow-hidden rounded-md">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={img.url as string} alt={img.alt} className="h-full w-full object-contain" />
+        <img src={img.url as string} alt="" className="h-full w-full object-contain" />
       </div>
     )
   }
