@@ -25,13 +25,28 @@ y las funciones de Vercel no la alcanzan. Solo se usa localmente para migracione
 3. Deploy.
 4. Verificar `/admin` y `/api/news`.
 
-## Migraciones
+## Migraciones / esquema
 
-Se corren **desde una maquina local o CI**, nunca desde Vercel:
+> [!warning] La realidad no son las migraciones — es `push` contra una base unica
+> Verificado el 2026-07-17. Hay **una sola base Supabase** (ref `wdpzcgpkuefpcdxgihmn`):
+> el `.env` local apunta al mismo pooler que produccion. El adapter de Postgres corre
+> con `push` fuera de produccion (dev/test), asi que **cualquier `npm run dev` o
+> `npm run test:int` local sincroniza el esquema directo contra la base que lee prod.**
+>
+> Prueba: la migracion `src/migrations/20260717_044438_initial.ts` solo crea `users`,
+> `media`, `news`. Las 8 colecciones y 3 globals posteriores (incluido `settings`) **no
+> tienen archivo de migracion** y sin embargo viven en prod. Llegaron por `push` local.
 
-```bash
-npm run migrate
-```
+Consecuencias practicas:
+
+- **Agregar/cambiar campos NO necesita `migrate`.** Corres los tests o el dev local una
+  vez y el esquema ya quedo en la base compartida. (Asi se aplicaron las columnas
+  `marca_isotipo_id` / `marca_favicon_id` del grupo `marca`.)
+- **`npm run migrate` solo tiene sentido para la migracion `initial`.** El archivo esta
+  desactualizado respecto al esquema real; no lo tomes como fuente de verdad.
+- **Riesgo abierto:** con una sola base, un `push` que borre/renombre un campo reescribe
+  el esquema de produccion. Mientras dev y prod compartan base, tratá cada `push` local
+  como un cambio en prod. Endurecerlo (base de dev aparte) es una decision pendiente.
 
 ## Notas operativas
 
