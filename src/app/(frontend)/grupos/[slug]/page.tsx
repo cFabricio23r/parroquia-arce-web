@@ -10,6 +10,7 @@ import { MediaImage } from '@/components/news/MediaImage'
 import { PerseveranceStat } from '@/components/community/PerseveranceStat'
 import { TeamList } from '@/components/community/TeamList'
 import { PhotoGallery } from '@/components/community/PhotoGallery'
+import { ContactLinks, hasContact } from '@/components/community/ContactLinks'
 
 export const revalidate = 300
 
@@ -188,6 +189,12 @@ export default async function GrupoDetalle({ params }: { params: Promise<{ slug:
                 label={item.perseverance?.label}
               />
               <TeamList members={item.team} />
+              {hasContact(item.contact) && (
+                <div className="mt-6 rounded-xl border border-border bg-bg-soft p-6">
+                  <h2 className="mb-4 font-display text-[20px] font-medium">Contacto</h2>
+                  <ContactLinks contact={item.contact} />
+                </div>
+              )}
             </aside>
           </div>
           <div className="mt-12 border-t border-line-soft pt-6">
