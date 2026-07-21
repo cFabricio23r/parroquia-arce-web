@@ -9,6 +9,7 @@ import { canManageContent } from '../access/roles'
  */
 export const Home: GlobalConfig = {
   slug: 'home',
+  label: 'Portada del sitio',
   admin: { group: 'Configuración' },
   access: {
     read: anyone,
@@ -49,6 +50,7 @@ export const Home: GlobalConfig = {
           name: 'stats',
           type: 'array',
           label: 'Cifras destacadas',
+          labels: { singular: 'Cifra', plural: 'Cifras' },
           maxRows: 3,
           admin: { hidden: true },
           fields: [

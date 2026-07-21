@@ -1,6 +1,7 @@
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { s3Storage } from '@payloadcms/storage-s3'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { es } from '@payloadcms/translations/languages/es'
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
@@ -45,6 +46,13 @@ export default buildConfig({
     PrayerRequests,
   ],
   globals: [Home, Contact, Settings],
+  // El panel lo usan voluntarios de la parroquia: la UI de Payload (botones,
+  // columnas, filtros, mensajes de error, login) va toda en espanol. Se declara
+  // `es` como unico idioma soportado para que no aparezca el selector.
+  i18n: {
+    fallbackLanguage: 'es',
+    supportedLanguages: { es },
+  },
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

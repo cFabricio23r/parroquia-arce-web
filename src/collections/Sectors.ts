@@ -13,6 +13,7 @@ import { locationField } from '../fields/location'
  */
 export const Sectors: CollectionConfig = {
   slug: 'sectors',
+  labels: { singular: 'Sector', plural: 'Sectores' },
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'number', 'status', 'publishedAt'],
@@ -62,7 +63,8 @@ export const Sectors: CollectionConfig = {
               name: 'assistants',
               type: 'array',
               label: 'Colaboradores',
-              fields: [{ name: 'name', type: 'text' }],
+              labels: { singular: 'Colaborador/a', plural: 'Colaboradores' },
+              fields: [{ name: 'name', type: 'text', label: 'Nombre' }],
             },
             contactField(),
           ],
@@ -74,13 +76,15 @@ export const Sectors: CollectionConfig = {
       name: 'cover',
       type: 'upload',
       relationTo: 'media',
+      label: 'Imagen de portada',
       admin: { position: 'sidebar' },
     },
     {
       name: 'isFeatured',
       type: 'checkbox',
       defaultValue: false,
-      admin: { position: 'sidebar', description: 'Destacar en la home.' },
+      label: 'Destacado',
+      admin: { position: 'sidebar', description: 'Destacar en la portada del sitio.' },
     },
     ...publishingFields(),
   ],

@@ -29,6 +29,7 @@ const selfOrAdmin: CollectionConfig['access'] = {
 
 export const Users: CollectionConfig = {
   slug: 'users',
+  labels: { singular: 'Usuario', plural: 'Usuarios' },
   admin: {
     useAsTitle: 'email',
     group: 'Sistema',
@@ -40,10 +41,12 @@ export const Users: CollectionConfig = {
     {
       name: 'name',
       type: 'text',
+      label: 'Nombre',
     },
     {
       name: 'role',
       type: 'select',
+      label: 'Rol',
       required: true,
       defaultValue: 'contenido',
       // Field-level access: aunque un editor pueda editar SU usuario (nombre),

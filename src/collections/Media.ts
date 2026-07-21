@@ -4,6 +4,7 @@ import { isAuthenticated } from '../access/roles'
 
 export const Media: CollectionConfig = {
   slug: 'media',
+  labels: { singular: 'Archivo', plural: 'Imágenes y archivos' },
   admin: {
     group: 'Contenido',
   },
@@ -17,14 +18,17 @@ export const Media: CollectionConfig = {
     {
       name: 'alt',
       type: 'text',
+      label: 'Texto alternativo',
       required: true,
       admin: {
-        description: 'Texto alternativo. Obligatorio por accesibilidad.',
+        description:
+          'Describí qué se ve en la imagen. Obligatorio: es lo que escucha quien usa lector de pantalla.',
       },
     },
     {
       name: 'caption',
       type: 'text',
+      label: 'Pie de foto',
     },
     {
       name: 'credit',

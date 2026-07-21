@@ -7,6 +7,7 @@ import type { Field } from 'payload'
 export const slugField = (): Field => ({
   name: 'slug',
   type: 'text',
+  label: 'Slug (dirección web)',
   required: true,
   unique: true,
   index: true,

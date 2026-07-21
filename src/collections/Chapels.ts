@@ -11,6 +11,7 @@ import { locationField } from '../fields/location'
  */
 export const Chapels: CollectionConfig = {
   slug: 'chapels',
+  labels: { singular: 'Ermita', plural: 'Ermitas' },
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'sector', 'status'],
@@ -41,7 +42,13 @@ export const Chapels: CollectionConfig = {
       admin: { description: 'Una línea por horario.' },
     },
     locationField(),
-    { name: 'cover', type: 'upload', relationTo: 'media', admin: { position: 'sidebar' } },
+    {
+      name: 'cover',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Imagen de portada',
+      admin: { position: 'sidebar' },
+    },
     ...publishingFields(),
   ],
 }

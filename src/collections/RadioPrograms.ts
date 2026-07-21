@@ -10,6 +10,7 @@ import { publishingFields } from '../fields/publishing'
  */
 export const RadioPrograms: CollectionConfig = {
   slug: 'radio-programs',
+  labels: { singular: 'Programa de radio', plural: 'Programas de radio' },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'dayOfWeek', 'status'],
@@ -22,9 +23,9 @@ export const RadioPrograms: CollectionConfig = {
     delete: canManageComms,
   },
   fields: [
-    { name: 'title', type: 'text', required: true },
+    { name: 'title', type: 'text', required: true, label: 'Título' },
     slugField(),
-    { name: 'description', type: 'textarea' },
+    { name: 'description', type: 'textarea', label: 'Descripción' },
     { name: 'hostName', type: 'text', label: 'Conduce' },
     {
       type: 'row',
@@ -33,15 +34,29 @@ export const RadioPrograms: CollectionConfig = {
           name: 'dayOfWeek',
           type: 'select',
           label: 'Día',
-          options: ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo', 'diario'].map(
-            (v) => ({ label: v, value: v }),
-          ),
+          // Los VALORES quedan sin tilde: ya estan guardados asi en la base.
+          options: [
+            { label: 'Lunes', value: 'lunes' },
+            { label: 'Martes', value: 'martes' },
+            { label: 'Miércoles', value: 'miercoles' },
+            { label: 'Jueves', value: 'jueves' },
+            { label: 'Viernes', value: 'viernes' },
+            { label: 'Sábado', value: 'sabado' },
+            { label: 'Domingo', value: 'domingo' },
+            { label: 'Diario', value: 'diario' },
+          ],
         },
-        { name: 'startTime', type: 'text', label: 'Hora inicio' },
-        { name: 'endTime', type: 'text', label: 'Hora fin' },
+        { name: 'startTime', type: 'text', label: 'Hora de inicio' },
+        { name: 'endTime', type: 'text', label: 'Hora de fin' },
       ],
     },
-    { name: 'cover', type: 'upload', relationTo: 'media', admin: { position: 'sidebar' } },
+    {
+      name: 'cover',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Imagen de portada',
+      admin: { position: 'sidebar' },
+    },
     ...publishingFields(),
   ],
 }

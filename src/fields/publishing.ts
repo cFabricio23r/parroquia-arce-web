@@ -8,6 +8,7 @@ export const publishingFields = (): Field[] => [
   {
     name: 'status',
     type: 'select',
+    label: 'Estado',
     required: true,
     defaultValue: 'draft',
     index: true,
@@ -23,6 +24,7 @@ export const publishingFields = (): Field[] => [
   {
     name: 'publishedAt',
     type: 'date',
+    label: 'Fecha de publicación',
     admin: {
       position: 'sidebar',
       description: 'Fecha que se muestra al publico.',

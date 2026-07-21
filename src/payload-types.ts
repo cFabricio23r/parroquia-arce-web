@@ -177,7 +177,7 @@ export interface User {
 export interface Media {
   id: number;
   /**
-   * Texto alternativo. Obligatorio por accesibilidad.
+   * Describí qué se ve en la imagen. Obligatorio: es lo que escucha quien usa lector de pantalla.
    */
   alt: string;
   caption?: string | null;
@@ -230,7 +230,7 @@ export interface News {
   category?: ('aviso' | 'comunicado' | 'celebracion' | 'pastoral' | 'emergencia') | null;
   cover?: (number | null) | Media;
   /**
-   * Destacar en la home.
+   * Destacar en la portada del sitio.
    */
   isFeatured?: boolean | null;
   status: 'draft' | 'published' | 'archived';
@@ -274,7 +274,13 @@ export interface Formation {
   category?: ('serie' | 'recurso' | 'articulo' | 'catequesis') | null;
   audience?: ('jovenes' | 'familias' | 'servidores' | 'general') | null;
   cover?: (number | null) | Media;
+  /**
+   * PDF o guía que la gente puede descargar.
+   */
   resourceFile?: (number | null) | Media;
+  /**
+   * Destacar en la portada del sitio.
+   */
   isFeatured?: boolean | null;
   status: 'draft' | 'published' | 'archived';
   /**
@@ -371,7 +377,7 @@ export interface Sector {
   };
   cover?: (number | null) | Media;
   /**
-   * Destacar en la home.
+   * Destacar en la portada del sitio.
    */
   isFeatured?: boolean | null;
   status: 'draft' | 'published' | 'archived';
@@ -497,7 +503,7 @@ export interface Group {
   };
   cover?: (number | null) | Media;
   /**
-   * Destacar en la home.
+   * Destacar en la portada del sitio.
    */
   isFeatured?: boolean | null;
   status: 'draft' | 'published' | 'archived';
@@ -555,7 +561,7 @@ export interface Event {
   group?: (number | null) | Group;
   cover?: (number | null) | Media;
   /**
-   * Destacar en la home.
+   * Destacar en la portada del sitio.
    */
   isFeatured?: boolean | null;
   status: 'draft' | 'published' | 'archived';

@@ -8,6 +8,7 @@ import { canManageContent } from '../access/roles'
  */
 export const Contact: GlobalConfig = {
   slug: 'contact',
+  label: 'Contacto y horarios',
   admin: { group: 'Configuración' },
   access: {
     read: anyone,
@@ -68,6 +69,7 @@ export const Contact: GlobalConfig = {
       name: 'officeHours',
       type: 'array',
       label: 'Horario de oficina',
+      labels: { singular: 'Horario', plural: 'Horarios' },
       fields: [
         {
           type: 'row',
@@ -82,6 +84,7 @@ export const Contact: GlobalConfig = {
       name: 'channels',
       type: 'array',
       label: 'Canales oficiales',
+      labels: { singular: 'Canal', plural: 'Canales' },
       fields: [
         {
           type: 'row',
@@ -89,13 +92,17 @@ export const Contact: GlobalConfig = {
             {
               name: 'platform',
               type: 'select',
-              options: ['whatsapp', 'facebook', 'youtube', 'instagram'].map((v) => ({
-                label: v,
-                value: v,
-              })),
+              label: 'Plataforma',
+              // Los VALORES quedan en minuscula: ya estan guardados asi.
+              options: [
+                { label: 'WhatsApp', value: 'whatsapp' },
+                { label: 'Facebook', value: 'facebook' },
+                { label: 'YouTube', value: 'youtube' },
+                { label: 'Instagram', value: 'instagram' },
+              ],
             },
             { name: 'label', type: 'text', label: 'Descripción' },
-            { name: 'url', type: 'text' },
+            { name: 'url', type: 'text', label: 'Enlace' },
           ],
         },
       ],

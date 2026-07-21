@@ -11,6 +11,7 @@ import { contactField } from '../fields/contact'
  */
 export const Groups: CollectionConfig = {
   slug: 'groups',
+  labels: { singular: 'Grupo o ministerio', plural: 'Grupos y ministerios' },
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'type', 'status', 'publishedAt'],
@@ -87,12 +88,19 @@ export const Groups: CollectionConfig = {
         },
       ],
     },
-    { name: 'cover', type: 'upload', relationTo: 'media', admin: { position: 'sidebar' } },
+    {
+      name: 'cover',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Imagen de portada',
+      admin: { position: 'sidebar' },
+    },
     {
       name: 'isFeatured',
       type: 'checkbox',
       defaultValue: false,
-      admin: { position: 'sidebar', description: 'Destacar en la home.' },
+      label: 'Destacado',
+      admin: { position: 'sidebar', description: 'Destacar en la portada del sitio.' },
     },
     ...publishingFields(),
   ],

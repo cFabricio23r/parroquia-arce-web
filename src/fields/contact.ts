@@ -7,6 +7,7 @@ import type { Field } from 'payload'
 export const contactField = (): Field => ({
   name: 'contact',
   type: 'group',
+  label: 'Contacto',
   admin: {
     description: 'Datos de contacto. Todos opcionales.',
   },
@@ -18,16 +19,18 @@ export const contactField = (): Field => ({
         { name: 'whatsapp', type: 'text', label: 'WhatsApp' },
       ],
     },
-    { name: 'email', type: 'email' },
+    { name: 'email', type: 'email', label: 'Correo electrónico' },
     {
       name: 'socialLinks',
       type: 'array',
       label: 'Redes sociales',
+      labels: { singular: 'Red social', plural: 'Redes sociales' },
       admin: { description: 'Facebook, YouTube, Instagram, etc.' },
       fields: [
         {
           name: 'platform',
           type: 'select',
+          label: 'Red',
           options: [
             { label: 'Facebook', value: 'facebook' },
             { label: 'YouTube', value: 'youtube' },
@@ -36,7 +39,7 @@ export const contactField = (): Field => ({
             { label: 'Otro', value: 'otro' },
           ],
         },
-        { name: 'url', type: 'text' },
+        { name: 'url', type: 'text', label: 'Enlace' },
       ],
     },
   ],

@@ -8,6 +8,7 @@ import type { Field } from 'payload'
 export const locationField = (): Field => ({
   name: 'location',
   type: 'group',
+  label: 'Ubicación',
   admin: {
     description: 'Dónde queda. Las coordenadas alimentan el mapa.',
   },

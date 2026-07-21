@@ -10,6 +10,7 @@ import { publishingFields } from '../fields/publishing'
  */
 export const RadioEpisodes: CollectionConfig = {
   slug: 'radio-episodes',
+  labels: { singular: 'Episodio de radio', plural: 'Episodios de radio' },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'program', 'status', 'publishedAt'],
@@ -22,7 +23,7 @@ export const RadioEpisodes: CollectionConfig = {
     delete: canManageComms,
   },
   fields: [
-    { name: 'title', type: 'text', required: true },
+    { name: 'title', type: 'text', required: true, label: 'Título' },
     slugField(),
     {
       name: 'program',
@@ -31,7 +32,7 @@ export const RadioEpisodes: CollectionConfig = {
       required: true,
       label: 'Programa',
     },
-    { name: 'description', type: 'textarea' },
+    { name: 'description', type: 'textarea', label: 'Descripción' },
     { name: 'audioUrl', type: 'text', label: 'URL del audio' },
     ...publishingFields(),
   ],

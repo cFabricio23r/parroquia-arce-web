@@ -6,6 +6,7 @@ import { publishingFields } from '../fields/publishing'
 
 export const News: CollectionConfig = {
   slug: 'news',
+  labels: { singular: 'Noticia', plural: 'Noticias' },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'category', 'status', 'publishedAt'],
@@ -26,12 +27,14 @@ export const News: CollectionConfig = {
     {
       name: 'title',
       type: 'text',
+      label: 'Título',
       required: true,
     },
     slugField(),
     {
       name: 'excerpt',
       type: 'textarea',
+      label: 'Resumen',
       admin: {
         description: 'Resumen corto para listados y redes.',
       },
@@ -39,14 +42,16 @@ export const News: CollectionConfig = {
     {
       name: 'body',
       type: 'richText',
+      label: 'Cuerpo de la noticia',
     },
     {
       name: 'category',
       type: 'select',
+      label: 'Categoría',
       options: [
         { label: 'Aviso', value: 'aviso' },
         { label: 'Comunicado', value: 'comunicado' },
-        { label: 'Celebracion', value: 'celebracion' },
+        { label: 'Celebración', value: 'celebracion' },
         { label: 'Pastoral', value: 'pastoral' },
         { label: 'Emergencia', value: 'emergencia' },
       ],
@@ -55,14 +60,16 @@ export const News: CollectionConfig = {
       name: 'cover',
       type: 'upload',
       relationTo: 'media',
+      label: 'Imagen de portada',
     },
     {
       name: 'isFeatured',
       type: 'checkbox',
       defaultValue: false,
+      label: 'Destacada',
       admin: {
         position: 'sidebar',
-        description: 'Destacar en la home.',
+        description: 'Destacar en la portada del sitio.',
       },
     },
     ...publishingFields(),

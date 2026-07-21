@@ -3,6 +3,7 @@ import { publishedOnly } from '../access/publishedOnly'
 import { canManageContent } from '../access/roles'
 import { slugField } from '../fields/slug'
 import { publishingFields } from '../fields/publishing'
+import { eventTypeOptions } from '../lib/event-types'
 
 /**
  * Event. El ADMIN_PANEL_PLAN exige fecha, hora y lugar. `startsAt` y
@@ -11,6 +12,7 @@ import { publishingFields } from '../fields/publishing'
  */
 export const Events: CollectionConfig = {
   slug: 'events',
+  labels: { singular: 'Evento', plural: 'Eventos' },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'eventType', 'startsAt', 'status'],
@@ -29,24 +31,13 @@ export const Events: CollectionConfig = {
         {
           label: 'Información',
           fields: [
-            { name: 'title', type: 'text', required: true },
+            { name: 'title', type: 'text', required: true, label: 'Título' },
             slugField(),
             {
               name: 'eventType',
               type: 'select',
               label: 'Tipo de evento',
-              options: [
-                'misa',
-                'vigilia',
-                'hora-santa',
-                'jornada',
-                'reunion',
-                'novena',
-                'retiro',
-                'sector',
-                'grupo',
-                'patronal',
-              ].map((v) => ({ label: v.replace('-', ' '), value: v })),
+              options: eventTypeOptions,
             },
             { name: 'description', type: 'richText', label: 'Descripción' },
           ],
@@ -94,12 +85,19 @@ export const Events: CollectionConfig = {
         },
       ],
     },
-    { name: 'cover', type: 'upload', relationTo: 'media', admin: { position: 'sidebar' } },
+    {
+      name: 'cover',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Imagen de portada',
+      admin: { position: 'sidebar' },
+    },
     {
       name: 'isFeatured',
       type: 'checkbox',
       defaultValue: false,
-      admin: { position: 'sidebar', description: 'Destacar en la home.' },
+      label: 'Destacado',
+      admin: { position: 'sidebar', description: 'Destacar en la portada del sitio.' },
     },
     ...publishingFields(),
   ],

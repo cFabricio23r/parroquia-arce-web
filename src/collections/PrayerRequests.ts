@@ -8,6 +8,7 @@ import { isAdmin } from '../access/roles'
  */
 export const PrayerRequests: CollectionConfig = {
   slug: 'prayer-requests',
+  labels: { singular: 'Petición de oración', plural: 'Peticiones de oración' },
   admin: {
     useAsTitle: 'intentionType',
     defaultColumns: ['intentionType', 'status', 'allowPublicMention', 'createdAt'],
@@ -41,6 +42,7 @@ export const PrayerRequests: CollectionConfig = {
     {
       name: 'status',
       type: 'select',
+      label: 'Estado',
       defaultValue: 'pendiente',
       admin: { position: 'sidebar' },
       options: [
