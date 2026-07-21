@@ -7,11 +7,10 @@ import config from '@/payload.config'
 import { Container } from '@/components/ui/Container'
 import { Badge } from '@/components/ui/Badge'
 import { MediaImage } from '@/components/news/MediaImage'
+import { svDate, svTime } from '@/lib/sv-date'
+import { eventTypeLabel } from '@/lib/event-types'
 
 export const revalidate = 300
-
-const eventTypeLabel = (t?: string | null) =>
-  t ? t.charAt(0).toUpperCase() + t.slice(1).replace('-', ' ') : 'Evento'
 
 async function getEvento(slug: string) {
   const payload = await getPayload({ config: await config })
@@ -50,14 +49,13 @@ export default async function EventoDetalle({ params }: { params: Promise<{ slug
   const item = await getEvento(slug)
   if (!item) notFound()
 
-  const start = new Date(item.startsAt)
-  const fecha = start.toLocaleDateString('es-SV', {
+  const fecha = svDate(item.startsAt, {
     weekday: 'long',
     day: 'numeric',
     month: 'long',
     year: 'numeric',
   })
-  const hora = start.toLocaleTimeString('es-SV', { hour: 'numeric', minute: '2-digit' })
+  const hora = item.endsAt ? `${svTime(item.startsAt)} a ${svTime(item.endsAt)}` : svTime(item.startsAt)
 
   return (
     <article>
@@ -78,7 +76,7 @@ export default async function EventoDetalle({ params }: { params: Promise<{ slug
               <span className="opacity-50">/</span>
               <span className="text-text">{item.title}</span>
             </div>
-            <Badge variant="amber">{eventTypeLabel(item.eventType)}</Badge>
+            <Badge variant="amber">{eventTypeLabel(item.eventType) || 'Evento'}</Badge>
             <h1 className="mt-3 max-w-[24ch] text-balance font-display text-[clamp(34px,4.6vw,58px)] font-medium leading-[1.03]">
               {item.title}
             </h1>
@@ -110,7 +108,8 @@ export default async function EventoDetalle({ params }: { params: Promise<{ slug
                 <dl className="flex flex-col gap-4 text-[14.5px]">
                   <div>
                     <dt className="font-bold uppercase tracking-[.1em] text-[12px] text-muted">Cuándo</dt>
-                    <dd className="mt-1 capitalize">{fecha}</dd>
+                    {/* `capitalize` ponia mayuscula en cada palabra: "5 De Julio De 2026". */}
+                    <dd className="mt-1 first-letter:uppercase">{fecha}</dd>
                     <dd className="text-muted">{hora}</dd>
                   </div>
                   <div>

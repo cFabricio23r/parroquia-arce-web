@@ -10,6 +10,8 @@ import { MediaImage } from '@/components/news/MediaImage'
 import { Reveal } from '@/components/news/Reveal'
 import { HeroSlider } from '@/components/site/HeroSlider'
 import { newsCategoryVariant, newsCategoryLabel, formatDate } from '@/lib/news-format'
+import { svDate, svParts, svStartOfToday, svTime } from '@/lib/sv-date'
+import { eventTypeLabel } from '@/lib/event-types'
 
 export const metadata: Metadata = { title: 'Inicio' }
 export const revalidate = 300
@@ -57,7 +59,18 @@ export default async function HomePage() {
 
   const [eventsRes, groupsRes, newsRes, sectorsRes, radioRes, homeGlobal, settings, contactGlobal] =
     await Promise.all([
-    payload.find({ collection: 'events', where: { status: { equals: 'published' } }, sort: 'startsAt', limit: 4 }),
+    // "Proximas actividades": solo de hoy en adelante. El corte es la
+    // medianoche de El Salvador, asi lo de esta manana sigue en la portada
+    // durante el resto del dia.
+    payload.find({
+      collection: 'events',
+      where: {
+        status: { equals: 'published' },
+        startsAt: { greater_than_equal: svStartOfToday().toISOString() },
+      },
+      sort: 'startsAt',
+      limit: 4,
+    }),
     payload.find({ collection: 'groups', where: { status: { equals: 'published' } }, sort: 'name', limit: 3 }),
     payload.find({ collection: 'news', where: { status: { equals: 'published' } }, sort: '-publishedAt', limit: 3 }),
     payload.find({ collection: 'sectors', where: { status: { equals: 'published' }, isFeatured: { equals: true } }, limit: 1 }),
@@ -85,11 +98,18 @@ export default async function HomePage() {
   const radioLive = settings.radio?.available ?? true
 
   // Evento destacado: el marcado en el CMS, o el proximo evento como respaldo.
-  // Asi la portada nunca muestra un evento inventado.
-  const featuredEvent =
+  // Asi la portada nunca muestra un evento inventado. Si el elegido en el CMS ya
+  // paso, tambien se cae al proximo: un destacado viejo se olvida de despublicar
+  // y la portada quedaria anunciando algo que ya ocurrio.
+  const destacadoDelCms =
     homeGlobal.featuredEvent && typeof homeGlobal.featuredEvent === 'object'
       ? homeGlobal.featuredEvent
-      : (eventsRes.docs[0] ?? null)
+      : null
+  const destacadoVigente =
+    destacadoDelCms && new Date(destacadoDelCms.startsAt) >= svStartOfToday()
+      ? destacadoDelCms
+      : null
+  const featuredEvent = destacadoVigente ?? eventsRes.docs[0] ?? null
   const featuredEventCover =
     featuredEvent?.cover && typeof featuredEvent.cover === 'object' ? featuredEvent.cover : null
 
@@ -116,15 +136,18 @@ export default async function HomePage() {
   const youtubeUrl =
     (contactGlobal.channels ?? []).find((c) => c.platform === 'youtube' && c.url)?.url ?? null
 
-  const eventos: [string, string, string, string, string, Variant][] = eventsRes.docs.map((e) => {
-    const d = new Date(e.startsAt)
-    const hora = d.toLocaleTimeString('es-SV', { hour: 'numeric', minute: '2-digit' })
+  // El `slug` va primero solo para usarlo de key de React: la agenda real
+  // repite titulos (la novena va varios dias seguidos) y keyear por titulo
+  // colisiona. El slug es unique en la coleccion.
+  const eventos: [string, string, string, string, string, string, Variant][] = eventsRes.docs.map((e) => {
+    const { month, day } = svParts(e.startsAt)
     return [
-      String(d.getDate()).padStart(2, '0'),
-      MES_CORTO[d.getMonth()],
+      e.slug,
+      String(day).padStart(2, '0'),
+      MES_CORTO[month],
       e.title,
-      `${hora} · ${e.locationName}`,
-      e.eventType ? e.eventType.replace('-', ' ') : '',
+      `${svTime(e.startsAt)} · ${e.locationName}`,
+      eventTypeLabel(e.eventType),
       eventTypeVariant(e.eventType),
     ]
   })
@@ -244,9 +267,9 @@ export default async function HomePage() {
           <div className="grid grid-cols-[1.5fr_1fr] items-stretch gap-6 max-[1040px]:grid-cols-1">
             <Reveal>
               <div className="rounded-lg border border-border bg-white p-3">
-                {eventos.map(([d, m, title, loc, cat, variant], i) => (
+                {eventos.map(([eslug, d, m, title, loc, cat, variant], i) => (
                   <div
-                    key={title}
+                    key={eslug}
                     className={`grid grid-cols-[auto_1fr_auto] items-center gap-5 rounded-md p-5 ${
                       i > 0 ? 'border-t border-line-soft' : ''
                     }`}
@@ -295,7 +318,7 @@ export default async function HomePage() {
                   </h3>
                   <p className="mb-5 text-[15px] text-[#D2E2F4]">
                     {featuredEvent
-                      ? `${new Date(featuredEvent.startsAt).toLocaleDateString('es-SV', { weekday: 'long', day: 'numeric', month: 'long' })} · ${new Date(featuredEvent.startsAt).toLocaleTimeString('es-SV', { hour: 'numeric', minute: '2-digit' })} · ${featuredEvent.locationName}`
+                      ? `${svDate(featuredEvent.startsAt, { weekday: 'long', day: 'numeric', month: 'long' })} · ${svTime(featuredEvent.startsAt)} · ${featuredEvent.locationName}`
                       : 'Mirá la agenda de misas, vigilias y encuentros de la comunidad.'}
                   </p>
                   <Button href="/eventos" variant="white">
