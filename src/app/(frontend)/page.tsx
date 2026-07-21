@@ -12,6 +12,7 @@ import { HeroSlider } from '@/components/site/HeroSlider'
 import { newsCategoryVariant, newsCategoryLabel, formatDate } from '@/lib/news-format'
 import { svDate, svParts, svStartOfToday, svTime } from '@/lib/sv-date'
 import { eventTypeLabel } from '@/lib/event-types'
+import { GroupCard } from '@/components/community/GroupCard'
 
 export const metadata: Metadata = { title: 'Inicio' }
 export const revalidate = 300
@@ -27,14 +28,6 @@ type Variant = 'blue' | 'sky' | 'amber'
 const MES_CORTO = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
 const eventTypeVariant = (t?: string | null): Variant =>
   t === 'patronal' || t === 'vigilia' || t === 'novena' ? 'amber' : t === 'reunion' || t === 'jornada' ? 'sky' : 'blue'
-const groupTypeMeta: Record<string, { label: string; variant: Variant }> = {
-  pastoral: { label: 'Pastoral', variant: 'blue' },
-  ministerio: { label: 'Ministerio', variant: 'sky' },
-  comunidad: { label: 'Comunidad', variant: 'sky' },
-  servicio: { label: 'Servicio', variant: 'amber' },
-  formacion: { label: 'Formación', variant: 'blue' },
-}
-
 const misas = [
   ['Lunes a viernes', '6:00 p.m.'],
   ['Sábado', '5:00 p.m.'],
@@ -150,11 +143,6 @@ export default async function HomePage() {
       eventTypeLabel(e.eventType),
       eventTypeVariant(e.eventType),
     ]
-  })
-
-  const grupos: [Variant, string, string, string, string][] = groupsRes.docs.map((g) => {
-    const meta = g.type ? groupTypeMeta[g.type] : undefined
-    return [meta?.variant ?? 'blue', meta?.label ?? '', g.name, g.summary ?? '', g.slug]
   })
 
   const noticias: [Variant, string, string, string, string, string][] = newsRes.docs.map((n) => [
@@ -388,20 +376,9 @@ export default async function HomePage() {
             </Link>
           </div>
           <div className="grid grid-cols-3 gap-[22px] max-[980px]:grid-cols-1">
-            {grupos.map(([variant, cat, title, desc, gslug]) => (
-              <Reveal key={title}>
-                <Link
-                  href={`/grupos/${gslug}`}
-                  className="group flex h-full flex-col rounded-lg border border-border bg-white p-7 transition-transform duration-200 hover:-translate-y-0.5"
-                >
-                  <Badge variant={variant} className="self-start">
-                    {cat}
-                  </Badge>
-                  <h4 className="my-[14px_0_8px] font-display text-[22px] font-semibold leading-[1.06]">
-                    {title}
-                  </h4>
-                  <p className="text-[14.5px] leading-[1.5] text-muted">{desc}</p>
-                </Link>
+            {groupsRes.docs.map((g) => (
+              <Reveal key={g.id}>
+                <GroupCard group={g} as="h4" />
               </Reveal>
             ))}
           </div>
