@@ -104,6 +104,23 @@ describe('Groups collection', () => {
     expect(doc.perseverance?.label).toBe('familias activas')
   })
 
+  it('declara la galeria como upload hasMany', () => {
+    const field = payload.collections.groups.config.flattenedFields.find(
+      (f) => f.name === 'gallery',
+    )
+    expect(field?.type).toBe('upload')
+    expect((field as { hasMany?: boolean } | undefined)?.hasMany).toBe(true)
+  })
+
+  it('declara logo, cover y groupPhoto como uploads simples', () => {
+    const fields = payload.collections.groups.config.flattenedFields
+    for (const name of ['logo', 'cover', 'groupPhoto']) {
+      const field = fields.find((f) => f.name === name)
+      expect(field?.type, `falta el campo ${name}`).toBe('upload')
+      expect((field as { hasMany?: boolean } | undefined)?.hasMany).toBeFalsy()
+    }
+  })
+
   it('rechaza un integrante sin nombre', async () => {
     await expect(
       payload.create({

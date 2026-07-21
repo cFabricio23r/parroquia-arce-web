@@ -405,7 +405,22 @@ export interface Sector {
         id?: string | null;
       }[]
     | null;
+  /**
+   * El isotipo o la imagen patronal. Se muestra junto al título.
+   */
+  logo?: (number | null) | Media;
+  /**
+   * La imagen ancha de arriba y la de la tarjeta del listado.
+   */
   cover?: (number | null) | Media;
+  /**
+   * La foto con la gente del sector.
+   */
+  groupPhoto?: (number | null) | Media;
+  /**
+   * Varias fotos. Se reordenan arrastrando. El pie de foto sale del campo "Pie de foto" de cada imagen.
+   */
+  gallery?: (number | Media)[] | null;
   /**
    * Destacar en la portada del sitio.
    */
@@ -573,7 +588,22 @@ export interface Group {
    * Reemplazado por Equipo. Se borra en una obra aparte.
    */
   coordinatorName?: string | null;
+  /**
+   * El isotipo del grupo. Se muestra junto al título.
+   */
+  logo?: (number | null) | Media;
+  /**
+   * La imagen ancha de arriba y la de la tarjeta del listado.
+   */
   cover?: (number | null) | Media;
+  /**
+   * La foto con los miembros.
+   */
+  groupPhoto?: (number | null) | Media;
+  /**
+   * Varias fotos. Se reordenan arrastrando. El pie de foto sale del campo "Pie de foto" de cada imagen.
+   */
+  gallery?: (number | Media)[] | null;
   /**
    * Destacar en la portada del sitio.
    */
@@ -954,7 +984,10 @@ export interface SectorsSelect<T extends boolean = true> {
         name?: T;
         id?: T;
       };
+  logo?: T;
   cover?: T;
+  groupPhoto?: T;
+  gallery?: T;
   isFeatured?: T;
   status?: T;
   publishedAt?: T;
@@ -1032,7 +1065,10 @@ export interface GroupsSelect<T extends boolean = true> {
             };
       };
   coordinatorName?: T;
+  logo?: T;
   cover?: T;
+  groupPhoto?: T;
+  gallery?: T;
   isFeatured?: T;
   status?: T;
   publishedAt?: T;

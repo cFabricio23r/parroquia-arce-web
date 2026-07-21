@@ -6,6 +6,7 @@ import { publishingFields } from '../fields/publishing'
 import { contactField } from '../fields/contact'
 import { teamField } from '../fields/team'
 import { perseveranceField } from '../fields/perseverance'
+import { galleryField } from '../fields/gallery'
 
 /**
  * Group / Ministry. Organizado en tabs: la info del grupo, los datos de reunion
@@ -99,14 +100,36 @@ export const Groups: CollectionConfig = {
             },
           ],
         },
+        {
+          label: 'Fotos',
+          fields: [
+            {
+              name: 'logo',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Logo del grupo',
+              admin: { description: 'El isotipo del grupo. Se muestra junto al título.' },
+            },
+            {
+              name: 'cover',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Imagen de portada',
+              admin: {
+                description: 'La imagen ancha de arriba y la de la tarjeta del listado.',
+              },
+            },
+            {
+              name: 'groupPhoto',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Foto del grupo',
+              admin: { description: 'La foto con los miembros.' },
+            },
+            galleryField(),
+          ],
+        },
       ],
-    },
-    {
-      name: 'cover',
-      type: 'upload',
-      relationTo: 'media',
-      label: 'Imagen de portada',
-      admin: { position: 'sidebar' },
     },
     {
       name: 'isFeatured',

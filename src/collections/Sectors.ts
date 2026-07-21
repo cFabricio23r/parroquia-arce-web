@@ -7,6 +7,7 @@ import { contactField } from '../fields/contact'
 import { locationField } from '../fields/location'
 import { teamField } from '../fields/team'
 import { perseveranceField } from '../fields/perseverance'
+import { galleryField } from '../fields/gallery'
 
 /**
  * Sector: la unidad territorial de la parroquia. Es la coleccion mas rica del
@@ -85,16 +86,40 @@ export const Sectors: CollectionConfig = {
             },
           ],
         },
+        {
+          label: 'Fotos',
+          fields: [
+            {
+              name: 'logo',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Logo del sector',
+              admin: {
+                description: 'El isotipo o la imagen patronal. Se muestra junto al título.',
+              },
+            },
+            {
+              name: 'cover',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Imagen de portada',
+              admin: {
+                description: 'La imagen ancha de arriba y la de la tarjeta del listado.',
+              },
+            },
+            {
+              name: 'groupPhoto',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Foto de la comunidad',
+              admin: { description: 'La foto con la gente del sector.' },
+            },
+            galleryField(),
+          ],
+        },
       ],
     },
     // Sidebar
-    {
-      name: 'cover',
-      type: 'upload',
-      relationTo: 'media',
-      label: 'Imagen de portada',
-      admin: { position: 'sidebar' },
-    },
     {
       name: 'isFeatured',
       type: 'checkbox',
