@@ -60,4 +60,22 @@ describe('Sectors collection', () => {
     expect(res.docs.every((d) => d.status === 'published')).toBe(true)
     expect(res.docs.some((d) => d.slug === uniq('borrador'))).toBe(false)
   })
+
+  it('guarda un equipo con varios integrantes', async () => {
+    const doc = await payload.create({
+      collection: 'sectors',
+      data: {
+        name: 'Ermita San José',
+        slug: uniq('san-jose'),
+        status: 'published',
+        team: [
+          { name: 'Carlos Rivas', role: 'Responsable' },
+          { name: 'Marta Flores', role: 'Colaboradora' },
+        ],
+      },
+    })
+    created.push(doc.id)
+    expect(doc.team).toHaveLength(2)
+    expect(doc.team?.[0]?.name).toBe('Carlos Rivas')
+  })
 })

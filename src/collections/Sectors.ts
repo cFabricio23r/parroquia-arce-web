@@ -5,6 +5,7 @@ import { slugField } from '../fields/slug'
 import { publishingFields } from '../fields/publishing'
 import { contactField } from '../fields/contact'
 import { locationField } from '../fields/location'
+import { teamField } from '../fields/team'
 
 /**
  * Sector: la unidad territorial de la parroquia. Es la coleccion mas rica del
@@ -56,17 +57,30 @@ export const Sectors: CollectionConfig = {
           fields: [locationField()],
         },
         {
-          label: 'Responsables y contacto',
+          label: 'Equipo y contacto',
           fields: [
-            { name: 'responsibleName', type: 'text', label: 'Responsable' },
+            teamField(),
+            contactField(),
+            {
+              name: 'responsibleName',
+              type: 'text',
+              label: 'Responsable (campo viejo)',
+              admin: {
+                hidden: true,
+                description: 'Reemplazado por Equipo. Se borra en una obra aparte.',
+              },
+            },
             {
               name: 'assistants',
               type: 'array',
-              label: 'Colaboradores',
+              label: 'Colaboradores (campo viejo)',
               labels: { singular: 'Colaborador/a', plural: 'Colaboradores' },
+              admin: {
+                hidden: true,
+                description: 'Reemplazado por Equipo. Se borra en una obra aparte.',
+              },
               fields: [{ name: 'name', type: 'text', label: 'Nombre' }],
             },
-            contactField(),
           ],
         },
       ],

@@ -53,4 +53,39 @@ describe('Groups collection', () => {
     })
     expect(res.docs.some((d) => d.slug === uniq('borrador'))).toBe(false)
   })
+
+  it('guarda un equipo con varios integrantes y respeta el orden', async () => {
+    const doc = await payload.create({
+      collection: 'groups',
+      data: {
+        name: 'Coro Parroquial',
+        slug: uniq('coro'),
+        status: 'published',
+        team: [
+          { name: 'Ana Morales', role: 'Coordinadora' },
+          { name: 'Luis Peña', role: 'Asistente' },
+          { name: 'Rosa Díaz' },
+        ],
+      },
+    })
+    created.push(doc.id)
+    expect(doc.team).toHaveLength(3)
+    expect(doc.team?.[0]?.name).toBe('Ana Morales')
+    expect(doc.team?.[0]?.role).toBe('Coordinadora')
+    expect(doc.team?.[2]?.role).toBeFalsy()
+  })
+
+  it('rechaza un integrante sin nombre', async () => {
+    await expect(
+      payload.create({
+        collection: 'groups',
+        data: {
+          name: 'Sin nombre',
+          slug: uniq('sin-nombre'),
+          status: 'draft',
+          team: [{ role: 'Coordinadora' }],
+        },
+      }),
+    ).rejects.toThrow()
+  })
 })

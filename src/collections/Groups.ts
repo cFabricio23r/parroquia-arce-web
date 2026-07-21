@@ -4,6 +4,7 @@ import { canManageContent } from '../access/roles'
 import { slugField } from '../fields/slug'
 import { publishingFields } from '../fields/publishing'
 import { contactField } from '../fields/contact'
+import { teamField } from '../fields/team'
 
 /**
  * Group / Ministry. Organizado en tabs: la info del grupo, los datos de reunion
@@ -80,10 +81,19 @@ export const Groups: CollectionConfig = {
           ],
         },
         {
-          label: 'Contacto',
+          label: 'Equipo y contacto',
           fields: [
-            { name: 'coordinatorName', type: 'text', label: 'Coordinador/a' },
+            teamField(),
             contactField(),
+            {
+              name: 'coordinatorName',
+              type: 'text',
+              label: 'Coordinador/a (campo viejo)',
+              admin: {
+                hidden: true,
+                description: 'Reemplazado por Equipo. Se borra en una obra aparte.',
+              },
+            },
           ],
         },
       ],

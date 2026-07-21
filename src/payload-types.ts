@@ -350,10 +350,17 @@ export interface Sector {
      */
     coordinates?: [number, number] | null;
   };
-  responsibleName?: string | null;
-  assistants?:
+  /**
+   * El orden manda: poné primero a quien coordina. Se reordena arrastrando.
+   */
+  team?:
     | {
-        name?: string | null;
+        name: string;
+        /**
+         * Ej.: Coordinadora, Asistente, Tesorero.
+         */
+        role?: string | null;
+        photo?: (number | null) | Media;
         id?: string | null;
       }[]
     | null;
@@ -375,6 +382,19 @@ export interface Sector {
         }[]
       | null;
   };
+  /**
+   * Reemplazado por Equipo. Se borra en una obra aparte.
+   */
+  responsibleName?: string | null;
+  /**
+   * Reemplazado por Equipo. Se borra en una obra aparte.
+   */
+  assistants?:
+    | {
+        name?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   cover?: (number | null) | Media;
   /**
    * Destacar en la portada del sitio.
@@ -482,7 +502,20 @@ export interface Group {
    * Qué hacer para integrarse al grupo.
    */
   howToJoin?: string | null;
-  coordinatorName?: string | null;
+  /**
+   * El orden manda: poné primero a quien coordina. Se reordena arrastrando.
+   */
+  team?:
+    | {
+        name: string;
+        /**
+         * Ej.: Coordinadora, Asistente, Tesorero.
+         */
+        role?: string | null;
+        photo?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
   /**
    * Datos de contacto. Todos opcionales.
    */
@@ -501,6 +534,10 @@ export interface Group {
         }[]
       | null;
   };
+  /**
+   * Reemplazado por Equipo. Se borra en una obra aparte.
+   */
+  coordinatorName?: string | null;
   cover?: (number | null) | Media;
   /**
    * Destacar en la portada del sitio.
@@ -847,11 +884,12 @@ export interface SectorsSelect<T extends boolean = true> {
         address?: T;
         coordinates?: T;
       };
-  responsibleName?: T;
-  assistants?:
+  team?:
     | T
     | {
         name?: T;
+        role?: T;
+        photo?: T;
         id?: T;
       };
   contact?:
@@ -867,6 +905,13 @@ export interface SectorsSelect<T extends boolean = true> {
               url?: T;
               id?: T;
             };
+      };
+  responsibleName?: T;
+  assistants?:
+    | T
+    | {
+        name?: T;
+        id?: T;
       };
   cover?: T;
   isFeatured?: T;
@@ -916,7 +961,14 @@ export interface GroupsSelect<T extends boolean = true> {
         place?: T;
       };
   howToJoin?: T;
-  coordinatorName?: T;
+  team?:
+    | T
+    | {
+        name?: T;
+        role?: T;
+        photo?: T;
+        id?: T;
+      };
   contact?:
     | T
     | {
@@ -931,6 +983,7 @@ export interface GroupsSelect<T extends boolean = true> {
               id?: T;
             };
       };
+  coordinatorName?: T;
   cover?: T;
   isFeatured?: T;
   status?: T;
