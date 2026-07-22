@@ -96,7 +96,8 @@ export default async function HomePage() {
     featuredEvent?.cover && typeof featuredEvent.cover === 'object' ? featuredEvent.cover : null
 
   // Horarios y sacramentos: solo lo cargado en el CMS. Sin respaldo editorial.
-  const { misas, sacramentos, hasMisas, hasSacramentos } = deriveSchedule(contactGlobal)
+  const { misas, devociones, sacramentos, hasMisas, hasDevociones, hasSacramentos } =
+    deriveSchedule(contactGlobal)
 
   // Accesos rapidos. La tarjeta de misas solo entra si hay horarios cargados;
   // las columnas se derivan del conteo para no dejar un hueco cuando son 3.
@@ -217,7 +218,7 @@ export default async function HomePage() {
                   Misas
                 </span>
                 {misas.map((m) => (
-                  <span key={m.label} className="text-[14px] text-[#c9d8ec]">
+                  <span key={m.id} className="text-[14px] text-[#c9d8ec]">
                     <b className="font-semibold text-white">{m.label}</b> {m.time}
                   </span>
                 ))}
@@ -484,9 +485,13 @@ export default async function HomePage() {
         </Container>
       </section>
 
-      {/* MISA + SACRAMENTOS — solo si hay algo cargado en el CMS. Sin datos no
-          se renderiza: nada de horarios editoriales. */}
-      {(hasMisas || hasSacramentos) && (
+      {/* MISA + DEVOCIONES + SACRAMENTOS — solo si hay algo cargado en el CMS.
+          Sin datos no se renderiza: nada de horarios editoriales.
+          La columna derecha muestra devociones y, si no hay, sacramentos. Si no
+          hay ninguna de las dos la seccion COLAPSA a una columna: antes quedaba
+          un grid de dos con la derecha vacia, que es como estaba en produccion
+          porque `sacraments` nunca se cargo. */}
+      {(hasMisas || hasDevociones || hasSacramentos) && (
         <section id="misas" className="scroll-mt-24 py-[clamp(56px,7vw,96px)]">
           <Container>
             <Reveal>
@@ -496,20 +501,26 @@ export default async function HomePage() {
                 lead="Los horarios y accesos pastorales que la comunidad busca más seguido, siempre a mano."
               />
             </Reveal>
-            <div className="grid grid-cols-[1.05fr_1.25fr] items-start gap-[30px] max-[1040px]:grid-cols-1">
+            <div
+              className={`grid items-start gap-[30px] max-[1040px]:grid-cols-1 ${
+                hasMisas && (hasDevociones || hasSacramentos)
+                  ? 'grid-cols-[1.05fr_1.25fr]'
+                  : 'grid-cols-1'
+              }`}
+            >
               {hasMisas && (
                 <Reveal>
                   <div className="rounded-xl border border-border bg-blue-soft p-[30px]">
                     <span className="text-[12.5px] font-bold uppercase tracking-[.15em] text-blue">
                       Horarios de misa
                     </span>
-                    <h3 className="my-[12px_0_20px] font-display text-[30px] font-medium leading-[1.05]">
+                    <h3 className="mb-5 mt-3 font-display text-[30px] font-medium leading-[1.05]">
                       Misas de la semana
                     </h3>
                     <div className="flex flex-col gap-[11px]">
                       {misas.map((m) => (
                         <div
-                          key={m.label}
+                          key={m.id}
                           className="flex items-center justify-between gap-4 rounded-md bg-white p-[16px_20px]"
                         >
                           <span className="font-semibold">{m.label}</span>
@@ -520,7 +531,30 @@ export default async function HomePage() {
                   </div>
                 </Reveal>
               )}
-              {hasSacramentos && (
+
+              {hasDevociones ? (
+                <Reveal>
+                  <div className="rounded-xl border border-border bg-white p-[30px]">
+                    <span className="text-[12.5px] font-bold uppercase tracking-[.15em] text-blue">
+                      Durante la semana
+                    </span>
+                    <h3 className="mb-5 mt-3 font-display text-[30px] font-medium leading-[1.05]">
+                      Devociones y confesiones
+                    </h3>
+                    <div className="flex flex-col gap-[11px]">
+                      {devociones.map((d) => (
+                        <div key={d.id} className="rounded-md bg-bg-soft p-[16px_20px]">
+                          {d.detail && <b className="block font-display text-[17px]">{d.detail}</b>}
+                          <span className="text-[14.5px] text-muted">
+                            {d.kind === 'confesion' && !d.detail ? 'Confesiones · ' : ''}
+                            {d.label} · <b className="font-extrabold text-blue">{d.time}</b>
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </Reveal>
+              ) : hasSacramentos ? (
                 <Reveal>
                   <div className="grid grid-cols-2 gap-[18px] max-[600px]:grid-cols-1">
                     {sacramentos.map((s) => (
@@ -528,7 +562,10 @@ export default async function HomePage() {
                         key={s.title}
                         className="flex flex-col gap-3 rounded-lg border border-border bg-white p-6"
                       >
-                        <span className="grid h-12 w-12 place-items-center rounded-[13px] bg-blue font-display text-[20px] font-semibold text-white">
+                        <span
+                          className="grid h-12 w-12 place-items-center rounded-[13px] bg-blue font-display text-[20px] font-semibold text-white"
+                          aria-hidden="true"
+                        >
                           {s.title.charAt(0).toUpperCase()}
                         </span>
                         <h4 className="font-display text-[20px] font-semibold">{s.title}</h4>
@@ -537,8 +574,16 @@ export default async function HomePage() {
                     ))}
                   </div>
                 </Reveal>
-              )}
+              ) : null}
             </div>
+
+            {/* Este boton existio y se borro cuando /horarios dejo de existir,
+                por quedar sin destino. Ahora tiene destino y vuelve. */}
+            <Reveal className="mt-8 flex justify-center">
+              <Button href="/horarios" variant="ghost">
+                Ver todos los horarios →
+              </Button>
+            </Reveal>
           </Container>
         </section>
       )}
