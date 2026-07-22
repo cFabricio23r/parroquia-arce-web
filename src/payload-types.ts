@@ -307,6 +307,9 @@ export interface Sector {
    * Texto corto para las tarjetas del listado.
    */
   summary?: string | null;
+  /**
+   * Nadie lo llenó nunca: el cuerpo del sector es Historia. Se borra en una obra aparte, junto con Responsable y Colaboradores.
+   */
   description?: {
     root: {
       type: string;
@@ -1322,12 +1325,17 @@ export interface Contact {
    */
   coordinates?: [number, number] | null;
   /**
-   * Alimenta la barra de la portada y la sección de misas de la home.
+   * Misas, devociones y confesiones. Solo las filas de tipo "Misa" alimentan la barra de la portada.
    */
   massSchedule?:
     | {
+        kind?: ('misa' | 'devocion' | 'confesion') | null;
         label?: string | null;
         time?: string | null;
+        /**
+         * Para devociones y confesiones: qué es (ej. "Hora Santa"). Las misas lo dejan vacío.
+         */
+        detail?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -1434,8 +1442,10 @@ export interface ContactSelect<T extends boolean = true> {
   massSchedule?:
     | T
     | {
+        kind?: T;
         label?: T;
         time?: T;
+        detail?: T;
         id?: T;
       };
   sacraments?:

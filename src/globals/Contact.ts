@@ -36,19 +36,42 @@ export const Contact: GlobalConfig = {
     { name: 'coordinates', type: 'point', label: 'Coordenadas (mapa)', admin: { hidden: true } },
     {
       name: 'massSchedule',
+      // El nombre del campo NO cambia: renombrarlo seria un rename de tabla
+      // contra la base compartida con produccion. Solo cambia la etiqueta.
       type: 'array',
-      label: 'Horario de misas',
-      labels: { singular: 'Misa', plural: 'Misas' },
+      label: 'Horarios de la semana',
+      labels: { singular: 'Horario', plural: 'Horarios' },
       admin: {
-        description: 'Alimenta la barra de la portada y la sección de misas de la home.',
+        description:
+          'Misas, devociones y confesiones. Solo las filas de tipo "Misa" alimentan la barra de la portada.',
       },
       fields: [
         {
           type: 'row',
           fields: [
+            {
+              name: 'kind',
+              type: 'select',
+              label: 'Tipo',
+              defaultValue: 'misa',
+              options: [
+                { label: 'Misa', value: 'misa' },
+                { label: 'Devoción', value: 'devocion' },
+                { label: 'Confesiones', value: 'confesion' },
+              ],
+            },
             { name: 'label', type: 'text', label: 'Día(s)' },
             { name: 'time', type: 'text', label: 'Horario' },
           ],
+        },
+        {
+          name: 'detail',
+          type: 'text',
+          label: 'Nombre o detalle',
+          admin: {
+            description:
+              'Para devociones y confesiones: qué es (ej. "Hora Santa"). Las misas lo dejan vacío.',
+          },
         },
       ],
     },
