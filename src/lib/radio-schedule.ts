@@ -185,3 +185,81 @@ export function findNextProgram<T extends ProgramLike>(
 
   return null
 }
+
+/** Etiquetas para mostrar. Los VALORES guardados no llevan tilde; estas si. */
+export const DAY_LABELS: Record<Day, string> = {
+  domingo: 'Domingo',
+  lunes: 'Lunes',
+  martes: 'Martes',
+  miercoles: 'Miércoles',
+  jueves: 'Jueves',
+  viernes: 'Viernes',
+  sabado: 'Sábado',
+}
+
+export type DayGroup<T> = { day: Day; label: string; isToday: boolean; programs: T[] }
+
+/** Los 7 dias empezando por `from`, cada uno con sus programas ordenados por hora. */
+export function groupByDay<T extends ProgramLike>(programs: T[], from: Day): DayGroup<T>[] {
+  const fromIndex = DAYS.indexOf(from)
+
+  return Array.from({ length: DAYS.length }, (_unused, offset) => {
+    const day = DAYS[(fromIndex + offset) % DAYS.length]
+    return {
+      day,
+      label: DAY_LABELS[day],
+      isToday: offset === 0,
+      programs: programs
+        .filter((program) => matchesDay(program, day) && toMinutes(program.startTime) !== null)
+        .sort((a, b) => (toMinutes(a.startTime) ?? 0) - (toMinutes(b.startTime) ?? 0)),
+    }
+  })
+}
+
+/** Lo que la UI necesita de un programa, ya normalizado. */
+export type RadioProgramView = {
+  id: string
+  title: string
+  description: string | null
+  hostName: string | null
+  dayOfWeek: string | null
+  startTime: string | null
+  endTime: string | null
+  cover: { url: string; alt: string } | null
+}
+
+/** Entrada laxa a proposito: no acoplamos esta lib a los tipos generados de Payload. */
+type RawProgram = {
+  id: string | number
+  title: string
+  description?: string | null
+  hostName?: string | null
+  dayOfWeek?: string | null
+  startTime?: string | null
+  endTime?: string | null
+  cover?: unknown
+}
+
+/**
+ * Normaliza un documento del CMS. La portada llega como objeto poblado o como id
+ * suelto; solo nos sirve poblada. `alt` siempre existe en `media` (es obligatorio
+ * por accesibilidad), pero caemos a '' por las dudas.
+ */
+export function toRadioProgramView(doc: RawProgram): RadioProgramView {
+  const cover = doc.cover
+  const populated =
+    cover && typeof cover === 'object' && 'url' in cover && typeof cover.url === 'string'
+      ? { url: cover.url, alt: 'alt' in cover && typeof cover.alt === 'string' ? cover.alt : '' }
+      : null
+
+  return {
+    id: String(doc.id),
+    title: doc.title,
+    description: doc.description ?? null,
+    hostName: doc.hostName ?? null,
+    dayOfWeek: doc.dayOfWeek ?? null,
+    startTime: doc.startTime ?? null,
+    endTime: doc.endTime ?? null,
+    cover: populated,
+  }
+}

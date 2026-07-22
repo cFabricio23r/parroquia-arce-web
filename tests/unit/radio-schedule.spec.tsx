@@ -5,10 +5,12 @@ import {
   findCurrentProgram,
   findNextProgram,
   formatTime12h,
+  groupByDay,
   isOnAir,
   isValidTime,
   parishNow,
   toMinutes,
+  toRadioProgramView,
 } from '@/lib/radio-schedule'
 
 // `endTime` es opcional a proposito: en el CMS real ningun programa lo tiene.
@@ -244,5 +246,86 @@ describe('findNextProgram', () => {
 
   it('devuelve null si no hay programacion en toda la semana', () => {
     expect(findNextProgram([], { day: 'martes', minutes: 600 })).toBeNull()
+  })
+})
+
+describe('groupByDay', () => {
+  it('devuelve los 7 dias empezando por hoy', () => {
+    const grupos = groupByDay([], 'martes')
+    expect(grupos).toHaveLength(7)
+    expect(grupos.map((g) => g.day)).toEqual([
+      'martes',
+      'miercoles',
+      'jueves',
+      'viernes',
+      'sabado',
+      'domingo',
+      'lunes',
+    ])
+    expect(grupos[0].isToday).toBe(true)
+    expect(grupos[1].isToday).toBe(false)
+  })
+
+  it('pone la etiqueta con tilde para mostrar', () => {
+    expect(groupByDay([], 'miercoles')[0].label).toBe('Miércoles')
+    expect(groupByDay([], 'sabado')[0].label).toBe('Sábado')
+  })
+
+  it('ordena los programas de cada dia por hora, no por orden de carga', () => {
+    const programas = [
+      prog('martes', '20:00', '21:00', 'Tarde'),
+      prog('martes', '06:00', '07:00', 'Temprano'),
+    ]
+    expect(groupByDay(programas, 'martes')[0].programs.map((p) => p.title)).toEqual([
+      'Temprano',
+      'Tarde',
+    ])
+  })
+
+  it('repite los "diario" en todos los dias', () => {
+    const grupos = groupByDay([prog('diario', '06:00', '07:00', 'Evangelio')], 'martes')
+    expect(grupos.every((g) => g.programs.length === 1)).toBe(true)
+  })
+
+  it('descarta los programas sin hora valida', () => {
+    const grupos = groupByDay([prog('martes', '6:00 a.m.', '07:00', 'Roto')], 'martes')
+    expect(grupos[0].programs).toEqual([])
+  })
+})
+
+describe('toRadioProgramView', () => {
+  it('normaliza un documento del CMS', () => {
+    expect(
+      toRadioProgramView({
+        id: 7,
+        title: 'Evangelio',
+        description: 'Reflexion',
+        hostName: 'P. José',
+        dayOfWeek: 'diario',
+        startTime: '06:00',
+        endTime: '07:00',
+        cover: { url: '/media/a.jpg', alt: 'Estudio' },
+      }),
+    ).toEqual({
+      id: '7',
+      title: 'Evangelio',
+      description: 'Reflexion',
+      hostName: 'P. José',
+      dayOfWeek: 'diario',
+      startTime: '06:00',
+      endTime: '07:00',
+      cover: { url: '/media/a.jpg', alt: 'Estudio' },
+    })
+  })
+
+  it('deja la portada en null si vino como id sin poblar', () => {
+    expect(toRadioProgramView({ id: 1, title: 'X', cover: 42 }).cover).toBeNull()
+  })
+
+  it('deja los opcionales en null en vez de undefined', () => {
+    const view = toRadioProgramView({ id: 1, title: 'X' })
+    expect(view.description).toBeNull()
+    expect(view.hostName).toBeNull()
+    expect(view.startTime).toBeNull()
   })
 })
