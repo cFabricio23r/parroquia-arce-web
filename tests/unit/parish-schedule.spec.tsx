@@ -7,7 +7,9 @@ describe('deriveSchedule — misas', () => {
       massSchedule: [{ label: 'Domingo', time: '10:00 a.m.' }],
       sacraments: [],
     })
-    expect(r.misas).toEqual([{ label: 'Domingo', time: '10:00 a.m.' }])
+    expect(r.misas).toEqual([
+      { id: 'horario-0', label: 'Domingo', time: '10:00 a.m.', kind: 'misa', detail: '' },
+    ])
     expect(r.hasMisas).toBe(true)
   })
 
@@ -41,7 +43,9 @@ describe('deriveSchedule — misas', () => {
       massSchedule: [{ label: '  Domingo  ', time: '  10:00 a.m. ' }],
       sacraments: [],
     })
-    expect(r.misas).toEqual([{ label: 'Domingo', time: '10:00 a.m.' }])
+    expect(r.misas).toEqual([
+      { id: 'horario-0', label: 'Domingo', time: '10:00 a.m.', kind: 'misa', detail: '' },
+    ])
   })
 
   it('conserva solo las filas completas de una lista mixta', () => {
@@ -102,5 +106,94 @@ describe('deriveSchedule — sacramentos', () => {
     })
     expect(r.hasMisas).toBe(false)
     expect(r.hasSacramentos).toBe(true)
+  })
+})
+
+describe('deriveSchedule — tipos de horario', () => {
+  // El caso mas importante de toda la obra: las filas que ya viven en produccion
+  // se cargaron antes de que existiera `kind`, asi que lo tienen en NULL. Si no
+  // cuentan como misa, las misas desaparecen del hero del sitio.
+  it('cuenta como misa una fila sin tipo', () => {
+    const r = deriveSchedule({
+      massSchedule: [{ label: 'Martes a Viernes', time: '6:30 PM' }],
+      sacraments: [],
+    })
+    expect(r.misas.map((m) => m.label)).toEqual(['Martes a Viernes'])
+    expect(r.hasMisas).toBe(true)
+    expect(r.hasDevociones).toBe(false)
+  })
+
+  it('cuenta como misa una fila con tipo desconocido', () => {
+    const r = deriveSchedule({
+      massSchedule: [{ label: 'Domingo', time: '6:00 a.m.', kind: 'vigilia' as never }],
+      sacraments: [],
+    })
+    expect(r.misas).toHaveLength(1)
+  })
+
+  it('manda las devociones a su propia lista', () => {
+    const r = deriveSchedule({
+      massSchedule: [
+        { label: 'Domingo', time: '6:00 a.m.', kind: 'misa' },
+        { label: 'Jueves', time: '7:15 p.m.', kind: 'devocion', detail: 'Hora Santa' },
+      ],
+      sacraments: [],
+    })
+    expect(r.misas.map((m) => m.label)).toEqual(['Domingo'])
+    expect(r.devociones.map((d) => d.detail)).toEqual(['Hora Santa'])
+    expect(r.hasMisas).toBe(true)
+    expect(r.hasDevociones).toBe(true)
+  })
+
+  it('manda las confesiones a la lista de devociones', () => {
+    const r = deriveSchedule({
+      massSchedule: [{ label: 'Jueves', time: '2:00 - 4:00 p.m.', kind: 'confesion' }],
+      sacraments: [],
+    })
+    expect(r.devociones).toHaveLength(1)
+    expect(r.devociones[0].kind).toBe('confesion')
+    expect(r.misas).toEqual([])
+  })
+
+  // El criterio de vacio no se afloja por tipo: una devocion a medio cargar
+  // publicaria "Jueves" sin hora, igual de inutil que una misa a medio cargar.
+  it('descarta una devocion sin horario', () => {
+    const r = deriveSchedule({
+      massSchedule: [{ label: 'Jueves', time: '  ', kind: 'devocion', detail: 'Hora Santa' }],
+      sacraments: [],
+    })
+    expect(r.devociones).toEqual([])
+    expect(r.hasDevociones).toBe(false)
+  })
+
+  // Si `hasMisas` se contaminara con devociones, el nav ofreceria "Horarios" y
+  // el hero anunciaria una barra de misas que no existe.
+  it('con solo devociones no hay misas', () => {
+    const r = deriveSchedule({
+      massSchedule: [{ label: 'Jueves', time: '7:15 p.m.', kind: 'devocion' }],
+      sacraments: [],
+    })
+    expect(r.hasMisas).toBe(false)
+    expect(r.hasDevociones).toBe(true)
+  })
+
+  it('conserva el id de la fila para usarlo como key de React', () => {
+    const r = deriveSchedule({
+      massSchedule: [{ id: 'abc123', label: 'Domingo', time: '6:00 a.m.' }],
+      sacraments: [],
+    })
+    expect(r.misas[0].id).toBe('abc123')
+  })
+
+  // Dos filas del mismo dia (el jueves tiene tres) no pueden compartir key.
+  it('inventa un id estable cuando la fila no lo trae', () => {
+    const r = deriveSchedule({
+      massSchedule: [
+        { label: 'Jueves', time: '2:00 p.m.', kind: 'devocion' },
+        { label: 'Jueves', time: '7:15 p.m.', kind: 'devocion' },
+      ],
+      sacraments: [],
+    })
+    expect(r.devociones.map((d) => d.id)).toEqual(['horario-0', 'horario-1'])
   })
 })
