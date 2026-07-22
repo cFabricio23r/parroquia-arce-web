@@ -368,9 +368,13 @@ export default async function HomePage() {
                     {featuredSector.chapelName && (
                       <Badge variant="blue">{featuredSector.chapelName}</Badge>
                     )}
-                    {featuredSector.location?.address && (
-                      <Badge variant="sky">{featuredSector.location.address}</Badge>
-                    )}
+                    {/* Un badge con una URL adentro es el mismo bug que en el
+                        detalle. `sector-8` ES el destacado, asi que esto se veia
+                        en la portada del sitio. */}
+                    {featuredSector.location?.address &&
+                      !/^https?:\/\//i.test(featuredSector.location.address) && (
+                        <Badge variant="sky">{featuredSector.location.address}</Badge>
+                      )}
                   </div>
                   <div className="mt-auto">
                     <Button href={`/sectores/${featuredSector.slug}`}>Conocé este sector</Button>

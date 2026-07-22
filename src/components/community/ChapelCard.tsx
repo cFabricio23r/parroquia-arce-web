@@ -1,6 +1,7 @@
 import type { Chapel } from '@/payload-types'
 import { formatFeastDate } from '@/lib/months'
 import { ContactLinks, hasContact } from './ContactLinks'
+import { MapLink, hasLocation } from './MapLink'
 
 /**
  * Una ermita dentro de la pagina de su sector. No hay ruta propia
@@ -63,12 +64,14 @@ export function ChapelCard({ chapel }: { chapel: Chapel }) {
           </div>
         )}
 
-        {chapel.location?.address && (
+        {/* La tarjeta NO cuelga de un <Link> — el detalle del sector la renderiza
+            suelta — asi que el boton del mapa puede ir con su ancla. */}
+        {hasLocation(chapel.location) && (
           <div className="mt-5">
             <h4 className="mb-2 text-[12px] font-bold uppercase tracking-[.1em] text-muted">
-              Dirección
+              Ubicación
             </h4>
-            <p className="text-[14.5px]">{chapel.location.address}</p>
+            <MapLink location={chapel.location} />
           </div>
         )}
 

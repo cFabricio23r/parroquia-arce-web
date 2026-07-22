@@ -7,6 +7,7 @@ import { PageHero } from '@/components/site/PageHero'
 import { MediaImage } from '@/components/news/MediaImage'
 import { Reveal } from '@/components/news/Reveal'
 import { Icon } from '@/components/ui/Icon'
+import { MapLink } from '@/components/community/MapLink'
 
 export const metadata: Metadata = { title: 'Sectores y ermitas' }
 export const revalidate = 300
@@ -55,12 +56,14 @@ export default async function SectoresPage() {
                       <h3 className="font-display text-[23px] font-semibold leading-[1.05]">
                         {s.name}
                       </h3>
-                      {s.location?.address && (
-                        <div className="mt-[7px] flex items-center gap-[7px] text-[13.5px] text-muted">
-                          <Icon name="pin" className="h-[15px] w-[15px] flex-none text-sky" />
-                          {s.location.address}
-                        </div>
-                      )}
+                      {/* `linkless`: la tarjeta entera YA es un <Link>, y una <a>
+                          dentro de otra <a> es HTML invalido. Acá va solo el texto;
+                          el botón del mapa vive en el detalle. */}
+                      <MapLink
+                        location={s.location}
+                        linkless
+                        className="mt-[7px] text-[13.5px] text-muted"
+                      />
                       {s.summary && (
                         <p className="mt-3 text-[14px] leading-[1.5] text-muted">{s.summary}</p>
                       )}
