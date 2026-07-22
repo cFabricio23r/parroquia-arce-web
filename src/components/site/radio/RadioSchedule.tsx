@@ -53,11 +53,13 @@ export function RadioSchedule({ programs }: { programs: RadioProgramView[] }) {
             return (
               <div
                 key={`${active.day}-${program.id}`}
-                className={`grid grid-cols-[68px_1fr] items-center gap-[16px] rounded-lg border p-[14px_18px] ${
+                // 84px: "12:00 p.m." es la cadena mas larga y a 68px se partia en
+                // dos lineas, dejando esa fila mas alta que las demas.
+                className={`grid grid-cols-[84px_1fr] items-center gap-[16px] rounded-lg border p-[14px_18px] ${
                   onAir ? 'border-amber bg-[#fffaf3]' : 'border-border bg-white'
                 }`}
               >
-                <div className="text-center font-display text-[15px] font-bold leading-tight text-blue">
+                <div className="whitespace-nowrap text-center font-display text-[15px] font-bold leading-tight text-blue">
                   {formatTime12h(program.startTime)}
                   {program.endTime && (
                     <div className="text-[11px] font-normal text-muted">
