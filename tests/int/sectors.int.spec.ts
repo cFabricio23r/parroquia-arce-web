@@ -79,6 +79,54 @@ describe('Sectors collection', () => {
     expect(doc.team?.[0]?.name).toBe('Carlos Rivas')
   })
 
+  it('guarda la direccion y el enlace del mapa por separado', async () => {
+    const doc = await payload.create({
+      collection: 'sectors',
+      data: {
+        name: 'Sector con mapa',
+        slug: uniq('con-mapa'),
+        status: 'published',
+        location: {
+          address: 'Cantón Las Cruces, Ciudad Arce',
+          mapUrl: 'https://maps.app.goo.gl/ejemplo',
+        },
+      },
+    })
+    created.push(doc.id)
+    expect(doc.location?.address).toBe('Cantón Las Cruces, Ciudad Arce')
+    expect(doc.location?.mapUrl).toBe('https://maps.app.goo.gl/ejemplo')
+  })
+
+  it('rechaza un enlace de mapa que no sea una URL', async () => {
+    await expect(
+      payload.create({
+        collection: 'sectors',
+        data: {
+          name: 'Mapa malo',
+          slug: uniq('mapa-malo'),
+          status: 'draft',
+          location: { mapUrl: 'Cantón Las Cruces' },
+        },
+      }),
+    ).rejects.toThrow()
+  })
+
+  // El campo es OPCIONAL. Una validacion mal escrita que rechace el vacio dejaria
+  // al editor sin poder guardar un sector que no tiene enlace de mapa.
+  it('acepta un sector sin enlace de mapa', async () => {
+    const doc = await payload.create({
+      collection: 'sectors',
+      data: {
+        name: 'Sin mapa',
+        slug: uniq('sin-mapa'),
+        status: 'draft',
+        location: { address: 'Cantón Las Acostas' },
+      },
+    })
+    created.push(doc.id)
+    expect(doc.location?.mapUrl ?? null).toBeNull()
+  })
+
   it('enlaza grupos con presencia en el sector', async () => {
     const grupo = await payload.create({
       collection: 'groups',

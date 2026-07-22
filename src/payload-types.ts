@@ -352,12 +352,19 @@ export interface Sector {
    */
   groups?: (number | Group)[] | null;
   /**
-   * Dónde queda. Las coordenadas alimentan el mapa.
+   * Dónde queda y cómo llegar.
    */
   location?: {
+    /**
+     * La dirección en palabras, como se la dirías a alguien: "Cantón Las Cruces, Ciudad Arce". El enlace del mapa NO va acá.
+     */
     address?: string | null;
     /**
-     * Longitud, latitud.
+     * El enlace de Google Maps o Waze. En el sitio se muestra como un botón "Ver en el mapa".
+     */
+    mapUrl?: string | null;
+    /**
+     * Primero la LONGITUD, después la latitud. Para Ciudad Arce son aproximadamente -89.44, 13.86. Invertirlas manda el punto al otro lado del mundo.
      *
      * @minItems 2
      * @maxItems 2
@@ -613,12 +620,19 @@ export interface Chapel {
    */
   massSchedule?: string | null;
   /**
-   * Dónde queda. Las coordenadas alimentan el mapa.
+   * Dónde queda y cómo llegar.
    */
   location?: {
+    /**
+     * La dirección en palabras, como se la dirías a alguien: "Cantón Las Cruces, Ciudad Arce". El enlace del mapa NO va acá.
+     */
     address?: string | null;
     /**
-     * Longitud, latitud.
+     * El enlace de Google Maps o Waze. En el sitio se muestra como un botón "Ver en el mapa".
+     */
+    mapUrl?: string | null;
+    /**
+     * Primero la LONGITUD, después la latitud. Para Ciudad Arce son aproximadamente -89.44, 13.86. Invertirlas manda el punto al otro lado del mundo.
      *
      * @minItems 2
      * @maxItems 2
@@ -996,6 +1010,7 @@ export interface SectorsSelect<T extends boolean = true> {
     | T
     | {
         address?: T;
+        mapUrl?: T;
         coordinates?: T;
       };
   team?:
@@ -1060,6 +1075,7 @@ export interface ChapelsSelect<T extends boolean = true> {
     | T
     | {
         address?: T;
+        mapUrl?: T;
         coordinates?: T;
       };
   contact?:
