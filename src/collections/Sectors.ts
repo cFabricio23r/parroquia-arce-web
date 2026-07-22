@@ -50,7 +50,16 @@ export const Sectors: CollectionConfig = {
               label: 'Resumen',
               admin: { description: 'Texto corto para las tarjetas del listado.' },
             },
-            { name: 'description', type: 'richText', label: 'Descripción' },
+            {
+              name: 'description',
+              type: 'richText',
+              label: 'Descripción (campo viejo)',
+              admin: {
+                hidden: true,
+                description:
+                  'Nadie lo llenó nunca: el cuerpo del sector es Historia. Se borra en una obra aparte, junto con Responsable y Colaboradores.',
+              },
+            },
             { name: 'history', type: 'richText', label: 'Historia' },
             perseveranceField(),
             {
