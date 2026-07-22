@@ -44,4 +44,25 @@ describe('TeamList', () => {
     const { container } = render(<TeamList members={null} />)
     expect(container.firstChild).toBeNull()
   })
+
+  it('usa la lista angosta por defecto, con su encabezado', () => {
+    const { container } = render(<TeamList members={[{ name: 'Ana' }]} />)
+    expect(screen.getByText('Equipo')).toBeDefined()
+    expect(container.querySelector('ul')).not.toBeNull()
+  })
+
+  // En `grid` el encabezado lo pone la pagina: la seccion necesita su propio h2
+  // con el mismo tratamiento que Historia y Galeria. Dibujar uno aca daria dos
+  // "Equipo" anidados.
+  it('en variante grid no dibuja su propio encabezado', () => {
+    render(<TeamList members={[{ name: 'Ana' }]} variant="grid" />)
+    expect(screen.queryByText('Equipo')).toBeNull()
+    expect(screen.getByText('Ana')).toBeDefined()
+  })
+
+  it('muestra a todos los integrantes en variante grid', () => {
+    const members = Array.from({ length: 13 }, (_, i) => ({ name: `Persona ${i + 1}` }))
+    render(<TeamList members={members} variant="grid" />)
+    expect(screen.getAllByText(/^Persona /)).toHaveLength(13)
+  })
 })
