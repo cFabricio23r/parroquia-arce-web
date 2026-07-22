@@ -5,6 +5,7 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { Header } from '@/components/site/Header'
 import { Footer } from '@/components/site/Footer'
+import { RadioProvider } from '@/components/site/radio/RadioProvider'
 import { deriveSchedule } from '@/lib/parish-schedule'
 import './globals.css'
 
@@ -68,6 +69,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     .filter((c): c is typeof c & { platform: string; url: string } => !!c.platform && !!c.url)
     .map((c) => ({ platform: c.platform, url: c.url }))
   const radioLive = settings.radio?.available ?? true
+  const radioStreamUrl = settings.radio?.streamUrl ?? ''
   const { isotipo } = brandFromSettings(settings)
   // El chrome ofrece horarios solo si la parroquia los cargo en el CMS.
   const { hasMisas } = deriveSchedule(contact)
@@ -75,9 +77,13 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${display.variable} ${sans.variable}`}>
       <body className="bg-white font-sans text-[1rem] leading-[1.55] text-text antialiased">
-        <Header channels={channels} radioLive={radioLive} brand={isotipo} hasSchedule={hasMisas} />
-        <main>{children}</main>
-        <Footer />
+        {/* El provider envuelve todo el chrome: el <audio> vive aca y sobrevive
+            los cambios de ruta, asi la radio no se corta al navegar. */}
+        <RadioProvider available={radioLive} streamUrl={radioStreamUrl}>
+          <Header channels={channels} radioLive={radioLive} brand={isotipo} hasSchedule={hasMisas} />
+          <main>{children}</main>
+          <Footer />
+        </RadioProvider>
       </body>
     </html>
   )

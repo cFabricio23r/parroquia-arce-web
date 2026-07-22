@@ -724,7 +724,13 @@ export interface RadioProgram {
   description?: string | null;
   hostName?: string | null;
   dayOfWeek?: ('lunes' | 'martes' | 'miercoles' | 'jueves' | 'viernes' | 'sabado' | 'domingo' | 'diario') | null;
+  /**
+   * En formato de 24 horas. Las 6 de la tarde son 18:00.
+   */
   startTime?: string | null;
+  /**
+   * Opcional: si se deja vacío, el programa dura una hora.
+   */
   endTime?: string | null;
   cover?: (number | null) | Media;
   status: 'draft' | 'published' | 'archived';

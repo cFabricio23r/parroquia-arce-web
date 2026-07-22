@@ -4,37 +4,34 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { Container } from '@/components/ui/Container'
 import { SectionHead } from '@/components/site/SectionHead'
-import { RadioPlayer } from '@/components/site/RadioPlayer'
 import { Reveal } from '@/components/news/Reveal'
 import { Button } from '@/components/ui/Button'
+import { RadioHero } from '@/components/site/radio/RadioHero'
+import { RadioSchedule } from '@/components/site/radio/RadioSchedule'
+import { isValidTime, toRadioProgramView } from '@/lib/radio-schedule'
 
 export const metadata: Metadata = { title: 'Radio parroquial' }
 export const revalidate = 300
 
-// El hero, el player y los programas destacados son editoriales (estaticos). La
-// PROGRAMACION se lee de la coleccion radio-programs.
-
-const destacados = [
-  ['Evangelio del día', 'La Palabra de cada jornada con una breve reflexión pastoral.'],
-  ['Matrimonios con propósito', 'Acompañamiento para fortalecer la vida en familia.'],
-  ['Testimonios que edifican', 'Voces reales de la comunidad que inspiran la fe.'],
-]
+// El "ahora" y el "a continuacion" NO se calculan aca: con revalidate=300 el HTML
+// cacheado congelaria el estado hasta 5 minutos y se serviria igual a todos. El
+// servidor manda la programacion completa y el cliente resuelve el momento.
 
 export default async function RadioPage() {
   const payload = await getPayload({ config: await config })
-  const { docs: programas } = await payload.find({
+  const { docs } = await payload.find({
     collection: 'radio-programs',
     where: { status: { equals: 'published' } },
-    sort: 'createdAt',
-    limit: 50,
+    sort: 'startTime',
+    limit: 100,
   })
-  const settings = await payload.findGlobal({ slug: 'settings' })
-  const radioAvailable = settings.radio?.available ?? true
-  const radioStreamUrl = settings.radio?.streamUrl ?? ''
+  // Solo los que tienen hora usable. Un programa con el horario en el formato
+  // viejo ("6:00 a.m.") no se puede ubicar en la parrilla; mostrarlo daria siete
+  // dias vacios en vez de una seccion util.
+  const programs = docs.map(toRadioProgramView).filter((p) => isValidTime(p.startTime))
 
   return (
     <>
-      {/* Hero especial navy con el player */}
       <section
         className="relative overflow-hidden text-white"
         style={{ background: 'linear-gradient(160deg, var(--color-navy), var(--color-navy-deep))' }}
@@ -48,87 +45,35 @@ export default async function RadioPage() {
           }}
         />
         <Container>
-          <div className="relative grid grid-cols-[1.2fr_.8fr] items-center gap-10 py-[56px] max-[1040px]:grid-cols-1">
-            <div>
-              <div className="mb-[10px] flex items-center gap-[9px] text-[13.5px] text-[#9DB0CC]">
-                <Link href="/" className="hover:text-white">
-                  Inicio
-                </Link>
-                <span className="opacity-50">/</span>
-                <span>Radio parroquial</span>
-              </div>
-              <h1 className="my-[10px_0_14px] font-display text-[clamp(40px,5vw,64px)] font-medium leading-[1.02]">
-                Radio <em className="italic text-sky-light">parroquial</em>
-              </h1>
-              <p className="max-w-[46ch] text-[18px] text-[#B6C6DD]">
-                Un canal de evangelización para escuchar en vivo, compartir avisos y acompañar la
-                vida de la comunidad — desde casa, el trabajo o el camino.
-              </p>
+          <div className="relative py-[clamp(44px,6vw,72px)]">
+            <div className="mb-6 flex items-center justify-center gap-[9px] text-[13px] text-[#9DB0CC]">
+              <Link href="/" className="hover:text-white">
+                Inicio
+              </Link>
+              <span className="opacity-50">/</span>
+              <span>Radio parroquial</span>
             </div>
-            <RadioPlayer available={radioAvailable} streamUrl={radioStreamUrl} />
+            <RadioHero programs={programs} />
           </div>
         </Container>
       </section>
 
-      <section className="py-[clamp(56px,7vw,96px)]">
-        <Container>
-          <Reveal>
-            <SectionHead
-              title="Programación"
-              emphasis="de la semana"
-              lead="Lo que suena cada día en la radio de la parroquia."
-            />
-          </Reveal>
-          {programas.length === 0 ? (
-            <p className="text-muted">
-              Aún no hay programación publicada. El equipo de comunicaciones la carga desde el panel.
-            </p>
-          ) : (
-            <div className="grid grid-cols-2 gap-4 max-[1040px]:grid-cols-1">
-              {programas.map((prog) => (
-                <Reveal key={prog.id}>
-                  <div className="grid grid-cols-[auto_1fr] items-center gap-[18px] rounded-lg border border-border bg-white p-[20px_24px]">
-                    <div className="w-[80px] text-center font-display text-[18px] font-semibold leading-tight text-blue">
-                      {prog.startTime || '—'}
-                    </div>
-                    <div>
-                      <h4 className="font-display text-[19px] font-semibold">{prog.title}</h4>
-                      {prog.description && (
-                        <p className="mt-[3px] text-[14px] text-muted">{prog.description}</p>
-                      )}
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          )}
-        </Container>
-      </section>
-
-      <section className="bg-bg-soft py-[clamp(56px,7vw,96px)]">
-        <Container>
-          <Reveal>
-            <SectionHead
-              title="Programas"
-              emphasis="destacados"
-              lead="Espacios pensados para cada miembro de la familia parroquial."
-            />
-          </Reveal>
-          <div className="grid grid-cols-3 gap-5 max-[1040px]:grid-cols-1">
-            {destacados.map(([title, desc]) => (
-              <Reveal key={title}>
-                <div className="rounded-lg border border-border bg-white p-[26px]">
-                  <span className="mb-[14px] grid h-12 w-12 place-items-center rounded-[13px] bg-blue-tint text-blue" aria-hidden="true">
-                    ♪
-                  </span>
-                  <h4 className="font-display text-[21px] font-semibold">{title}</h4>
-                  <p className="mt-[6px] text-[14px] leading-[1.5] text-muted">{desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
+      {programs.length > 0 && (
+        <section className="py-[clamp(56px,7vw,96px)]">
+          <Container>
+            <Reveal>
+              <SectionHead
+                title="Programación"
+                emphasis="de la semana"
+                lead="Lo que suena cada día en la radio de la parroquia."
+              />
+            </Reveal>
+            <Reveal>
+              <RadioSchedule programs={programs} />
+            </Reveal>
+          </Container>
+        </section>
+      )}
 
       <section className="py-[clamp(56px,7vw,96px)]">
         <Container>
