@@ -95,13 +95,17 @@ export default async function SectorDetalle({ params }: { params: Promise<{ slug
               alt={cover.alt}
               className="absolute inset-0 -z-10 h-full w-full object-cover"
             />
-            {/* Velo fijo, no "a ver como queda": sobre una foto blanca, el 62% de
-                arriba deja el texto blanco en 5.2:1, que pasa AA para texto
-                normal. Bajarlo lo rompe. */}
+            {/* Velo fijo, no "a ver como queda". El techo lo pone el elemento MAS
+                debil, que no es el h1 blanco sino el breadcrumb en white/75: con
+                el velo al 62% quedaba en 3.6:1 y no pasaba AA. Al 72%, sobre una
+                foto totalmente blanca (el peor caso), el h1 da 7.0:1, el summary
+                en white/85 da 5.6:1 y el breadcrumb en white/75 da 4.8:1 — los
+                tres pasan AA para texto normal. Bajarlo rompe el breadcrumb
+                primero. */}
             <div
               className="absolute inset-0 -z-10"
               style={{
-                background: 'linear-gradient(180deg, rgba(11,26,45,.62), rgba(11,26,45,.88))',
+                background: 'linear-gradient(180deg, rgba(11,26,45,.72), rgba(11,26,45,.9))',
               }}
               aria-hidden="true"
             />
