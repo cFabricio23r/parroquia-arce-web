@@ -14,6 +14,8 @@ import { svDate, svParts, svStartOfToday, svTime } from '@/lib/sv-date'
 import { eventTypeLabel } from '@/lib/event-types'
 import { deriveSchedule } from '@/lib/parish-schedule'
 import { GroupCard } from '@/components/community/GroupCard'
+import { RadioLiveBar } from '@/components/site/radio/RadioLiveBar'
+import { toRadioProgramView } from '@/lib/radio-schedule'
 
 export const metadata: Metadata = { title: 'Inicio' }
 export const revalidate = 300
@@ -21,20 +23,17 @@ export const revalidate = 300
 // Home. Misas y sacramentos salen del global `contact` y NO tienen respaldo
 // editorial: sin datos cargados la seccion no se renderiza. Un horario
 // inventado manda gente al templo a una hora que no existe. Eventos, grupos,
-// noticias, sector destacado y radio se leen de sus colecciones; `shows`
-// (abajo) sigue teniendo fallback editorial — la radio esta fuera del alcance
-// de esa regla por ahora. Ver 2026-07-21-horarios-sin-datos-inventados-design.
+// noticias, sector destacado y radio se leen de sus colecciones.
+// Ver 2026-07-21-horarios-sin-datos-inventados-design.
+//
+// La radio ya NO es la excepcion a esa regla: se le quito el fallback editorial
+// de shows y el "ahora" falso. Ver 2026-07-21-radio-emisora-en-vivo-design.
 
 type Variant = 'blue' | 'sky' | 'amber'
 
 const MES_CORTO = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
 const eventTypeVariant = (t?: string | null): Variant =>
   t === 'patronal' || t === 'vigilia' || t === 'novena' ? 'amber' : t === 'reunion' || t === 'jornada' ? 'sky' : 'blue'
-const showsFallback: [string, string, string][] = [
-  ['Una voz desde mi sector', 'Historias y avisos comunitarios', '5:00 p.m.'],
-  ['Jóvenes con fe', 'Reflexión y vida juvenil', '7:00 p.m.'],
-  ['Hora de alabanza', 'Música católica y oración', '8:00 p.m.'],
-]
 
 export default async function HomePage() {
   const payload = await getPayload({ config: await config })
@@ -56,7 +55,8 @@ export default async function HomePage() {
     payload.find({ collection: 'groups', where: { status: { equals: 'published' } }, sort: 'name', limit: 3 }),
     payload.find({ collection: 'news', where: { status: { equals: 'published' } }, sort: '-publishedAt', limit: 3 }),
     payload.find({ collection: 'sectors', where: { status: { equals: 'published' }, isFeatured: { equals: true } }, limit: 1 }),
-    payload.find({ collection: 'radio-programs', where: { status: { equals: 'published' } }, sort: 'createdAt', limit: 3 }),
+    // La semana entera: la barra necesita poder resolver "ahora" y "lo que sigue".
+    payload.find({ collection: 'radio-programs', where: { status: { equals: 'published' } }, sort: 'startTime', limit: 100 }),
     payload.findGlobal({ slug: 'home' }),
     payload.findGlobal({ slug: 'settings' }),
     payload.findGlobal({ slug: 'contact' }),
@@ -130,12 +130,10 @@ export default async function HomePage() {
     },
   ]
 
-  // Radio "al aire ahora": primer programa publicado, con respaldo editorial.
-  const radioNow = radioRes.docs[0]
-  const radioNowTitle = radioNow?.title ?? 'Evangelio del día'
-  const radioNowDesc =
-    radioNow?.description ??
-    'Reflexión, música católica y mensajes para acompañar el día desde casa, el trabajo o el camino.'
+  // La programacion va entera al cliente: la barra resuelve ahi que suena AHORA
+  // segun la hora de El Salvador. Antes se tomaba el primer programa por fecha de
+  // creacion y se lo rotulaba "Transmitiendo ahora", que era mentira.
+  const radioPrograms = radioRes.docs.map(toRadioProgramView)
 
   // Enlace a YouTube desde los canales oficiales (Contact), si está cargado.
   const youtubeUrl =
@@ -166,13 +164,6 @@ export default async function HomePage() {
     n.excerpt ?? '',
     n.slug,
   ])
-
-  // Shows de radio desde la coleccion `radio-programs`; si no hay programacion
-  // publicada, cae al listado editorial para no dejar la seccion vacia.
-  const shows: [string, string, string][] =
-    radioRes.docs.length > 0
-      ? radioRes.docs.map((p) => [p.title, p.description ?? '', p.startTime ?? ''])
-      : showsFallback
 
   // Sector destacado (isFeatured); si no hay, el primero.
   const featuredSector = sectorsRes.docs[0]
@@ -419,40 +410,9 @@ export default async function HomePage() {
               de la comunidad.
             </p>
           </Reveal>
-          <div className="grid grid-cols-[1.2fr_.8fr] gap-6 max-[1040px]:grid-cols-1">
-            <Reveal>
-              <div className="rounded-xl border border-white/[.14] bg-white/[.06] p-8">
-                <span className="text-[12.5px] font-bold uppercase tracking-[.15em] text-sky-light">
-                  {radioLive ? '● Transmitiendo ahora' : '○ Fuera del aire'}
-                </span>
-                <h3 className="my-3 font-display text-[28px] font-medium">{radioNowTitle}</h3>
-                <p className="text-[15px] text-[#B6C6DD]">{radioNowDesc}</p>
-                <div className="mt-6 flex flex-wrap gap-[13px]">
-                  <Button href="/radio" variant="amber">
-                    Escuchar en vivo
-                  </Button>
-                  <Button href="/radio" variant="white">
-                    Ver programación
-                  </Button>
-                </div>
-              </div>
-            </Reveal>
-            <Reveal className="flex flex-col gap-3">
-              {shows.map(([title, desc, t]) => (
-                <Link
-                  key={title}
-                  href="/radio"
-                  className="flex items-center justify-between gap-4 rounded-lg border border-white/[.14] bg-white/[.04] p-[18px_20px] transition-colors hover:bg-white/[.08]"
-                >
-                  <div>
-                    <h4 className="font-display text-[17px] font-semibold">{title}</h4>
-                    <p className="text-[13.5px] text-[#9DB0CC]">{desc}</p>
-                  </div>
-                  <span className="flex-none text-[13px] font-bold text-sky-light">{t}</span>
-                </Link>
-              ))}
-            </Reveal>
-          </div>
+          <Reveal>
+            <RadioLiveBar programs={radioPrograms} />
+          </Reveal>
         </Container>
       </section>
 
