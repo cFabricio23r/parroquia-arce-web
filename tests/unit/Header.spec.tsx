@@ -76,11 +76,20 @@ describe('Header', () => {
     expect(screen.queryByRole('link', { name: 'Ver horarios de misa' })).toBeNull()
   })
 
-  it('apunta Horarios al ancla de la home cuando si hay horarios', () => {
+  it('apunta Horarios a la pagina de horarios cuando si hay horarios', () => {
     render(<Header hasSchedule />)
     const horarios = screen.getAllByRole('link', { name: 'Horarios' })
     expect(horarios.length).toBeGreaterThan(0)
-    expect(horarios.every((el) => el.getAttribute('href') === '/#misas')).toBe(true)
+    expect(horarios.every((el) => el.getAttribute('href') === '/horarios')).toBe(true)
+  })
+
+  // Con `/#misas` el item nunca se marcaba activo, porque el pathname es '/'.
+  // Con una ruta propia, si.
+  it('marca Horarios activo cuando se esta en /horarios', () => {
+    mockPathname.mockReturnValue('/horarios')
+    render(<Header hasSchedule />)
+    const horarios = screen.getAllByRole('link', { name: 'Horarios' })
+    expect(horarios.every((el) => el.getAttribute('aria-current') === 'page')).toBe(true)
   })
 
   it('conserva el resto de la navegacion sin horarios', () => {

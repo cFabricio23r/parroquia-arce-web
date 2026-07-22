@@ -14,7 +14,7 @@ const VIDA_BASE = [
 
 /** Horarios encabeza la lista solo si hay horarios cargados en el CMS. */
 const vidaFor = (hasSchedule: boolean) =>
-  hasSchedule ? [{ href: '/#misas', label: 'Horarios y sacramentos' }, ...VIDA_BASE] : VIDA_BASE
+  hasSchedule ? [{ href: '/horarios', label: 'Horarios y sacramentos' }, ...VIDA_BASE] : VIDA_BASE
 
 const COMUNICACION = [
   { href: '/radio', label: 'Radio parroquial' },

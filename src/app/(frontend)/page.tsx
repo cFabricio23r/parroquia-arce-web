@@ -104,7 +104,7 @@ export default async function HomePage() {
   const accesos: Acceso[] = [
     ...(hasMisas
       ? [{
-          href: '/#misas',
+          href: '/horarios',
           title: 'Misas y sacramentos',
           desc: 'Horarios, confesiones y celebraciones',
           bg: 'linear-gradient(150deg,#1a4670,var(--color-navy))',
@@ -190,7 +190,7 @@ export default async function HomePage() {
                 no quede con un solo boton debil, el secundario promueve a ambar. */}
             <div className="mt-[26px] flex flex-wrap gap-3">
               {hasMisas && (
-                <Button href="/#misas" variant="amber" size="lg">
+                <Button href="/horarios" variant="amber" size="lg">
                   Horarios de misa
                 </Button>
               )}

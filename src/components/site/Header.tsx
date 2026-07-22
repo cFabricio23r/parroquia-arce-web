@@ -20,7 +20,7 @@ const NAV_BASE = [
 /** El item de Horarios solo existe si la parroquia cargo horarios en el CMS. */
 const navFor = (hasSchedule: boolean) =>
   hasSchedule
-    ? [NAV_BASE[0], { href: '/#misas', label: 'Horarios' }, ...NAV_BASE.slice(1)]
+    ? [NAV_BASE[0], { href: '/horarios', label: 'Horarios' }, ...NAV_BASE.slice(1)]
     : NAV_BASE
 
 const PLATFORM_LABEL: Record<string, string> = {
@@ -150,7 +150,7 @@ export function Header({ channels = [], radioLive = true, brand, hasSchedule }: 
             */}
             {hasSchedule && (
               <div className="hidden lg:block">
-                <Button href="/#misas">Ver horarios</Button>
+                <Button href="/horarios">Ver horarios</Button>
               </div>
             )}
 
@@ -224,7 +224,7 @@ export function Header({ channels = [], radioLive = true, brand, hasSchedule }: 
           ))}
         </nav>
         {hasSchedule && (
-          <Button href="/#misas" block className="mt-[18px]">
+          <Button href="/horarios" block className="mt-[18px]">
             Ver horarios de misa
           </Button>
         )}
