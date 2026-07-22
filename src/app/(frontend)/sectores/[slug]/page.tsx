@@ -159,9 +159,13 @@ export default async function SectorDetalle({ params }: { params: Promise<{ slug
               <span className="opacity-50">/</span>
               <span className={onPhoto ? 'text-white' : 'text-text'}>{item.name}</span>
             </div>
+            {/* `self-start` NO es decorativo: con portada el contenedor es
+                `flex flex-col`, y sin esto el badge se estira a todo el ancho
+                del hero por el `align-items: stretch` que trae flex por defecto.
+                `inline-block` no alcanza — un hijo de flex ya no es inline. */}
             {item.number != null &&
               (onPhoto ? (
-                <span className="inline-block rounded-pill bg-white/[.92] px-[13px] py-[5px] font-display text-[15px] font-semibold text-blue">
+                <span className="self-start rounded-pill bg-white/[.92] px-[13px] py-[5px] font-display text-[15px] font-semibold text-blue">
                   Sector #{item.number}
                 </span>
               ) : (
