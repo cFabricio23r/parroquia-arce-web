@@ -3,6 +3,7 @@ import { publishedOnly } from '../access/publishedOnly'
 import { canManageComms } from '../access/roles'
 import { slugField } from '../fields/slug'
 import { publishingFields } from '../fields/publishing'
+import { isValidTime } from '../lib/radio-schedule'
 
 /**
  * Radio Program. Un programa tiene muchos episodios (ver RadioEpisodes).
@@ -46,8 +47,32 @@ export const RadioPrograms: CollectionConfig = {
             { label: 'Diario', value: 'diario' },
           ],
         },
-        { name: 'startTime', type: 'text', label: 'Hora de inicio' },
-        { name: 'endTime', type: 'text', label: 'Hora de fin' },
+        {
+          name: 'startTime',
+          type: 'text',
+          label: 'Hora de inicio (24 h, ej. 06:00)',
+          admin: {
+            placeholder: '06:00',
+            description: 'En formato de 24 horas. Las 6 de la tarde son 18:00.',
+          },
+          validate: (value: string | null | undefined) =>
+            !value || isValidTime(value)
+              ? true
+              : 'Usá el formato de 24 horas, por ejemplo 06:00 o 19:30.',
+        },
+        {
+          name: 'endTime',
+          type: 'text',
+          label: 'Hora de fin (24 h, ej. 07:00)',
+          admin: {
+            placeholder: '07:00',
+            description: 'Opcional: si se deja vacío, el programa dura una hora.',
+          },
+          validate: (value: string | null | undefined) =>
+            !value || isValidTime(value)
+              ? true
+              : 'Usá el formato de 24 horas, por ejemplo 07:00 o 21:00.',
+        },
       ],
     },
     {
