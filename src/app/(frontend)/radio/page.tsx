@@ -8,7 +8,7 @@ import { Reveal } from '@/components/news/Reveal'
 import { Button } from '@/components/ui/Button'
 import { RadioHero } from '@/components/site/radio/RadioHero'
 import { RadioSchedule } from '@/components/site/radio/RadioSchedule'
-import { toRadioProgramView } from '@/lib/radio-schedule'
+import { isValidTime, toRadioProgramView } from '@/lib/radio-schedule'
 
 export const metadata: Metadata = { title: 'Radio parroquial' }
 export const revalidate = 300
@@ -25,7 +25,10 @@ export default async function RadioPage() {
     sort: 'startTime',
     limit: 100,
   })
-  const programs = docs.map(toRadioProgramView)
+  // Solo los que tienen hora usable. Un programa con el horario en el formato
+  // viejo ("6:00 a.m.") no se puede ubicar en la parrilla; mostrarlo daria siete
+  // dias vacios en vez de una seccion util.
+  const programs = docs.map(toRadioProgramView).filter((p) => isValidTime(p.startTime))
 
   return (
     <>

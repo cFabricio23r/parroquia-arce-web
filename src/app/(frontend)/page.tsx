@@ -15,7 +15,7 @@ import { eventTypeLabel } from '@/lib/event-types'
 import { deriveSchedule } from '@/lib/parish-schedule'
 import { GroupCard } from '@/components/community/GroupCard'
 import { RadioLiveBar } from '@/components/site/radio/RadioLiveBar'
-import { toRadioProgramView } from '@/lib/radio-schedule'
+import { isValidTime, toRadioProgramView } from '@/lib/radio-schedule'
 
 export const metadata: Metadata = { title: 'Inicio' }
 export const revalidate = 300
@@ -133,7 +133,8 @@ export default async function HomePage() {
   // La programacion va entera al cliente: la barra resuelve ahi que suena AHORA
   // segun la hora de El Salvador. Antes se tomaba el primer programa por fecha de
   // creacion y se lo rotulaba "Transmitiendo ahora", que era mentira.
-  const radioPrograms = radioRes.docs.map(toRadioProgramView)
+  // Solo los que tienen hora usable: uno con el formato viejo no se puede ubicar.
+  const radioPrograms = radioRes.docs.map(toRadioProgramView).filter((p) => isValidTime(p.startTime))
 
   // Enlace a YouTube desde los canales oficiales (Contact), si está cargado.
   const youtubeUrl =
