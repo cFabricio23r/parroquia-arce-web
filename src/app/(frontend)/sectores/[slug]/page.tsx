@@ -11,6 +11,7 @@ import { PhotoGallery } from '@/components/community/PhotoGallery'
 import { ContactLinks, hasContact } from '@/components/community/ContactLinks'
 import { MapLink, hasLocation } from '@/components/community/MapLink'
 import { SectorStats } from '@/components/community/SectorStats'
+import { SidebarCard } from '@/components/community/SidebarCard'
 import { ChapelCard } from '@/components/community/ChapelCard'
 import { SectorGroups } from '@/components/community/SectorGroups'
 
@@ -95,17 +96,32 @@ export default async function SectorDetalle({ params }: { params: Promise<{ slug
               alt={cover.alt}
               className="absolute inset-0 -z-10 h-full w-full object-cover"
             />
-            {/* Velo fijo, no "a ver como queda". El techo lo pone el elemento MAS
-                debil, que no es el h1 blanco sino el breadcrumb en white/75: con
-                el velo al 62% quedaba en 3.6:1 y no pasaba AA. Al 72%, sobre una
-                foto totalmente blanca (el peor caso), el h1 da 7.0:1, el summary
-                en white/85 da 5.6:1 y el breadcrumb en white/75 da 4.8:1 — los
-                tres pasan AA para texto normal. Bajarlo rompe el breadcrumb
-                primero. */}
+            {/* DOS capas, no una, y la de abajo es una BANDA anclada al pie —
+                no un degradado que cubre todo el hero.
+
+                La diferencia importa y se midio: un degradado repartido en toda
+                la altura llega al breadcrumb (que cae a ~35% del hero) con alfa
+                .43, o sea 2.2:1. Reprobaba AA por lejos. Una banda de altura fija
+                termina de cerrar ANTES de donde arranca el texto, asi que el
+                contraste ya no depende de cuanto mida el hero ni de cuantas
+                lineas ocupe el titulo.
+
+                Arriba de la banda queda solo el tinte base al 20%: ahi es donde
+                la foto se aprecia, que es el punto de subir la altura.
+
+                Peor caso medido (foto totalmente blanca): el alfa bajo el texto
+                nunca baja de .79. Si alguien afloja la banda, el breadcrumb en
+                white/75 es lo primero que se rompe. */}
             <div
               className="absolute inset-0 -z-10"
+              style={{ background: 'rgba(11,26,45,.20)' }}
+              aria-hidden="true"
+            />
+            <div
+              className="absolute inset-x-0 bottom-0 -z-10 h-[min(340px,100%)]"
               style={{
-                background: 'linear-gradient(180deg, rgba(11,26,45,.72), rgba(11,26,45,.9))',
+                background:
+                  'linear-gradient(180deg, rgba(11,26,45,0) 0%, rgba(11,26,45,.70) 14%, rgba(11,26,45,.86) 40%, rgba(11,26,45,.9) 100%)',
               }}
               aria-hidden="true"
             />
@@ -118,7 +134,18 @@ export default async function SectorDetalle({ params }: { params: Promise<{ slug
           />
         )}
         <Container>
-          <div className={onPhoto ? 'pb-14 pt-[54px] text-white' : 'pb-10 pt-[54px]'}>
+          {/* Con portada el hero reserva altura real para que se aprecie la foto,
+              y el texto se ancla ABAJO: es donde el degradado esta mas cerrado, o
+              sea que lo mismo que hace legible el titulo es lo que deja ver la
+              imagen arriba. Sin portada no hay nada que apreciar, asi que
+              conserva la altura compacta de siempre. */}
+          <div
+            className={
+              onPhoto
+                ? 'flex min-h-[clamp(460px,64vh,680px)] flex-col justify-end pb-14 pt-[54px] text-white'
+                : 'pb-10 pt-[54px]'
+            }
+          >
             <div
               className={`mb-[18px] flex flex-wrap items-center gap-[9px] text-[13.5px] ${crumbClass}`}
             >
@@ -221,40 +248,40 @@ export default async function SectorDetalle({ params }: { params: Promise<{ slug
               {/* `sticky` con `static` en movil: ahi el aside es `order-first`, y
                   un sticky pegaria el bloque entero arriba del contenido. */}
               <div className="sticky top-6 max-[980px]:static">
-                <div className="rounded-xl border border-border bg-bg-soft p-6">
-                  <h2 className="mb-4 font-display text-[20px] font-medium">Datos del sector</h2>
-                  <dl className="flex flex-col gap-4 text-[14.5px]">
-                    {/* `chapelName` es el atajo para el sector de una sola ermita
-                        que no quiso crear un documento. Si hay ermitas cargadas,
-                        mandan ellas y el texto suelto no aparece. */}
-                    {chapels.length === 0 && item.chapelName && (
-                      <div>
-                        <dt className="text-[12px] font-bold uppercase tracking-[.1em] text-muted">
-                          Ermita
-                        </dt>
-                        <dd className="mt-1">{item.chapelName}</dd>
-                      </div>
-                    )}
-                    {hasLocation(item.location) && (
-                      <div>
-                        <dt className="text-[12px] font-bold uppercase tracking-[.1em] text-muted">
-                          Ubicación
-                        </dt>
-                        <dd className="mt-2">
-                          <MapLink location={item.location} />
-                        </dd>
-                      </div>
-                    )}
-                  </dl>
-                </div>
+                {(hasLocation(item.location) || (chapels.length === 0 && item.chapelName)) && (
+                  <SidebarCard icon="pin" title="Datos del sector">
+                    <dl className="flex flex-col gap-4 text-[14.5px]">
+                      {/* `chapelName` es el atajo para el sector de una sola ermita
+                          que no quiso crear un documento. Si hay ermitas cargadas,
+                          mandan ellas y el texto suelto no aparece. */}
+                      {chapels.length === 0 && item.chapelName && (
+                        <div>
+                          <dt className="text-[12px] font-bold uppercase tracking-[.1em] text-muted">
+                            Ermita
+                          </dt>
+                          <dd className="mt-1">{item.chapelName}</dd>
+                        </div>
+                      )}
+                      {hasLocation(item.location) && (
+                        <div>
+                          <dt className="text-[12px] font-bold uppercase tracking-[.1em] text-muted">
+                            Ubicación
+                          </dt>
+                          <dd className="mt-2">
+                            <MapLink location={item.location} />
+                          </dd>
+                        </div>
+                      )}
+                    </dl>
+                  </SidebarCard>
+                )}
                 {/* La perseverancia ya vive en SectorStats, arriba y mas grande.
                     Repetirla aca seria decir el mismo numero dos veces. */}
                 <SectorGroups groups={item.groups} />
                 {hasContact(item.contact) && (
-                  <div className="mt-6 rounded-xl border border-border bg-bg-soft p-6">
-                    <h2 className="mb-4 font-display text-[20px] font-medium">Contacto</h2>
+                  <SidebarCard icon="phone" title="Contacto" className="mt-6">
                     <ContactLinks contact={item.contact} />
-                  </div>
+                  </SidebarCard>
                 )}
               </div>
             </aside>

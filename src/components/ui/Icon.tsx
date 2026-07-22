@@ -1,6 +1,15 @@
 import type { ReactNode } from 'react'
 
-type IconName = 'pin' | 'clock' | 'calendar' | 'arrow' | 'users'
+type IconName =
+  | 'pin'
+  | 'clock'
+  | 'calendar'
+  | 'arrow'
+  | 'users'
+  | 'phone'
+  | 'chat'
+  | 'mail'
+  | 'link'
 
 const PATHS: Record<IconName, ReactNode> = {
   pin: (
@@ -28,6 +37,24 @@ const PATHS: Record<IconName, ReactNode> = {
       <path d="M3.5 19.4c0-3 2.5-4.7 5.5-4.7s5.5 1.7 5.5 4.7" />
       <path d="M16 5.7a3.2 3.2 0 0 1 0 6.2" />
       <path d="M17.6 14.9c2.1.5 3.4 2 3.4 4.5" />
+    </>
+  ),
+  phone: (
+    <path d="M6.3 4h3l1.5 3.7-1.9 1.4a11.5 11.5 0 0 0 5 5l1.4-1.9L19 13.7v3a1.6 1.6 0 0 1-1.8 1.6A14.3 14.3 0 0 1 4.7 5.8 1.6 1.6 0 0 1 6.3 4Z" />
+  ),
+  chat: (
+    <path d="M20 11.6a7.7 7.7 0 0 1-8 7.6 8.6 8.6 0 0 1-3.6-.8L4 19.7l1.4-4.2A7.4 7.4 0 0 1 4.4 11.6a7.7 7.7 0 0 1 8-7.6 7.8 7.8 0 0 1 7.6 7.6Z" />
+  ),
+  mail: (
+    <>
+      <rect x="3.2" y="5.4" width="17.6" height="13.2" rx="2.2" />
+      <path d="m3.8 7 7.2 5.2a1.7 1.7 0 0 0 2 0L20.2 7" />
+    </>
+  ),
+  link: (
+    <>
+      <path d="M10.4 13.6a3.6 3.6 0 0 0 5.2 0l2.6-2.6a3.7 3.7 0 0 0-5.2-5.2l-1.3 1.3" />
+      <path d="M13.6 10.4a3.6 3.6 0 0 0-5.2 0L5.8 13a3.7 3.7 0 0 0 5.2 5.2l1.3-1.3" />
     </>
   ),
 }

@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import type { Group } from '@/payload-types'
+import { Icon } from '@/components/ui/Icon'
+import { SidebarCard } from './SidebarCard'
 
 /**
  * Los grupos con presencia en el sector, enlazados a su detalle.
@@ -17,17 +19,23 @@ export function SectorGroups({ groups }: { groups?: (number | Group)[] | null })
   if (list.length === 0) return null
 
   return (
-    <div className="mt-6 rounded-xl border border-border bg-bg-soft p-6">
-      <h2 className="mb-4 font-display text-[20px] font-medium">Grupos en el sector</h2>
-      <ul className="flex flex-col gap-2 text-[14.5px]">
+    <SidebarCard icon="users" title="Grupos en el sector" className="mt-6">
+      <ul className="flex flex-col gap-1 text-[14.5px]">
         {list.map((g) => (
           <li key={g.id}>
-            <Link href={`/grupos/${g.slug}`} className="text-blue hover:underline">
-              {g.name}
+            <Link
+              href={`/grupos/${g.slug}`}
+              className="group -mx-2 flex items-center justify-between gap-3 rounded-md px-2 py-[7px] font-semibold text-blue transition-colors hover:bg-blue-tint"
+            >
+              <span className="min-w-0">{g.name}</span>
+              <Icon
+                name="arrow"
+                className="h-4 w-4 flex-none transition-transform duration-150 group-hover:translate-x-[3px]"
+              />
             </Link>
           </li>
         ))}
       </ul>
-    </div>
+    </SidebarCard>
   )
 }
