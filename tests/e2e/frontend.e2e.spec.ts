@@ -14,8 +14,11 @@ test.describe('Frontend', () => {
     await expect(page.locator('header').first()).toBeVisible()
   })
 
-  test('/horarios redirige a la home', async ({ page }) => {
+  // La pagina se retiro en 2026-07-21-horarios-sin-datos-inventados-design por
+  // publicar horarios del demo, y vuelve leyendo del CMS.
+  test('/horarios carga con su encabezado', async ({ page }) => {
     await page.goto('http://localhost:3000/horarios')
-    await expect(page).toHaveURL('http://localhost:3000/')
+    await expect(page).toHaveURL('http://localhost:3000/horarios')
+    await expect(page.locator('h1')).toContainText('Horarios')
   })
 })
