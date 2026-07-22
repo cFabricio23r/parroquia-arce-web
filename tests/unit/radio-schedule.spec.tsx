@@ -3,6 +3,7 @@ import {
   DAYS,
   dayBefore,
   findCurrentProgram,
+  findNextProgram,
   formatTime12h,
   isOnAir,
   isValidTime,
@@ -186,5 +187,62 @@ describe('findCurrentProgram', () => {
 
   it('devuelve null si no hay programacion cargada', () => {
     expect(findCurrentProgram([], { day: 'martes', minutes: 600 })).toBeNull()
+  })
+})
+
+describe('findNextProgram', () => {
+  it('devuelve el proximo programa del mismo dia', () => {
+    const programas = [
+      prog('martes', '06:00', '07:00', 'Evangelio'),
+      prog('martes', '07:00', '08:00', 'Sector'),
+    ]
+    const next = findNextProgram(programas, { day: 'martes', minutes: 390 })
+    expect(next?.program.title).toBe('Sector')
+    expect(next?.day).toBe('martes')
+    expect(next?.startsToday).toBe(true)
+  })
+
+  it('no propone un programa que ya empezo', () => {
+    const programas = [prog('martes', '06:00', '07:00', 'Evangelio')]
+    expect(findNextProgram(programas, { day: 'martes', minutes: 390 })).toBeNull()
+  })
+
+  it('rueda al dia siguiente cuando ya no queda nada hoy', () => {
+    const programas = [
+      prog('martes', '06:00', '07:00', 'Evangelio'),
+      prog('miercoles', '05:00', '06:00', 'Laudes'),
+    ]
+    const next = findNextProgram(programas, { day: 'martes', minutes: 23 * 60 })
+    expect(next?.program.title).toBe('Laudes')
+    expect(next?.day).toBe('miercoles')
+    expect(next?.startsToday).toBe(false)
+  })
+
+  it('rueda a traves de la semana hasta encontrar el proximo', () => {
+    const programas = [prog('domingo', '08:00', '10:00', 'Misa')]
+    const next = findNextProgram(programas, { day: 'lunes', minutes: 600 })
+    expect(next?.program.title).toBe('Misa')
+    expect(next?.day).toBe('domingo')
+  })
+
+  it('un "diario" que ya paso hoy reaparece manana', () => {
+    const programas = [prog('diario', '06:00', '07:00', 'Evangelio')]
+    const next = findNextProgram(programas, { day: 'martes', minutes: 600 })
+    expect(next?.program.title).toBe('Evangelio')
+    expect(next?.day).toBe('miercoles')
+  })
+
+  it('elige el mas temprano cuando hay varios candidatos', () => {
+    const programas = [
+      prog('martes', '20:00', '21:00', 'Tarde'),
+      prog('martes', '18:00', '19:00', 'Temprano'),
+    ]
+    expect(findNextProgram(programas, { day: 'martes', minutes: 600 })?.program.title).toBe(
+      'Temprano',
+    )
+  })
+
+  it('devuelve null si no hay programacion en toda la semana', () => {
+    expect(findNextProgram([], { day: 'martes', minutes: 600 })).toBeNull()
   })
 })

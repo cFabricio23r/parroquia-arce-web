@@ -154,3 +154,34 @@ export function isOnAir(program: ProgramLike, now: Clock): boolean {
 export function findCurrentProgram<T extends ProgramLike>(programs: T[], now: Clock): T | null {
   return programs.find((program) => isOnAir(program, now)) ?? null
 }
+
+export type NextUp<T> = { program: T; day: Day; startsToday: boolean }
+
+/**
+ * El proximo programa que arranca. Recorre hasta 7 dias desde hoy; en el dia de
+ * hoy solo cuenta lo que empieza DESPUES de este momento. Devuelve null si no hay
+ * programacion en toda la semana.
+ */
+export function findNextProgram<T extends ProgramLike>(
+  programs: T[],
+  now: Clock,
+): NextUp<T> | null {
+  const todayIndex = DAYS.indexOf(now.day)
+
+  for (let offset = 0; offset < DAYS.length; offset++) {
+    const day = DAYS[(todayIndex + offset) % DAYS.length]
+    const candidates = programs
+      .filter((program) => {
+        const start = toMinutes(program.startTime)
+        if (start === null || !matchesDay(program, day)) return false
+        return offset > 0 || start > now.minutes
+      })
+      .sort((a, b) => (toMinutes(a.startTime) ?? 0) - (toMinutes(b.startTime) ?? 0))
+
+    if (candidates.length > 0) {
+      return { program: candidates[0], day, startsToday: offset === 0 }
+    }
+  }
+
+  return null
+}
