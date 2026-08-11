@@ -503,6 +503,30 @@ export interface Group {
      */
     label?: string | null;
   };
+  /**
+   * Dejalo vacío si el grupo no tiene patrono asignado.
+   */
+  patron?: {
+    /**
+     * Ej.: San Jerónimo. Si son dos o más, cargalos como fiestas.
+     */
+    name?: string | null;
+    image?: (number | null) | Media;
+  };
+  /**
+   * Sin año: se repiten todos los años. Se muestran en este orden.
+   */
+  patronalFeasts?:
+    | {
+        /**
+         * Ej.: Fiesta principal, Novena, Procesión.
+         */
+        name: string;
+        day: number;
+        month: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
+        id?: string | null;
+      }[]
+    | null;
   meeting?: {
     day?: string | null;
     time?: string | null;
@@ -1117,6 +1141,20 @@ export interface GroupsSelect<T extends boolean = true> {
     | {
         count?: T;
         label?: T;
+      };
+  patron?:
+    | T
+    | {
+        name?: T;
+        image?: T;
+      };
+  patronalFeasts?:
+    | T
+    | {
+        name?: T;
+        day?: T;
+        month?: T;
+        id?: T;
       };
   meeting?:
     | T

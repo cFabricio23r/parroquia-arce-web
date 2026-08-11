@@ -7,6 +7,8 @@ import { contactField } from '../fields/contact'
 import { teamField } from '../fields/team'
 import { perseveranceField } from '../fields/perseverance'
 import { galleryField } from '../fields/gallery'
+import { patronField } from '../fields/patron'
+import { patronalFeastsField } from '../fields/patronalFeasts'
 
 /**
  * Group / Ministry. Organizado en tabs: la info del grupo, los datos de reunion
@@ -56,6 +58,8 @@ export const Groups: CollectionConfig = {
             { name: 'description', type: 'richText', label: 'Descripción' },
             { name: 'history', type: 'richText', label: 'Historia' },
             perseveranceField(),
+            patronField(),
+            patronalFeastsField(),
           ],
         },
         {

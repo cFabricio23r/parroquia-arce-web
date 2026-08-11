@@ -121,6 +121,47 @@ describe('Groups collection', () => {
     }
   })
 
+  it('guarda el patrono con nombre e imagen', async () => {
+    const doc = await payload.create({
+      collection: 'groups',
+      data: {
+        name: 'Comisión de Prueba',
+        slug: uniq('patrono'),
+        status: 'draft',
+        patron: { name: 'San Jerónimo' },
+      },
+    })
+    created.push(doc.id)
+    expect(doc.patron?.name).toBe('San Jerónimo')
+  })
+
+  it('guarda varias fiestas patronales y respeta el orden', async () => {
+    const doc = await payload.create({
+      collection: 'groups',
+      data: {
+        name: 'Pastoral de Prueba',
+        slug: uniq('fiestas'),
+        status: 'draft',
+        patronalFeasts: [
+          { name: 'Santa Teresita del Niño Jesús', day: 1, month: '10' },
+          { name: 'San Francisco Javier', day: 3, month: '12' },
+        ],
+      },
+    })
+    created.push(doc.id)
+    expect(doc.patronalFeasts).toHaveLength(2)
+    expect(doc.patronalFeasts?.[0]?.name).toBe('Santa Teresita del Niño Jesús')
+    expect(doc.patronalFeasts?.[0]?.month).toBe('10')
+    expect(doc.patronalFeasts?.[1]?.day).toBe(3)
+  })
+
+  it('declara el patrono como grupo', () => {
+    const field = payload.collections.groups.config.flattenedFields.find(
+      (f) => f.name === 'patron',
+    )
+    expect(field?.type).toBe('group')
+  })
+
   it('rechaza un integrante sin nombre', async () => {
     await expect(
       payload.create({
