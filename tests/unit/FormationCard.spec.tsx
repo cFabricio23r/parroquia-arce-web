@@ -28,9 +28,11 @@ describe('FormationCard', () => {
     expect(screen.getByText('Serie')).toBeDefined()
   })
 
-  it('no renderiza un <a> (todavia no hay pagina de detalle)', () => {
-    const { container } = render(<FormationCard item={base} />)
-    expect(container.querySelector('a')).toBeNull()
+  // La pagina de detalle existe desde el 2026-07-17. Hasta el 2026-08-11 este
+  // test seguia afirmando lo contrario, que era la version vieja del mundo.
+  it('enlaza al detalle de la formacion', () => {
+    render(<FormationCard item={base} />)
+    expect(screen.getByRole('link').getAttribute('href')).toBe('/formacion/vivir-la-fe')
   })
 
   it('no rompe cuando no hay cover', () => {

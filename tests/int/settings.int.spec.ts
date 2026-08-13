@@ -31,12 +31,24 @@ describe('Global Settings (radio)', () => {
     ).rejects.toThrow()
   })
 
-  it('expone el grupo marca con isotipo y favicon, vacios por defecto', async () => {
+  it('expone el grupo marca; isotipo y favicon son opcionales', async () => {
     const settings = await payload.findGlobal({ slug: 'settings' })
     // El grupo debe materializarse aunque no haya nada subido: es lo que
-    // habilita el fallback (isotipo/favicon null -> SVG e icon por defecto).
+    // habilita el fallback (isotipo/favicon ausentes -> SVG e icon por defecto).
     expect(settings.marca).toBeDefined()
-    expect(settings.marca?.isotipo ?? null).toBeNull()
-    expect(settings.marca?.favicon ?? null).toBeNull()
+
+    // Lo que NO se puede afirmar es que esten vacios. Esta base es la de
+    // produccion y la parroquia subio su logo el 2026-07-18: un test que exige
+    // vacuidad contra contenido real vence el dia que alguien carga algo, que
+    // es exactamente lo que se espera que pase. Se verifica la forma: ausente
+    // (y entonces manda el fallback), o un media resuelto y usable.
+    for (const campo of [settings.marca?.isotipo, settings.marca?.favicon]) {
+      if (campo === null || campo === undefined) continue
+      if (typeof campo === 'object') {
+        expect(campo.url).toBeTruthy()
+      } else {
+        expect(campo).toBeGreaterThan(0)
+      }
+    }
   })
 })
