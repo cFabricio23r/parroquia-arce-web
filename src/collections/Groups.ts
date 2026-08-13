@@ -7,6 +7,8 @@ import { contactField } from '../fields/contact'
 import { teamField } from '../fields/team'
 import { perseveranceField } from '../fields/perseverance'
 import { galleryField } from '../fields/gallery'
+import { patronField } from '../fields/patron'
+import { patronalFeastsField } from '../fields/patronalFeasts'
 
 /**
  * Group / Ministry. Organizado en tabs: la info del grupo, los datos de reunion
@@ -53,9 +55,35 @@ export const Groups: CollectionConfig = {
               label: 'Resumen',
               admin: { description: 'Texto corto para las tarjetas del listado.' },
             },
-            { name: 'description', type: 'richText', label: 'Descripción' },
-            { name: 'history', type: 'richText', label: 'Historia' },
+            // Los dos richText se usan de verdad y dicen cosas distintas, asi que
+            // el admin tiene que explicar cual gana. Sin esto, el voluntario no
+            // tiene forma de saber que llenar solo "Historia" la convierte en el
+            // texto principal de la pagina. Ver src/lib/group-body.ts.
+            {
+              name: 'description',
+              type: 'richText',
+              label: 'Descripción',
+              admin: {
+                description:
+                  'Qué es y qué hace el grupo hoy. Es lo primero que se lee en la página. Si lo dejás vacío, se muestra la Historia en su lugar.',
+              },
+            },
+            {
+              name: 'history',
+              type: 'richText',
+              label: 'Historia',
+              admin: {
+                description:
+                  'Cómo y cuándo se fundó. Si no hay Descripción, esta historia es el texto principal; si están las dos, aparece aparte, más abajo.',
+              },
+            },
             perseveranceField(),
+            patronField(),
+            patronalFeastsField({
+              nameHint: 'El nombre del santo o la advocación. Ej.: San Francisco Javier.',
+              description:
+                'Si el grupo tiene más de un patrono, cargá uno por fila con su fecha y dejá vacío el Nombre de arriba. Sin año: se repiten todos los años.',
+            }),
           ],
         },
         {

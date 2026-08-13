@@ -463,6 +463,9 @@ export interface Group {
    * Texto corto para las tarjetas del listado.
    */
   summary?: string | null;
+  /**
+   * Qué es y qué hace el grupo hoy. Es lo primero que se lee en la página. Si lo dejás vacío, se muestra la Historia en su lugar.
+   */
   description?: {
     root: {
       type: string;
@@ -478,6 +481,9 @@ export interface Group {
     };
     [k: string]: unknown;
   } | null;
+  /**
+   * Cómo y cuándo se fundó. Si no hay Descripción, esta historia es el texto principal; si están las dos, aparece aparte, más abajo.
+   */
   history?: {
     root: {
       type: string;
@@ -503,6 +509,30 @@ export interface Group {
      */
     label?: string | null;
   };
+  /**
+   * Dejalo vacío si el grupo no tiene patrono asignado.
+   */
+  patron?: {
+    /**
+     * Ej.: San Jerónimo. Si son dos o más, cargalos como fiestas.
+     */
+    name?: string | null;
+    image?: (number | null) | Media;
+  };
+  /**
+   * Si el grupo tiene más de un patrono, cargá uno por fila con su fecha y dejá vacío el Nombre de arriba. Sin año: se repiten todos los años.
+   */
+  patronalFeasts?:
+    | {
+        /**
+         * El nombre del santo o la advocación. Ej.: San Francisco Javier.
+         */
+        name: string;
+        day: number;
+        month: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
+        id?: string | null;
+      }[]
+    | null;
   meeting?: {
     day?: string | null;
     time?: string | null;
@@ -1117,6 +1147,20 @@ export interface GroupsSelect<T extends boolean = true> {
     | {
         count?: T;
         label?: T;
+      };
+  patron?:
+    | T
+    | {
+        name?: T;
+        image?: T;
+      };
+  patronalFeasts?:
+    | T
+    | {
+        name?: T;
+        day?: T;
+        month?: T;
+        id?: T;
       };
   meeting?:
     | T

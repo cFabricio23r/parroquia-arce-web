@@ -11,6 +11,8 @@ import { PerseveranceStat } from '@/components/community/PerseveranceStat'
 import { TeamList } from '@/components/community/TeamList'
 import { PhotoGallery } from '@/components/community/PhotoGallery'
 import { ContactLinks, hasContact } from '@/components/community/ContactLinks'
+import { PatronCard } from '@/components/community/PatronCard'
+import { pickGroupBody } from '@/lib/group-body'
 
 export const revalidate = 300
 
@@ -61,6 +63,7 @@ export default async function GrupoDetalle({ params }: { params: Promise<{ slug:
 
   const meeting = item.meeting
   const hasMeeting = meeting?.day || meeting?.time || meeting?.place
+  const { body, showHistorySection } = pickGroupBody(item.description, item.history)
 
   return (
     <article>
@@ -115,8 +118,8 @@ export default async function GrupoDetalle({ params }: { params: Promise<{ slug:
           <div className="grid grid-cols-[1fr_300px] gap-12 max-[980px]:grid-cols-1">
             <div className="max-w-[70ch]">
               <div className="richtext">
-                {item.description ? (
-                  <RichText data={item.description} />
+                {body ? (
+                  <RichText data={body} />
                 ) : (
                   <p className="text-muted">Pronto habrá más información sobre este grupo.</p>
                 )}
@@ -129,7 +132,7 @@ export default async function GrupoDetalle({ params }: { params: Promise<{ slug:
                 </div>
               )}
 
-              {item.history && (
+              {showHistorySection && item.history && (
                 <div className="mt-10">
                   <h2 className="mb-3 font-display text-[26px] font-medium">Historia</h2>
                   <div className="richtext">
@@ -189,6 +192,7 @@ export default async function GrupoDetalle({ params }: { params: Promise<{ slug:
                 label={item.perseverance?.label}
               />
               <TeamList members={item.team} />
+              <PatronCard patron={item.patron} feasts={item.patronalFeasts} />
               {hasContact(item.contact) && (
                 <div className="mt-6 rounded-xl border border-border bg-bg-soft p-6">
                   <h2 className="mb-4 font-display text-[20px] font-medium">Contacto</h2>
