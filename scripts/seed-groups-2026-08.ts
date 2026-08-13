@@ -4,6 +4,7 @@ import { mkdtemp, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import config from '../src/payload.config.js'
+import type { Group } from '../src/payload-types.js'
 
 /**
  * Carga los 4 grupos que entrego la parroquia en agosto de 2026, con sus 12
@@ -73,7 +74,9 @@ const A = {
   },
   liturgiaGrupo: {
     file: 'liturgia_image3.png',
-    alt: 'Doce integrantes de la Comisión de Liturgia sentadas en las gradas del presbiterio',
+    // Sin numero a proposito: contar la foto da entre 11 y 12 y nadie lo
+    // verifico. Un dato numerico equivocado en un `alt` se lee como un hecho.
+    alt: 'Integrantes de la Comisión de Liturgia sentadas en las gradas del presbiterio',
   },
   mecLogo: {
     file: 'mec_image1.jpeg',
@@ -126,7 +129,9 @@ type GroupSeed = {
   history: string[]
   description?: string[]
   patron?: { name?: string; image?: Slot }
-  patronalFeasts?: { name: string; day: number; month: string }[]
+  // El tipo del mes sale del generado ('1'..'12'), no de un `string` suelto:
+  // asi un mes invalido no compila en vez de fallar en la carga.
+  patronalFeasts?: NonNullable<Group['patronalFeasts']>
   logo?: Slot
   groupPhoto?: Slot
   gallery?: Slot[]
@@ -274,7 +279,9 @@ for (const g of todo) {
 }
 
 const work = await mkdtemp(join(tmpdir(), 'grupos-'))
-const uploaded = new Map<Slot, number | string>()
+/** El id de Payload es `string | number` en general; con Postgres siempre es
+ *  number, que es lo que los campos `upload` aceptan. */
+const uploaded = new Map<Slot, number>()
 
 for (const slot of needed) {
   const asset = A[slot] as Asset
@@ -293,12 +300,12 @@ for (const slot of needed) {
     filePath,
     overrideAccess: true,
   })
-  uploaded.set(slot, media.id)
+  uploaded.set(slot, media.id as number)
   console.log(`  ✓ media [${media.id}] ${asset.file}`)
 }
 
 // --- Grupos ----------------------------------------------------------------
-const ref = (slot?: Slot) => (slot ? uploaded.get(slot) : undefined)
+const ref = (slot?: Slot): number | undefined => (slot ? uploaded.get(slot) : undefined)
 
 for (const g of todo) {
   const doc = await payload.create({
@@ -316,7 +323,7 @@ for (const g of todo) {
       ...(g.patronalFeasts ? { patronalFeasts: g.patronalFeasts } : {}),
       logo: ref(g.logo),
       groupPhoto: ref(g.groupPhoto),
-      gallery: (g.gallery ?? []).map((s) => ref(s)).filter(Boolean),
+      gallery: (g.gallery ?? []).map((s) => ref(s)).filter((id): id is number => id != null),
     },
     overrideAccess: true,
   })

@@ -463,6 +463,9 @@ export interface Group {
    * Texto corto para las tarjetas del listado.
    */
   summary?: string | null;
+  /**
+   * Qué es y qué hace el grupo hoy. Es lo primero que se lee en la página. Si lo dejás vacío, se muestra la Historia en su lugar.
+   */
   description?: {
     root: {
       type: string;
@@ -478,6 +481,9 @@ export interface Group {
     };
     [k: string]: unknown;
   } | null;
+  /**
+   * Cómo y cuándo se fundó. Si no hay Descripción, esta historia es el texto principal; si están las dos, aparece aparte, más abajo.
+   */
   history?: {
     root: {
       type: string;
@@ -514,12 +520,12 @@ export interface Group {
     image?: (number | null) | Media;
   };
   /**
-   * Sin año: se repiten todos los años. Se muestran en este orden.
+   * Si el grupo tiene más de un patrono, cargá uno por fila con su fecha y dejá vacío el Nombre de arriba. Sin año: se repiten todos los años.
    */
   patronalFeasts?:
     | {
         /**
-         * Ej.: Fiesta principal, Novena, Procesión.
+         * El nombre del santo o la advocación. Ej.: San Francisco Javier.
          */
         name: string;
         day: number;
