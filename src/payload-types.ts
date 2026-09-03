@@ -304,6 +304,20 @@ export interface Sector {
   number?: number | null;
   chapelName?: string | null;
   /**
+   * Agrupación de sectores según el organigrama del plan pastoral.
+   */
+  zone?: ('zona-1' | 'zona-2' | 'zona-3' | 'zona-4' | 'zona-5') | null;
+  /**
+   * Dejalo vacío si el grupo no tiene patrono asignado.
+   */
+  patron?: {
+    /**
+     * Ej.: San Jerónimo. Si son dos o más, cargalos como fiestas.
+     */
+    name?: string | null;
+    image?: (number | null) | Media;
+  };
+  /**
    * Texto corto para las tarjetas del listado.
    */
   summary?: string | null;
@@ -459,6 +473,10 @@ export interface Group {
    */
   slug: string;
   type?: ('pastoral' | 'ministerio' | 'comunidad' | 'servicio' | 'formacion') | null;
+  /**
+   * Según el organigrama del plan pastoral. Los órganos de gobierno (Consejo Parroquial, Consejo Económico) no tienen línea.
+   */
+  actionLine?: ('evangelizacion' | 'familia' | 'ninez-juventud-vocacion' | 'formacion-agentes') | null;
   /**
    * Texto corto para las tarjetas del listado.
    */
@@ -1029,6 +1047,13 @@ export interface SectorsSelect<T extends boolean = true> {
   slug?: T;
   number?: T;
   chapelName?: T;
+  zone?: T;
+  patron?:
+    | T
+    | {
+        name?: T;
+        image?: T;
+      };
   summary?: T;
   description?: T;
   history?: T;
@@ -1139,6 +1164,7 @@ export interface GroupsSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
   type?: T;
+  actionLine?: T;
   summary?: T;
   description?: T;
   history?: T;
