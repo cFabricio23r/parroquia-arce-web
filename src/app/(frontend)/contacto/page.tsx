@@ -8,6 +8,9 @@ import { Reveal } from '@/components/news/Reveal'
 
 export const metadata: Metadata = { title: 'Contacto' }
 
+// Consultar el CMS en cada visita: los horarios cambian sin un nuevo deploy.
+export const dynamic = 'force-dynamic'
+
 // Los canales oficiales y el horario de oficina se leen del global `contact`,
 // editable desde /admin (Configuración → Contacto). Sin datos cargados, cada
 // bloque cae a un placeholder para que la pagina nunca quede rota.

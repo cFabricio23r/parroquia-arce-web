@@ -7,6 +7,9 @@ import { deriveSchedule } from '@/lib/parish-schedule'
 
 export const metadata: Metadata = { title: 'Horarios y sacramentos' }
 
+// Consultar el CMS en cada visita: los horarios cambian sin un nuevo deploy.
+export const dynamic = 'force-dynamic'
+
 /**
  * Todo sale del global `contact`, editable desde /admin. Este archivo solo lee y
  * delega: el render vive en `ScheduleSections`, que es puro y testeable.
