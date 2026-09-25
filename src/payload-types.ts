@@ -109,11 +109,13 @@ export interface Config {
     home: Home;
     contact: Contact;
     settings: Setting;
+    clergy: Clergy;
   };
   globalsSelect: {
     home: HomeSelect<false> | HomeSelect<true>;
     contact: ContactSelect<false> | ContactSelect<true>;
     settings: SettingsSelect<false> | SettingsSelect<true>;
+    clergy: ClergySelect<false> | ClergySelect<true>;
   };
   locale: null;
   widgets: {
@@ -1471,6 +1473,77 @@ export interface Setting {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "clergy".
+ */
+export interface Clergy {
+  id: number;
+  pastor?: {
+    /**
+     * Activá esta opción cuando el nombre y la presentación estén listos para mostrarse en la web.
+     */
+    published?: boolean | null;
+    name?: string | null;
+    role?: string | null;
+    photo?: (number | null) | Media;
+    /**
+     * Dos o tres frases para presentarlo en Inicio.
+     */
+    summary?: string | null;
+    /**
+     * Su vocación, trayectoria y llegada a la parroquia. Aparece en la página Nuestros sacerdotes.
+     */
+    biography?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
+  assistant?: {
+    /**
+     * Activá esta opción cuando el nombre y la presentación estén listos para mostrarse en la web.
+     */
+    published?: boolean | null;
+    name?: string | null;
+    role?: string | null;
+    photo?: (number | null) | Media;
+    /**
+     * Dos o tres frases para presentarlo en Inicio.
+     */
+    summary?: string | null;
+    /**
+     * Su vocación, trayectoria y llegada a la parroquia. Aparece en la página Nuestros sacerdotes.
+     */
+    biography?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "home_select".
  */
 export interface HomeSelect<T extends boolean = true> {
@@ -1560,6 +1633,35 @@ export interface SettingsSelect<T extends boolean = true> {
     | {
         isotipo?: T;
         favicon?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "clergy_select".
+ */
+export interface ClergySelect<T extends boolean = true> {
+  pastor?:
+    | T
+    | {
+        published?: T;
+        name?: T;
+        role?: T;
+        photo?: T;
+        summary?: T;
+        biography?: T;
+      };
+  assistant?:
+    | T
+    | {
+        published?: T;
+        name?: T;
+        role?: T;
+        photo?: T;
+        summary?: T;
+        biography?: T;
       };
   updatedAt?: T;
   createdAt?: T;
