@@ -15,10 +15,14 @@ beforeEach(() => {
   published = true
   vi.clearAllMocks()
   find.mockResolvedValue({ docs: [] })
-  findGlobal.mockImplementation(async ({ slug }) => slug === 'clergy'
-    ? { pastor: { published, name: 'Nombre publicado', summary: 'Resumen publicado' },
-        assistant: { published: false, name: 'Nombre privado', summary: 'Resumen privado' } }
-    : {})
+  findGlobal.mockImplementation(async ({ slug }) =>
+    slug === 'clergy'
+      ? {
+          pastor: { published, name: 'Nombre publicado', summary: 'Resumen publicado' },
+          assistant: { published: false, name: 'Nombre privado', summary: 'Resumen privado' },
+        }
+      : {},
+  )
 })
 
 describe('lectura y consumidores de sacerdotes', () => {
@@ -42,11 +46,15 @@ describe('lectura y consumidores de sacerdotes', () => {
     render(await HomePage())
     expect(screen.getByText('Nombre publicado')).toBeTruthy()
     expect(screen.queryByText('Nombre privado')).toBeNull()
-    expect(screen.getByRole('link', { name: /Conocer la historia/ }).getAttribute('href')).toBe('/sacerdotes#parroco')
+    expect(screen.getByRole('link', { name: /Conocer la historia/ }).getAttribute('href')).toBe(
+      '/sacerdotes#parroco',
+    )
   })
   it('el pie retira el enlace al despublicar el último perfil', async () => {
     render(await Footer())
-    expect(screen.getByRole('link', { name: 'Nuestros sacerdotes' }).getAttribute('href')).toBe('/sacerdotes')
+    expect(screen.getByRole('link', { name: 'Nuestros sacerdotes' }).getAttribute('href')).toBe(
+      '/sacerdotes',
+    )
     cleanup()
     published = false
     render(await Footer())

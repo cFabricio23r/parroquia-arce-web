@@ -14,7 +14,9 @@ it('invalida Inicio, página y pie compartido al guardar', async () => {
 
 it('permite ejecutar herramientas offline sin el runtime de Next', async () => {
   const doc = {}
-  const args = { doc, req: { context: { disableRevalidate: true } } } as unknown as Parameters<typeof revalidateClergy>[0]
+  const args = { doc, req: { context: { disableRevalidate: true } } } as unknown as Parameters<
+    typeof revalidateClergy
+  >[0]
   expect(await revalidateClergy(args)).toBe(doc)
   expect(revalidatePath).not.toHaveBeenCalled()
 })

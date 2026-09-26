@@ -13,15 +13,9 @@ const NAV_BASE = [
   { href: '/grupos', label: 'Grupos' },
   { href: '/eventos', label: 'Eventos' },
   { href: '/radio', label: 'Radio' },
-  { href: '/noticias', label: 'Noticias' },
+  { href: '/actividad', label: 'Actividad' },
   { href: '/contacto', label: 'Contacto' },
 ]
-
-/** El item de Horarios solo existe si la parroquia cargo horarios en el CMS. */
-const navFor = (hasSchedule: boolean) =>
-  hasSchedule
-    ? [NAV_BASE[0], { href: '/horarios', label: 'Horarios' }, ...NAV_BASE.slice(1)]
-    : NAV_BASE
 
 const PLATFORM_LABEL: Record<string, string> = {
   whatsapp: 'WhatsApp',
@@ -56,7 +50,7 @@ export function Header({ channels = [], radioLive = true, brand, hasSchedule }: 
   useEffect(() => setOpen(false), [pathname])
 
   const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href))
-  const nav = navFor(hasSchedule)
+  const nav = NAV_BASE
 
   return (
     <>

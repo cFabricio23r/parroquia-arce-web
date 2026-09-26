@@ -1445,6 +1445,39 @@ export interface Contact {
  */
 export interface Setting {
   id: number;
+  /**
+   * Controla el anuncio flotante en la web. No modifica ni finaliza la transmisión en Facebook o YouTube.
+   */
+  socialLive?: {
+    youtube?: {
+      /**
+       * Automático requiere la conexión del canal. Manual permite anunciarlo al comenzar; Ocultar retira el anuncio.
+       */
+      mode?: ('auto' | 'manual' | 'off') | null;
+      /**
+       * Pegá el enlace del video específico, no el enlace del canal ni un enlace de compartir abreviado de Facebook.
+       */
+      url?: string | null;
+      /**
+       * Hora de finalización prevista. Al llegar esta hora se retira automáticamente el anuncio.
+       */
+      endsAt?: string | null;
+    };
+    facebook?: {
+      /**
+       * Automático requiere la conexión del canal. Manual permite anunciarlo al comenzar; Ocultar retira el anuncio.
+       */
+      mode?: ('auto' | 'manual' | 'off') | null;
+      /**
+       * Pegá el enlace del video específico, no el enlace del canal ni un enlace de compartir abreviado de Facebook.
+       */
+      url?: string | null;
+      /**
+       * Hora de finalización prevista. Al llegar esta hora se retira automáticamente el anuncio.
+       */
+      endsAt?: string | null;
+    };
+  };
   radio?: {
     /**
      * Si esta apagado, la web muestra la radio como "Fuera del aire" y deshabilita el play.
@@ -1622,6 +1655,24 @@ export interface ContactSelect<T extends boolean = true> {
  * via the `definition` "settings_select".
  */
 export interface SettingsSelect<T extends boolean = true> {
+  socialLive?:
+    | T
+    | {
+        youtube?:
+          | T
+          | {
+              mode?: T;
+              url?: T;
+              endsAt?: T;
+            };
+        facebook?:
+          | T
+          | {
+              mode?: T;
+              url?: T;
+              endsAt?: T;
+            };
+      };
   radio?:
     | T
     | {

@@ -11,6 +11,13 @@ export type ClergyProfile = {
   biography: NonNullable<Clergy['pastor']>['biography']
 }
 
+/** La biblioteca también contiene archivos de audio y documentos. */
+export function getClergyPhoto(photo: ClergyProfile['photo']): Media | null {
+  return photo && typeof photo === 'object' && photo.url && photo.mimeType?.startsWith('image/')
+    ? photo
+    : null
+}
+
 /** También filtra las lecturas Local API que omitan el control de acceso. */
 export function getPublishedClergy(source: ClergySource): ClergyProfile[] {
   const profiles: ClergyProfile[] = []
@@ -22,7 +29,7 @@ export function getPublishedClergy(source: ClergySource): ClergyProfile[] {
       name: profile.name.trim(),
       role: profile.role?.trim() || (position === 'pastor' ? 'Párroco' : 'Sacerdote auxiliar'),
       summary: profile.summary.trim(),
-      photo: profile.photo ?? null,
+      photo: getClergyPhoto(profile.photo ?? null),
       biography: profile.biography,
     })
   }

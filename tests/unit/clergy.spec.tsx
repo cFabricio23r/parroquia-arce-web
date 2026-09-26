@@ -17,28 +17,42 @@ describe('getPublishedClergy', () => {
   it('conserva el orden y las anclas aunque cambien los nombres', () => {
     const result = getPublishedClergy({ assistant: profile, pastor: profile })
     expect(result.map(({ id, role }) => [id, role])).toEqual([
-      ['parroco', 'Párroco'], ['auxiliar', 'Sacerdote auxiliar'],
+      ['parroco', 'Párroco'],
+      ['auxiliar', 'Sacerdote auxiliar'],
     ])
     expect(result[0].name).toBe('Padre de prueba')
     expect(result[0].summary).toBe('Presentación de prueba')
   })
   it('permite publicar solo al auxiliar y editar su cargo', () => {
-    expect(getPublishedClergy({ assistant: { ...profile, role: ' Vicario parroquial ' } }))
-      .toEqual([expect.objectContaining({ id: 'auxiliar', role: 'Vicario parroquial' })])
+    expect(getPublishedClergy({ assistant: { ...profile, role: ' Vicario parroquial ' } })).toEqual(
+      [expect.objectContaining({ id: 'auxiliar', role: 'Vicario parroquial' })],
+    )
   })
 })
 
 describe('hasBiographyContent', () => {
-  it.each([null, undefined, {}, { root: { children: [] } },
+  it.each([
+    null,
+    undefined,
+    {},
+    { root: { children: [] } },
     { root: { children: [{ type: 'paragraph', children: [{ type: 'text', text: ' \n' }] }] } },
   ])('reconoce una historia vacía: %j', (value) => {
     expect(hasBiographyContent(value)).toBe(false)
   })
   it('reconoce texto anidado', () => {
-    expect(hasBiographyContent({ root: { children: [{ children: [{ text: 'Mi vocación' }] }] } })).toBe(true)
+    expect(
+      hasBiographyContent({ root: { children: [{ children: [{ text: 'Mi vocación' }] }] } }),
+    ).toBe(true)
   })
   it('reconoce medios poblados pero no uploads rotos', () => {
-    expect(hasBiographyContent({ root: { children: [{ type: 'upload', value: { url: '/foto.jpg' } }] } })).toBe(true)
-    expect(hasBiographyContent({ root: { children: [{ type: 'upload', value: null }] } })).toBe(false)
+    expect(
+      hasBiographyContent({
+        root: { children: [{ type: 'upload', value: { url: '/foto.jpg' } }] },
+      }),
+    ).toBe(true)
+    expect(hasBiographyContent({ root: { children: [{ type: 'upload', value: null }] } })).toBe(
+      false,
+    )
   })
 })
