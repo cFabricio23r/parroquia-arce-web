@@ -69,6 +69,11 @@ export function ActivityCard({
             </p>
           )}
           <div className="mt-auto flex flex-wrap items-center justify-between gap-x-3 gap-y-2 pt-5 text-xs">
+            {post.kind && (
+              <span className="rounded-full bg-blue-tint px-2 py-1 font-semibold text-blue">
+                {{ photo: 'Foto', video: 'Video', text: 'Texto', other: 'Publicación' }[post.kind]}
+              </span>
+            )}
             <time className="text-muted" dateTime={post.date}>
               {activityDate(post.date)}
             </time>

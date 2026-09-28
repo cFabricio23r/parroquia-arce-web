@@ -110,12 +110,14 @@ export interface Config {
     contact: Contact;
     settings: Setting;
     clergy: Clergy;
+    activity: Activity;
   };
   globalsSelect: {
     home: HomeSelect<false> | HomeSelect<true>;
     contact: ContactSelect<false> | ContactSelect<true>;
     settings: SettingsSelect<false> | SettingsSelect<true>;
     clergy: ClergySelect<false> | ClergySelect<true>;
+    activity: ActivitySelect<false> | ActivitySelect<true>;
   };
   locale: null;
   widgets: {
@@ -1577,6 +1579,40 @@ export interface Clergy {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "activity".
+ */
+export interface Activity {
+  id: number;
+  connection?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  /**
+   * Aparece arriba de las publicaciones de Actividad y se retira al vencer. Las fechas del selector usan la zona horaria de tu dispositivo.
+   */
+  notice?: {
+    enabled?: boolean | null;
+    title?: string | null;
+    message?: string | null;
+    /**
+     * Enlace completo que comience con https://.
+     */
+    url?: string | null;
+    /**
+     * Obligatorio al activar el aviso. Elegí una fecha y hora futura.
+     */
+    endsAt?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "home_select".
  */
 export interface HomeSelect<T extends boolean = true> {
@@ -1713,6 +1749,25 @@ export interface ClergySelect<T extends boolean = true> {
         photo?: T;
         summary?: T;
         biography?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "activity_select".
+ */
+export interface ActivitySelect<T extends boolean = true> {
+  connection?: T;
+  notice?:
+    | T
+    | {
+        enabled?: T;
+        title?: T;
+        message?: T;
+        url?: T;
+        endsAt?: T;
       };
   updatedAt?: T;
   createdAt?: T;

@@ -1,6 +1,11 @@
 import type { Metadata } from 'next'
 import { getActivityPage } from '@/lib/activity-server'
 import { ActivityView } from '@/components/site/activity/ActivityView'
+import { getPayload } from 'payload'
+import config from '@/payload.config'
+import { activeNotice } from '@/lib/activity-notice'
+
+export const revalidate = 60
 
 export const metadata: Metadata = {
   title: 'Actividad parroquial',
@@ -8,5 +13,11 @@ export const metadata: Metadata = {
 }
 
 export default async function ActivityPage() {
-  return <ActivityView initial={await getActivityPage()} />
+  const [initial, activity] = await Promise.all([
+    getActivityPage(),
+    getPayload({ config })
+      .then((payload) => payload.findGlobal({ slug: 'activity', depth: 0, overrideAccess: false }))
+      .catch(() => null),
+  ])
+  return <ActivityView initial={initial} notice={activeNotice(activity?.notice)} />
 }

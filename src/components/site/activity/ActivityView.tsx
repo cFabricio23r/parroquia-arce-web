@@ -2,8 +2,16 @@ import { Container } from '@/components/ui/Container'
 import type { ActivityPageData } from '@/lib/activity'
 import { ActivityFeed } from './ActivityFeed'
 import { SocialLinksCard } from './SocialLinksCard'
+import { ActivityNotice } from './ActivityNotice'
+import type { ActiveNotice } from '@/lib/activity-notice'
 
-export function ActivityView({ initial }: { initial: ActivityPageData }) {
+export function ActivityView({
+  initial,
+  notice = null,
+}: {
+  initial: ActivityPageData
+  notice?: ActiveNotice | null
+}) {
   return (
     <>
       <section className="border-b border-line-soft bg-bg-soft py-12 md:py-16">
@@ -22,7 +30,10 @@ export function ActivityView({ initial }: { initial: ActivityPageData }) {
       </section>
       <Container>
         <div className="grid gap-10 py-10 lg:grid-cols-[minmax(0,1fr)_250px] lg:gap-8 md:py-14">
-          <ActivityFeed initial={initial} />
+          <div className="min-w-0">
+            <ActivityNotice notice={notice} />
+            <ActivityFeed initial={initial} />
+          </div>
           <SocialLinksCard />
         </div>
       </Container>
