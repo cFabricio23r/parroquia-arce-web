@@ -1,0 +1,378 @@
+[
+  {
+    "kind": "sectores",
+    "slug": "sector-21",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-23",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-19",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-20",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-17",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-16",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-14",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-13",
+    "status": 200,
+    "placeholder": false,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-11",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-12",
+    "status": 200,
+    "placeholder": false,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-9",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-10",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-7",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-5",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-6",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-4",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-3",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-2",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-15",
+    "status": 200,
+    "placeholder": false,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-1",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-8",
+    "status": 200,
+    "placeholder": false,
+    "badPhone": false,
+    "shortWhatsApp": [
+      "61150995",
+      "61150995",
+      "61150995",
+      "61150995"
+    ]
+  },
+  {
+    "kind": "sectores",
+    "slug": "sector-22",
+    "status": 200,
+    "placeholder": false,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "pastoral-social",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "comision-de-apostoles",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "comision-de-medio-ambiente",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "escuela-de-predicadores",
+    "status": 200,
+    "placeholder": false,
+    "badPhone": true,
+    "shortWhatsApp": [
+      "77323460",
+      "77323460"
+    ]
+  },
+  {
+    "kind": "grupos",
+    "slug": "pastoral-vocacional",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "pastoral-familiar",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "veteranos-de-pj",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "pastoral-juvenil",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "tercera-orden-franciscana",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "comision-de-evangelizacion",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "pequenos-hermanos-de-maria",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "pequenas-comunidades",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "comunicacion-social",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "ministerios-de-alabanza",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "adoradores-del-santisimo",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "hermandad-del-santo-entierro",
+    "status": 200,
+    "placeholder": true,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "iam",
+    "status": 200,
+    "placeholder": false,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "escuela-basica-en-la-fe",
+    "status": 200,
+    "placeholder": false,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "comision-de-liturgia",
+    "status": 200,
+    "placeholder": false,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "mec",
+    "status": 200,
+    "placeholder": false,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "rcc",
+    "status": 200,
+    "placeholder": false,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "jumi",
+    "status": 200,
+    "placeholder": false,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "consejo-economico",
+    "status": 200,
+    "placeholder": false,
+    "badPhone": false,
+    "shortWhatsApp": []
+  },
+  {
+    "kind": "grupos",
+    "slug": "comision-de-formacion",
+    "status": 200,
+    "placeholder": false,
+    "badPhone": false,
+    "shortWhatsApp": []
+  }
+]

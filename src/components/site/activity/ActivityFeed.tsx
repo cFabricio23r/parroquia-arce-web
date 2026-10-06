@@ -5,7 +5,13 @@ import { FACEBOOK_PAGE } from '@/lib/social-live'
 import { parseActivityFilters, type ActivityFilters, type ActivityPageData } from '@/lib/activity'
 import { ActivityCard } from './ActivityCard'
 
-export function ActivityFeed({ initial }: { initial: ActivityPageData }) {
+export function ActivityFeed({
+  initial,
+  showFilters = true,
+}: {
+  initial: ActivityPageData
+  showFilters?: boolean
+}) {
   const [posts, setPosts] = useState(initial.posts)
   const [cursor, setCursor] = useState(initial.nextCursor)
   const [loading, setLoading] = useState(false)
@@ -93,80 +99,82 @@ export function ActivityFeed({ initial }: { initial: ActivityPageData }) {
         </h2>
         <span aria-hidden="true" className="h-px flex-1 bg-border" />
       </div>
-      <form
-        onSubmit={(event) => {
-          event.preventDefault()
-          void loadOlder(true, draft)
-        }}
-        className="mb-8 rounded-2xl border border-border bg-bg-soft p-4 md:p-5 hidden"
-        aria-label="Filtrar publicaciones"
-      >
-        <div className="grid min-w-0 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <label className="min-w-0 text-sm font-semibold text-navy-deep">
-            Desde
-            <input
-              type="date"
-              value={draft.from || ''}
-              onChange={(event) => setDraft({ ...draft, from: event.target.value })}
-              className="mt-2 block min-h-12 w-full min-w-0 rounded-lg border border-border bg-white px-3 font-normal focus-visible:outline-2 focus-visible:outline-blue"
-            />
-          </label>
-          <label className="min-w-0 text-sm font-semibold text-navy-deep">
-            Hasta
-            <input
-              type="date"
-              value={draft.to || ''}
-              onChange={(event) => setDraft({ ...draft, to: event.target.value })}
-              className="mt-2 block min-h-12 w-full min-w-0 rounded-lg border border-border bg-white px-3 font-normal focus-visible:outline-2 focus-visible:outline-blue"
-            />
-          </label>
-          <label className="min-w-0 text-sm font-semibold text-navy-deep">
-            Tipo de publicación
-            <select
-              value={draft.kind || 'all'}
-              onChange={(event) => setDraft({ ...draft, kind: event.target.value })}
-              className="mt-2 block min-h-12 w-full min-w-0 rounded-lg border border-border bg-white px-3 font-normal focus-visible:outline-2 focus-visible:outline-blue"
+      {showFilters && (
+        <form
+          onSubmit={(event) => {
+            event.preventDefault()
+            void loadOlder(true, draft)
+          }}
+          className="mb-8 rounded-2xl border border-border bg-bg-soft p-4 md:p-5"
+          aria-label="Filtrar publicaciones"
+        >
+          <div className="grid min-w-0 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <label className="min-w-0 text-sm font-semibold text-navy-deep">
+              Desde
+              <input
+                type="date"
+                value={draft.from || ''}
+                onChange={(event) => setDraft({ ...draft, from: event.target.value })}
+                className="mt-2 block min-h-12 w-full min-w-0 rounded-lg border border-border bg-white px-3 font-normal focus-visible:outline-2 focus-visible:outline-blue"
+              />
+            </label>
+            <label className="min-w-0 text-sm font-semibold text-navy-deep">
+              Hasta
+              <input
+                type="date"
+                value={draft.to || ''}
+                onChange={(event) => setDraft({ ...draft, to: event.target.value })}
+                className="mt-2 block min-h-12 w-full min-w-0 rounded-lg border border-border bg-white px-3 font-normal focus-visible:outline-2 focus-visible:outline-blue"
+              />
+            </label>
+            <label className="min-w-0 text-sm font-semibold text-navy-deep">
+              Tipo de publicación
+              <select
+                value={draft.kind || 'all'}
+                onChange={(event) => setDraft({ ...draft, kind: event.target.value })}
+                className="mt-2 block min-h-12 w-full min-w-0 rounded-lg border border-border bg-white px-3 font-normal focus-visible:outline-2 focus-visible:outline-blue"
+              >
+                <option value="all">Todas</option>
+                <option value="photo">Fotos</option>
+                <option value="video">Videos</option>
+                <option value="text">Texto</option>
+              </select>
+            </label>
+          </div>
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            <button
+              type="submit"
+              className="min-h-12 rounded-full bg-blue px-5 py-3 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue"
             >
-              <option value="all">Todas</option>
-              <option value="photo">Fotos</option>
-              <option value="video">Videos</option>
-              <option value="text">Texto</option>
-            </select>
-          </label>
-        </div>
-        <div className="mt-4 flex flex-wrap items-center gap-3">
-          <button
-            type="submit"
-            className="min-h-12 rounded-full bg-blue px-5 py-3 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue"
-          >
-            Aplicar filtros
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setDraft({})
-              void loadOlder(true, {})
-            }}
-            className="min-h-12 rounded-full px-4 py-3 text-sm font-semibold text-blue underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-blue"
-          >
-            Limpiar filtros
-          </button>
-          {loading && (
-            <span role="status" className="text-sm text-muted">
-              Buscando publicaciones…
-            </span>
+              Aplicar filtros
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setDraft({})
+                void loadOlder(true, {})
+              }}
+              className="min-h-12 rounded-full px-4 py-3 text-sm font-semibold text-blue underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-blue"
+            >
+              Limpiar filtros
+            </button>
+            {loading && (
+              <span role="status" className="text-sm text-muted">
+                Buscando publicaciones…
+              </span>
+            )}
+          </div>
+          {validation && (
+            <p role="alert" className="mt-3 text-sm text-text">
+              {validation}
+            </p>
           )}
-        </div>
-        {validation && (
-          <p role="alert" className="mt-3 text-sm text-text">
-            {validation}
+          <p className="mt-3 text-xs leading-relaxed text-muted">
+            Las fechas corresponden a El Salvador. Podés seguir cargando páginas para recorrer el
+            historial disponible.
           </p>
-        )}
-        <p className="mt-3 text-xs leading-relaxed text-muted">
-          Las fechas corresponden a El Salvador. Podés seguir cargando páginas para recorrer el
-          historial disponible.
-        </p>
-      </form>
+        </form>
+      )}
       <div aria-busy={loading}>
         {posts.length ? (
           <>

@@ -19,5 +19,11 @@ export default async function ActivityPage() {
       .then((payload) => payload.findGlobal({ slug: 'activity', depth: 0, overrideAccess: false }))
       .catch(() => null),
   ])
-  return <ActivityView initial={initial} notice={activeNotice(activity?.notice)} />
+  return (
+    <ActivityView
+      initial={initial}
+      notice={activeNotice(activity?.notice)}
+      showFilters={activity?.showFilters === true}
+    />
+  )
 }

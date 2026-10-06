@@ -13,6 +13,8 @@
 
 ## Mejoras de Actividad (28/9/2026)
 
+- **Admin → Configuración → Actividad → Mostrar filtros en Actividad** permite encender/apagar el formulario completo de fecha y tipo. Inicialmente apagado para conservar la vista sin filtros. Guardar y recargar la página pública; la revalidación puede tardar alrededor de un minuto. Las tarjetas y Cargar publicaciones anteriores siguen disponibles. El cambio de visibilidad reinicia el feed para evitar conservar filtros invisibles.
+- Migración adicional `20260928_130000_activity_filters_toggle` aplicada y registrada como batch 3. Columna `show_filters` boolean con default false; valor actual false, RLS habilitado y acceso directo anónimo denegado, verificado tras aplicar.
 - En `/actividad`, Desde/Hasta son fechas inclusivas de El Salvador. Se consultan `since`/`until` en Facebook y se verifican también los límites al normalizar resultados. Los tipos Fotos/Videos/Texto se determinan por los adjuntos; un enlace con miniatura no se presenta como foto. Todas incluye otros formatos.
 - Cada clic consulta una página de 9 publicaciones de origen. Si ninguna coincide con el tipo pero queda historial, se muestra **Seguir buscando publicaciones**. Cambiar filtros reemplaza resultados solo después de una consulta exitosa; un error conserva lo anterior. Los cursores están firmados junto con las fechas y el tipo.
 - En **Admin → Configuración → Actividad**, super-admin, contenido y comunicaciones pueden comprobar la conexión y editar el aviso. El diagnóstico guardado es privado; su campo no admite cambios por el formulario ni por la API estándar. No se guardan tokens ni mensajes externos.
@@ -20,7 +22,7 @@
 - El aviso requiere activación, título, mensaje y vencimiento futuro; admite enlace HTTPS opcional. Se muestra antes del feed. Cambios publicados pueden tardar alrededor de un minuto en aparecer por revalidación; una pestaña abierta retira el aviso al vencer. El selector del CMS usa la zona horaria del dispositivo; el diagnóstico muestra hora de El Salvador.
 - Migración `20260928_000000_activity_tools` conciliada en `parroquia-arce`, batch 2: la tabla ya existía con sus nueve columnas, se verificó contra el esquema offline de Payload y se aplicaron RLS y revocación de acceso directo para `anon`/`authenticated`. Una fila existente conservada. Historial de Payload registrado; no se ejecutaron otras migraciones. En una base nueva, la migración crea la tabla y sus protecciones.
 - Comprobación real del adaptador el 28/9: filtro de fotos devuelve 9 resultados y continuación. Diagnóstico: publicaciones `ok`, directos `permissions`; falta habilitar el acceso a directos en Meta. No es un fallo de las variables de entorno.
-- QA con fixtures a 1440, 1040, 768, 390 y 320 px: filtros, paginación vacía, aviso y panel de diagnóstico; sin overflow horizontal. 296 pruebas unitarias aprobadas, TypeScript aprobado. Lint de archivos cambiados con configuración plana compatible, ya que el comando histórico del repo usa FlatCompat incompatible. No se ejecutaron tests de integración contra la base compartida.
+- QA con fixtures a 1440, 1040, 768, 390 y 320 px: filtros, paginación vacía, aviso y panel de diagnóstico; sin overflow horizontal. 297 pruebas unitarias aprobadas, TypeScript aprobado. Lint de archivos cambiados con configuración plana compatible, ya que el comando histórico del repo usa FlatCompat incompatible. No se ejecutaron tests de integración contra la base compartida.
 
 ### Hallazgos externos al alcance
 

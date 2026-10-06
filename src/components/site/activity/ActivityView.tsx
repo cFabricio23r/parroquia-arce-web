@@ -8,9 +8,11 @@ import type { ActiveNotice } from '@/lib/activity-notice'
 export function ActivityView({
   initial,
   notice = null,
+  showFilters = true,
 }: {
   initial: ActivityPageData
   notice?: ActiveNotice | null
+  showFilters?: boolean
 }) {
   return (
     <>
@@ -32,7 +34,11 @@ export function ActivityView({
         <div className="grid gap-10 py-10 lg:grid-cols-[minmax(0,1fr)_250px] lg:gap-8 md:py-14">
           <div className="min-w-0">
             <ActivityNotice notice={notice} />
-            <ActivityFeed initial={initial} />
+            <ActivityFeed
+              key={showFilters ? 'filters' : 'no-filters'}
+              initial={initial}
+              showFilters={showFilters}
+            />
           </div>
           <SocialLinksCard />
         </div>

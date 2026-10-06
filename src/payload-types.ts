@@ -1583,6 +1583,10 @@ export interface Clergy {
  */
 export interface Activity {
   id: number;
+  /**
+   * Permite mostrar u ocultar los filtros de fecha y tipo. Las publicaciones y el botón para cargar historial siguen disponibles. Guardá los cambios para aplicarlo.
+   */
+  showFilters?: boolean | null;
   connection?:
     | {
         [k: string]: unknown;
@@ -1759,6 +1763,7 @@ export interface ClergySelect<T extends boolean = true> {
  * via the `definition` "activity_select".
  */
 export interface ActivitySelect<T extends boolean = true> {
+  showFilters?: T;
   connection?: T;
   notice?:
     | T

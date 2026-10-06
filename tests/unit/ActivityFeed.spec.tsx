@@ -14,6 +14,17 @@ const post = (id: string): ActivityPost => ({
 afterEach(() => vi.unstubAllGlobals())
 
 describe('Actividad editorial', () => {
+  it('oculta los filtros desde CMS y conserva publicaciones e historial', () => {
+    render(
+      <ActivityFeed
+        showFilters={false}
+        initial={{ state: 'ready', posts: [post('1')], nextCursor: 'older' }}
+      />,
+    )
+    expect(screen.queryByRole('form', { name: 'Filtrar publicaciones' })).toBeNull()
+    expect(screen.getByRole('heading', { name: 'Encuentro 1' })).toBeTruthy()
+    expect(screen.getByRole('button', { name: 'Cargar publicaciones anteriores' })).toBeTruthy()
+  })
   it('ignora una respuesta anterior cuando se aplica otro filtro durante la carga', async () => {
     let finishOld!: (value: unknown) => void
     const fetcher = vi
@@ -61,12 +72,10 @@ describe('Actividad editorial', () => {
     expect(String(fetcher.mock.calls[1][0])).toContain('kind=video')
   })
   it('consulta filtros en servidor y reemplaza resultados, sin filtrar solo lo cargado', async () => {
-    const fetcher = vi
-      .fn()
-      .mockResolvedValue({
-        ok: true,
-        json: async () => ({ state: 'ready', posts: [post('8')], nextCursor: 'filtered' }),
-      })
+    const fetcher = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ state: 'ready', posts: [post('8')], nextCursor: 'filtered' }),
+    })
     vi.stubGlobal('fetch', fetcher)
     render(<ActivityFeed initial={{ state: 'ready', posts: [post('1')], nextCursor: 'old' }} />)
     fireEvent.change(screen.getByLabelText('Desde'), { target: { value: '2026-08-01' } })
@@ -82,12 +91,10 @@ describe('Actividad editorial', () => {
   it('ofrece seguir buscando cuando una página filtrada está vacía y queda historial', async () => {
     vi.stubGlobal(
       'fetch',
-      vi
-        .fn()
-        .mockResolvedValue({
-          ok: true,
-          json: async () => ({ state: 'ready', posts: [], nextCursor: 'more' }),
-        }),
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({ state: 'ready', posts: [], nextCursor: 'more' }),
+      }),
     )
     render(<ActivityFeed initial={{ state: 'ready', posts: [post('1')], nextCursor: null }} />)
     fireEvent.change(screen.getByLabelText('Tipo de publicación'), { target: { value: 'video' } })

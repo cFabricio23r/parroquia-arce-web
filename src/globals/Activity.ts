@@ -38,6 +38,16 @@ export const Activity: GlobalConfig = {
   },
   fields: [
     {
+      name: 'showFilters',
+      type: 'checkbox',
+      label: 'Mostrar filtros en Actividad',
+      defaultValue: false,
+      admin: {
+        description:
+          'Permite mostrar u ocultar los filtros de fecha y tipo. Las publicaciones y el botón para cargar historial siguen disponibles. Guardá los cambios para aplicarlo.',
+      },
+    },
+    {
       name: 'facebookHealth',
       type: 'ui',
       admin: { components: { Field: '/components/admin/FacebookHealth#FacebookHealth' } },
