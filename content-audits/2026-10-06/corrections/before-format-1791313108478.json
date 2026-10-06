@@ -1,0 +1,559 @@
+{
+  "mec": {
+    "id": 163,
+    "name": "Movimiento de Encuentros Conyugales",
+    "slug": "mec",
+    "type": "comunidad",
+    "actionLine": "familia",
+    "summary": "Movimiento de Encuentros Conyugales: evangelización y grupos de crecimiento para matrimonios de Ciudad Arce.",
+    "description": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "Movimiento de Encuentros Conyugales: evangelización y grupos de crecimiento para matrimonios de Ciudad Arce.",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          }
+        ],
+        "direction": "ltr"
+      }
+    },
+    "history": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "A principios de 1999 tres matrimonios: Germán y Adilia Rauda, Rafael y Ana Ivett López y Luis y Karina Navarro realizaron su Encuentro Conyugal, todos ellos perseveraban en la comunidad de Sitio del Niño. Solicitaron a padre Óscar Álvarez el permiso para la apertura de Encuentros Conyugales en Ciudad Arce y, después de algunos contratiempos, estos tres matrimonios comenzaron la evangelización para formar la comunidad del MEC en Ciudad Arce.",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "La evangelización rindió fruto y el 3 y 4 de diciembre de 1999, siendo dependientes de la comunidad del Sitio del Niño, seis parejas realizaron su Encuentro Conyugal: Francisco y Sonia Jaime, Mario y Maury Mazariego, Mario y Leny Rodríguez, Jacinto y Margarita Romero, Elías y Gloria Guardado y David y Carmen Irene Cartagena. El grupo se llamó \"Familia de Nazaret\" y sus animadores fueron Germán y Adilia Rauda.",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "Entre los años 2000 y 2021, aun siendo comunidad dependiente de Sitio del Niño, se formaron otros cinco grupos de crecimiento, siendo sus animadores: Rafael y Ana Ivett López, Francisco y Sonia Jaime, Mario y Leny Rodríguez, Elías y Gloria Guardado y David y Carmen Irene Cartagena. Llegaron a formar los llamados hermanos del encuentro \"cero\".",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "Para ser comunidad independiente, el principal requisito era tener perseverando al menos 20 parejas. Ya cumplido este requisito, las primeras elecciones de secretarios generales se celebraron el miércoles 3 de julio de 2002, siendo elegidos los hermanos David y Carmen Irene Cartagena.",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "Ya como comunidad independiente, 17 parejas realizaron el Encuentro Conyugal n.º 1 los días 16 y 17 de noviembre de 2002 en la casa de retiro Jerónimo Emiliani, en Sacacoyo. En esa ocasión tomaron grupo los hermanos Walter y Mariquel Linares, Luis y Karina Navarro, y José Antonio y Esperanza Guerrero.",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "A partir del año 2002 y hasta la fecha se ha continuado con la evangelización de muchos matrimonios que han tenido el encuentro con Cristo a través del Movimiento de Encuentros Conyugales.",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "Hermanos que han servido como secretarios de comunidad desde 2002:",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "2002 – 2004: David y Carmen Irene Cartagena",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "2004 – 2006: Emilio y Marilena Linares",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "2006 – 2008: David y Carmen Irene Cartagena",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "2008 – 2010: Elías y Gloria Guardado",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "2010 – 2011: Wilfredo y Miriam Pleitez",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "2011 – 2013: Danilo y Dinora Hernández",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "2013 – 2015: Elías y Gloria Guardado",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "2015 – 2017: Emilio y Marilena Linares",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "2017 – 2019: Cristian y Laury Crespín",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "2019 – 2021: Cristian y Laury Crespín",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "2021 – 2023: Danilo y Dinora Hernández",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "2023 – 2025: David y Yanira Martínez",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          },
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "2025 – hasta la fecha: David y Carmen Irene Cartagena",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          }
+        ],
+        "direction": "ltr"
+      }
+    },
+    "perseverance": {
+      "count": 50,
+      "label": "matrimonios que perseveran"
+    },
+    "patron": {
+      "name": null,
+      "image": null
+    },
+    "patronalFeasts": [],
+    "meeting": {
+      "day": null,
+      "time": null,
+      "place": null
+    },
+    "howToJoin": null,
+    "team": [
+      {
+        "id": "6a7b9144c168299c98c00a98",
+        "name": "David y Carmen Irene Cartagena",
+        "role": "Secretarios de comunidad",
+        "photo": null
+      }
+    ],
+    "contact": {
+      "phone": null,
+      "whatsapp": null,
+      "email": null,
+      "socialLinks": []
+    },
+    "coordinatorName": null,
+    "logo": 38,
+    "cover": null,
+    "groupPhoto": null,
+    "gallery": [],
+    "isFeatured": false,
+    "status": "published",
+    "publishedAt": null,
+    "updatedAt": "2026-10-06T18:53:24.996Z",
+    "createdAt": "2026-08-11T21:16:52.819Z"
+  },
+  "sector": {
+    "id": 50,
+    "name": "Sector 22, Ciudad Obrera",
+    "slug": "sector-22",
+    "number": 22,
+    "chapelName": "San José Obrero",
+    "zone": "zona-4",
+    "patron": {
+      "name": "San José Obrero",
+      "image": 81
+    },
+    "summary": "Sector 22, Ciudad Obrera. Patrono: San José Obrero.",
+    "description": null,
+    "history": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "Aproximadamente a finales del año 2001 luego de los terremotos de ese año, un grupo de hermanos con un deseo muy grande de formar una comunidad católica en la colonia Ciudad Obrera 26 de enero, deciden comenzar a reunirse en las casas de algunos de ellos. Con el apoyo de algunos hermanos del sector de la Reforma, inician con algunas reuniones, donde, el inconveniente más grande es que les tocaba viajar por las noches desde Ciudad Obrera hasta la Reforma. Poco a poco y con el apoyo del párroco de esa época Padre Óscar Álvarez, unos 2 años después se hace ya oficial la fundación del sector 24 en la Colonia Ciudad Obrera, eligiéndose patrono a San José Obrero, patrono de los trabajadores, celebrando la fiesta patronal cada 1 de mayo; además el primer Apóstol del sector fue Hno. Godofredo Alvarado (QEPD). En los inicios del sector, al no contar con una Ermita o un terreno propio donde hacer las reuniones y las diferentes celebraciones, tocaba hacer los eventos y reuniones en las calles o en alguna casa alquilada, con los inconvenientes de la lluvia, calor o el espacio muy reducido. Sin embargo, estos inconvenientes nunca detuvieron el deseo de los hermanos de seguir adelante evangelizando y haciendo crecer al sector. Fue por el año 2014 que se logra comprar un terreno propio y se comienza con la construcción de la Ermita en el Sector. En el 2015 se logra la construcción de la Ermita, la cual inicialmente solamente eran las paredes y el techo, y poco a poco se ha mejorado para tenerla como hasta hoy la podemos apreciar.  ",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": null,
+            "textStyle": "",
+            "textFormat": 0
+          }
+        ],
+        "direction": null
+      }
+    },
+    "perseverance": {
+      "count": null,
+      "label": "miembros que perseveran"
+    },
+    "groups": [],
+    "location": {
+      "address": null,
+      "mapUrl": null
+    },
+    "team": [
+      {
+        "id": "6a5fa95e09dde37b60aacf85",
+        "name": "Marcos Antonio Alvarado",
+        "role": "Apóstol",
+        "photo": null
+      },
+      {
+        "id": "6a5fa96909dde37b60aacf87",
+        "name": "Carmen Menendez",
+        "role": "Auxiliar",
+        "photo": null
+      }
+    ],
+    "contact": {
+      "phone": null,
+      "whatsapp": null,
+      "email": null,
+      "socialLinks": []
+    },
+    "responsibleName": null,
+    "assistants": [],
+    "logo": 13,
+    "cover": 14,
+    "groupPhoto": 12,
+    "gallery": [
+      15,
+      16,
+      13
+    ],
+    "isFeatured": true,
+    "status": "published",
+    "publishedAt": null,
+    "updatedAt": "2026-10-06T18:54:51.405Z",
+    "createdAt": "2026-07-21T17:18:20.377Z"
+  }
+}

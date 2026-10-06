@@ -1,0 +1,937 @@
+{
+  "joaquin": [
+    {
+      "title": "File:Joachim Gersdorff (Hans Hansen painting).jpg",
+      "thumburl": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Joachim_Gersdorff_%28Hans_Hansen_painting%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "thumbwidth": 500,
+      "thumbheight": 602,
+      "thumbattribs": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Joachim_Gersdorff_%28Hans_Hansen_painting%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "decoding": "async",
+        "loading": "lazy",
+        "width": 500,
+        "height": 602
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Joachim_Gersdorff_%28Hans_Hansen_painting%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:Joachim_Gersdorff_(Hans_Hansen_painting).jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=11615924",
+      "extmetadata": {
+        "DateTime": {
+          "value": "2010-09-27 20:29:33",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Joachim Gersdorff (Hans Hansen painting)",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Author died more than 100 years ago public domain images|Joachim Gersdorff|CC-PD-Mark|PD-old missing SDC copyright status|Portrait paintings by Hans Hansen (1769-1828)",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Posthumously painted portrait of Joachim Gersdorff, Danish Steward of the Realm from 1651 to 1660",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "1800",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "Frederiksborg Museum",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<bdi><a href=\"https://en.wikipedia.org/wiki/en:Hans_Hansen_(Danish_painter)\" class=\"extiw\" title=\"w:en:Hans Hansen (Danish painter)\"><span title=\"Danish painter (1769-1828)\">Hans Hansen</span></a></bdi>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "Public domain",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Public domain",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Copyrighted": {
+          "value": "False",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "pd",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "title": "File:Franz Joachim Beich - Ecce homo - 2665 - Bavarian State Painting Collections.jpg",
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Franz_Joachim_Beich_-_Ecce_homo_-_2665_-_Bavarian_State_Painting_Collections.jpg/500px-Franz_Joachim_Beich_-_Ecce_homo_-_2665_-_Bavarian_State_Painting_Collections.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 500,
+      "thumbheight": 697,
+      "responsiveUrls": {
+        "2": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Franz_Joachim_Beich_-_Ecce_homo_-_2665_-_Bavarian_State_Painting_Collections.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Franz_Joachim_Beich_-_Ecce_homo_-_2665_-_Bavarian_State_Painting_Collections.jpg/500px-Franz_Joachim_Beich_-_Ecce_homo_-_2665_-_Bavarian_State_Painting_Collections.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "decoding": "async",
+        "loading": "lazy",
+        "width": 500,
+        "height": 697,
+        "srcset": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Franz_Joachim_Beich_-_Ecce_homo_-_2665_-_Bavarian_State_Painting_Collections.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Franz_Joachim_Beich_-_Ecce_homo_-_2665_-_Bavarian_State_Painting_Collections.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:Franz_Joachim_Beich_-_Ecce_homo_-_2665_-_Bavarian_State_Painting_Collections.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=66279408",
+      "extmetadata": {
+        "DateTime": {
+          "value": "2018-02-09 20:48:39",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "<div class=\"fn\">\nEcce homo</div>",
+          "source": "commons-desc-page"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Paintings of the Ecce Homo in Germany|PD-old-100-expired|PD-Art (PD-old-auto-expired)|Artworks with Wikidata item|Artworks with known accession number|CC-PD-Mark|Religious paintings in the Bayerische Staatsgemäldesammlungen|Artworks digital representation of 2D work|Paintings by Franz Joachim Beich",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Artist": {
+          "value": "<bdi><a href=\"https://en.wikipedia.org/wiki/en:Franz_Joachim_Beich\" class=\"extiw\" title=\"w:en:Franz Joachim Beich\"><span title=\"German artist (1665-1748)\">Franz Joachim Beich</span></a></bdi>",
+          "source": "commons-desc-page"
+        },
+        "ImageDescription": {
+          "value": "<div class=\"description\">\n<a href=\"https://en.wikipedia.org/wiki/en:Ecce_homo\" class=\"extiw\" title=\"w:en:Ecce homo\"><span title=\"episode in which Pontius Pilate presents Jesus Christ to the people, from the Latin words used by Pilate in the Vulgate translation of John 19:5\">Ecce Homo</span></a> <span class=\"mw-valign-text-top noprint\" typeof=\"mw:File/Frameless\"><a href=\"https://www.wikidata.org/wiki/Q29898591#P921\" title=\"Edit this at Wikidata\"><img alt=\"Edit this at Wikidata\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"10\" height=\"10\" class=\"mw-file-element\" data-file-width=\"20\" data-file-height=\"20\"></a></span></div>",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "between 1665 and 1748<div style=\"display: none;\">date QS:P,+1500-00-00T00:00:00Z/6,P1319,+1665-00-00T00:00:00Z/9,P1326,+1748-00-00T00:00:00Z/9</div> <span class=\"mw-valign-text-top noprint\" typeof=\"mw:File/Frameless\"><a href=\"https://www.wikidata.org/wiki/Q29898591#P571\" title=\"Edit this at Wikidata\"><img alt=\"Edit this at Wikidata\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"10\" height=\"10\" class=\"mw-file-element\" data-file-width=\"20\" data-file-height=\"20\"></a></span>",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.sammlung.pinakothek.de/en/bookmark/artwork/M0xy0Abm4p\">https://www.sammlung.pinakothek.de/en/bookmark/artwork/M0xy0Abm4p</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "Public domain",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Public domain",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Copyrighted": {
+          "value": "False",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "pd",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "title": "File:Franz Joachim Beich - Landschaft - 3474 - Bavarian State Painting Collections.jpg",
+      "thumburl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Franz_Joachim_Beich_-_Landschaft_-_3474_-_Bavarian_State_Painting_Collections.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "thumbwidth": 500,
+      "thumbheight": 1019,
+      "thumbattribs": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Franz_Joachim_Beich_-_Landschaft_-_3474_-_Bavarian_State_Painting_Collections.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "decoding": "async",
+        "loading": "lazy",
+        "width": 500,
+        "height": 1019
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Franz_Joachim_Beich_-_Landschaft_-_3474_-_Bavarian_State_Painting_Collections.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:Franz_Joachim_Beich_-_Landschaft_-_3474_-_Bavarian_State_Painting_Collections.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=66312035",
+      "extmetadata": {
+        "DateTime": {
+          "value": "2018-02-10 22:06:10",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "<div class=\"fn\">\nLandschaft</div>",
+          "source": "commons-desc-page"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "PD-old-100-expired|PD-Art (PD-old-auto-expired)|Artworks with Wikidata item|Artworks with known accession number|CC-PD-Mark|Artworks digital representation of 2D work|Landscape paintings in the Bayerische Staatsgemäldesammlungen|Paintings by Franz Joachim Beich",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Artist": {
+          "value": "<bdi><a href=\"https://en.wikipedia.org/wiki/en:Franz_Joachim_Beich\" class=\"extiw\" title=\"w:en:Franz Joachim Beich\"><span title=\"German artist (1665-1748)\">Franz Joachim Beich</span></a></bdi>",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "between 1665 and 1748<div style=\"display: none;\">date QS:P,+1500-00-00T00:00:00Z/6,P1319,+1665-00-00T00:00:00Z/9,P1326,+1748-00-00T00:00:00Z/9</div> <span class=\"mw-valign-text-top noprint\" typeof=\"mw:File/Frameless\"><a href=\"https://www.wikidata.org/wiki/Q30094022#P571\" title=\"Edit this at Wikidata\"><img alt=\"Edit this at Wikidata\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"10\" height=\"10\" class=\"mw-file-element\" data-file-width=\"20\" data-file-height=\"20\"></a></span>",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.sammlung.pinakothek.de/en/bookmark/artwork/Qm45Q5yj4N\">https://www.sammlung.pinakothek.de/en/bookmark/artwork/Qm45Q5yj4N</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "Public domain",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Public domain",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Copyrighted": {
+          "value": "False",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "pd",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "title": "File:Bildnis Johann Joachim Winckelmann, 1764, Angelika Kauffmann.jpg",
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Bildnis_Johann_Joachim_Winckelmann%2C_1764%2C_Angelika_Kauffmann.jpg/500px-Bildnis_Johann_Joachim_Winckelmann%2C_1764%2C_Angelika_Kauffmann.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 500,
+      "thumbheight": 655,
+      "responsiveUrls": {
+        "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Bildnis_Johann_Joachim_Winckelmann%2C_1764%2C_Angelika_Kauffmann.jpg/1280px-Bildnis_Johann_Joachim_Winckelmann%2C_1764%2C_Angelika_Kauffmann.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Bildnis_Johann_Joachim_Winckelmann%2C_1764%2C_Angelika_Kauffmann.jpg/500px-Bildnis_Johann_Joachim_Winckelmann%2C_1764%2C_Angelika_Kauffmann.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "decoding": "async",
+        "loading": "lazy",
+        "width": 500,
+        "height": 655,
+        "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Bildnis_Johann_Joachim_Winckelmann%2C_1764%2C_Angelika_Kauffmann.jpg/1280px-Bildnis_Johann_Joachim_Winckelmann%2C_1764%2C_Angelika_Kauffmann.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/5/55/Bildnis_Johann_Joachim_Winckelmann%2C_1764%2C_Angelika_Kauffmann.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:Bildnis_Johann_Joachim_Winckelmann,_1764,_Angelika_Kauffmann.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=87278139",
+      "extmetadata": {
+        "DateTime": {
+          "value": "2020-02-20 12:22:01",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "<div class=\"fn\">\n<div style=\"font-weight:bold;display:inline-block;\"><div style=\"display:inline-block\" dir=\"ltr\" lang=\"en\"><i>Portrait of Winckelmann <span class=\"mw-valign-text-top noprint\" typeof=\"mw:File/Frameless\"><a href=\"https://www.wikidata.org/wiki/Q860936#P1476\" title=\"Edit this at Wikidata\"><img alt=\"Edit this at Wikidata\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"10\" height=\"10\" class=\"mw-file-element\" data-file-width=\"20\" data-file-height=\"20\"></a></span></i></div></div><div style=\"display: none;\">title QS:P1476,en:\"Portrait of Winckelmann <span class=\"mw-valign-text-top noprint\" typeof=\"mw:File/Frameless\"><a href=\"https://www.wikidata.org/wiki/Q860936#P1476\" title=\"Edit this at Wikidata\"><img alt=\"Edit this at Wikidata\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"10\" height=\"10\" class=\"mw-file-element\" data-file-width=\"20\" data-file-height=\"20\"></a></span>\"</div><div style=\"display: none;\">label QS:Len,\"Portrait of Winckelmann <span class=\"mw-valign-text-top noprint\" typeof=\"mw:File/Frameless\"><a href=\"https://www.wikidata.org/wiki/Q860936#P1476\" title=\"Edit this at Wikidata\"><img alt=\"Edit this at Wikidata\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"10\" height=\"10\" class=\"mw-file-element\" data-file-width=\"20\" data-file-height=\"20\"></a></span>\"</div><div style=\"display: none;\">label QS:Lja,\"ヨハン・ヨアヒム・ヴィンケルマンの肖像\"</div><div style=\"display: none;\">label QS:Lfr,\"Portrait de Johanne Joachim Winckelmann\"</div><div style=\"display: none;\">label QS:Larz,\"صوره وينكلمان\"</div><div style=\"display: none;\">label QS:Lhe,\"דיוקן וינקלמן\"</div><div style=\"display: none;\">label QS:Lde,\"Bildnis Johann Joachim Winckelmann\"</div><div style=\"display: none;\">label QS:Lvi,\"Chân dung Winckelmann\"</div><div style=\"display: none;\">label QS:Lda,\"Portræt af Johann Joachim Winckelmann\"</div></div>",
+          "source": "commons-desc-page"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "PD-old-100-expired|PD-Art (PD-old-auto-expired)|Artworks with Wikidata item|Artworks with known accession number|CC-PD-Mark|Artworks with accession number from Wikidata|Artworks with the same artist and author|Portraits of Johann Joachim Winckelmann|Artworks with Wikidata item redundant author|Artworks digital representation of 2D work|Artworks with digital representation of different depicts|Men facing left and looking left in art|Portrait paintings in Kunsthaus Zürich|Male portrait paintings by Angelica Kauffmann|Framed paintings by Angelica Kauffmann",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Artist": {
+          "value": "<bdi><a href=\"https://en.wikipedia.org/wiki/en:Angelica_Kauffman\" class=\"extiw\" title=\"w:en:Angelica Kauffman\"><span title=\"Swiss artist (1741–1807)\">Angelica Kauffmann</span></a></bdi>",
+          "source": "commons-desc-page"
+        },
+        "ImageDescription": {
+          "value": "Bildnis Johann Joachim Winckelmann, 1764, Angelika Kauffmann, Öl auf Leinwand, Kunsthaus Zürich, Geschenk von Conrad Zeller, 1850 – auf der Ausstellung: Angelika Kauffmann im Museum Kunstpalast Düsseldorf 2020",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "1764<div style=\"display: none;\">date QS:P571,+1764-00-00T00:00:00Z/9</div>",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<bdi><a href=\"https://en.wikipedia.org/wiki/en:Museum_Kunstpalast\" class=\"extiw\" title=\"w:en:Museum Kunstpalast\"><span title=\"art museum in Düsseldorf\">Museum Kunstpalast</span></a>\n</bdi>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "Public domain",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Public domain",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Copyrighted": {
+          "value": "False",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "pd",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "title": "File:Joachim Leaving the Temple, by Henry Ossawa Tanner.jpg",
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Joachim_Leaving_the_Temple%2C_by_Henry_Ossawa_Tanner.jpg/500px-Joachim_Leaving_the_Temple%2C_by_Henry_Ossawa_Tanner.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 500,
+      "thumbheight": 724,
+      "responsiveUrls": {
+        "2": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Joachim_Leaving_the_Temple%2C_by_Henry_Ossawa_Tanner.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Joachim_Leaving_the_Temple%2C_by_Henry_Ossawa_Tanner.jpg/500px-Joachim_Leaving_the_Temple%2C_by_Henry_Ossawa_Tanner.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "decoding": "async",
+        "loading": "lazy",
+        "width": 500,
+        "height": 724,
+        "srcset": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Joachim_Leaving_the_Temple%2C_by_Henry_Ossawa_Tanner.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Joachim_Leaving_the_Temple%2C_by_Henry_Ossawa_Tanner.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:Joachim_Leaving_the_Temple,_by_Henry_Ossawa_Tanner.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=133147439",
+      "extmetadata": {
+        "DateTime": {
+          "value": "2023-06-16 00:55:06",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Joachim Leaving the Temple, by Henry Ossawa Tanner",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "PD-Art (PD-old-auto-expired)|PD-old-80-expired|CC-PD-Mark|Paintings of Henry Ossawa",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Joachim Leaving the Temple, by Henry Ossawa Tanner.  Baltimore Museum of art: R.16111",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "circa 1882-1888",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<p>Baltimore Museum of Art\n</p>\n<a rel=\"nofollow\" class=\"external free\" href=\"https://collection.artbma.org/objects/49536/joachim-leaving-the-temple#\">https://collection.artbma.org/objects/49536/joachim-leaving-the-temple#</a>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<bdi><a href=\"https://en.wikipedia.org/wiki/en:Henry_Ossawa_Tanner\" class=\"extiw\" title=\"w:en:Henry Ossawa Tanner\"><span title=\"African-American painter (1859–1937)\">Henry Ossawa Tanner</span></a></bdi>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "Public domain",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Public domain",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Copyrighted": {
+          "value": "False",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "pd",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    }
+  ],
+  "auxiliadora": [
+    {
+      "title": "File:Basílica de Santa María Auxiliadora, Sevilla.jpg",
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Bas%C3%ADlica_de_Santa_Mar%C3%ADa_Auxiliadora%2C_Sevilla.jpg/500px-Bas%C3%ADlica_de_Santa_Mar%C3%ADa_Auxiliadora%2C_Sevilla.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 500,
+      "thumbheight": 711,
+      "responsiveUrls": {
+        "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Bas%C3%ADlica_de_Santa_Mar%C3%ADa_Auxiliadora%2C_Sevilla.jpg/1280px-Bas%C3%ADlica_de_Santa_Mar%C3%ADa_Auxiliadora%2C_Sevilla.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Bas%C3%ADlica_de_Santa_Mar%C3%ADa_Auxiliadora%2C_Sevilla.jpg/500px-Bas%C3%ADlica_de_Santa_Mar%C3%ADa_Auxiliadora%2C_Sevilla.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "decoding": "async",
+        "loading": "lazy",
+        "width": 500,
+        "height": 711,
+        "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Bas%C3%ADlica_de_Santa_Mar%C3%ADa_Auxiliadora%2C_Sevilla.jpg/1280px-Bas%C3%ADlica_de_Santa_Mar%C3%ADa_Auxiliadora%2C_Sevilla.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/38/Bas%C3%ADlica_de_Santa_Mar%C3%ADa_Auxiliadora%2C_Sevilla.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:Bas%C3%ADlica_de_Santa_Mar%C3%ADa_Auxiliadora,_Sevilla.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=48808345",
+      "extmetadata": {
+        "DateTime": {
+          "value": "2016-05-16 06:42:55",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Basílica de Santa María Auxiliadora, Sevilla",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "CC-Zero|Basílica de Santa María Auxiliadora, Sevilla|Self-published work|Church facades in the province of Seville|Uploaded with Mobile/Android|Files with coordinates missing SDC location of creation",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "GPSLatitude": {
+          "value": "37.397270",
+          "source": "commons-desc-page"
+        },
+        "GPSLongitude": {
+          "value": "-5.980542",
+          "source": "commons-desc-page"
+        },
+        "GPSMapDatum": {
+          "value": "WGS-84",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "<a href=\"https://es.wikipedia.org/wiki/Bas%C3%ADlica_de_Mar%C3%ADa_Auxiliadora_(Sevilla)\" class=\"extiw\" title=\"es:Basílica de María Auxiliadora (Sevilla)\">Basílica de María Auxiliadora (Sevilla)</a>",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2016-05-14",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:Mx._Granger\" title=\"User:Mx. Granger\">Mx. Granger</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "title": "File:Badajoz - Parroquia María Auxiliadora 3.jpg",
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_3.jpg/500px-Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 500,
+      "thumbheight": 363,
+      "responsiveUrls": {
+        "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_3.jpg/1280px-Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_3.jpg/500px-Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "decoding": "async",
+        "loading": "lazy",
+        "width": 500,
+        "height": 363,
+        "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_3.jpg/1280px-Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/5/53/Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_3.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=151454567",
+      "extmetadata": {
+        "DateTime": {
+          "value": "2024-08-13 16:51:34",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Badajoz - Parroquia María Auxiliadora 3",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "CC-Zero|Self-published work|Parroquia María Auxiliadora, Badajoz|Church fadades in the province of Badajoz",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Parroquia María Auxiliadora (Badajoz)",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2024-08-13",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:Zarateman\" title=\"User:Zarateman\">Zarateman</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "title": "File:Badajoz - Parroquia María Auxiliadora 4.jpg",
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_4.jpg/500px-Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 500,
+      "thumbheight": 752,
+      "responsiveUrls": {
+        "2": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_4.jpg/500px-Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "decoding": "async",
+        "loading": "lazy",
+        "width": 500,
+        "height": 752,
+        "srcset": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_4.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=151454568",
+      "extmetadata": {
+        "DateTime": {
+          "value": "2024-08-13 16:51:34",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Badajoz - Parroquia María Auxiliadora 4",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "CC-Zero|Self-published work|Busts in the province of Badajoz|Sculptures in Badajoz|Monuments and memorials to Don Bosco|Monuments and memorials in Badajoz|Parroquia María Auxiliadora, Badajoz",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Parroquia María Auxiliadora (Badajoz)",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2024-08-13",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:Zarateman\" title=\"User:Zarateman\">Zarateman</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "title": "File:Badajoz - Parroquia María Auxiliadora 1.jpg",
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_1.jpg/500px-Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 500,
+      "thumbheight": 299,
+      "responsiveUrls": {
+        "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_1.jpg/1280px-Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_1.jpg/500px-Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "decoding": "async",
+        "loading": "lazy",
+        "width": 500,
+        "height": 299,
+        "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_1.jpg/1280px-Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:Badajoz_-_Parroquia_Mar%C3%ADa_Auxiliadora_1.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=151454571",
+      "extmetadata": {
+        "DateTime": {
+          "value": "2024-08-13 16:51:44",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Badajoz - Parroquia María Auxiliadora 1",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "CC-Zero|Self-published work|Parroquia María Auxiliadora, Badajoz",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Parroquia María Auxiliadora (Badajoz)",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2024-08-13",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:Zarateman\" title=\"User:Zarateman\">Zarateman</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "title": "File:Iglesia María Auxiliadora, Piura.jpg",
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Iglesia_Mar%C3%ADa_Auxiliadora%2C_Piura.jpg/500px-Iglesia_Mar%C3%ADa_Auxiliadora%2C_Piura.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 500,
+      "thumbheight": 668,
+      "responsiveUrls": {
+        "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Iglesia_Mar%C3%ADa_Auxiliadora%2C_Piura.jpg/1280px-Iglesia_Mar%C3%ADa_Auxiliadora%2C_Piura.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      },
+      "thumbattribs": {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Iglesia_Mar%C3%ADa_Auxiliadora%2C_Piura.jpg/500px-Iglesia_Mar%C3%ADa_Auxiliadora%2C_Piura.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "decoding": "async",
+        "loading": "lazy",
+        "width": 500,
+        "height": 668,
+        "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Iglesia_Mar%C3%ADa_Auxiliadora%2C_Piura.jpg/1280px-Iglesia_Mar%C3%ADa_Auxiliadora%2C_Piura.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Iglesia_Mar%C3%ADa_Auxiliadora%2C_Piura.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:Iglesia_Mar%C3%ADa_Auxiliadora,_Piura.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=182390428",
+      "extmetadata": {
+        "DateTime": {
+          "value": "2026-01-25 03:40:44",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Iglesia María Auxiliadora, Piura",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "CC-Zero|Self-published work|Iglesia María Auxiliadora de Piura|2026 in Piura",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Iglesia María Auxiliadora en la ciudad de Piura",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2026-01-20 17:36:06",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a href=\"//commons.wikimedia.org/wiki/User:El_Surquillano\" title=\"User:El Surquillano\">El Surquillano</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    }
+  ]
+}

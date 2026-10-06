@@ -24,10 +24,12 @@ export function PatronCard({
 }) {
   const image = typeof patron?.image === 'object' && patron.image?.url ? patron.image : null
   const named = (feasts ?? []).filter((f) => f?.name)
+  const imageSource = image?.caption?.match(/https:\/\/commons\.wikimedia\.org\/\S+/)?.[0]
+  const imageCredit = image?.credit?.split(' · https')[0]
   if (!patron?.name && !image && named.length === 0) return null
 
   return (
-    <SidebarCard icon="calendar" title="Patrono" className="mt-6">
+    <SidebarCard icon="calendar" title={!patron?.name && named.length === 0 ? 'Imagen de referencia' : 'Patrono'} className="mt-6">
       {image && (
         <div className="mb-4 overflow-hidden rounded-md">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -36,6 +38,8 @@ export function PatronCard({
             alt={image.alt}
             className="max-h-[180px] w-full object-contain"
           />
+          {imageCredit && <p className="mt-2 break-words text-[12px] text-muted">{imageCredit}</p>}
+          {imageSource && <a href={imageSource} target="_blank" rel="noopener noreferrer" className="mt-1 inline-block text-[12px] text-blue underline">Fuente y licencia de la imagen</a>}
         </div>
       )}
       {patron?.name && <p className="text-[15.5px] font-bold">{patron.name}</p>}

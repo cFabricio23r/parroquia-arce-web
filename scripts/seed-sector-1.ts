@@ -6,7 +6,7 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 
 // Content-only import. Never run schema push against the shared database.
 const resolved = await config
-resolved.db = postgresAdapter({ pool: { connectionString: process.env.DATABASE_URL }, push: false })
+resolved.db = { ...postgresAdapter({ pool: { connectionString: process.env.DATABASE_URL }, push: false }), allowIDOnCreate: false, defaultIDType: 'number', name: 'postgres' }
 const payload = await getPayload({ config: resolved })
 const apply = process.env.SEED_CONFIRM === 'cargar'
 const result = await payload.find({ collection: 'sectors', where: { slug: { equals: 'sector-1' } }, depth: 0, limit: 2, overrideAccess: true })

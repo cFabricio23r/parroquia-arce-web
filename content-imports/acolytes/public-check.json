@@ -1,0 +1,9 @@
+{
+  "url": "https://parroquia-arce-web.vercel.app/grupos/escuela-de-acolitos",
+  "status": 200,
+  "name": true,
+  "leaders": true,
+  "images": true,
+  "total": true,
+  "subgroup": true
+}

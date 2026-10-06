@@ -326,7 +326,7 @@ export interface Sector {
    */
   summary?: string | null;
   /**
-   * Nadie lo llenó nunca: el cuerpo del sector es Historia. Se borra en una obra aparte, junto con Responsable y Colaboradores.
+   * Qué información ofrece el sector hoy. La historia de su fundación se carga por separado.
    */
   description?: {
     root: {

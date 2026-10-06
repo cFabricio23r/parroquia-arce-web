@@ -5,7 +5,7 @@ import config from '../src/payload.config.js'
 import { mkdirSync, writeFileSync } from 'node:fs'
 
 const resolved = await config
-resolved.db = postgresAdapter({ pool: { connectionString: process.env.DATABASE_URL }, push: false })
+resolved.db = { ...postgresAdapter({ pool: { connectionString: process.env.DATABASE_URL }, push: false }), allowIDOnCreate: false, defaultIDType: 'number', name: 'postgres' }
 const payload = await getPayload({ config: resolved })
 const result = await payload.find({ collection: 'sectors', where: { slug: { equals: 'sector-13' } }, depth: 0, limit: 2, overrideAccess: true })
 if (result.docs.length !== 1) throw new Error('Expected exactly one sector-13')

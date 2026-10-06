@@ -6,7 +6,7 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 
 // Import content without schema changes; default to a read-only preview.
 const resolved = await config
-resolved.db = postgresAdapter({ pool: { connectionString: process.env.DATABASE_URL }, push: false })
+resolved.db = { ...postgresAdapter({ pool: { connectionString: process.env.DATABASE_URL }, push: false }), allowIDOnCreate: false, defaultIDType: 'number', name: 'postgres' }
 const payload = await getPayload({ config: resolved })
 const result = await payload.find({ collection: 'sectors', where: { slug: { equals: 'sector-10' } }, depth: 0, limit: 2, overrideAccess: true })
 if (result.docs.length !== 1) throw new Error('Expected exactly one sector-10')

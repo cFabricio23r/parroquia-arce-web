@@ -5,7 +5,7 @@ import config from '../src/payload.config.js'
 import { mkdirSync, writeFileSync } from 'node:fs'
 
 const resolved = await config
-resolved.db = postgresAdapter({ pool: { connectionString: process.env.DATABASE_URL }, push: false })
+resolved.db = { ...postgresAdapter({ pool: { connectionString: process.env.DATABASE_URL }, push: false }), allowIDOnCreate: false, defaultIDType: 'number', name: 'postgres' }
 const payload = await getPayload({ config: resolved })
 const snapshot: Record<string, unknown> = {}
 for (const collection of ['sectors', 'groups', 'chapels'] as const) {
