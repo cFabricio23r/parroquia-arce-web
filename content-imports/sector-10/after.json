@@ -1,0 +1,1387 @@
+{
+  "id": 225,
+  "name": "Sector 10, Cantón La Joyita, Primera Zona",
+  "slug": "sector-10",
+  "number": 10,
+  "chapelName": "Casa de Retiros Presbítero Óscar Álvarez",
+  "zone": "zona-4",
+  "patron": {
+    "name": "San Miguel Arcángel",
+    "image": {
+      "id": 60,
+      "alt": "Imagen de San Miguel Arcángel junto a flores de colores y velas encendidas",
+      "caption": null,
+      "credit": null,
+      "updatedAt": "2026-10-06T18:16:28.499Z",
+      "createdAt": "2026-10-06T18:16:27.661Z",
+      "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/238450.jpg",
+      "thumbnailURL": null,
+      "filename": "238450.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 95081,
+      "width": 900,
+      "height": 1600,
+      "focalX": 50,
+      "focalY": 50
+    }
+  },
+  "summary": "La Joyita, primera zona. Lugar de reunión: Casa de Retiros Presbítero Óscar Álvarez. Fiesta patronal: 29 de septiembre, en honor a San Miguel Arcángel. Lunes: Rosario a la Virgen. Miércoles: Grupo de Oración abierto. Medios de crecimiento: Comunidades de Fe, Encuentros Conyugales, Renovación, Grupo Juvenil, IAM y Escuela Básica en la Fe.",
+  "description": null,
+  "history": null,
+  "perseverance": {
+    "count": null,
+    "label": "miembros que perseveran"
+  },
+  "groups": [
+    {
+      "id": 165,
+      "name": "Escuela de Formación Básica en la Fe",
+      "slug": "escuela-basica-en-la-fe",
+      "type": "formacion",
+      "actionLine": "ninez-juventud-vocacion",
+      "summary": null,
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Para el proceso de enseñanza aprendizaje utilizamos un material didáctico de acuerdo a la edad, con el que fomentamos los valores religiosos católicos.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Se realizan reuniones cada 2 meses con los padres de familia o responsables de los niños inscritos durante el año.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "A la fecha contamos con 40 hermanos y hermanas catequistas a nivel parroquial, y nuestras reuniones como equipo de catequistas son cada dos meses.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "La imagen de la Inmaculada Concepción de María nos caracteriza como Parroquia, ya que las primeras comuniones se realizan en el marco de la celebración de las fiestas patronales en honor a la Inmaculada Concepción de María.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "history": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "La doctrina católica dirigida a niños y niñas de la parroquia dio inicio en el año de 1945, siendo sacerdote el Padre Francisco Ayala Martínez, quien preparó a los hermanos Víctor Rivas y hna. Cristina Gutiérrez como primeros catequistas a nivel parroquial. Se impartía únicamente en el pueblo y el centro de reuniones para la catequesis era el Templo parroquial. Ellos recibieron la formación religiosa impartida por Monseñor Luis Chávez y González en el Arzobispado de San Salvador.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Luego que la Parroquia se organizó por sectores en el año 2004, con el Párroco y ahora Monseñor Óscar Álvarez Orellana, se comenzaron a atender a más niños y niñas con los diferentes catequistas representantes de cada sector.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "En la zona rural se daba la doctrina en las ermitas y en la casa de los catequistas; en el casco urbano, la preparación de niños y niñas para la primera comunión se extendió a los barrios o sectores. Hasta la actualidad la doctrina se imparte gradualmente desde los 6 años hasta los 10 años de edad.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "perseverance": {
+        "count": 40,
+        "label": "catequistas"
+      },
+      "patron": {
+        "name": null,
+        "image": 45
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [
+        {
+          "id": "6a7b9146c168299c98c00a9f",
+          "name": "Gladys Alvarado",
+          "role": "Equipo coordinador",
+          "photo": null
+        },
+        {
+          "id": "6a7b9146c168299c98c00aa0",
+          "name": "Maira Erazo",
+          "role": "Equipo coordinador",
+          "photo": null
+        },
+        {
+          "id": "6a7b9146c168299c98c00aa1",
+          "name": "Ernesto Flores",
+          "role": "Equipo coordinador",
+          "photo": null
+        },
+        {
+          "id": "6a7b9146c168299c98c00aa2",
+          "name": "Cristina de Pacheco",
+          "role": "Equipo coordinador",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": null,
+      "cover": null,
+      "groupPhoto": 44,
+      "gallery": [
+        46
+      ],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.618Z",
+      "createdAt": "2026-08-11T21:16:54.102Z"
+    },
+    {
+      "id": 164,
+      "name": "Infancia y Adolescencia Misionera (IAM)",
+      "slug": "iam",
+      "type": "pastoral",
+      "actionLine": "ninez-juventud-vocacion",
+      "summary": null,
+      "description": null,
+      "history": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "A inicios del año 2010, Monseñor Óscar Álvarez, quien en ese momento era el Párroco de la parroquia, reunió a 4 hermanas a quienes les planteó la idea de dar seguimiento a los niños que hacían su primera comunión. Fue así como él nos envió a formación a Santa Tecla, al Secretariado Nacional de la IAM, para poder conocer sobre su proceso de formación.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Así iniciamos con nuestra infancia, teniendo nuestra primera consagración de niños y asesores el 30 de mayo del 2010. Desde entonces hay equipos de Infancia en varios sectores de nuestra parroquia, dando seguimiento a los niños que hacen su primera comunión.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "perseverance": {
+        "count": 110,
+        "label": "miembros: 95 niños y 15 asesores"
+      },
+      "patron": {
+        "name": null,
+        "image": 41
+      },
+      "patronalFeasts": [
+        {
+          "id": "6a7b9145c168299c98c00a99",
+          "name": "Santa Teresita del Niño Jesús",
+          "day": 1,
+          "month": "10"
+        },
+        {
+          "id": "6a7b9145c168299c98c00a9a",
+          "name": "San Francisco Javier",
+          "day": 3,
+          "month": "12"
+        }
+      ],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [
+        {
+          "id": "6a7b9145c168299c98c00a9b",
+          "name": "Nancy Lisbeth Portillo de Pacheco",
+          "role": "Coordinadora",
+          "photo": null
+        },
+        {
+          "id": "6a7b9145c168299c98c00a9c",
+          "name": "Paula Valladares",
+          "role": "Equipo secretariado",
+          "photo": null
+        },
+        {
+          "id": "6a7b9145c168299c98c00a9d",
+          "name": "Rocío Alvarado",
+          "role": "Equipo secretariado",
+          "photo": null
+        },
+        {
+          "id": "6a7b9145c168299c98c00a9e",
+          "name": "Esmeralda Chávez",
+          "role": "Equipo secretariado",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": 39,
+      "cover": null,
+      "groupPhoto": 40,
+      "gallery": [
+        42,
+        43
+      ],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.624Z",
+      "createdAt": "2026-08-11T21:16:53.363Z"
+    },
+    {
+      "id": 163,
+      "name": "Movimiento de Encuentros Conyugales",
+      "slug": "mec",
+      "type": "comunidad",
+      "actionLine": "familia",
+      "summary": null,
+      "description": null,
+      "history": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "A principios de 1999 tres matrimonios: Germán y Adilia Rauda, Rafael y Ana Ivett López y Luis y Karina Navarro realizaron su Encuentro Conyugal, todos ellos perseveraban en la comunidad de Sitio del Niño. Solicitaron a padre Óscar Álvarez el permiso para la apertura de Encuentros Conyugales en Ciudad Arce y, después de algunos contratiempos, estos tres matrimonios comenzaron la evangelización para formar la comunidad del MEC en Ciudad Arce.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "La evangelización rindió fruto y el 3 y 4 de diciembre de 1999, siendo dependientes de la comunidad del Sitio del Niño, seis parejas realizaron su Encuentro Conyugal: Francisco y Sonia Jaime, Mario y Maury Mazariego, Mario y Leny Rodríguez, Jacinto y Margarita Romero, Elías y Gloria Guardado y David y Carmen Irene Cartagena. El grupo se llamó \"Familia de Nazaret\" y sus animadores fueron Germán y Adilia Rauda.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Entre los años 2000 y 2021, aun siendo comunidad dependiente de Sitio del Niño, se formaron otros cinco grupos de crecimiento, siendo sus animadores: Rafael y Ana Ivett López, Francisco y Sonia Jaime, Mario y Leny Rodríguez, Elías y Gloria Guardado y David y Carmen Irene Cartagena. Llegaron a formar los llamados hermanos del encuentro \"cero\".",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Para ser comunidad independiente, el principal requisito era tener perseverando al menos 20 parejas. Ya cumplido este requisito, las primeras elecciones de secretarios generales se celebraron el miércoles 3 de julio de 2002, siendo elegidos los hermanos David y Carmen Irene Cartagena.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Ya como comunidad independiente, 17 parejas realizaron el Encuentro Conyugal n.º 1 los días 16 y 17 de noviembre de 2002 en la casa de retiro Jerónimo Emiliani, en Sacacoyo. En esa ocasión tomaron grupo los hermanos Walter y Mariquel Linares, Luis y Karina Navarro, y José Antonio y Esperanza Guerrero.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "A partir del año 2002 y hasta la fecha se ha continuado con la evangelización de muchos matrimonios que han tenido el encuentro con Cristo a través del Movimiento de Encuentros Conyugales.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Hermanos que han servido como secretarios de comunidad desde 2002:",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2002 – 2004: David y Carmen Irene Cartagena",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2004 – 2006: Emilio y Marilena Linares",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2006 – 2008: David y Carmen Irene Cartagena",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2008 – 2010: Elías y Gloria Guardado",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2010 – 2011: Wilfredo y Miriam Pleitez",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2011 – 2013: Danilo y Dinora Hernández",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2013 – 2015: Elías y Gloria Guardado",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2015 – 2017: Emilio y Marilena Linares",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2017 – 2019: Cristian y Laury Crespín",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2019 – 2021: Cristian y Laury Crespín",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2021 – 2023: Danilo y Dinora Hernández",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2023 – 2025: David y Yanira Martínez",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2025 – hasta la fecha: David y Carmen Irene Cartagena",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "perseverance": {
+        "count": 50,
+        "label": "matrimonios que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [
+        {
+          "id": "6a7b9144c168299c98c00a98",
+          "name": "David y Carmen Irene Cartagena",
+          "role": "Secretarios de comunidad",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": 38,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.629Z",
+      "createdAt": "2026-08-11T21:16:52.819Z"
+    },
+    {
+      "id": 56,
+      "name": "Comision de Renovacion Carismatica Catolica",
+      "slug": "rcc",
+      "type": "formacion",
+      "actionLine": "evangelizacion",
+      "summary": null,
+      "description": null,
+      "history": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "La Renovación Carismática Católica (RCC) nació como una corriente de gracia del Espíritu Santo en febrero de 1967, tras una experiencia espiritual vivida por estudiantes y profesores de la Universidad de Duquesne, Estados Unidos. Desde allí se extendió por el mundo y llegó a El Salvador. ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "La Renovación Carismática Católica (RCC) en Ciudad Arce fue fundada en octubre de 1984. Previo a su establecimiento, los hermanos Henry Leonel Linares y Consuelo Guzmán recibieron formación en la parroquia El Carmen de Santa Tecla, contando con el respaldo del entonces párroco de la Parroquia Inmaculada Concepción de María, presbítero Antonio Quinteros. ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "En el año ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": "1999",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 1,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": ", todas las comunidades de la Renovación Carismática Católica se pusieron al servicio del entonces párroco, hoy ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": "Monseñor Óscar Álvarez",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 1,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": ", conformándose inicialmente el ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": "Consejo de Comunidades de la RCC",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 1,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": ". Posteriormente este organismo adoptó el nombre de ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": "Comisión de la Renovación Carismática Católica (Comisión RCC)",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 1,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": ", denominación que conserva hasta nuestros días. ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Actualmente la Comisión RCC está integrada por ocho comunidades: ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 1,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "• Comunidad San Antonio de Padua.  ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 1,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "• Comunidad San José Obrero.  ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 1,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "• Comunidad San Joaquín.  ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 1,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "• Comunidad Divina Providencia.  ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 1,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "• Comunidad María Auxiliadora.  ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 1,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "• Comunidad Rey de la Misericordia.  ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 1,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "• Comunidad Inmaculada Concepción de María.  ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 1,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "• Comunidad San José, de Nueva Esperanza. ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "La Comisión RCC renueva su coordinación cada tres años, garantizando la continuidad del servicio pastoral y la comunión entre todas las comunidades. Para el período 2024–2027, la coordinación está a cargo de los hermanos Nelson Antonio Flores y Luis Alonso Emerson Rodríguez Castillo. ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Después de más de cuatro décadas de presencia en Ciudad Arce, la Renovación Carismática Católica continúa siendo un instrumento de evangelización, formación y servicio dentro de la Iglesia, promoviendo una experiencia viva del Espíritu Santo, la comunión entre las comunidades y el compromiso con la misión evangelizadora de la Parroquia Inmaculada Concepción de María. ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            }
+          ],
+          "direction": null
+        }
+      },
+      "perseverance": {
+        "count": 220,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [
+        {
+          "id": "6a5fad30d3dbdbeb09431fd1",
+          "name": "Nelson Antonio Flores",
+          "role": "Coordinador",
+          "photo": null
+        },
+        {
+          "id": "6a5fad3ad3dbdbeb09431fd3",
+          "name": "Luis Alonso Emerson ",
+          "role": "Sub Coordinador",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": 20,
+      "cover": 22,
+      "groupPhoto": 21,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.665Z",
+      "createdAt": "2026-07-21T17:34:31.540Z"
+    }
+  ],
+  "location": {
+    "address": null,
+    "mapUrl": null
+  },
+  "team": [
+    {
+      "id": "6ac53b00c7753d91386ff381",
+      "name": "Rubia del Carmen Pichinte",
+      "role": "Apóstol",
+      "photo": null
+    },
+    {
+      "id": "6ac53b00c7753d91386ff382",
+      "name": "Daniel Moreno",
+      "role": "Apóstol",
+      "photo": null
+    },
+    {
+      "id": "6ac53b00c7753d91386ff383",
+      "name": "Victoria Edith Salinas",
+      "role": "Apóstol",
+      "photo": null
+    }
+  ],
+  "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null,
+    "socialLinks": []
+  },
+  "responsibleName": null,
+  "assistants": [],
+  "logo": {
+    "id": 58,
+    "alt": "Logo del sector 10 con San Miguel Arcángel y el lema Dios es mi defensa",
+    "caption": null,
+    "credit": null,
+    "updatedAt": "2026-10-06T18:16:25.910Z",
+    "createdAt": "2026-10-06T18:16:24.283Z",
+    "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/238440.jpg",
+    "thumbnailURL": null,
+    "filename": "238440.jpg",
+    "mimeType": "image/jpeg",
+    "filesize": 216282,
+    "width": 1080,
+    "height": 1095,
+    "focalX": 50,
+    "focalY": 50
+  },
+  "cover": {
+    "id": 59,
+    "alt": "Comunidad del sector 10 reunida alrededor de una imagen del Sagrado Corazón y arreglos florales",
+    "caption": null,
+    "credit": null,
+    "updatedAt": "2026-10-06T18:16:27.150Z",
+    "createdAt": "2026-10-06T18:16:26.383Z",
+    "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/238442.jpg",
+    "thumbnailURL": null,
+    "filename": "238442.jpg",
+    "mimeType": "image/jpeg",
+    "filesize": 210108,
+    "width": 1600,
+    "height": 900,
+    "focalX": 50,
+    "focalY": 50
+  },
+  "groupPhoto": {
+    "id": 59,
+    "alt": "Comunidad del sector 10 reunida alrededor de una imagen del Sagrado Corazón y arreglos florales",
+    "caption": null,
+    "credit": null,
+    "updatedAt": "2026-10-06T18:16:27.150Z",
+    "createdAt": "2026-10-06T18:16:26.383Z",
+    "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/238442.jpg",
+    "thumbnailURL": null,
+    "filename": "238442.jpg",
+    "mimeType": "image/jpeg",
+    "filesize": 210108,
+    "width": 1600,
+    "height": 900,
+    "focalX": 50,
+    "focalY": 50
+  },
+  "gallery": [
+    {
+      "id": 61,
+      "alt": "Altar adornado con flores y una imagen de San Miguel Arcángel, patrono del sector 10",
+      "caption": null,
+      "credit": null,
+      "updatedAt": "2026-10-06T18:16:30.077Z",
+      "createdAt": "2026-10-06T18:16:29.195Z",
+      "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/238448.jpg",
+      "thumbnailURL": null,
+      "filename": "238448.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 112607,
+      "width": 985,
+      "height": 940,
+      "focalX": 50,
+      "focalY": 50
+    },
+    {
+      "id": 62,
+      "alt": "Imagen de la Virgen de Guadalupe rodeada de flores en un nicho al aire libre",
+      "caption": null,
+      "credit": null,
+      "updatedAt": "2026-10-06T18:16:31.246Z",
+      "createdAt": "2026-10-06T18:16:30.517Z",
+      "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/238444.jpg",
+      "thumbnailURL": null,
+      "filename": "238444.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 287272,
+      "width": 1204,
+      "height": 1600,
+      "focalX": 50,
+      "focalY": 50
+    },
+    {
+      "id": 63,
+      "alt": "Celebración eucarística ante el altar con flores y una imagen de San Miguel Arcángel al fondo",
+      "caption": null,
+      "credit": null,
+      "updatedAt": "2026-10-06T18:16:32.306Z",
+      "createdAt": "2026-10-06T18:16:31.689Z",
+      "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/238446.jpg",
+      "thumbnailURL": null,
+      "filename": "238446.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 249533,
+      "width": 1200,
+      "height": 1600,
+      "focalX": 50,
+      "focalY": 50
+    }
+  ],
+  "isFeatured": false,
+  "status": "published",
+  "publishedAt": null,
+  "updatedAt": "2026-10-06T18:16:32.787Z",
+  "createdAt": "2026-08-14T00:42:43.641Z"
+}

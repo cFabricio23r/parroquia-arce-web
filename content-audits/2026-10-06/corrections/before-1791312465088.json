@@ -1,0 +1,4282 @@
+{
+  "sectors": [
+    {
+      "id": 235,
+      "name": "Sector 23, Las Acostas y Los Mangos",
+      "slug": "sector-23",
+      "number": 23,
+      "chapelName": null,
+      "zone": "zona-1",
+      "patron": {
+        "name": "Óscar Arnulfo Romero",
+        "image": null
+      },
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:46:45.564Z",
+      "createdAt": "2026-08-14T00:42:46.741Z"
+    },
+    {
+      "id": 234,
+      "name": "Sector 21, Colonia Loma Linda y Las Brisas",
+      "slug": "sector-21",
+      "number": 21,
+      "chapelName": null,
+      "zone": "zona-3",
+      "patron": {
+        "name": "San Juan Pablo II",
+        "image": null
+      },
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:46:45.513Z",
+      "createdAt": "2026-08-14T00:42:46.430Z"
+    },
+    {
+      "id": 233,
+      "name": "Sector 20, Pequeña Inglaterra",
+      "slug": "sector-20",
+      "number": 20,
+      "chapelName": null,
+      "zone": "zona-4",
+      "patron": {
+        "name": "San Joaquín",
+        "image": null
+      },
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:46:45.534Z",
+      "createdAt": "2026-08-14T00:42:46.125Z"
+    },
+    {
+      "id": 232,
+      "name": "Sector 19, Colonia San Carlos I",
+      "slug": "sector-19",
+      "number": 19,
+      "chapelName": null,
+      "zone": "zona-2",
+      "patron": {
+        "name": "San Carlos Borromeo",
+        "image": null
+      },
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:46:45.559Z",
+      "createdAt": "2026-08-14T00:42:45.825Z"
+    },
+    {
+      "id": 231,
+      "name": "Sector 17, Colonia La Joya",
+      "slug": "sector-17",
+      "number": 17,
+      "chapelName": null,
+      "zone": "zona-3",
+      "patron": {
+        "name": "Nuestra Señora de Guadalupe",
+        "image": null
+      },
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:46:45.497Z",
+      "createdAt": "2026-08-14T00:42:45.505Z"
+    },
+    {
+      "id": 230,
+      "name": "Sector 16, El Tránsito, Flor Amarilla",
+      "slug": "sector-16",
+      "number": 16,
+      "chapelName": null,
+      "zone": "zona-5",
+      "patron": {
+        "name": "Nuestra Señora del Tránsito",
+        "image": null
+      },
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:46:45.525Z",
+      "createdAt": "2026-08-14T00:42:45.197Z"
+    },
+    {
+      "id": 229,
+      "name": "Sector 14, Colonia Divina Providencia y San Andrés",
+      "slug": "sector-14",
+      "number": 14,
+      "chapelName": null,
+      "zone": "zona-5",
+      "patron": {
+        "name": "Divina Providencia",
+        "image": null
+      },
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:46:45.521Z",
+      "createdAt": "2026-08-14T00:42:44.897Z"
+    },
+    {
+      "id": 228,
+      "name": "Sector 13, Colonia Italia",
+      "slug": "sector-13",
+      "number": 13,
+      "chapelName": "San Esteban Protomártir",
+      "zone": "zona-3",
+      "patron": {
+        "name": "San Esteban Protomártir",
+        "image": null
+      },
+      "summary": "Sector 13, Colonia Italia. Fiesta patronal: 26 de diciembre, en honor a San Esteban Protomártir. Medios de crecimiento: Comunidades de Fe, Escuela de Formación Básica en la Fe e Infancia y Adolescencia Misionera (IAM).",
+      "description": null,
+      "history": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "La comunidad católica del sector 13, Colonia Italia, tiene sus inicios entre 2001 y 2002. Originalmente pertenecía a la parroquia del Congo; luego pasó a formar parte de la Parroquia Inmaculada Concepción de María de Ciudad Arce. Gracias al esfuerzo de los hermanos, actualmente contamos con nuestra ermita y un aula para la Escuela Básica en la Fe, mientras se continúa con los trabajos pastorales y de infraestructura.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [
+        165,
+        164
+      ],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [
+        {
+          "id": "6ac53bfd0f7f410a303740af",
+          "name": "Alicia Barraza",
+          "role": "Apóstol / Auxiliar",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": 64,
+      "cover": 65,
+      "groupPhoto": 69,
+      "gallery": [
+        66,
+        67,
+        68,
+        70,
+        71
+      ],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-10-06T18:20:45.636Z",
+      "createdAt": "2026-08-14T00:42:44.589Z"
+    },
+    {
+      "id": 227,
+      "name": "Sector 12, Cantón La Reforma",
+      "slug": "sector-12",
+      "number": 12,
+      "chapelName": "San Antonio de Padua",
+      "zone": "zona-4",
+      "patron": {
+        "name": "San Antonio de Padua",
+        "image": 49
+      },
+      "summary": null,
+      "description": null,
+      "history": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "La Ermita San Antonio de Padua se encuentra en La Joyita, segunda zona.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Fue aproximadamente en el año 1951 que el hermano José Villagranco donó el terreno para la construcción de la Ermita. Con mucho esfuerzo se empezó a construir: se salía a pedir donaciones y así la construyeron poco a poco. En un inicio fue de adobe y teja, entre los años 1957 a 1963; en ese tiempo solo se rezaba el rosario y se daba catequesis.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Entre el año 1957 a 1964 donaron las imágenes de la Ermita y las campanas, ya que lo último que se realizó fue el campanario, en 1964. Desde esa época ya se realizaba la misa patronal cada 13 de junio.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "La Ermita actual se construyó en los años 1975 a 1980, ya de ladrillo y duralita, siendo el encargado el hermano José Marroquín.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Desde esos años se fue trabajando duro para poder tener un coro y la Legión de María, en el año 1994. Se formó la Renovación Carismática y el grupo juvenil, y en el año 1998 se formó la primera pequeña comunidad, ya estando el Padre Óscar Álvarez.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Y así, desde este tiempo, se viene luchando en esta comunidad de La Reforma.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [
+        165,
+        164,
+        56
+      ],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [
+        {
+          "id": "6a7e67d2b850ce0bc8eab933",
+          "name": "Cristina Polanco",
+          "role": "Apóstol",
+          "photo": null
+        },
+        {
+          "id": "6a7e67d2b850ce0bc8eab934",
+          "name": "Alicia del Carmen Genovez",
+          "role": "Auxiliar",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": null,
+      "cover": 48,
+      "groupPhoto": null,
+      "gallery": [
+        50,
+        51
+      ],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:46:45.547Z",
+      "createdAt": "2026-08-14T00:42:44.277Z"
+    },
+    {
+      "id": 226,
+      "name": "Sector 11, Colonia San Carlos II",
+      "slug": "sector-11",
+      "number": 11,
+      "chapelName": null,
+      "zone": "zona-4",
+      "patron": {
+        "name": "María Auxiliadora",
+        "image": null
+      },
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:46:45.538Z",
+      "createdAt": "2026-08-14T00:42:43.961Z"
+    },
+    {
+      "id": 225,
+      "name": "Sector 10, Cantón La Joyita, Primera Zona",
+      "slug": "sector-10",
+      "number": 10,
+      "chapelName": "Casa de Retiros Presbítero Óscar Álvarez",
+      "zone": "zona-4",
+      "patron": {
+        "name": "San Miguel Arcángel",
+        "image": 60
+      },
+      "summary": "La Joyita, primera zona. Lugar de reunión: Casa de Retiros Presbítero Óscar Álvarez. Fiesta patronal: 29 de septiembre, en honor a San Miguel Arcángel. Lunes: Rosario a la Virgen. Miércoles: Grupo de Oración abierto. Medios de crecimiento: Comunidades de Fe, Encuentros Conyugales, Renovación, Grupo Juvenil, IAM y Escuela Básica en la Fe.",
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [
+        165,
+        164,
+        163,
+        56
+      ],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [
+        {
+          "id": "6ac53b00c7753d91386ff381",
+          "name": "Rubia del Carmen Pichinte",
+          "role": "Apóstol",
+          "photo": null
+        },
+        {
+          "id": "6ac53b00c7753d91386ff382",
+          "name": "Daniel Moreno",
+          "role": "Apóstol",
+          "photo": null
+        },
+        {
+          "id": "6ac53b00c7753d91386ff383",
+          "name": "Victoria Edith Salinas",
+          "role": "Apóstol",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": 58,
+      "cover": 59,
+      "groupPhoto": 59,
+      "gallery": [
+        61,
+        62,
+        63
+      ],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-10-06T18:16:32.787Z",
+      "createdAt": "2026-08-14T00:42:43.641Z"
+    },
+    {
+      "id": 224,
+      "name": "Sector 9, Cantón La Nueva Esperanza",
+      "slug": "sector-9",
+      "number": 9,
+      "chapelName": null,
+      "zone": "zona-4",
+      "patron": {
+        "name": "San José esposo de la Virgen",
+        "image": null
+      },
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:15.873Z",
+      "createdAt": "2026-08-14T00:42:43.337Z"
+    },
+    {
+      "id": 223,
+      "name": "Sector 7, Colonia Las Vegas",
+      "slug": "sector-7",
+      "number": 7,
+      "chapelName": null,
+      "zone": "zona-3",
+      "patron": {
+        "name": "Nuestra Señora Santa Ana",
+        "image": null
+      },
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:15.878Z",
+      "createdAt": "2026-08-14T00:42:43.012Z"
+    },
+    {
+      "id": 222,
+      "name": "Sector 6, Colonia El Tepeyac",
+      "slug": "sector-6",
+      "number": 6,
+      "chapelName": null,
+      "zone": "zona-1",
+      "patron": {
+        "name": "Nuestra Señora de Guadalupe",
+        "image": null
+      },
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:15.893Z",
+      "createdAt": "2026-08-14T00:42:42.689Z"
+    },
+    {
+      "id": 221,
+      "name": "Sector 5, Barrio San Jacinto, Pasaje Costa Rica",
+      "slug": "sector-5",
+      "number": 5,
+      "chapelName": null,
+      "zone": "zona-1",
+      "patron": {
+        "name": "San Antonio de Padua",
+        "image": null
+      },
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:15.886Z",
+      "createdAt": "2026-08-14T00:42:42.378Z"
+    },
+    {
+      "id": 220,
+      "name": "Sector 4, Barrio San José",
+      "slug": "sector-4",
+      "number": 4,
+      "chapelName": null,
+      "zone": "zona-2",
+      "patron": {
+        "name": "San José esposo de la Virgen",
+        "image": null
+      },
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:15.848Z",
+      "createdAt": "2026-08-14T00:42:42.062Z"
+    },
+    {
+      "id": 219,
+      "name": "Sector 3, Barrio El Rosario",
+      "slug": "sector-3",
+      "number": 3,
+      "chapelName": null,
+      "zone": "zona-2",
+      "patron": {
+        "name": "Nuestra Señora del Rosario",
+        "image": null
+      },
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:15.906Z",
+      "createdAt": "2026-08-14T00:42:41.762Z"
+    },
+    {
+      "id": 218,
+      "name": "Sector 2, Barrio La Esperanza",
+      "slug": "sector-2",
+      "number": 2,
+      "chapelName": null,
+      "zone": "zona-2",
+      "patron": {
+        "name": "Nuestra Señora de Lourdes",
+        "image": null
+      },
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:15.889Z",
+      "createdAt": "2026-08-14T00:42:41.429Z"
+    },
+    {
+      "id": 217,
+      "name": "Sector 1, Barrio El Centro",
+      "slug": "sector-1",
+      "number": 1,
+      "chapelName": null,
+      "zone": "zona-1",
+      "patron": {
+        "name": "San Juan María Vianney",
+        "image": null
+      },
+      "summary": "Sector 1, Barrio El Centro. Fiesta patronal en honor a San Juan María Vianney: 4 de agosto. Medios de crecimiento: Comunidades de Fe, Movimiento de Encuentros Conyugales, Renovación Carismática, Pastoral Juvenil, IAM y Escuela Básica en la Fe.",
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [
+        200,
+        165,
+        164,
+        163,
+        56
+      ],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [
+        {
+          "id": "6ac53a158be2e68708be5cce",
+          "name": "Yanira Marisol Joya Granados",
+          "role": "Apóstol",
+          "photo": null
+        },
+        {
+          "id": "6ac53a158be2e68708be5ccf",
+          "name": "Fátima Guadalupe Portillo González",
+          "role": "Auxiliar",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": 56,
+      "cover": 57,
+      "groupPhoto": 57,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-10-06T18:12:37.553Z",
+      "createdAt": "2026-08-14T00:42:41.122Z"
+    },
+    {
+      "id": 52,
+      "name": "Sector 8, Las Cruces, Las Acostas y Los Mangos",
+      "slug": "sector-8",
+      "number": 8,
+      "chapelName": "Las Cruces",
+      "zone": "zona-1",
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "summary": null,
+      "description": null,
+      "history": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Se tienen referencias de nuestra comunidad católica desde antes de 1980, siendo la sede principal Las Acostas. Por la mayor afluencia de hermanos, era justamente aquí donde se llevaban a cabo la mayoría de los actos litúrgicos, en especial los de Semana Santa y las celebraciones de la Palabra.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "En el cantón Las Cruces se inició la evangelización, obteniendo un terreno donado para dar comienzo a las reuniones bajo una ramada, con una cruz de madera al fondo del terreno como signo de fe.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Se logró edificar dos ermitas: una en Las Acostas, construida de adobe, y otra en Las Cruces, de ladrillo rojo. Ambas fueron destruidas por el terremoto de 2001.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Se trabajó arduamente para levantar dos nuevas ermitas en los cantones antes mencionados, contando con la colaboración del Arzobispado de San Salvador para ambas construcciones.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Como principales catequistas en la fe, tenemos como ejemplo a: Hna. Cristina Gutiérrez, Gabino Orellana, Antonio Rivas, Tomasa Varela y nuestro hermano que en paz descanse, Julio Ramírez.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            }
+          ],
+          "direction": null
+        }
+      },
+      "perseverance": {
+        "count": 40,
+        "label": "miembros que perseveran"
+      },
+      "groups": [
+        32
+      ],
+      "location": {
+        "address": "Cantón Las Cruces, Cruzadilla entre desvío a Pitichorro y Las Acostas.",
+        "mapUrl": "https://maps.app.goo.gl/UayrmJVu1CGaE7Wp8",
+        "coordinates": [
+          -89.441886,
+          13.864324
+        ]
+      },
+      "team": [
+        {
+          "id": "6a5faf5109dde37b60aacf8d",
+          "name": "Gabino Cortez Alvarez",
+          "role": "Apostol",
+          "photo": null
+        },
+        {
+          "id": "6a5faf5809dde37b60aacf8f",
+          "name": "Ever Oswaldo Trejo Orellana",
+          "role": "Auxiliar-Tesorero",
+          "photo": null
+        },
+        {
+          "id": "6a5fee0c30177b6a55606920",
+          "name": "Teresa de Jesus Varela",
+          "role": "Pastora de comunidad de Fe",
+          "photo": null
+        },
+        {
+          "id": "6a5fee1e30177b6a55606922",
+          "name": "Maritza Serrano",
+          "role": "Pastora de comunidad de Fe, Catequista de Confirmas.",
+          "photo": null
+        },
+        {
+          "id": "6a5fee2f30177b6a55606924",
+          "name": "Yesenia Guadalupe Ramirez de Cortez",
+          "role": "Pastora de comunidad de Fe",
+          "photo": null
+        },
+        {
+          "id": "6a5fee3730177b6a55606926",
+          "name": "Ana Elsa Mazariego",
+          "role": "Obras de Misericordia",
+          "photo": null
+        },
+        {
+          "id": "6a5fee3e30177b6a55606928",
+          "name": "Aydee Varela ",
+          "role": "Obras de Misericordia",
+          "photo": null
+        },
+        {
+          "id": "6a5fee4230177b6a5560692a",
+          "name": "Yenifer Abigail Pérez de Trejo",
+          "role": "Ministerio de Cocina",
+          "photo": null
+        },
+        {
+          "id": "6a5fee4730177b6a5560692c",
+          "name": "Liliana de los Angeles Pérez de Guerra",
+          "role": "Ministerio de Cocina",
+          "photo": null
+        },
+        {
+          "id": "6a5fee4e30177b6a5560692e",
+          "name": "Karina Concepción Escalante Rauda ",
+          "role": "Catequista Escuela Básica en la Fe",
+          "photo": null
+        },
+        {
+          "id": "6a5fee5530177b6a55606930",
+          "name": "Meybelin Alexandra Pleitez Hernandez ",
+          "role": "Catequista Escuela Básica en la Fe",
+          "photo": null
+        },
+        {
+          "id": "6a5fee6330177b6a55606932",
+          "name": "Israel Antonio Hernandez",
+          "role": "Predicador",
+          "photo": null
+        },
+        {
+          "id": "6a5feeb830177b6a55606936",
+          "name": "Carlos Fabricio Ramirez Ceron",
+          "role": "Predicador",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": "6115-0995",
+        "whatsapp": "6115-0995",
+        "email": "Oswaldotrejo024@gmail.com",
+        "socialLinks": [
+          {
+            "id": "6a5faf6209dde37b60aacf91",
+            "platform": "facebook",
+            "url": "https://www.facebook.com/iglesiasector8"
+          },
+          {
+            "id": "6a5faf7d09dde37b60aacf93",
+            "platform": "instagram",
+            "url": "https://www.instagram.com/iglesia.sector8/"
+          }
+        ]
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": null,
+      "cover": 25,
+      "groupPhoto": 23,
+      "gallery": [
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "isFeatured": true,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-08-14T00:43:37.404Z",
+      "createdAt": "2026-07-21T17:42:41.877Z"
+    },
+    {
+      "id": 51,
+      "name": "Sector 15, Flor Amarilla",
+      "slug": "sector-15",
+      "number": 15,
+      "chapelName": "Sagrado Corazon de Jesus",
+      "zone": "zona-5",
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "summary": null,
+      "description": null,
+      "history": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Nació en el año 1997 la devoción al Sagrado Corazón de Jesús, fue fundada por Laura Martínez y Seferino Morán. ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 8,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 8
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "type": "linebreak",
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": "El Sector tiene varios lugares: La Pista, La Colonia Emiliani y la Colonia 30 de abril; todos formamos el Sector #15, Sagrado Corazón de Jesús.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 8,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 8
+            }
+          ],
+          "direction": null
+        }
+      },
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [
+        {
+          "id": "6a5fabe909dde37b60aacf89",
+          "name": "Flor Maria Alfaro",
+          "role": "Apostol",
+          "photo": null
+        },
+        {
+          "id": "6a5fabf309dde37b60aacf8b",
+          "name": "Maria Isolina Tobar",
+          "role": "Auxiliar",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": 17,
+      "cover": 18,
+      "groupPhoto": 19,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-08-14T00:43:39.030Z",
+      "createdAt": "2026-07-21T17:27:38.361Z"
+    },
+    {
+      "id": 50,
+      "name": "Sector 22, Ciudad Obrera",
+      "slug": "sector-22",
+      "number": 22,
+      "chapelName": "San Jose Obrero",
+      "zone": "zona-4",
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "summary": "",
+      "description": null,
+      "history": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "justify",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Aproximadamente a finales del año 2001 luego de los terremotos de ese año, un grupo de hermanos con un deseo muy grande de formar una comunidad católica en la colonia Ciudad Obrera 26 de enero, deciden comenzar a reunirse en las casas de algunos de ellos. Con el apoyo de algunos hermanos del sector de la Reforma, inician con algunas reuniones, donde, el inconveniente más grande es que les tocaba viajar por las noches desde Ciudad Obrera hasta la Reforma. Poco a poco y con el apoyo del párroco de esa época Padre Oscar Alvarez, unos 2 años después se hace ya oficial la fundación del sector 24 en la Colonia Ciudad Obrera, eligiéndose patrono a San José Obrero, patrono de los trabajadores, celebrando la fiesta patronal cada 1 de mayo; además el primer Apóstol del sector fue Hno. Godofredo Alvarado (QEPD). En los inicios del sector, al no contar con una Ermita o un terreno propio donde hacer las reuniones y las diferentes celebraciones, tocaba hacer los eventos y reuniones en las calles o en alguna casa alquilada, con los inconvenientes de la lluvia, calor o el espacio muy reducido. Sin embargo, estos inconvenientes nunca detuvieron el deseo de los hermanos de seguir adelante evangelizando y haciendo crecer al sector. Fue por el año 2014 que se logra comprar un terreno propio y se comienza con la construcción de la Ermita en el Sector. En el 2015 se logra la construcción de la Ermita, la cual inicialmente solamente eran las paredes y el techo, y poco a poco se ha mejorado para tenerla como hasta hoy la podemos apreciar.  ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            }
+          ],
+          "direction": null
+        }
+      },
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "groups": [],
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "team": [
+        {
+          "id": "6a5fa95e09dde37b60aacf85",
+          "name": "Marcos Antonio Alvarado",
+          "role": "Apostol",
+          "photo": null
+        },
+        {
+          "id": "6a5fa96909dde37b60aacf87",
+          "name": "Carmen Menendez",
+          "role": "Auxiliar",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "responsibleName": null,
+      "assistants": [],
+      "logo": 13,
+      "cover": 14,
+      "groupPhoto": 12,
+      "gallery": [
+        15,
+        16,
+        13
+      ],
+      "isFeatured": true,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-08-14T00:43:40.254Z",
+      "createdAt": "2026-07-21T17:18:20.377Z"
+    }
+  ],
+  "groups": [
+    {
+      "id": 215,
+      "name": "Escuela de Predicadores",
+      "slug": "escuela-de-predicadores",
+      "type": "formacion",
+      "actionLine": null,
+      "summary": null,
+      "description": null,
+      "history": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "tag": "h3",
+              "type": "heading",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Antecedentes e Inicios del Proyecto",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null
+            },
+            {
+              "type": "paragraph",
+              "format": "justify",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Antes del año 2006, la parroquia no contaba con un cuerpo propio de predicadores parroquiales. Ante esta situación, se recurría con frecuencia a invitar a predicadores de otras comunidades y parroquias para suplir la constante necesidad de la evangelización y predicación local.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "justify",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Fue en ese periodo cuando el Espíritu Santo inspiró al ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": "Padre Óscar Álvarez",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 1,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": " y a la ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": "Comisión de Evangelización",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 1,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": " para impulsar la creación de una Escuela de Predicadores Parroquiales. En respuesta a esta inquietud pastoral, fui llamado por el Padre Óscar y la Comisión de Evangelización con el propósito de conformar un equipo de trabajo que llevara a cabo la planificación y ejecución de este importante proyecto.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "tag": "h3",
+              "type": "heading",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Preparación y Formación Previa",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null
+            },
+            {
+              "type": "paragraph",
+              "format": "justify",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Como parte de la etapa preparatoria, recibimos la visita y enseñanza de varios hermanos, entre ellos el ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": "Hno. Jorge González",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 1,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": ", el ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": "Hno. René Ávalos",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 1,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": " y dos hermanos más, quienes nos impartieron valiosas enseñanzas orientadas a cimentar la futura escuela.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "justify",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "De forma complementaria, en ese mismo periodo me encontraba recibiendo una formación en evangelización impartida por el ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": "Movimiento de Renovación Carismática",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 1,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": " en Ilopango, San Salvador. Esta capacitación fortaleció y complementó significativamente los conocimientos necesarios para la enseñanza y el servicio en la predicación.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "tag": "h3",
+              "type": "heading",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Consolidación y Promociones de la Escuela",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null
+            },
+            {
+              "type": "paragraph",
+              "format": "justify",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "El ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": "domingo 30 de julio de 2006",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 1,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": " se dio inicio formal a la primera formación con la participación estimada de 23 hermanos y hermanas provenientes de los distintos sectores parroquiales de aquel entonces. Tras un fructífero proceso de aprendizaje y servicio, la primera graduación de predicadores se celebró con gozo en ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": "diciembre de 2012",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 1,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": ".",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "justify",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "A lo largo de los años, el desarrollo de las promociones se ha estructurado de la siguiente manera:",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "tag": "h3",
+              "type": "heading",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Continuidad de la Obra Pastoral",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null
+            },
+            {
+              "type": "paragraph",
+              "format": "justify",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Tras el surgimiento de la pandemia por COVID-19 en marzo de 2020, las actividades presenciales debieron pausarse. Posteriormente, por motivos personales, no me fue posible continuar al frente del proyecto.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "justify",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Sin embargo, la obra fue retomada con entrega y liderazgo por la ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": "Hna. Jesús Barrera",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 1,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": ". Gracias a Dios, al día de hoy en el año 2026, la labor evangelizadora de la Escuela de Predicadores sigue adelante con firmeza y frutos para nuestra parroquia.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            }
+          ],
+          "direction": null
+        }
+      },
+      "perseverance": {
+        "count": 18,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": "Ultimo domingo del mes",
+        "time": "8:00",
+        "place": "Salon multiusos Monseñor Romero"
+      },
+      "howToJoin": "Comunicate con la Hmna Jesus Barrera ",
+      "team": [
+        {
+          "id": "6a99a9f35d2d674cd42d1be6",
+          "name": "Jesus Barrera",
+          "role": "Coordinadora",
+          "photo": null
+        },
+        {
+          "id": "6a99aa135d2d674cd42d1be7",
+          "name": "Francisco Menjivar",
+          "role": "Auxiliar",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": "Jesus Barrera",
+        "whatsapp": "77323460",
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": 53,
+      "cover": 54,
+      "groupPhoto": 54,
+      "gallery": [],
+      "isFeatured": true,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.596Z",
+      "createdAt": "2026-09-03T17:14:57.155Z"
+    },
+    {
+      "id": 205,
+      "name": "Comisión de Medio Ambiente",
+      "slug": "comision-de-medio-ambiente",
+      "type": null,
+      "actionLine": "formacion-agentes",
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.441Z",
+      "createdAt": "2026-08-14T00:43:13.462Z"
+    },
+    {
+      "id": 203,
+      "name": "Pastoral Social",
+      "slug": "pastoral-social",
+      "type": null,
+      "actionLine": "formacion-agentes",
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.556Z",
+      "createdAt": "2026-08-14T00:43:12.878Z"
+    },
+    {
+      "id": 202,
+      "name": "Comisión de Apóstoles",
+      "slug": "comision-de-apostoles",
+      "type": null,
+      "actionLine": "formacion-agentes",
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.604Z",
+      "createdAt": "2026-08-14T00:43:12.602Z"
+    },
+    {
+      "id": 201,
+      "name": "Pastoral Vocacional",
+      "slug": "pastoral-vocacional",
+      "type": null,
+      "actionLine": "ninez-juventud-vocacion",
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.560Z",
+      "createdAt": "2026-08-14T00:43:12.322Z"
+    },
+    {
+      "id": 200,
+      "name": "Pastoral Juvenil",
+      "slug": "pastoral-juvenil",
+      "type": null,
+      "actionLine": "ninez-juventud-vocacion",
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.544Z",
+      "createdAt": "2026-08-14T00:43:12.054Z"
+    },
+    {
+      "id": 199,
+      "name": "Pastoral Familiar",
+      "slug": "pastoral-familiar",
+      "type": null,
+      "actionLine": "familia",
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.580Z",
+      "createdAt": "2026-08-14T00:43:11.759Z"
+    },
+    {
+      "id": 198,
+      "name": "Veteranos de P.J.",
+      "slug": "veteranos-de-pj",
+      "type": null,
+      "actionLine": "evangelizacion",
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.548Z",
+      "createdAt": "2026-08-14T00:43:11.467Z"
+    },
+    {
+      "id": 197,
+      "name": "Tercera Orden Franciscana",
+      "slug": "tercera-orden-franciscana",
+      "type": null,
+      "actionLine": "evangelizacion",
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.513Z",
+      "createdAt": "2026-08-14T00:43:11.154Z"
+    },
+    {
+      "id": 196,
+      "name": "Pequeños Hermanos de María",
+      "slug": "pequenos-hermanos-de-maria",
+      "type": null,
+      "actionLine": "evangelizacion",
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.574Z",
+      "createdAt": "2026-08-14T00:43:10.866Z"
+    },
+    {
+      "id": 195,
+      "name": "Pequeñas Comunidades",
+      "slug": "pequenas-comunidades",
+      "type": null,
+      "actionLine": "evangelizacion",
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.600Z",
+      "createdAt": "2026-08-14T00:43:10.582Z"
+    },
+    {
+      "id": 194,
+      "name": "Comisión de Evangelización",
+      "slug": "comision-de-evangelizacion",
+      "type": null,
+      "actionLine": "evangelizacion",
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.608Z",
+      "createdAt": "2026-08-14T00:43:10.303Z"
+    },
+    {
+      "id": 193,
+      "name": "Ministerios de Alabanza",
+      "slug": "ministerios-de-alabanza",
+      "type": null,
+      "actionLine": "evangelizacion",
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.611Z",
+      "createdAt": "2026-08-14T00:43:10.022Z"
+    },
+    {
+      "id": 192,
+      "name": "Comunicación Social",
+      "slug": "comunicacion-social",
+      "type": null,
+      "actionLine": "evangelizacion",
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.585Z",
+      "createdAt": "2026-08-14T00:43:09.751Z"
+    },
+    {
+      "id": 191,
+      "name": "Adoradores del Santísimo",
+      "slug": "adoradores-del-santisimo",
+      "type": null,
+      "actionLine": "evangelizacion",
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.633Z",
+      "createdAt": "2026-08-14T00:43:09.470Z"
+    },
+    {
+      "id": 190,
+      "name": "Hermandad del Santo Entierro",
+      "slug": "hermandad-del-santo-entierro",
+      "type": null,
+      "actionLine": "evangelizacion",
+      "summary": null,
+      "description": null,
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.641Z",
+      "createdAt": "2026-08-14T00:43:09.169Z"
+    },
+    {
+      "id": 165,
+      "name": "Escuela de Formación Básica en la Fe",
+      "slug": "escuela-basica-en-la-fe",
+      "type": "formacion",
+      "actionLine": "ninez-juventud-vocacion",
+      "summary": null,
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Para el proceso de enseñanza aprendizaje utilizamos un material didáctico de acuerdo a la edad, con el que fomentamos los valores religiosos católicos.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Se realizan reuniones cada 2 meses con los padres de familia o responsables de los niños inscritos durante el año.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "A la fecha contamos con 40 hermanos y hermanas catequistas a nivel parroquial, y nuestras reuniones como equipo de catequistas son cada dos meses.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "La imagen de la Inmaculada Concepción de María nos caracteriza como Parroquia, ya que las primeras comuniones se realizan en el marco de la celebración de las fiestas patronales en honor a la Inmaculada Concepción de María.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "history": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "La doctrina católica dirigida a niños y niñas de la parroquia dio inicio en el año de 1945, siendo sacerdote el Padre Francisco Ayala Martínez, quien preparó a los hermanos Víctor Rivas y hna. Cristina Gutiérrez como primeros catequistas a nivel parroquial. Se impartía únicamente en el pueblo y el centro de reuniones para la catequesis era el Templo parroquial. Ellos recibieron la formación religiosa impartida por Monseñor Luis Chávez y González en el Arzobispado de San Salvador.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Luego que la Parroquia se organizó por sectores en el año 2004, con el Párroco y ahora Monseñor Óscar Álvarez Orellana, se comenzaron a atender a más niños y niñas con los diferentes catequistas representantes de cada sector.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "En la zona rural se daba la doctrina en las ermitas y en la casa de los catequistas; en el casco urbano, la preparación de niños y niñas para la primera comunión se extendió a los barrios o sectores. Hasta la actualidad la doctrina se imparte gradualmente desde los 6 años hasta los 10 años de edad.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "perseverance": {
+        "count": 40,
+        "label": "catequistas"
+      },
+      "patron": {
+        "name": null,
+        "image": 45
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [
+        {
+          "id": "6a7b9146c168299c98c00a9f",
+          "name": "Gladys Alvarado",
+          "role": "Equipo coordinador",
+          "photo": null
+        },
+        {
+          "id": "6a7b9146c168299c98c00aa0",
+          "name": "Maira Erazo",
+          "role": "Equipo coordinador",
+          "photo": null
+        },
+        {
+          "id": "6a7b9146c168299c98c00aa1",
+          "name": "Ernesto Flores",
+          "role": "Equipo coordinador",
+          "photo": null
+        },
+        {
+          "id": "6a7b9146c168299c98c00aa2",
+          "name": "Cristina de Pacheco",
+          "role": "Equipo coordinador",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": null,
+      "cover": null,
+      "groupPhoto": 44,
+      "gallery": [
+        46
+      ],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.618Z",
+      "createdAt": "2026-08-11T21:16:54.102Z"
+    },
+    {
+      "id": 164,
+      "name": "Infancia y Adolescencia Misionera (IAM)",
+      "slug": "iam",
+      "type": "pastoral",
+      "actionLine": "ninez-juventud-vocacion",
+      "summary": null,
+      "description": null,
+      "history": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "A inicios del año 2010, Monseñor Óscar Álvarez, quien en ese momento era el Párroco de la parroquia, reunió a 4 hermanas a quienes les planteó la idea de dar seguimiento a los niños que hacían su primera comunión. Fue así como él nos envió a formación a Santa Tecla, al Secretariado Nacional de la IAM, para poder conocer sobre su proceso de formación.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Así iniciamos con nuestra infancia, teniendo nuestra primera consagración de niños y asesores el 30 de mayo del 2010. Desde entonces hay equipos de Infancia en varios sectores de nuestra parroquia, dando seguimiento a los niños que hacen su primera comunión.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "perseverance": {
+        "count": 110,
+        "label": "miembros: 95 niños y 15 asesores"
+      },
+      "patron": {
+        "name": null,
+        "image": 41
+      },
+      "patronalFeasts": [
+        {
+          "id": "6a7b9145c168299c98c00a99",
+          "name": "Santa Teresita del Niño Jesús",
+          "day": 1,
+          "month": "10"
+        },
+        {
+          "id": "6a7b9145c168299c98c00a9a",
+          "name": "San Francisco Javier",
+          "day": 3,
+          "month": "12"
+        }
+      ],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [
+        {
+          "id": "6a7b9145c168299c98c00a9b",
+          "name": "Nancy Lisbeth Portillo de Pacheco",
+          "role": "Coordinadora",
+          "photo": null
+        },
+        {
+          "id": "6a7b9145c168299c98c00a9c",
+          "name": "Paula Valladares",
+          "role": "Equipo secretariado",
+          "photo": null
+        },
+        {
+          "id": "6a7b9145c168299c98c00a9d",
+          "name": "Rocío Alvarado",
+          "role": "Equipo secretariado",
+          "photo": null
+        },
+        {
+          "id": "6a7b9145c168299c98c00a9e",
+          "name": "Esmeralda Chávez",
+          "role": "Equipo secretariado",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": 39,
+      "cover": null,
+      "groupPhoto": 40,
+      "gallery": [
+        42,
+        43
+      ],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.624Z",
+      "createdAt": "2026-08-11T21:16:53.363Z"
+    },
+    {
+      "id": 163,
+      "name": "Movimiento de Encuentros Conyugales",
+      "slug": "mec",
+      "type": "comunidad",
+      "actionLine": "familia",
+      "summary": null,
+      "description": null,
+      "history": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "A principios de 1999 tres matrimonios: Germán y Adilia Rauda, Rafael y Ana Ivett López y Luis y Karina Navarro realizaron su Encuentro Conyugal, todos ellos perseveraban en la comunidad de Sitio del Niño. Solicitaron a padre Óscar Álvarez el permiso para la apertura de Encuentros Conyugales en Ciudad Arce y, después de algunos contratiempos, estos tres matrimonios comenzaron la evangelización para formar la comunidad del MEC en Ciudad Arce.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "La evangelización rindió fruto y el 3 y 4 de diciembre de 1999, siendo dependientes de la comunidad del Sitio del Niño, seis parejas realizaron su Encuentro Conyugal: Francisco y Sonia Jaime, Mario y Maury Mazariego, Mario y Leny Rodríguez, Jacinto y Margarita Romero, Elías y Gloria Guardado y David y Carmen Irene Cartagena. El grupo se llamó \"Familia de Nazaret\" y sus animadores fueron Germán y Adilia Rauda.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Entre los años 2000 y 2021, aun siendo comunidad dependiente de Sitio del Niño, se formaron otros cinco grupos de crecimiento, siendo sus animadores: Rafael y Ana Ivett López, Francisco y Sonia Jaime, Mario y Leny Rodríguez, Elías y Gloria Guardado y David y Carmen Irene Cartagena. Llegaron a formar los llamados hermanos del encuentro \"cero\".",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Para ser comunidad independiente, el principal requisito era tener perseverando al menos 20 parejas. Ya cumplido este requisito, las primeras elecciones de secretarios generales se celebraron el miércoles 3 de julio de 2002, siendo elegidos los hermanos David y Carmen Irene Cartagena.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Ya como comunidad independiente, 17 parejas realizaron el Encuentro Conyugal n.º 1 los días 16 y 17 de noviembre de 2002 en la casa de retiro Jerónimo Emiliani, en Sacacoyo. En esa ocasión tomaron grupo los hermanos Walter y Mariquel Linares, Luis y Karina Navarro, y José Antonio y Esperanza Guerrero.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "A partir del año 2002 y hasta la fecha se ha continuado con la evangelización de muchos matrimonios que han tenido el encuentro con Cristo a través del Movimiento de Encuentros Conyugales.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Hermanos que han servido como secretarios de comunidad desde 2002:",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2002 – 2004: David y Carmen Irene Cartagena",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2004 – 2006: Emilio y Marilena Linares",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2006 – 2008: David y Carmen Irene Cartagena",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2008 – 2010: Elías y Gloria Guardado",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2010 – 2011: Wilfredo y Miriam Pleitez",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2011 – 2013: Danilo y Dinora Hernández",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2013 – 2015: Elías y Gloria Guardado",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2015 – 2017: Emilio y Marilena Linares",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2017 – 2019: Cristian y Laury Crespín",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2019 – 2021: Cristian y Laury Crespín",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2021 – 2023: Danilo y Dinora Hernández",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2023 – 2025: David y Yanira Martínez",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "2025 – hasta la fecha: David y Carmen Irene Cartagena",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "perseverance": {
+        "count": 50,
+        "label": "matrimonios que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [
+        {
+          "id": "6a7b9144c168299c98c00a98",
+          "name": "David y Carmen Irene Cartagena",
+          "role": "Secretarios de comunidad",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": 38,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.629Z",
+      "createdAt": "2026-08-11T21:16:52.819Z"
+    },
+    {
+      "id": 162,
+      "name": "Comisión de Liturgia",
+      "slug": "comision-de-liturgia",
+      "type": "servicio",
+      "actionLine": "evangelizacion",
+      "summary": null,
+      "description": null,
+      "history": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "El 20 de julio de 1996, Padre Óscar Álvarez Orellana fundó la \"Comisión de Liturgia\", integrada por un número considerable de hermanos del área urbana y rural, reuniéndose desde esa fecha los días sábados de 9 a 11 de la mañana. Las Misas dominicales en esos días eran a las 6 y 9 de la mañana y 4 de la tarde; posteriormente la misa de las 4 de la tarde se trasladó a las 5 de la tarde.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "En el año 2001, por disposición de nuestro Párroco, la comisión asumió el dar atención al grupo de Acólitos de la Parroquia, abriendo la \"Escuela de Acólitos\" todos los años, dando así la oportunidad a los niños que hacen la Primera Comunión para que se integren a la Escuela y puedan servir al Señor en el Altar.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "textFormat": 0
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "perseverance": {
+        "count": 24,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": "San Jerónimo",
+        "image": 37
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [
+        {
+          "id": "6a7b9144c168299c98c00a97",
+          "name": "Leda Abrego",
+          "role": "Coordinadora",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": 35,
+      "cover": null,
+      "groupPhoto": 36,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.659Z",
+      "createdAt": "2026-08-11T21:16:52.266Z"
+    },
+    {
+      "id": 56,
+      "name": "Comision de Renovacion Carismatica Catolica",
+      "slug": "rcc",
+      "type": "formacion",
+      "actionLine": "evangelizacion",
+      "summary": null,
+      "description": null,
+      "history": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "La Renovación Carismática Católica (RCC) nació como una corriente de gracia del Espíritu Santo en febrero de 1967, tras una experiencia espiritual vivida por estudiantes y profesores de la Universidad de Duquesne, Estados Unidos. Desde allí se extendió por el mundo y llegó a El Salvador. ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "La Renovación Carismática Católica (RCC) en Ciudad Arce fue fundada en octubre de 1984. Previo a su establecimiento, los hermanos Henry Leonel Linares y Consuelo Guzmán recibieron formación en la parroquia El Carmen de Santa Tecla, contando con el respaldo del entonces párroco de la Parroquia Inmaculada Concepción de María, presbítero Antonio Quinteros. ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "En el año ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": "1999",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 1,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": ", todas las comunidades de la Renovación Carismática Católica se pusieron al servicio del entonces párroco, hoy ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": "Monseñor Óscar Álvarez",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 1,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": ", conformándose inicialmente el ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": "Consejo de Comunidades de la RCC",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 1,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": ". Posteriormente este organismo adoptó el nombre de ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": "Comisión de la Renovación Carismática Católica (Comisión RCC)",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 1,
+                  "version": 1
+                },
+                {
+                  "mode": "normal",
+                  "text": ", denominación que conserva hasta nuestros días. ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Actualmente la Comisión RCC está integrada por ocho comunidades: ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 1,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "• Comunidad San Antonio de Padua.  ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 1,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "• Comunidad San José Obrero.  ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 1,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "• Comunidad San Joaquín.  ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 1,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "• Comunidad Divina Providencia.  ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 1,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "• Comunidad María Auxiliadora.  ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 1,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "• Comunidad Rey de la Misericordia.  ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 1,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "• Comunidad Inmaculada Concepción de María.  ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 1,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "• Comunidad San José, de Nueva Esperanza. ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "La Comisión RCC renueva su coordinación cada tres años, garantizando la continuidad del servicio pastoral y la comunión entre todas las comunidades. Para el período 2024–2027, la coordinación está a cargo de los hermanos Nelson Antonio Flores y Luis Alonso Emerson Rodríguez Castillo. ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Después de más de cuatro décadas de presencia en Ciudad Arce, la Renovación Carismática Católica continúa siendo un instrumento de evangelización, formación y servicio dentro de la Iglesia, promoviendo una experiencia viva del Espíritu Santo, la comunión entre las comunidades y el compromiso con la misión evangelizadora de la Parroquia Inmaculada Concepción de María. ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            }
+          ],
+          "direction": null
+        }
+      },
+      "perseverance": {
+        "count": 220,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [
+        {
+          "id": "6a5fad30d3dbdbeb09431fd1",
+          "name": "Nelson Antonio Flores",
+          "role": "Coordinador",
+          "photo": null
+        },
+        {
+          "id": "6a5fad3ad3dbdbeb09431fd3",
+          "name": "Luis Alonso Emerson ",
+          "role": "Sub Coordinador",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": 20,
+      "cover": 22,
+      "groupPhoto": 21,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.665Z",
+      "createdAt": "2026-07-21T17:34:31.540Z"
+    },
+    {
+      "id": 32,
+      "name": "Comision de Formacion",
+      "slug": "comision-de-formacion",
+      "type": "formacion",
+      "actionLine": "formacion-agentes",
+      "summary": null,
+      "description": null,
+      "history": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "La Comisión de Formación nació en 1996, en el mes de julio, a cuatro meses después de la llegada de Padre Oscar Álvarez a nuestra Parroquia (ahora Mons. Oscar Álvarez, Obispo Auxiliar de nuestra Arquidiócesis), era dirigida por él y llamó a colaborarle a un grupo de hermanos entre los cuales estaban Jorge y Juan Carlos Núñez, Don Miguel Pocasangre, Doña Coritza Portillo, Teodoro Barrera, Carlos Argumedo y Ana Cecilia Escobar Valencia. Impartíamos módulos de Biblia, Cristología, Eclesiología y Mariología; dos módulos por año. Los módulos de formación tenían una duración de 5 meses a los que asistían un gran número de personas. Padre Oscar siempre iniciaba los grupos con el módulo de “Lecciones bíblicas” los lunes a las 7:00 pm en el Salón Parroquial y sus colaboradores impartíamos los otros módulos, preparados y guiados por él, los lunes por la noche y los domingos a las 10:00 am en el Salón Parroquial, para las personas de la zona rural. Al formarse las pequeñas comunidades, esta Comisión paso a llamarse Comisión de Evangelización.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            },
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Dos años después en 1998, nació la nueva comisión de formación que se encargó de preparar a niños, jóvenes y adultos para recibir los sacramentos de iniciación cristiana, impartir charlas a quinceañeras con sus padres y acompañantes e impartir formaciones de biblia, cristología, etc. Con el apoyo de nuestro Párroco y sacerdotes vicarios. La nueva comisión de formación fue dirigía por las hermanas Guadalupe Errodas, Antonia Zamora, Marta Velis y Morena Alvarado, llegando a la actualidad, que es dirigía por Hna. Ceci y hermano Marcelino junto a nuestros colaboradores, sumándose las formaciones en línea, haciendo uso de la tecnología.",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            }
+          ],
+          "direction": null
+        }
+      },
+      "perseverance": {
+        "count": 17,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [
+        {
+          "id": "6a5fa809d3dbdbeb09431fcd",
+          "name": "Ana Cecilia Escobar Valencia",
+          "role": "Coordinadora",
+          "photo": null
+        },
+        {
+          "id": "6a5fa81ad3dbdbeb09431fcf",
+          "name": "Marcelino Sevillano",
+          "role": "Sub Coordinador",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": null,
+      "logo": 10,
+      "cover": null,
+      "groupPhoto": 11,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.669Z",
+      "createdAt": "2026-07-21T16:32:24.417Z"
+    },
+    {
+      "id": 20,
+      "name": "JUMI (Juventud Misionera)",
+      "slug": "jumi",
+      "type": "servicio",
+      "actionLine": "ninez-juventud-vocacion",
+      "summary": "",
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "Somos un grupo de servicio misionero, con el objetivo de animar a otros grupos y movimientos, salir mas alla de las fronteras y llegar a quienes mas necesitan, su base es la arquidiocesis de San Salvador y en la Parroquia existe desde el 2016, busca formar lideres misioneros",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            }
+          ],
+          "direction": null
+        }
+      },
+      "history": null,
+      "perseverance": {
+        "count": 20,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [
+        {
+          "id": "6a5fa11c88288e39a03feac8",
+          "name": "Karen Lazo",
+          "role": "Coordinadora General",
+          "photo": null
+        },
+        {
+          "id": "6a5fa77dd3dbdbeb09431fcb",
+          "name": "Melvin Zelaya",
+          "role": "Coordinador de Sectores",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": "Karen Lazo",
+      "logo": 9,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.646Z",
+      "createdAt": "2026-07-21T15:50:17.760Z"
+    },
+    {
+      "id": 19,
+      "name": "Consejo Economico",
+      "slug": "consejo-economico",
+      "type": "servicio",
+      "actionLine": null,
+      "summary": "",
+      "description": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "mode": "normal",
+                  "text": "El Consejo Economico fue creado con el fin de promover y recolectar la aportacion economica e los fieles. Dichos recuersos son utilizados para adquirir bienes y servicios a ser utilizados en el proceso evangelizador de la parroquia. ",
+                  "type": "text",
+                  "style": "",
+                  "detail": 0,
+                  "format": 0,
+                  "version": 1
+                }
+              ],
+              "direction": null,
+              "textStyle": "",
+              "textFormat": 0
+            }
+          ],
+          "direction": null
+        }
+      },
+      "history": null,
+      "perseverance": {
+        "count": null,
+        "label": "miembros que perseveran"
+      },
+      "patron": {
+        "name": null,
+        "image": null
+      },
+      "patronalFeasts": [],
+      "meeting": {
+        "day": null,
+        "time": null,
+        "place": null
+      },
+      "howToJoin": null,
+      "team": [
+        {
+          "id": "6a5fa11d88288e39a03feac9",
+          "name": "Arely Abrego",
+          "role": "Coordinador/a",
+          "photo": null
+        }
+      ],
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "coordinatorName": "Arely Abrego",
+      "logo": null,
+      "cover": null,
+      "groupPhoto": null,
+      "gallery": [],
+      "isFeatured": false,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:50.655Z",
+      "createdAt": "2026-07-21T15:39:32.847Z"
+    }
+  ],
+  "chapels": [
+    {
+      "id": 55,
+      "name": "Ermita San Esteban Protomártir",
+      "slug": "ermita-san-esteban-protomartir-sector-13",
+      "sector": 228,
+      "patronOrDedication": "San Esteban Protomártir",
+      "patronalFeasts": [
+        {
+          "id": "6ac53bfe0f7f410a303740b0",
+          "name": "San Esteban Protomártir",
+          "day": 26,
+          "month": "12"
+        }
+      ],
+      "description": null,
+      "massSchedule": null,
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "cover": 66,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-10-06T18:20:46.734Z",
+      "createdAt": "2026-10-06T18:20:46.734Z"
+    },
+    {
+      "id": 54,
+      "name": "Ermita San Antonio de Padua",
+      "slug": "ermita-san-antonio-de-padua",
+      "sector": 227,
+      "patronOrDedication": "San Antonio de Padua",
+      "patronalFeasts": [
+        {
+          "id": "6a7e67d3b850ce0bc8eab935",
+          "name": "San Antonio de Padua",
+          "day": 13,
+          "month": "6"
+        }
+      ],
+      "description": null,
+      "massSchedule": "Hora Santa: jueves, 6:30 p.m.",
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "cover": 47,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-09-07T23:47:28.169Z",
+      "createdAt": "2026-08-14T00:56:51.223Z"
+    },
+    {
+      "id": 25,
+      "name": "Ermita de Las Cruces",
+      "slug": "ermita-las-cruces",
+      "sector": 52,
+      "patronOrDedication": "Nuestra Señora de Fatima",
+      "patronalFeasts": [
+        {
+          "id": "6a5febfc315c575a2c50b102",
+          "name": "Nuestra Señora de Fatima",
+          "day": 12,
+          "month": "5"
+        }
+      ],
+      "description": null,
+      "massSchedule": "Celebracion de Palabra - Martes 6:00 PM\nHora Santa - Jueves 6:00 PM",
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "contact": {
+        "phone": "61150995`",
+        "whatsapp": "61150995",
+        "email": "oswaldotrejo024@gmail.com",
+        "socialLinks": []
+      },
+      "cover": null,
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-07-21T22:02:44.673Z",
+      "createdAt": "2026-07-21T22:02:44.673Z"
+    }
+  ]
+}

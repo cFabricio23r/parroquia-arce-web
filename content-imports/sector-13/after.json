@@ -1,0 +1,704 @@
+{
+  "sector": {
+    "id": 228,
+    "name": "Sector 13, Colonia Italia",
+    "slug": "sector-13",
+    "number": 13,
+    "chapelName": "San Esteban Protomártir",
+    "zone": "zona-3",
+    "patron": {
+      "name": "San Esteban Protomártir",
+      "image": null
+    },
+    "summary": "Sector 13, Colonia Italia. Fiesta patronal: 26 de diciembre, en honor a San Esteban Protomártir. Medios de crecimiento: Comunidades de Fe, Escuela de Formación Básica en la Fe e Infancia y Adolescencia Misionera (IAM).",
+    "description": null,
+    "history": {
+      "root": {
+        "type": "root",
+        "format": "",
+        "indent": 0,
+        "version": 1,
+        "children": [
+          {
+            "type": "paragraph",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "mode": "normal",
+                "text": "La comunidad católica del sector 13, Colonia Italia, tiene sus inicios entre 2001 y 2002. Originalmente pertenecía a la parroquia del Congo; luego pasó a formar parte de la Parroquia Inmaculada Concepción de María de Ciudad Arce. Gracias al esfuerzo de los hermanos, actualmente contamos con nuestra ermita y un aula para la Escuela Básica en la Fe, mientras se continúa con los trabajos pastorales y de infraestructura.",
+                "type": "text",
+                "style": "",
+                "detail": 0,
+                "format": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "textFormat": 0
+          }
+        ],
+        "direction": "ltr"
+      }
+    },
+    "perseverance": {
+      "count": null,
+      "label": "miembros que perseveran"
+    },
+    "groups": [
+      {
+        "id": 165,
+        "name": "Escuela de Formación Básica en la Fe",
+        "slug": "escuela-basica-en-la-fe",
+        "type": "formacion",
+        "actionLine": "ninez-juventud-vocacion",
+        "summary": null,
+        "description": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Para el proceso de enseñanza aprendizaje utilizamos un material didáctico de acuerdo a la edad, con el que fomentamos los valores religiosos católicos.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Se realizan reuniones cada 2 meses con los padres de familia o responsables de los niños inscritos durante el año.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "A la fecha contamos con 40 hermanos y hermanas catequistas a nivel parroquial, y nuestras reuniones como equipo de catequistas son cada dos meses.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "La imagen de la Inmaculada Concepción de María nos caracteriza como Parroquia, ya que las primeras comuniones se realizan en el marco de la celebración de las fiestas patronales en honor a la Inmaculada Concepción de María.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textFormat": 0
+              }
+            ],
+            "direction": "ltr"
+          }
+        },
+        "history": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "La doctrina católica dirigida a niños y niñas de la parroquia dio inicio en el año de 1945, siendo sacerdote el Padre Francisco Ayala Martínez, quien preparó a los hermanos Víctor Rivas y hna. Cristina Gutiérrez como primeros catequistas a nivel parroquial. Se impartía únicamente en el pueblo y el centro de reuniones para la catequesis era el Templo parroquial. Ellos recibieron la formación religiosa impartida por Monseñor Luis Chávez y González en el Arzobispado de San Salvador.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Luego que la Parroquia se organizó por sectores en el año 2004, con el Párroco y ahora Monseñor Óscar Álvarez Orellana, se comenzaron a atender a más niños y niñas con los diferentes catequistas representantes de cada sector.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "En la zona rural se daba la doctrina en las ermitas y en la casa de los catequistas; en el casco urbano, la preparación de niños y niñas para la primera comunión se extendió a los barrios o sectores. Hasta la actualidad la doctrina se imparte gradualmente desde los 6 años hasta los 10 años de edad.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textFormat": 0
+              }
+            ],
+            "direction": "ltr"
+          }
+        },
+        "perseverance": {
+          "count": 40,
+          "label": "catequistas"
+        },
+        "patron": {
+          "name": null,
+          "image": 45
+        },
+        "patronalFeasts": [],
+        "meeting": {
+          "day": null,
+          "time": null,
+          "place": null
+        },
+        "howToJoin": null,
+        "team": [
+          {
+            "id": "6a7b9146c168299c98c00a9f",
+            "name": "Gladys Alvarado",
+            "role": "Equipo coordinador",
+            "photo": null
+          },
+          {
+            "id": "6a7b9146c168299c98c00aa0",
+            "name": "Maira Erazo",
+            "role": "Equipo coordinador",
+            "photo": null
+          },
+          {
+            "id": "6a7b9146c168299c98c00aa1",
+            "name": "Ernesto Flores",
+            "role": "Equipo coordinador",
+            "photo": null
+          },
+          {
+            "id": "6a7b9146c168299c98c00aa2",
+            "name": "Cristina de Pacheco",
+            "role": "Equipo coordinador",
+            "photo": null
+          }
+        ],
+        "contact": {
+          "phone": null,
+          "whatsapp": null,
+          "email": null,
+          "socialLinks": []
+        },
+        "coordinatorName": null,
+        "logo": null,
+        "cover": null,
+        "groupPhoto": 44,
+        "gallery": [
+          46
+        ],
+        "isFeatured": false,
+        "status": "published",
+        "publishedAt": null,
+        "updatedAt": "2026-09-07T23:47:50.618Z",
+        "createdAt": "2026-08-11T21:16:54.102Z"
+      },
+      {
+        "id": 164,
+        "name": "Infancia y Adolescencia Misionera (IAM)",
+        "slug": "iam",
+        "type": "pastoral",
+        "actionLine": "ninez-juventud-vocacion",
+        "summary": null,
+        "description": null,
+        "history": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "A inicios del año 2010, Monseñor Óscar Álvarez, quien en ese momento era el Párroco de la parroquia, reunió a 4 hermanas a quienes les planteó la idea de dar seguimiento a los niños que hacían su primera comunión. Fue así como él nos envió a formación a Santa Tecla, al Secretariado Nacional de la IAM, para poder conocer sobre su proceso de formación.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Así iniciamos con nuestra infancia, teniendo nuestra primera consagración de niños y asesores el 30 de mayo del 2010. Desde entonces hay equipos de Infancia en varios sectores de nuestra parroquia, dando seguimiento a los niños que hacen su primera comunión.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textFormat": 0
+              }
+            ],
+            "direction": "ltr"
+          }
+        },
+        "perseverance": {
+          "count": 110,
+          "label": "miembros: 95 niños y 15 asesores"
+        },
+        "patron": {
+          "name": null,
+          "image": 41
+        },
+        "patronalFeasts": [
+          {
+            "id": "6a7b9145c168299c98c00a99",
+            "name": "Santa Teresita del Niño Jesús",
+            "day": 1,
+            "month": "10"
+          },
+          {
+            "id": "6a7b9145c168299c98c00a9a",
+            "name": "San Francisco Javier",
+            "day": 3,
+            "month": "12"
+          }
+        ],
+        "meeting": {
+          "day": null,
+          "time": null,
+          "place": null
+        },
+        "howToJoin": null,
+        "team": [
+          {
+            "id": "6a7b9145c168299c98c00a9b",
+            "name": "Nancy Lisbeth Portillo de Pacheco",
+            "role": "Coordinadora",
+            "photo": null
+          },
+          {
+            "id": "6a7b9145c168299c98c00a9c",
+            "name": "Paula Valladares",
+            "role": "Equipo secretariado",
+            "photo": null
+          },
+          {
+            "id": "6a7b9145c168299c98c00a9d",
+            "name": "Rocío Alvarado",
+            "role": "Equipo secretariado",
+            "photo": null
+          },
+          {
+            "id": "6a7b9145c168299c98c00a9e",
+            "name": "Esmeralda Chávez",
+            "role": "Equipo secretariado",
+            "photo": null
+          }
+        ],
+        "contact": {
+          "phone": null,
+          "whatsapp": null,
+          "email": null,
+          "socialLinks": []
+        },
+        "coordinatorName": null,
+        "logo": 39,
+        "cover": null,
+        "groupPhoto": 40,
+        "gallery": [
+          42,
+          43
+        ],
+        "isFeatured": false,
+        "status": "published",
+        "publishedAt": null,
+        "updatedAt": "2026-09-07T23:47:50.624Z",
+        "createdAt": "2026-08-11T21:16:53.363Z"
+      }
+    ],
+    "location": {
+      "address": null,
+      "mapUrl": null
+    },
+    "team": [
+      {
+        "id": "6ac53bfd0f7f410a303740af",
+        "name": "Alicia Barraza",
+        "role": "Apóstol / Auxiliar",
+        "photo": null
+      }
+    ],
+    "contact": {
+      "phone": null,
+      "whatsapp": null,
+      "email": null,
+      "socialLinks": []
+    },
+    "responsibleName": null,
+    "assistants": [],
+    "logo": {
+      "id": 64,
+      "alt": "Logo del sector 13, Colonia Italia, con San Esteban Protomártir",
+      "caption": null,
+      "credit": null,
+      "updatedAt": "2026-10-06T18:20:31.202Z",
+      "createdAt": "2026-10-06T18:20:29.620Z",
+      "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/WhatsApp Image 2026-10-05 at 8.22.50 PM.jpeg",
+      "thumbnailURL": null,
+      "filename": "WhatsApp Image 2026-10-05 at 8.22.50 PM.jpeg",
+      "mimeType": "image/jpeg",
+      "filesize": 348667,
+      "width": 1600,
+      "height": 1600,
+      "focalX": 50,
+      "focalY": 50
+    },
+    "cover": {
+      "id": 65,
+      "alt": "Comunidad reunida para la misa en la ermita San Esteban Protomártir",
+      "caption": null,
+      "credit": null,
+      "updatedAt": "2026-10-06T18:20:33.054Z",
+      "createdAt": "2026-10-06T18:20:31.752Z",
+      "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/WhatsApp Image 2026-10-05 at 8.22.51 PM (3).jpeg",
+      "thumbnailURL": null,
+      "filename": "WhatsApp Image 2026-10-05 at 8.22.51 PM (3).jpeg",
+      "mimeType": "image/jpeg",
+      "filesize": 160393,
+      "width": 1280,
+      "height": 960,
+      "focalX": 50,
+      "focalY": 50
+    },
+    "groupPhoto": {
+      "id": 69,
+      "alt": "Comunidad del sector 13 reunida en una calle junto a un altar adornado",
+      "caption": null,
+      "credit": null,
+      "updatedAt": "2026-10-06T18:20:42.549Z",
+      "createdAt": "2026-10-06T18:20:40.917Z",
+      "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/WhatsApp Image 2026-10-05 at 8.22.51 PM (4).jpeg",
+      "thumbnailURL": null,
+      "filename": "WhatsApp Image 2026-10-05 at 8.22.51 PM (4).jpeg",
+      "mimeType": "image/jpeg",
+      "filesize": 233210,
+      "width": 1280,
+      "height": 960,
+      "focalX": 50,
+      "focalY": 50
+    },
+    "gallery": [
+      {
+        "id": 66,
+        "alt": "Fachada de la ermita con una cruz sobre el techo y banderines de colores",
+        "caption": null,
+        "credit": null,
+        "updatedAt": "2026-10-06T18:20:34.568Z",
+        "createdAt": "2026-10-06T18:20:33.595Z",
+        "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/WhatsApp Image 2026-10-05 at 8.22.51 PM (1).jpeg",
+        "thumbnailURL": null,
+        "filename": "WhatsApp Image 2026-10-05 at 8.22.51 PM (1).jpeg",
+        "mimeType": "image/jpeg",
+        "filesize": 139079,
+        "width": 1280,
+        "height": 960,
+        "focalX": 50,
+        "focalY": 50
+      },
+      {
+        "id": 67,
+        "alt": "Sagrario dorado bajo el crucifijo, con velas y flores blancas y amarillas",
+        "caption": null,
+        "credit": null,
+        "updatedAt": "2026-10-06T18:20:37.320Z",
+        "createdAt": "2026-10-06T18:20:35.500Z",
+        "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/WhatsApp Image 2026-10-05 at 8.22.50 PM (2).jpeg",
+        "thumbnailURL": null,
+        "filename": "WhatsApp Image 2026-10-05 at 8.22.50 PM (2).jpeg",
+        "mimeType": "image/jpeg",
+        "filesize": 163098,
+        "width": 1133,
+        "height": 1280,
+        "focalX": 50,
+        "focalY": 50
+      },
+      {
+        "id": 68,
+        "alt": "Imagen de la Virgen con un rosario junto al sagrario y al crucifijo",
+        "caption": null,
+        "credit": null,
+        "updatedAt": "2026-10-06T18:20:40.384Z",
+        "createdAt": "2026-10-06T18:20:38.269Z",
+        "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/WhatsApp Image 2026-10-05 at 8.22.50 PM (1).jpeg",
+        "thumbnailURL": null,
+        "filename": "WhatsApp Image 2026-10-05 at 8.22.50 PM (1).jpeg",
+        "mimeType": "image/jpeg",
+        "filesize": 120329,
+        "width": 960,
+        "height": 1280,
+        "focalX": 50,
+        "focalY": 50
+      },
+      {
+        "id": 70,
+        "alt": "Interior de la ermita con bancos y el altar adornado con flores",
+        "caption": null,
+        "credit": null,
+        "updatedAt": "2026-10-06T18:20:43.933Z",
+        "createdAt": "2026-10-06T18:20:43.005Z",
+        "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/WhatsApp Image 2026-10-05 at 8.22.51 PM (2).jpeg",
+        "thumbnailURL": null,
+        "filename": "WhatsApp Image 2026-10-05 at 8.22.51 PM (2).jpeg",
+        "mimeType": "image/jpeg",
+        "filesize": 134711,
+        "width": 1280,
+        "height": 960,
+        "focalX": 50,
+        "focalY": 50
+      },
+      {
+        "id": 71,
+        "alt": "Altar de la ermita con el sagrario, el crucifijo e imágenes religiosas entre flores",
+        "caption": null,
+        "credit": null,
+        "updatedAt": "2026-10-06T18:20:45.190Z",
+        "createdAt": "2026-10-06T18:20:44.357Z",
+        "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/WhatsApp Image 2026-10-05 at 8.22.51 PM.jpeg",
+        "thumbnailURL": null,
+        "filename": "WhatsApp Image 2026-10-05 at 8.22.51 PM.jpeg",
+        "mimeType": "image/jpeg",
+        "filesize": 151776,
+        "width": 1280,
+        "height": 960,
+        "focalX": 50,
+        "focalY": 50
+      }
+    ],
+    "isFeatured": false,
+    "status": "published",
+    "publishedAt": null,
+    "updatedAt": "2026-10-06T18:20:45.636Z",
+    "createdAt": "2026-08-14T00:42:44.589Z"
+  },
+  "chapels": [
+    {
+      "id": 55,
+      "name": "Ermita San Esteban Protomártir",
+      "slug": "ermita-san-esteban-protomartir-sector-13",
+      "sector": {
+        "id": 228,
+        "name": "Sector 13, Colonia Italia",
+        "slug": "sector-13",
+        "number": 13,
+        "chapelName": "San Esteban Protomártir",
+        "zone": "zona-3",
+        "patron": {
+          "name": "San Esteban Protomártir",
+          "image": null
+        },
+        "summary": "Sector 13, Colonia Italia. Fiesta patronal: 26 de diciembre, en honor a San Esteban Protomártir. Medios de crecimiento: Comunidades de Fe, Escuela de Formación Básica en la Fe e Infancia y Adolescencia Misionera (IAM).",
+        "description": null,
+        "history": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "La comunidad católica del sector 13, Colonia Italia, tiene sus inicios entre 2001 y 2002. Originalmente pertenecía a la parroquia del Congo; luego pasó a formar parte de la Parroquia Inmaculada Concepción de María de Ciudad Arce. Gracias al esfuerzo de los hermanos, actualmente contamos con nuestra ermita y un aula para la Escuela Básica en la Fe, mientras se continúa con los trabajos pastorales y de infraestructura.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textFormat": 0
+              }
+            ],
+            "direction": "ltr"
+          }
+        },
+        "perseverance": {
+          "count": null,
+          "label": "miembros que perseveran"
+        },
+        "groups": [
+          165,
+          164
+        ],
+        "location": {
+          "address": null,
+          "mapUrl": null
+        },
+        "team": [
+          {
+            "id": "6ac53bfd0f7f410a303740af",
+            "name": "Alicia Barraza",
+            "role": "Apóstol / Auxiliar",
+            "photo": null
+          }
+        ],
+        "contact": {
+          "phone": null,
+          "whatsapp": null,
+          "email": null,
+          "socialLinks": []
+        },
+        "responsibleName": null,
+        "assistants": [],
+        "logo": 64,
+        "cover": 65,
+        "groupPhoto": 69,
+        "gallery": [
+          66,
+          67,
+          68,
+          70,
+          71
+        ],
+        "isFeatured": false,
+        "status": "published",
+        "publishedAt": null,
+        "updatedAt": "2026-10-06T18:20:45.636Z",
+        "createdAt": "2026-08-14T00:42:44.589Z"
+      },
+      "patronOrDedication": "San Esteban Protomártir",
+      "patronalFeasts": [
+        {
+          "id": "6ac53bfe0f7f410a303740b0",
+          "name": "San Esteban Protomártir",
+          "day": 26,
+          "month": "12"
+        }
+      ],
+      "description": null,
+      "massSchedule": null,
+      "location": {
+        "address": null,
+        "mapUrl": null
+      },
+      "contact": {
+        "phone": null,
+        "whatsapp": null,
+        "email": null,
+        "socialLinks": []
+      },
+      "cover": {
+        "id": 66,
+        "alt": "Fachada de la ermita con una cruz sobre el techo y banderines de colores",
+        "caption": null,
+        "credit": null,
+        "updatedAt": "2026-10-06T18:20:34.568Z",
+        "createdAt": "2026-10-06T18:20:33.595Z",
+        "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/WhatsApp Image 2026-10-05 at 8.22.51 PM (1).jpeg",
+        "thumbnailURL": null,
+        "filename": "WhatsApp Image 2026-10-05 at 8.22.51 PM (1).jpeg",
+        "mimeType": "image/jpeg",
+        "filesize": 139079,
+        "width": 1280,
+        "height": 960,
+        "focalX": 50,
+        "focalY": 50
+      },
+      "status": "published",
+      "publishedAt": null,
+      "updatedAt": "2026-10-06T18:20:46.734Z",
+      "createdAt": "2026-10-06T18:20:46.734Z"
+    }
+  ]
+}

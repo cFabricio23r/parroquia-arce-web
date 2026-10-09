@@ -1,0 +1,139 @@
+{
+  "name": "Escuela de Acólitos",
+  "slug": "escuela-de-acolitos",
+  "type": "formacion",
+  "status": "published",
+  "summary": "Escuela que acompaña a los niños en su formación para servir al Señor en el altar, abierta en la parroquia desde 2001.",
+  "description": {
+    "root": {
+      "type": "root",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "direction": "ltr",
+      "children": [
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "direction": "ltr",
+          "textFormat": 0,
+          "children": [
+            {
+              "type": "text",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "text": "La Escuela de Acólitos ofrece a los niños que hacen la Primera Comunión la oportunidad de integrarse y servir al Señor en el altar. La Comisión de Liturgia atiende este grupo desde 2001 y abre la Escuela cada año.",
+              "version": 1
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "direction": "ltr",
+          "textFormat": 0,
+          "children": [
+            {
+              "type": "text",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "text": "Según la información entregada, perseveran 70 niños a nivel parroquial, incluyendo Flor Amarilla, Divina Providencia y Ciudad Obrera. De ese total, 45 pertenecen al grupo de la parroquia.",
+              "version": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "history": {
+    "root": {
+      "type": "root",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "direction": "ltr",
+      "children": [
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "direction": "ltr",
+          "textFormat": 0,
+          "children": [
+            {
+              "type": "text",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "text": "El 20 de julio de 1996, el padre Óscar Álvarez Orellana fundó la Comisión de Liturgia, integrada por un número considerable de hermanos del área urbana y rural. Desde esa fecha se reunían los sábados de 9 a 11 de la mañana.",
+              "version": 1
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "direction": "ltr",
+          "textFormat": 0,
+          "children": [
+            {
+              "type": "text",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "text": "En esa época, las misas dominicales se celebraban a las 6 y 9 de la mañana y a las 4 de la tarde. Posteriormente, la misa de las 4 de la tarde se trasladó a las 5 de la tarde.",
+              "version": 1
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "direction": "ltr",
+          "textFormat": 0,
+          "children": [
+            {
+              "type": "text",
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "text": "En 2001, por disposición del párroco, la comisión asumió la atención del grupo de Acólitos de la parroquia. Así se abrió la Escuela de Acólitos cada año, ofreciendo a los niños que hacen la Primera Comunión la oportunidad de integrarse y servir al Señor en el altar.",
+              "version": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "team": [
+    {
+      "name": "Diana Cristina Benítez Jove",
+      "role": "Encargada"
+    },
+    {
+      "name": "Jessica María López",
+      "role": "Encargada"
+    }
+  ],
+  "perseverance": {
+    "count": 70,
+    "label": "niños a nivel parroquial; 45 en el grupo de la parroquia"
+  },
+  "howToJoin": "La Escuela abre cada año y ofrece a los niños que hacen la Primera Comunión la oportunidad de integrarse para servir al Señor en el altar."
+}

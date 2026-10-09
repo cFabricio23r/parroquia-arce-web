@@ -14,6 +14,8 @@ import { svDate, svParts, svStartOfToday, svTime } from '@/lib/sv-date'
 import { eventTypeLabel } from '@/lib/event-types'
 import { deriveSchedule } from '@/lib/parish-schedule'
 import { GroupCard } from '@/components/community/GroupCard'
+import { ClergySection } from '@/components/community/ClergySection'
+import { getClergyProfiles } from '@/lib/get-clergy'
 import { RadioLiveBar } from '@/components/site/radio/RadioLiveBar'
 import { isValidTime, toRadioProgramView } from '@/lib/radio-schedule'
 
@@ -38,7 +40,7 @@ const eventTypeVariant = (t?: string | null): Variant =>
 export default async function HomePage() {
   const payload = await getPayload({ config: await config })
 
-  const [eventsRes, groupsRes, newsRes, sectorsRes, radioRes, homeGlobal, settings, contactGlobal] =
+  const [eventsRes, groupsRes, newsRes, sectorsRes, radioRes, homeGlobal, settings, contactGlobal, clergyProfiles] =
     await Promise.all([
     // "Proximas actividades": solo de hoy en adelante. El corte es la
     // medianoche de El Salvador, asi lo de esta manana sigue en la portada
@@ -60,6 +62,7 @@ export default async function HomePage() {
     payload.findGlobal({ slug: 'home' }),
     payload.findGlobal({ slug: 'settings' }),
     payload.findGlobal({ slug: 'contact' }),
+    getClergyProfiles(),
   ])
 
   // Hero editable desde el global `home`. Cada campo cae a su valor editorial
@@ -587,6 +590,7 @@ export default async function HomePage() {
           </Container>
         </section>
       )}
+      <ClergySection profiles={clergyProfiles} />
     </>
   )
 }

@@ -1,0 +1,45 @@
+{
+  "sector": {
+    "id": 228,
+    "name": "Sector 13, Colonia Italia",
+    "slug": "sector-13",
+    "number": 13,
+    "chapelName": null,
+    "zone": "zona-3",
+    "patron": {
+      "name": "San Esteban Protomártir",
+      "image": null
+    },
+    "summary": null,
+    "description": null,
+    "history": null,
+    "perseverance": {
+      "count": null,
+      "label": "miembros que perseveran"
+    },
+    "groups": [],
+    "location": {
+      "address": null,
+      "mapUrl": null
+    },
+    "team": [],
+    "contact": {
+      "phone": null,
+      "whatsapp": null,
+      "email": null,
+      "socialLinks": []
+    },
+    "responsibleName": null,
+    "assistants": [],
+    "logo": null,
+    "cover": null,
+    "groupPhoto": null,
+    "gallery": [],
+    "isFeatured": false,
+    "status": "published",
+    "publishedAt": null,
+    "updatedAt": "2026-09-07T23:46:45.572Z",
+    "createdAt": "2026-08-14T00:42:44.589Z"
+  },
+  "chapels": []
+}

@@ -41,7 +41,7 @@ export const Chapels: CollectionConfig = {
     {
       name: 'massSchedule',
       type: 'textarea',
-      label: 'Horario de misas',
+      label: 'Horarios y celebraciones',
       admin: { description: 'Una línea por horario.' },
     },
     locationField(),

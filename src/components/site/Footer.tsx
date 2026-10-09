@@ -4,6 +4,7 @@ import config from '@/payload.config'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { deriveSchedule } from '@/lib/parish-schedule'
+import { getClergyProfiles } from '@/lib/get-clergy'
 import { Mark } from './Mark'
 
 const VIDA_BASE = [
@@ -31,9 +32,10 @@ const PLATFORM_LABEL: Record<string, string> = {
 
 export async function Footer() {
   const payload = await getPayload({ config: await config })
-  const [contact, settings] = await Promise.all([
+  const [contact, settings, clergyProfiles] = await Promise.all([
     payload.findGlobal({ slug: 'contact' }),
     payload.findGlobal({ slug: 'settings' }),
+    getClergyProfiles(),
   ])
 
   const parishName = contact.parishName || 'Inmaculada Concepción'
@@ -42,7 +44,10 @@ export async function Footer() {
   const channels = (contact.channels ?? []).filter((c) => c.url && c.platform)
   const radioLive = settings.radio?.available ?? true
   const { hasMisas } = deriveSchedule(contact)
-  const vida = vidaFor(hasMisas)
+  const vida = [
+    ...vidaFor(hasMisas),
+    ...(clergyProfiles.length ? [{ href: '/sacerdotes', label: 'Nuestros sacerdotes' }] : []),
+  ]
   const isoFooter = settings.marca?.isotipo
   const brandFooter =
     isoFooter && typeof isoFooter === 'object'

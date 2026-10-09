@@ -54,7 +54,7 @@ export function ChapelCard({ chapel }: { chapel: Chapel }) {
         {schedule.length > 0 && (
           <div className="mt-5">
             <h4 className="mb-2 text-[12px] font-bold uppercase tracking-[.1em] text-muted">
-              Horario de misas
+              Horarios y celebraciones
             </h4>
             <ul className="flex flex-col gap-1 text-[14.5px]">
               {schedule.map((line, i) => (

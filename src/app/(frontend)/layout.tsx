@@ -6,6 +6,7 @@ import config from '@/payload.config'
 import { Header } from '@/components/site/Header'
 import { Footer } from '@/components/site/Footer'
 import { RadioProvider } from '@/components/site/radio/RadioProvider'
+import { LiveWidget } from '@/components/site/social/LiveWidget'
 import { deriveSchedule } from '@/lib/parish-schedule'
 import './globals.css'
 
@@ -83,6 +84,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
           <Header channels={channels} radioLive={radioLive} brand={isotipo} hasSchedule={hasMisas} />
           <main>{children}</main>
           <Footer />
+          <LiveWidget />
         </RadioProvider>
       </body>
     </html>

@@ -1,0 +1,302 @@
+[
+  {
+    "url": "http://localhost:3100/sectores/sector-23",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-21",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-20",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-19",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-17",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-16",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-14",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-13",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-12",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-11",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-10",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-9",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-7",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-6",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-5",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-4",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-3",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-2",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-1",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-8",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-15",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/sectores/sector-22",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/escuela-de-predicadores",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/comision-de-medio-ambiente",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/pastoral-social",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/comision-de-apostoles",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/pastoral-vocacional",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/pastoral-juvenil",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/pastoral-familiar",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/veteranos-de-pj",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/tercera-orden-franciscana",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/pequenos-hermanos-de-maria",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/pequenas-comunidades",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/comision-de-evangelizacion",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/ministerios-de-alabanza",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/comunicacion-social",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/adoradores-del-santisimo",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/hermandad-del-santo-entierro",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/escuela-basica-en-la-fe",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/iam",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/mec",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/comision-de-liturgia",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/rcc",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/comision-de-formacion",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/jumi",
+    "status": 200,
+    "title": true
+  },
+  {
+    "url": "http://localhost:3100/grupos/consejo-economico",
+    "status": 200,
+    "title": true
+  },
+  {
+    "image": 74,
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "image": 75,
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "image": 76,
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "image": 77,
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "image": 78,
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "image": 79,
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "image": 80,
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "image": 81,
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "image": 82,
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "image": 83,
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "image": 84,
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "image": 85,
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "image": 86,
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "image": 87,
+    "status": 200,
+    "type": "image/jpeg"
+  }
+]
