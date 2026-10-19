@@ -1,3 +1,4 @@
+import { Reveal } from '@/components/news/Reveal'
 import Link from 'next/link'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
@@ -36,7 +37,7 @@ export async function Footer() {
   return (
     <footer className="border-t border-white/10 bg-navy-deep text-[#B6C6DD]">
       <Container>
-        <div className="grid gap-9 py-10 sm:grid-cols-2 sm:py-12 lg:grid-cols-[1.15fr_1fr_1.2fr] lg:gap-14">
+        <Reveal className="grid gap-9 py-10 sm:grid-cols-2 sm:py-12 lg:grid-cols-[1.15fr_1fr_1.2fr] lg:gap-14">
           <div className="min-w-0">
             <Link href="/" className="inline-flex items-center gap-3">
               <Mark
@@ -114,7 +115,7 @@ export async function Footer() {
               Contactar con la parroquia
             </Link>
           </section>
-        </div>
+        </Reveal>
         <div className="border-t border-white/15 py-5 text-[13px] leading-relaxed text-[#A9BCD8]">
           © {new Date().getUTCFullYear()} Parroquia Inmaculada Concepción de María · Ciudad Arce.
         </div>

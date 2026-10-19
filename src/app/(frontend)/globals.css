@@ -131,9 +131,9 @@
    lugares que todavia usan el debil estan anotados como deuda en el vault. */
 .card-hover {
   transition:
-    transform 0.16s,
-    box-shadow 0.2s,
-    border-color 0.2s;
+    transform var(--motion-standard) var(--ease-out),
+    box-shadow var(--motion-standard) ease,
+    border-color var(--motion-standard) ease;
 }
 @media (hover: hover) and (pointer: fine) {
   .card-hover:hover {
@@ -179,5 +179,16 @@
   [class*='hover:']:hover {
     transform: none !important;
     translate: none !important;
+  }
+}
+
+/* Solo se prepara fuera de pantalla; SSR y primer viewport permanecen visibles. */
+[data-reveal='pending'] {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce), print {
+  [data-reveal='pending'] {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

@@ -290,33 +290,36 @@ export default async function HomePage() {
             }`}
           >
             {accesos.map(({ href, title, desc, bg }) => (
-              <Link
-                key={title}
-                href={href}
-                className="card-hover group flex items-start gap-4 rounded-lg border border-border bg-white p-5"
-              >
-                <div
-                  className="grid h-12 w-12 shrink-0 place-items-center rounded-md text-white"
-                  style={{ background: bg }}
+              <Reveal key={title} className="h-full">
+                <Link
+                  href={href}
+                  className="card-hover group flex h-full items-start gap-4 rounded-lg border border-border bg-white p-5"
                 >
-                  <Icon
-                    name={
-                      href === '/horarios'
-                        ? 'clock'
-                        : href === '/sectores'
-                          ? 'pin'
-                          : href === '/noticias'
-                            ? 'calendar'
-                            : 'chat'
-                    }
-                    className="h-6 w-6"
-                  />
-                </div>
-                <div className="min-w-0">
-                  <b className="block font-display text-[18.5px] font-medium text-navy">{title}</b>
-                  <span className="mt-[3px] block text-[13px] text-muted">{desc}</span>
-                </div>
-              </Link>
+                  <div
+                    className="grid h-12 w-12 shrink-0 place-items-center rounded-md text-white"
+                    style={{ background: bg }}
+                  >
+                    <Icon
+                      name={
+                        href === '/horarios'
+                          ? 'clock'
+                          : href === '/sectores'
+                            ? 'pin'
+                            : href === '/noticias'
+                              ? 'calendar'
+                              : 'chat'
+                      }
+                      className="h-6 w-6"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <b className="block font-display text-[18.5px] font-medium text-navy">
+                      {title}
+                    </b>
+                    <span className="mt-[3px] block text-[13px] text-muted">{desc}</span>
+                  </div>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </Container>
