@@ -12,7 +12,7 @@ export function SectionHead({
   lead?: string
 }) {
   return (
-    <div className="mb-10 grid grid-cols-[1.1fr_.9fr] items-end gap-8 max-[1040px]:grid-cols-1 max-[1040px]:gap-[14px]">
+    <div className="mb-7 grid sm:mb-10 grid-cols-[1.1fr_.9fr] items-end gap-8 max-[1040px]:grid-cols-1 max-[1040px]:gap-[14px]">
       <h2 className="font-display text-[clamp(32px,4.2vw,52px)] font-medium leading-[1.04] tracking-[-.01em]">
         {title} {emphasis && <em className="italic text-blue">{emphasis}</em>}
       </h2>

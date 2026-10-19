@@ -52,7 +52,7 @@ export default async function NoticiasPage() {
         style={{ background: 'linear-gradient(180deg, var(--color-bg-soft), #fff)' }}
       >
         <Container>
-          <div className="pb-12 pt-[54px]">
+          <div className="pb-8 pt-8 sm:pb-12 sm:pt-[54px]">
             <div className="mb-[18px] flex items-center gap-[9px] text-[13.5px] text-muted">
               <span>Inicio</span>
               <span className="opacity-50">/</span>
@@ -62,17 +62,16 @@ export default async function NoticiasPage() {
               Noticias y <em className="italic text-blue">formación</em>
             </h1>
             <p className="mt-4 max-w-[60ch] text-[19px] text-muted">
-              Avisos oficiales, crónicas de la comunidad y material de formación católica —
-              ordenados para no depender solo de redes sociales.
+              Avisos oficiales, historias de nuestra comunidad y recursos para crecer en la fe.
             </p>
           </div>
         </Container>
       </section>
 
-      <section className="py-[clamp(56px,7vw,96px)]">
+      <section className="py-[clamp(36px,6vw,72px)]">
         <Container>
           {featured ? (
-            <div className="mb-10 grid grid-cols-[1.4fr_1fr] gap-6 max-[980px]:grid-cols-1">
+            <div className={`mb-10 grid gap-6 ${sideStack.length ? "grid-cols-[1.4fr_1fr] max-[980px]:grid-cols-1" : "mx-auto max-w-[820px] grid-cols-1"}`}>
               <Reveal>
                 <LeadCard item={featured} />
               </Reveal>

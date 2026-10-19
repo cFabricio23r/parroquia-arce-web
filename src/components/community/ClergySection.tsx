@@ -7,7 +7,7 @@ import { getClergyPhoto, type ClergyProfile } from '@/lib/clergy'
 export function ClergySection({ profiles }: { profiles: ClergyProfile[] }) {
   if (!profiles.length) return null
   return (
-    <section className="bg-bg-soft py-[clamp(56px,7vw,96px)]">
+    <section className="bg-bg-soft py-[clamp(36px,6vw,72px)]">
       <Container>
         <SectionHead
           title="Nuestros"

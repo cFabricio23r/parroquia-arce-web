@@ -27,10 +27,10 @@ export default async function SectoresPage() {
         crumbs={[{ label: 'Inicio', href: '/' }, { label: 'Sectores y ermitas' }]}
         title="Sectores y"
         emphasis="ermitas"
-        lead="La parroquia vive en sus comunidades. Encuentra tu sector, su ermita, horarios de misa, responsables y actividades cercanas."
+        lead="La parroquia vive en sus comunidades. Encontrá tu sector, su ermita, horarios de misa, responsables y actividades cercanas."
       />
 
-      <section className="py-[clamp(56px,7vw,96px)]">
+      <section className="py-[clamp(36px,6vw,72px)]">
         <Container>
           {docs.length === 0 ? (
             <p className="text-muted">
@@ -44,10 +44,20 @@ export default async function SectoresPage() {
                     href={`/sectores/${s.slug}`}
                     className="card-hover group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-white"
                   >
-                    <div className="relative h-[170px]">
-                      <MediaImage cover={s.cover} />
+                    <div
+                      className={
+                        typeof s.cover === 'object' && s.cover?.url
+                          ? 'relative h-[170px]'
+                          : 'relative px-6 pt-5'
+                      }
+                    >
+                      {typeof s.cover === 'object' && s.cover?.url && (
+                        <MediaImage cover={s.cover} />
+                      )}
                       {s.number != null && (
-                        <span className="absolute left-[14px] top-[14px] rounded-pill bg-white/[.92] px-[13px] py-[5px] font-display text-[15px] font-semibold text-blue">
+                        <span
+                          className={`${typeof s.cover === 'object' && s.cover?.url ? 'absolute left-[14px] top-[14px]' : 'inline-flex'} rounded-pill bg-white/[.92] px-[13px] py-[5px] font-display text-[15px] font-semibold text-blue`}
+                        >
                           Sector #{s.number}
                         </span>
                       )}

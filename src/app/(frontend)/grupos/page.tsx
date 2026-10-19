@@ -27,7 +27,7 @@ export default async function GruposPage() {
         lead="Espacios para servir, formarse y crecer en fe junto a otros. Encuentra la comunidad donde poner tus dones al servicio de la parroquia."
       />
 
-      <section className="py-[clamp(56px,7vw,96px)]">
+      <section className="py-[clamp(36px,6vw,72px)]">
         <Container>
           {docs.length === 0 ? (
             <p className="text-muted">

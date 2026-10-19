@@ -38,6 +38,9 @@
 
   /* ---- Layout, de ds.css:44 ---- */
   --container-parish: 1200px;
+  --motion-fast: 150ms;
+  --motion-standard: 200ms;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 
   /* ---- Breakpoints: el demo es desktop-first con max-width 1040/620.
          Tailwind es mobile-first, asi que redefinimos sm y lg a esos valores
@@ -48,25 +51,21 @@
 
 /* Animacion del punto "en vivo", de ds.css:81-82 */
 @keyframes pulse-live {
-  0% {
-    box-shadow: 0 0 0 0 rgba(232, 143, 33, 0.55);
-  }
-  70% {
-    box-shadow: 0 0 0 7px rgba(232, 143, 33, 0);
-  }
+  0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(232, 143, 33, 0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
   }
 }
-
-/* Equalizer de la radio — ds.css:198 */
 @keyframes eq-bar {
   0%,
   100% {
-    height: 25%;
+    transform: scaleY(0.25);
   }
   50% {
-    height: 100%;
+    transform: scaleY(1);
   }
 }
 
@@ -132,14 +131,16 @@
    lugares que todavia usan el debil estan anotados como deuda en el vault. */
 .card-hover {
   transition:
-    transform 0.16s,
-    box-shadow 0.2s,
-    border-color 0.2s;
+    transform var(--motion-standard) var(--ease-out),
+    box-shadow var(--motion-standard) ease,
+    border-color var(--motion-standard) ease;
 }
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--color-line-soft);
+@media (hover: hover) and (pointer: fine) {
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-line-soft);
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .card-hover {
@@ -149,5 +150,45 @@
   }
   .card-hover:hover {
     transform: none;
+  }
+}
+
+/* Estados compartidos: visibles con teclado, sin animar la navegación. */
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 4px;
+}
+:where(.bg-navy, .bg-navy-deep) :focus-visible {
+  outline-color: var(--color-sky-light);
+}
+:where(section, article)[id] {
+  scroll-margin-top: 6.5rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .card-hover:hover,
+  [class*='hover:']:hover {
+    transform: none !important;
+    translate: none !important;
+  }
+}
+
+/* Solo se prepara fuera de pantalla; SSR y primer viewport permanecen visibles. */
+[data-reveal='pending'] {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce), print {
+  [data-reveal='pending'] {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

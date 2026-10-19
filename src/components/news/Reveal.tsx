@@ -1,65 +1,66 @@
 'use client'
+import { useEffect, useRef, type ReactNode } from 'react'
 
-import { useEffect, useRef, useState } from 'react'
-
-/**
- * Reveal-on-scroll con progressive enhancement.
- *
- * Arranca VISIBLE en el SSR: si el JS no llega a correr (chunk que no carga,
- * error de hidratacion), el contenido igual se ve — nunca pagina en blanco.
- * Solo si el JS esta vivo y no hay reduced-motion, oculta y anima al entrar en
- * viewport. Red de seguridad de 1400ms (como el demo) por si el observer no
- * dispara.
- */
-export function Reveal({
-  children,
-  className = '',
-}: {
-  children: React.ReactNode
-  className?: string
-}) {
+/** Entradas editoriales al scrollear: nunca ocultar el primer viewport ni depender de JS para leer. */
+export function Reveal({ children, className = '' }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null)
-  // 'visible' es el estado de SSR y el fallback sin JS.
-  const [state, setState] = useState<'visible' | 'hidden'>('visible')
-
   useEffect(() => {
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reduce) return // queda visible, sin animar
-    const el = ref.current
-    if (!el) return
-
-    // El JS esta vivo: recien ahora es seguro ocultar para animar la entrada.
-    setState('hidden')
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setState('visible')
-            io.unobserve(e.target)
-          }
-        })
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' },
+    const element = ref.current
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (
+      !element ||
+      media.matches ||
+      typeof IntersectionObserver === 'undefined' ||
+      typeof element.animate !== 'function'
     )
-    io.observe(el)
-
-    // Red de seguridad: si el observer no dispara, visible igual.
-    const safety = window.setTimeout(() => setState('visible'), 1400)
-
+      return
+    if (element.getBoundingClientRect().top < window.innerHeight) return
+    let shown = false
+    let animation: Animation | undefined
+    const show = () => {
+      shown = true
+      delete element.dataset.reveal
+      animation?.cancel()
+      observer.disconnect()
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (shown || !entries.some((entry) => entry.isIntersecting)) return
+        shown = true
+        delete element.dataset.reveal
+        observer.disconnect()
+        const siblings = element.parentElement ? Array.from(element.parentElement.children) : []
+        const delay = Math.min(Math.max(siblings.indexOf(element), 0), 3) * 50
+        try {
+          // 420 ms para entrada editorial ocasional; los controles conservan su respuesta rápida.
+          animation = element.animate(
+            [
+              { opacity: 0, transform: 'translateY(18px)' },
+              { opacity: 1, transform: 'translateY(0)' },
+            ],
+            { duration: 420, delay, easing: 'cubic-bezier(.23,1,.32,1)', fill: 'backwards' },
+          )
+        } catch {
+          show()
+        }
+      },
+      { threshold: 0, rootMargin: '0px 0px 40px 0px' },
+    )
+    const onPreference = () => {
+      if (media.matches) show()
+    }
+    element.dataset.reveal = 'pending'
+    observer.observe(element)
+    element.addEventListener('focusin', show)
+    media.addEventListener('change', onPreference)
     return () => {
-      io.disconnect()
-      window.clearTimeout(safety)
+      show()
+      element.removeEventListener('focusin', show)
+      media.removeEventListener('change', onPreference)
     }
   }, [])
-
   return (
-    <div
-      ref={ref}
-      className={`transition-[opacity,transform] duration-700 ease-[cubic-bezier(.2,.7,.3,1)] ${
-        state === 'visible' ? 'translate-y-0 opacity-100' : 'translate-y-[22px] opacity-0'
-      } ${className}`}
-    >
+    <div ref={ref} className={`min-w-0 ${className}`}>
       {children}
     </div>
   )

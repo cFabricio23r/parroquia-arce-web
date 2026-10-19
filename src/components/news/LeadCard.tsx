@@ -8,7 +8,7 @@ export function LeadCard({ item }: { item: News }) {
   return (
     <Link
       href={`/noticias/${item.slug}`}
-      className="group relative flex min-h-[380px] flex-col justify-end overflow-hidden rounded-xl p-9 text-white shadow-md"
+      className="group relative flex min-h-[280px] sm:min-h-[340px] flex-col justify-end overflow-hidden rounded-xl p-9 text-white shadow-md"
     >
       {/* Imagen de fondo (o gradiente) */}
       <div className="absolute inset-0">
@@ -38,7 +38,7 @@ export function LeadCard({ item }: { item: News }) {
           {item.excerpt}
         </p>
       )}
-      <span className="relative mt-4 text-[14.5px] font-bold text-white opacity-0 transition-opacity group-hover:opacity-100">
+      <span className="relative mt-4 text-[14.5px] font-bold text-white opacity-100">
         Leer más →
       </span>
     </Link>
