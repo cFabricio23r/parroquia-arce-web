@@ -1,37 +1,33 @@
 'use client'
-
-import { useEffect, useState } from 'react'
-import type { ReactNode } from 'react'
-
+import { useEffect, useState, type ReactNode } from 'react'
 export type HeroImage = { url: string; alt: string }
-
-/**
- * Fondo del hero: rota entre las fotos cargadas en el CMS (cross-fade + dots).
- * Si no hay fotos, muestra un fondo navy sobrio para que nunca quede en blanco.
- * El contenido (texto, botones, barra de misas) va como `children`, encima.
- */
 export function HeroSlider({ images, children }: { images: HeroImage[]; children: ReactNode }) {
   const [active, setActive] = useState(0)
-  const has = images.length > 0
+  const [paused, setPaused] = useState(false)
+  const [reduce, setReduce] = useState(true)
   const multi = images.length > 1
-
   useEffect(() => {
-    if (!multi) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const sync = () => setReduce(media.matches)
+    sync()
+    media.addEventListener('change', sync)
+    return () => media.removeEventListener('change', sync)
+  }, [])
+  useEffect(() => {
+    if (!multi || paused || reduce) return
     const id = setInterval(() => setActive((p) => (p + 1) % images.length), 6000)
     return () => clearInterval(id)
-  }, [multi, images.length])
-
+  }, [multi, paused, reduce, images.length])
   return (
     <div
       role="region"
       aria-label="Portada de la parroquia"
-      className="relative flex min-h-[600px] flex-col justify-end overflow-hidden"
+      className="relative flex min-h-[440px] flex-col justify-end overflow-hidden sm:min-h-[520px]"
     >
-      {has ? (
+      {images.length ? (
         images.map((img, i) => (
           <div
-            key={i}
+            key={img.url + i}
             aria-hidden={i !== active}
             role="img"
             aria-label={i === active ? img.alt : undefined}
@@ -40,47 +36,45 @@ export function HeroSlider({ images, children }: { images: HeroImage[]; children
           />
         ))
       ) : (
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(120% 90% at 78% 6%, rgba(97,194,230,.22), transparent 55%), radial-gradient(90% 80% at 10% 100%, rgba(232,143,33,.15), transparent 60%), linear-gradient(155deg, #12365f, var(--color-navy) 52%, var(--color-navy-deep))',
-          }}
-        />
+        <div className="absolute inset-0 bg-navy" />
       )}
-
-      {/* Scrim para legibilidad del texto: vertical (para la barra y el texto)
-          + lateral izquierdo (para que la columna de texto se lea sobre
-          cualquier foto, incluso en las zonas claras de arriba). */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(0deg, rgba(5,23,51,.9) 0%, rgba(5,23,51,.6) 34%, rgba(5,23,51,.28) 58%, rgba(5,23,51,.12) 78%, transparent 100%), linear-gradient(105deg, rgba(5,23,51,.62) 0%, rgba(5,23,51,.28) 34%, transparent 62%)',
+            'linear-gradient(0deg, rgba(5,23,51,.94), rgba(5,23,51,.6) 40%, rgba(5,23,51,.2)), linear-gradient(105deg, rgba(5,23,51,.5), transparent 80%)',
         }}
       />
-
       {multi && (
-        <div className="absolute left-[clamp(24px,5vw,64px)] top-6 z-10 flex gap-2">
+        <div className="absolute right-4 top-2 z-20 flex items-center gap-1 rounded-pill bg-navy-deep/75 px-2 text-white">
           {images.map((_, i) => (
             <button
               key={i}
               type="button"
-              onClick={() => setActive(i)}
+              onClick={() => {
+                setActive(i)
+                setPaused(true)
+              }}
               aria-label={`Ver foto ${i + 1}`}
               aria-current={i === active}
-              className={`h-2 rounded-full transition-all ${i === active ? 'w-[22px] bg-amber' : 'w-2 bg-white/40 hover:bg-white/70'}`}
-            />
+              className="grid h-11 w-11 place-items-center rounded-full focus-visible:outline-white"
+            >
+              <span
+                className={`h-2 w-2 rounded-full ${i === active ? 'bg-amber' : 'bg-white/60'}`}
+              />
+            </button>
           ))}
+          {!reduce && (
+            <button
+              type="button"
+              onClick={() => setPaused((p) => !p)}
+              className="min-h-11 rounded-pill px-3 text-sm font-semibold focus-visible:outline-white"
+            >
+              {paused ? 'Reanudar fotos' : 'Pausar fotos'}
+            </button>
+          )}
         </div>
       )}
-
-      {!has && (
-        <span className="absolute right-6 top-[22px] z-10 text-xs text-white/50">
-          Agregá fotos desde el panel de administración
-        </span>
-      )}
-
       <div className="relative z-10">{children}</div>
     </div>
   )

@@ -38,7 +38,7 @@ export function RadioHero({ programs }: { programs: RadioProgramView[] }) {
     <div className="relative mx-auto max-w-[640px] text-center">
       {available ? (
         <span className="inline-flex items-center gap-[9px] text-[12.5px] font-bold uppercase tracking-[.13em] text-sky-light">
-          <span className="h-2 w-2 rounded-full bg-amber [animation:pulse-live_2s_infinite]" />
+          <span className="h-2 w-2 rounded-full focus-visible:outline-white bg-amber [animation:pulse-live_2s_infinite]" />
           Al aire ahora
         </span>
       ) : (
@@ -53,11 +53,7 @@ export function RadioHero({ programs }: { programs: RadioProgramView[] }) {
       </h1>
 
       <p className="mt-1.5 text-[14.5px] text-[#B6C6DD]">
-        {!available
-          ? 'Volvemos pronto.'
-          : current
-            ? subtitulo
-            : 'Continuidad entre programas.'}
+        {!available ? 'Volvemos pronto.' : current ? subtitulo : 'Continuidad entre programas.'}
       </p>
 
       <div className="mt-7 flex flex-wrap items-center justify-center gap-6">
@@ -65,7 +61,7 @@ export function RadioHero({ programs }: { programs: RadioProgramView[] }) {
           onClick={toggle}
           disabled={!available}
           aria-label={playing ? 'Pausar' : 'Reproducir'}
-          className="grid h-16 w-16 flex-none place-items-center rounded-full bg-amber text-white shadow-[0_12px_26px_-8px_rgba(232,143,33,.6)] transition-transform duration-150 hover:scale-105 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100"
+          className="grid h-16 w-16 flex-none place-items-center rounded-full focus-visible:outline-white bg-amber text-navy-deep shadow-[0_12px_26px_-8px_rgba(232,143,33,.6)] transition-transform duration-150 hover:scale-105 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" className="h-[26px] w-[26px]">
             {playing ? <path d="M7 5h4v14H7zM13 5h4v14h-4z" /> : <path d="M8 5v14l11-7z" />}
@@ -79,6 +75,7 @@ export function RadioHero({ programs }: { programs: RadioProgramView[] }) {
               className={`w-[6px] rounded-[4px] ${index % 3 === 2 ? 'bg-amber' : 'bg-sky-light'}`}
               style={{
                 height: available ? `${height}%` : '20%',
+                transformOrigin: 'bottom',
                 animation: 'eq-bar 1.1s ease-in-out infinite',
                 animationDelay: `${(index % 5) * 0.08}s`,
                 animationPlayState: playing ? 'running' : 'paused',

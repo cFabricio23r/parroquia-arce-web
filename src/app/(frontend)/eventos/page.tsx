@@ -16,10 +16,33 @@ export const metadata: Metadata = { title: 'Agenda parroquial' }
 export const revalidate = 300
 
 const MESES = [
-  'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-  'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre',
+  'Enero',
+  'Febrero',
+  'Marzo',
+  'Abril',
+  'Mayo',
+  'Junio',
+  'Julio',
+  'Agosto',
+  'Septiembre',
+  'Octubre',
+  'Noviembre',
+  'Diciembre',
 ]
-const MES_CORTO = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+const MES_CORTO = [
+  'Ene',
+  'Feb',
+  'Mar',
+  'Abr',
+  'May',
+  'Jun',
+  'Jul',
+  'Ago',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dic',
+]
 
 const typeVariant = (t?: string | null): 'blue' | 'sky' | 'amber' => {
   if (t === 'patronal' || t === 'vigilia' || t === 'novena') return 'amber'
@@ -72,20 +95,30 @@ export default async function EventosPage() {
         lead="Una agenda unificada para que cada sector, grupo y comunidad pueda participar mejor en la vida de la parroquia."
       />
 
-      <section className="py-[clamp(56px,7vw,96px)]">
+      <section className="py-[clamp(36px,6vw,72px)]">
         <Container>
           {docs.length === 0 ? (
             <p className="text-muted">
-              No hay actividades próximas en la agenda. El equipo parroquial las carga desde el
-              panel.
+              Pronto compartiremos las próximas actividades de la comunidad.
             </p>
           ) : (
             <>
+              <nav aria-label="Meses de la agenda" className="mb-6 flex flex-wrap gap-2">
+                {months.map((month) => (
+                  <a
+                    key={month.key}
+                    href={`#month-${month.key}`}
+                    className="inline-flex min-h-11 items-center rounded-pill border border-border bg-white px-4 py-2 font-semibold text-blue hover:bg-blue-tint"
+                  >
+                    {month.label}
+                  </a>
+                ))}
+              </nav>
               {featured && (
                 <Reveal>
                   <Link
                     href={`/eventos/${featured.slug}`}
-                    className="group relative mb-[38px] flex min-h-[360px] flex-col justify-end overflow-hidden rounded-xl p-10 text-white shadow-md"
+                    className="group relative mb-[38px] flex min-h-[220px] sm:min-h-[300px] flex-col justify-end overflow-hidden rounded-xl p-6 text-white sm:p-9 shadow-md"
                   >
                     <div className="absolute inset-0">
                       <MediaImage cover={featured.cover} />
@@ -125,7 +158,7 @@ export default async function EventosPage() {
               )}
 
               {months.map(({ key, label, events }) => (
-                <div key={key}>
+                <section key={key} id={`month-${key}`} aria-label={label}>
                   <Reveal className="mb-4 mt-[34px] font-display text-[22px] font-semibold text-blue">
                     {label}
                   </Reveal>
@@ -136,7 +169,7 @@ export default async function EventosPage() {
                         <Reveal key={e.id}>
                           <Link
                             href={`/eventos/${e.slug}`}
-                            className="group grid grid-cols-[auto_1fr_auto] items-center gap-6 rounded-lg border border-border bg-white p-[22px_26px] transition-transform duration-200 hover:-translate-y-0.5 max-[600px]:grid-cols-[auto_1fr]"
+                            className="group grid grid-cols-[auto_1fr_auto] items-center gap-6 rounded-lg border border-border bg-white p-4 sm:p-[22px_26px] transition-transform duration-200 hover:-translate-y-0.5 max-[600px]:grid-cols-[auto_1fr]"
                           >
                             <span className="grid h-16 w-16 flex-none place-items-center rounded-md bg-blue-tint text-center text-blue">
                               <span className="block font-display text-[26px] font-semibold leading-none">
@@ -156,7 +189,10 @@ export default async function EventosPage() {
                               </div>
                             </div>
                             {e.eventType && (
-                              <Badge variant={typeVariant(e.eventType)} className="max-[600px]:hidden">
+                              <Badge
+                                variant={typeVariant(e.eventType)}
+                                className="max-[600px]:hidden"
+                              >
                                 {eventTypeLabel(e.eventType)}
                               </Badge>
                             )}
@@ -165,7 +201,7 @@ export default async function EventosPage() {
                       )
                     })}
                   </div>
-                </div>
+                </section>
               ))}
             </>
           )}
