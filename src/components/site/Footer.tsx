@@ -1,27 +1,11 @@
 import Link from 'next/link'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
-import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { deriveSchedule } from '@/lib/parish-schedule'
 import { getClergyProfiles } from '@/lib/get-clergy'
+import { SocialIcon } from '@/components/ui/SocialIcon'
 import { Mark } from './Mark'
-
-const VIDA_BASE = [
-  { href: '/sectores', label: 'Sectores y ermitas' },
-  { href: '/grupos', label: 'Grupos y ministerios' },
-  { href: '/eventos', label: 'Agenda de eventos' },
-]
-
-/** Horarios encabeza la lista solo si hay horarios cargados en el CMS. */
-const vidaFor = (hasSchedule: boolean) =>
-  hasSchedule ? [{ href: '/horarios', label: 'Horarios y sacramentos' }, ...VIDA_BASE] : VIDA_BASE
-
-const COMUNICACION = [
-  { href: '/radio', label: 'Radio parroquial' },
-  { href: '/noticias', label: 'Noticias y avisos' },
-  { href: '/noticias', label: 'Formación católica' },
-]
 
 const PLATFORM_LABEL: Record<string, string> = {
   whatsapp: 'WhatsApp',
@@ -29,163 +13,110 @@ const PLATFORM_LABEL: Record<string, string> = {
   youtube: 'YouTube',
   instagram: 'Instagram',
 }
-
 export async function Footer() {
   const payload = await getPayload({ config: await config })
-  const [contact, settings, clergyProfiles] = await Promise.all([
+  const [contact, settings, clergy] = await Promise.all([
     payload.findGlobal({ slug: 'contact' }),
     payload.findGlobal({ slug: 'settings' }),
     getClergyProfiles(),
   ])
-
-  const parishName = contact.parishName || 'Inmaculada Concepción'
-  const address = contact.address || 'Ciudad Arce, La Libertad'
-  const mapUrl = contact.mapUrl
+  const address = contact.address || 'Ciudad Arce, La Libertad · El Salvador'
   const channels = (contact.channels ?? []).filter((c) => c.url && c.platform)
-  const radioLive = settings.radio?.available ?? true
   const { hasMisas } = deriveSchedule(contact)
-  const vida = [
-    ...vidaFor(hasMisas),
-    ...(clergyProfiles.length ? [{ href: '/sacerdotes', label: 'Nuestros sacerdotes' }] : []),
+  const logo = settings.marca?.isotipo
+  const links = [
+    ...(hasMisas ? [{ href: '/horarios', label: 'Horarios y sacramentos' }] : []),
+    { href: '/sectores', label: 'Sectores y ermitas' },
+    { href: '/grupos', label: 'Grupos y ministerios' },
+    { href: '/eventos', label: 'Agenda de eventos' },
+    ...(clergy.length ? [{ href: '/sacerdotes', label: 'Nuestros sacerdotes' }] : []),
+    { href: '/noticias', label: 'Noticias y formación' },
+    { href: '/radio', label: 'Radio parroquial' },
   ]
-  const isoFooter = settings.marca?.isotipo
-  const brandFooter =
-    isoFooter && typeof isoFooter === 'object'
-      ? { url: isoFooter.url ?? undefined, alt: isoFooter.alt ?? '' }
-      : null
-
   return (
-    <footer className="border-t-4 border-amber bg-navy-deep text-[#9FB4D2]">
+    <footer className="border-t border-white/10 bg-navy-deep text-[#B6C6DD]">
       <Container>
-        <div className="pb-[30px] pt-[60px]">
-          {/* Radio bar — ds.css:219-222 */}
-          <div className="mb-2 grid grid-cols-1 items-center gap-[22px] rounded-md border border-white/10 bg-white/5 px-[22px] py-4 sm:grid-cols-[auto_1fr_auto]">
-            <span className="inline-flex items-center gap-[10px] font-bold text-white">
-              <span
-                className={`h-2 w-2 rounded-full ${radioLive ? 'bg-amber [animation:pulse-live_2s_infinite]' : 'bg-[#7F95B5]'}`}
+        <div className="grid gap-9 py-10 sm:grid-cols-2 sm:py-12 lg:grid-cols-[1.15fr_1fr_1.2fr] lg:gap-14">
+          <div className="min-w-0">
+            <Link href="/" className="inline-flex items-center gap-3">
+              <Mark
+                className="bg-white/10"
+                src={logo && typeof logo === 'object' ? logo.url : undefined}
+                alt={logo && typeof logo === 'object' ? logo.alt : undefined}
               />
-              {radioLive ? 'Radio parroquial en vivo' : 'Radio parroquial · fuera del aire'}
-            </span>
-            <span className="text-[14.5px] text-[#A9BCD8]">
-              Reflexiones, música católica, avisos y voces de la comunidad.
-            </span>
-            <Link href="/radio" className="text-[14.5px] font-semibold text-white">
-              {radioLive ? 'Escuchar en vivo →' : 'Ver la programación →'}
+              <span className="min-w-0">
+                <b className="block font-display text-[20px] font-semibold leading-tight text-white">
+                  {contact.parishName || 'Inmaculada Concepción'}
+                </b>
+                <span className="mt-1 block text-sm">Parroquia · Ciudad Arce</span>
+              </span>
             </Link>
-          </div>
-
-          {/* ds.css:205, 253, 257 — 4 cols / 2 cols / 1 col */}
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1.1fr]">
-            <div>
-              <Link href="/" className="flex flex-none items-center gap-[13px]">
-                <Mark
-                  className="bg-white/10"
-                  src={brandFooter?.url}
-                  alt={brandFooter?.alt}
-                />
-                <span className="inline-flex flex-col leading-[1.08]">
-                  <b className="whitespace-nowrap font-display text-[16.5px] font-semibold tracking-[.005em] text-white">
-                    {parishName}
-                  </b>
-                  <span className="text-[12.5px] text-[#7F95B5]">{address.split('\n')[0]}</span>
-                </span>
-              </Link>
-              <p className="mb-[22px] mt-[18px] max-w-[32ch] text-[14.5px] leading-[1.6] text-[#A9BCD8]">
-                Una parroquia viva, una comunidad en misión. Un espacio digital para encontrarnos,
-                servir y caminar juntos como familia parroquial.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <Button href="/radio" variant="amber">
-                  Escuchar radio
-                </Button>
-                <Button href="/contacto" variant="outline-light">
-                  Contactar
-                </Button>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="mb-4 font-display text-[18px] font-semibold text-white">
-                Vida parroquial
-              </h2>
-              <ul className="flex list-none flex-col gap-[11px] p-0">
-                {vida.map((i) => (
-                  <li key={i.label}>
-                    <Link
-                      href={i.href}
-                      className="text-[14.5px] text-[#A9BCD8] transition-colors hover:text-white"
+            <p className="mt-5 max-w-[30ch] text-[15px] leading-relaxed">
+              Una comunidad de fe para encontrarnos, servir y caminar juntos.
+            </p>
+            {channels.length > 0 && (
+              <ul className="mt-5 flex flex-wrap gap-2" aria-label="Redes y canales oficiales">
+                {channels.map((c, i) => (
+                  <li key={c.id ?? i}>
+                    <a
+                      href={c.url!}
+                      aria-label={PLATFORM_LABEL[c.platform!] ?? c.platform!}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="grid h-11 w-11 place-items-center rounded-full border border-white/20 text-white transition-colors hover:bg-white/10"
                     >
-                      {i.label}
-                    </Link>
+                      <SocialIcon platform={c.platform!} />
+                    </a>
                   </li>
                 ))}
               </ul>
-            </div>
-
-            <div>
-              <h2 className="mb-4 font-display text-[18px] font-semibold text-white">Comunicación</h2>
-              <ul className="flex list-none flex-col gap-[11px] p-0">
-                {COMUNICACION.map((i) => (
-                  <li key={i.label}>
-                    <Link
-                      href={i.href}
-                      className="text-[14.5px] text-[#A9BCD8] transition-colors hover:text-white"
-                    >
-                      {i.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="mb-4 font-display text-[18px] font-semibold text-white">Contacto</h2>
-              <p className="text-[14.5px] leading-[1.6] text-[#A9BCD8]">
-                {address.split('\n').map((line, i) => (
-                  <span key={i}>
-                    {line}
-                    {i < address.split('\n').length - 1 && <br />}
-                  </span>
-                ))}
-              </p>
-              {mapUrl && (
-                <a
-                  href={mapUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-[10px] inline-flex items-center gap-[6px] text-[14.5px] font-semibold text-white transition-colors hover:text-amber"
-                >
-                  Cómo llegar →
-                </a>
-              )}
-              {channels.length > 0 ? (
-                <ul className="mt-[14px] flex list-none flex-col gap-[9px] p-0">
-                  {channels.map((c, i) => (
-                    <li key={c.id ?? i}>
-                      <a
-                        href={c.url!}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[14.5px] text-[#A9BCD8] transition-colors hover:text-white"
-                      >
-                        {PLATFORM_LABEL[c.platform!] ?? c.platform}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="mt-[14px] text-[14.5px] leading-[1.6] text-[#A9BCD8]">
-                  Canales oficiales de la parroquia
-                </p>
-              )}
-            </div>
+            )}
           </div>
-
-          {/* ds.css:216, 259 */}
-          <div className="mt-[44px] flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-6 text-[13px] text-[#7F95B5] sm:flex-row sm:items-center">
-            <span>© 2026 Parroquia Inmaculada Concepción de María, Ciudad Arce.</span>
-            <span>Una parroquia viva, una comunidad en misión.</span>
-          </div>
+          <nav aria-label="Enlaces del pie de página">
+            <h2 className="mb-4 font-display text-[22px] font-medium text-white">
+              Vida parroquial
+            </h2>
+            <ul className="grid gap-1">
+              {links.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="inline-flex min-h-10 items-center py-1 text-[15px] underline-offset-4 hover:text-white hover:underline"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <section aria-labelledby="footer-location" className="min-w-0">
+            <h2
+              id="footer-location"
+              className="mb-4 font-display text-[22px] font-medium text-white"
+            >
+              Encontranos
+            </h2>
+            <p className="whitespace-pre-line text-[15px] leading-relaxed">{address}</p>
+            {contact.mapUrl && (
+              <a
+                href={contact.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-flex min-h-11 items-center gap-2 font-semibold text-white underline-offset-4 hover:underline"
+              >
+                Cómo llegar <span aria-hidden="true">↗</span>
+              </a>
+            )}
+            <Link
+              href="/contacto"
+              className="mt-4 flex min-h-11 w-fit items-center rounded-pill border border-white/30 px-5 py-2 font-semibold text-white transition-colors hover:bg-white/10"
+            >
+              Contactar con la parroquia
+            </Link>
+          </section>
+        </div>
+        <div className="border-t border-white/15 py-5 text-[13px] leading-relaxed text-[#A9BCD8]">
+          © {new Date().getUTCFullYear()} Parroquia Inmaculada Concepción de María · Ciudad Arce.
         </div>
       </Container>
     </footer>
