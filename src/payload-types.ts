@@ -78,6 +78,7 @@ export interface Config {
     'radio-programs': RadioProgram;
     'radio-episodes': RadioEpisode;
     'prayer-requests': PrayerRequest;
+    'app-installs': AppInstall;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -96,6 +97,7 @@ export interface Config {
     'radio-programs': RadioProgramsSelect<false> | RadioProgramsSelect<true>;
     'radio-episodes': RadioEpisodesSelect<false> | RadioEpisodesSelect<true>;
     'prayer-requests': PrayerRequestsSelect<false> | PrayerRequestsSelect<true>;
+    'app-installs': AppInstallsSelect<false> | AppInstallsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -831,6 +833,28 @@ export interface PrayerRequest {
   createdAt: string;
 }
 /**
+ * Una ficha por dispositivo que abrió la app. No representa descargas ni personas únicas.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "app-installs".
+ */
+export interface AppInstall {
+  id: number;
+  /**
+   * Identificador seudónimo; no compartir públicamente.
+   */
+  deviceHash: string;
+  firstName?: string | null;
+  lastName?: string | null;
+  profileRevision: number;
+  platform: 'android' | 'ios';
+  appVersion: string;
+  firstSeenAt: string;
+  lastSeenAt: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -897,6 +921,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'prayer-requests';
         value: number | PrayerRequest;
+      } | null)
+    | ({
+        relationTo: 'app-installs';
+        value: number | AppInstall;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1270,6 +1298,22 @@ export interface PrayerRequestsSelect<T extends boolean = true> {
   allowPublicMention?: T;
   reviewedBy?: T;
   reviewedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "app-installs_select".
+ */
+export interface AppInstallsSelect<T extends boolean = true> {
+  deviceHash?: T;
+  firstName?: T;
+  lastName?: T;
+  profileRevision?: T;
+  platform?: T;
+  appVersion?: T;
+  firstSeenAt?: T;
+  lastSeenAt?: T;
   updatedAt?: T;
   createdAt?: T;
 }

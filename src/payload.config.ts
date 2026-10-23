@@ -18,6 +18,7 @@ import { Chapels } from './collections/Chapels'
 import { RadioPrograms } from './collections/RadioPrograms'
 import { RadioEpisodes } from './collections/RadioEpisodes'
 import { PrayerRequests } from './collections/PrayerRequests'
+import { AppInstalls } from './collections/AppInstalls'
 import { Home } from './globals/Home'
 import { Contact } from './globals/Contact'
 import { Settings } from './globals/Settings'
@@ -44,6 +45,7 @@ export default buildConfig({
     RadioPrograms,
     RadioEpisodes,
     PrayerRequests,
+    AppInstalls,
   ],
   globals: [Home, Contact, Settings],
   // El panel lo usan voluntarios de la parroquia: la UI de Payload (botones,

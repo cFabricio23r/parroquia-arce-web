@@ -4,6 +4,26 @@ import { parsePing, sameSvDay } from '@/lib/app-installs'
 const valid = { deviceHash: 'a'.repeat(64), platform: 'android', appVersion: '1.0.0' }
 
 describe('parsePing', () => {
+  it('normalizes optional names without discarding accents or punctuation', () => {
+    expect(parsePing({ ...valid, profile: { firstName: '  María   José ', lastName: " O’Neill-García " } }))
+      .toEqual({ ...valid, profile: { firstName: 'María José', lastName: 'O’Neill-García' } })
+  })
+
+  it('accepts explicit empty names for deletion and rejects malformed profiles', () => {
+    expect(parsePing({ ...valid, profile: { firstName: '', lastName: '' } })?.profile)
+      .toEqual({ firstName: '', lastName: '' })
+    for (const profile of [null, [], {}, { firstName: 2, lastName: '' },
+      { firstName: 'a'.repeat(81), lastName: '' }, { firstName: 'a\nInjected', lastName: '' }]) {
+      expect(parsePing({ ...valid, profile })).toBeNull()
+    }
+  })
+  it('rejects invalid profile revisions and accepts safe integers', () => {
+    const profile = { firstName: 'Ana', lastName: '' }
+    for (const profileRevision of [-1, 1.5, NaN, Infinity, '3', null, Number.MAX_SAFE_INTEGER + 1]) {
+      expect(parsePing({ ...valid, profile, profileRevision })).toBeNull()
+    }
+    expect(parsePing({ ...valid, profile, profileRevision: 3 })?.profileRevision).toBe(3)
+  })
   it('accepts a valid body and drops extra fields', () => {
     const out = parsePing({ ...valid, status: 'approved', firstSeenAt: '2026-01-01' })
     expect(out).toEqual(valid)
