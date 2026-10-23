@@ -1,0 +1,234 @@
+{
+  "id": 216,
+  "name": "Escuela de Acólitos",
+  "slug": "escuela-de-acolitos",
+  "type": "formacion",
+  "actionLine": null,
+  "summary": "Escuela que acompaña a los niños en su formación para servir al Señor en el altar, abierta en la parroquia desde 2001.",
+  "description": {
+    "root": {
+      "type": "root",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "children": [
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "mode": "normal",
+              "text": "La Escuela de Acólitos ofrece a los niños que hacen la Primera Comunión la oportunidad de integrarse y servir al Señor en el altar. La Comisión de Liturgia atiende este grupo desde 2001 y abre la Escuela cada año.",
+              "type": "text",
+              "style": "",
+              "detail": 0,
+              "format": 0,
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textFormat": 0
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "mode": "normal",
+              "text": "Según la información entregada, perseveran 70 niños a nivel parroquial, incluyendo Flor Amarilla, Divina Providencia y Ciudad Obrera. De ese total, 45 pertenecen al grupo de la parroquia.",
+              "type": "text",
+              "style": "",
+              "detail": 0,
+              "format": 0,
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textFormat": 0
+        }
+      ],
+      "direction": "ltr"
+    }
+  },
+  "history": {
+    "root": {
+      "type": "root",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "children": [
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "mode": "normal",
+              "text": "El 20 de julio de 1996, el padre Óscar Álvarez Orellana fundó la Comisión de Liturgia, integrada por un número considerable de hermanos del área urbana y rural. Desde esa fecha se reunían los sábados de 9 a 11 de la mañana.",
+              "type": "text",
+              "style": "",
+              "detail": 0,
+              "format": 0,
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textFormat": 0
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "mode": "normal",
+              "text": "En esa época, las misas dominicales se celebraban a las 6 y 9 de la mañana y a las 4 de la tarde. Posteriormente, la misa de las 4 de la tarde se trasladó a las 5 de la tarde.",
+              "type": "text",
+              "style": "",
+              "detail": 0,
+              "format": 0,
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textFormat": 0
+        },
+        {
+          "type": "paragraph",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "mode": "normal",
+              "text": "En 2001, por disposición del párroco, la comisión asumió la atención del grupo de Acólitos de la parroquia. Así se abrió la Escuela de Acólitos cada año, ofreciendo a los niños que hacen la Primera Comunión la oportunidad de integrarse y servir al Señor en el altar.",
+              "type": "text",
+              "style": "",
+              "detail": 0,
+              "format": 0,
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "textFormat": 0
+        }
+      ],
+      "direction": "ltr"
+    }
+  },
+  "perseverance": {
+    "count": 70,
+    "label": "niños a nivel parroquial; 45 en el grupo de la parroquia"
+  },
+  "patron": {
+    "name": null,
+    "image": {
+      "id": 89,
+      "alt": "Ilustración de un joven con las manos juntas y una custodia en primer plano",
+      "caption": null,
+      "credit": null,
+      "updatedAt": "2026-10-06T19:29:16.019Z",
+      "createdAt": "2026-10-06T19:29:15.292Z",
+      "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/190335.jpg",
+      "thumbnailURL": null,
+      "filename": "190335.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 106142,
+      "width": 933,
+      "height": 1280,
+      "focalX": 50,
+      "focalY": 50
+    }
+  },
+  "patronalFeasts": [],
+  "meeting": {
+    "day": null,
+    "time": null,
+    "place": null
+  },
+  "howToJoin": "La Escuela abre cada año y ofrece a los niños que hacen la Primera Comunión la oportunidad de integrarse para servir al Señor en el altar.",
+  "team": [
+    {
+      "id": "6ac54c0ddcd01191a85a205c",
+      "name": "Diana Cristina Benítez Jove",
+      "role": "Encargada",
+      "photo": null
+    },
+    {
+      "id": "6ac54c0ddcd01191a85a205d",
+      "name": "Jessica María López",
+      "role": "Encargada",
+      "photo": null
+    }
+  ],
+  "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null,
+    "socialLinks": []
+  },
+  "coordinatorName": null,
+  "logo": {
+    "id": 88,
+    "alt": "Logo de la Escuela de Acólitos: un acólito junto al altar, una cruz y el lema «Servir al Señor con alegría»",
+    "caption": null,
+    "credit": null,
+    "updatedAt": "2026-10-06T19:29:14.758Z",
+    "createdAt": "2026-10-06T19:29:13.113Z",
+    "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/190336.jpg",
+    "thumbnailURL": null,
+    "filename": "190336.jpg",
+    "mimeType": "image/jpeg",
+    "filesize": 79329,
+    "width": 757,
+    "height": 800,
+    "focalX": 50,
+    "focalY": 50
+  },
+  "cover": {
+    "id": 90,
+    "alt": "Grupo de acólitos con vestiduras rojas y blancas junto a un sacerdote frente al altar",
+    "caption": null,
+    "credit": null,
+    "updatedAt": "2026-10-06T19:29:17.258Z",
+    "createdAt": "2026-10-06T19:29:16.504Z",
+    "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/190332.jpg",
+    "thumbnailURL": null,
+    "filename": "190332.jpg",
+    "mimeType": "image/jpeg",
+    "filesize": 253109,
+    "width": 1600,
+    "height": 1200,
+    "focalX": 50,
+    "focalY": 50
+  },
+  "groupPhoto": {
+    "id": 90,
+    "alt": "Grupo de acólitos con vestiduras rojas y blancas junto a un sacerdote frente al altar",
+    "caption": null,
+    "credit": null,
+    "updatedAt": "2026-10-06T19:29:17.258Z",
+    "createdAt": "2026-10-06T19:29:16.504Z",
+    "url": "https://wdpzcgpkuefpcdxgihmn.supabase.co/storage/v1/object/public/media/190332.jpg",
+    "thumbnailURL": null,
+    "filename": "190332.jpg",
+    "mimeType": "image/jpeg",
+    "filesize": 253109,
+    "width": 1600,
+    "height": 1200,
+    "focalX": 50,
+    "focalY": 50
+  },
+  "gallery": [],
+  "isFeatured": false,
+  "status": "published",
+  "publishedAt": "2026-10-06T19:29:17.443Z",
+  "updatedAt": "2026-10-06T19:29:17.528Z",
+  "createdAt": "2026-10-06T19:29:17.526Z"
+}

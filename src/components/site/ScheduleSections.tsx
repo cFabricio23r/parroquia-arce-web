@@ -1,3 +1,4 @@
+import { ScheduleTimes } from '@/components/site/ScheduleTimes'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { Reveal } from '@/components/news/Reveal'
@@ -47,15 +48,17 @@ export function ScheduleSections({
                     }`}
                   >
                     <span className="font-semibold">{m.label}</span>
-                    <span className="font-extrabold text-blue">{m.time}</span>
+                    <span className="text-[18px] font-extrabold leading-relaxed text-blue">
+                      <ScheduleTimes value={m.time} />
+                    </span>
                   </div>
                 ))}
               </div>
               {/* Texto fijo: no afirma ningun horario, solo advierte que pueden
                   cambiar. Sale del spec pixel-perfect de _ds_extract. */}
               <p className="mt-4 max-w-[60ch] text-[14px] text-muted">
-                Los horarios pueden variar en solemnidades y tiempos litúrgicos especiales.
-                Consultá los avisos parroquiales.
+                Los horarios pueden variar en solemnidades y tiempos litúrgicos especiales. Consultá
+                los avisos parroquiales.
               </p>
             </Reveal>
           </Container>
@@ -90,7 +93,10 @@ export function ScheduleSections({
                       <h3 className="font-display text-[21px] font-semibold">{d.detail}</h3>
                     )}
                     <p className="text-[15px]">
-                      <b>{d.label}</b> · <span className="font-extrabold text-blue">{d.time}</span>
+                      <b>{d.label}</b> ·{' '}
+                      <span className="text-[18px] font-extrabold leading-relaxed text-blue">
+                        <ScheduleTimes value={d.time} />
+                      </span>
                     </p>
                   </div>
                 ))}
@@ -108,7 +114,10 @@ export function ScheduleSections({
                   derecha vacia: ese es justamente el hueco que esta obra arregla
                   en la home. */}
               <div className="max-w-[560px] rounded-lg border border-border bg-white p-[26px]">
-                <h2 id="oficina-titulo" className="mb-[14px] font-display text-[22px] font-semibold">
+                <h2
+                  id="oficina-titulo"
+                  className="mb-[14px] font-display text-[22px] font-semibold"
+                >
                   Oficina parroquial
                 </h2>
                 {officeHours.map(([day, time], i) => (
@@ -164,7 +173,9 @@ export function ScheduleSections({
                       {s.title.charAt(0).toUpperCase()}
                     </span>
                     <h3 className="font-display text-[20px] font-semibold">{s.title}</h3>
-                    {s.detail && <p className="text-[14px] leading-[1.45] text-muted">{s.detail}</p>}
+                    {s.detail && (
+                      <p className="text-[14px] leading-[1.45] text-muted">{s.detail}</p>
+                    )}
                   </div>
                 ))}
               </div>

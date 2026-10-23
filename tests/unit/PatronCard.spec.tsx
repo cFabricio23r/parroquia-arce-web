@@ -3,6 +3,15 @@ import { describe, it, expect } from 'vitest'
 import { PatronCard } from '@/components/community/PatronCard'
 
 describe('PatronCard', () => {
+  it('presenta una imagen sin patrono asignado como imagen de referencia', () => {
+    render(<PatronCard patron={{ image: { id: 1, url: '/maria.jpg', alt: 'María' } as never }} />)
+    expect(screen.getByRole('heading', { name: 'Imagen de referencia' })).toBeDefined()
+  })
+
+  it('muestra el crédito de una imagen reutilizada', () => {
+    render(<PatronCard patron={{ name: 'San José', image: { id: 1, url: '/jose.jpg', alt: 'San José', credit: 'Guido Reni · Dominio público' } as never }} />)
+    expect(screen.getByText('Guido Reni · Dominio público')).toBeDefined()
+  })
   it('muestra el nombre del patrono', () => {
     render(<PatronCard patron={{ name: 'San Jerónimo' }} feasts={null} />)
     expect(screen.getByText('San Jerónimo')).toBeDefined()

@@ -1,0 +1,42 @@
+{
+  "id": 225,
+  "name": "Sector 10, Cantón La Joyita, Primera Zona",
+  "slug": "sector-10",
+  "number": 10,
+  "chapelName": null,
+  "zone": "zona-4",
+  "patron": {
+    "name": "San Miguel Arcángel",
+    "image": null
+  },
+  "summary": null,
+  "description": null,
+  "history": null,
+  "perseverance": {
+    "count": null,
+    "label": "miembros que perseveran"
+  },
+  "groups": [],
+  "location": {
+    "address": null,
+    "mapUrl": null
+  },
+  "team": [],
+  "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null,
+    "socialLinks": []
+  },
+  "responsibleName": null,
+  "assistants": [],
+  "logo": null,
+  "cover": null,
+  "groupPhoto": null,
+  "gallery": [],
+  "isFeatured": false,
+  "status": "published",
+  "publishedAt": null,
+  "updatedAt": "2026-09-07T23:47:15.898Z",
+  "createdAt": "2026-08-14T00:42:43.641Z"
+}

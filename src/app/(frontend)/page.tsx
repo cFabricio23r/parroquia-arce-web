@@ -1,3 +1,5 @@
+import { Icon } from '@/components/ui/Icon'
+import { ScheduleTimes } from '@/components/site/ScheduleTimes'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getPayload } from 'payload'
@@ -14,6 +16,8 @@ import { svDate, svParts, svStartOfToday, svTime } from '@/lib/sv-date'
 import { eventTypeLabel } from '@/lib/event-types'
 import { deriveSchedule } from '@/lib/parish-schedule'
 import { GroupCard } from '@/components/community/GroupCard'
+import { ClergySection } from '@/components/community/ClergySection'
+import { getClergyProfiles } from '@/lib/get-clergy'
 import { RadioLiveBar } from '@/components/site/radio/RadioLiveBar'
 import { isValidTime, toRadioProgramView } from '@/lib/radio-schedule'
 
@@ -31,15 +35,41 @@ export const revalidate = 300
 
 type Variant = 'blue' | 'sky' | 'amber'
 
-const MES_CORTO = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+const MES_CORTO = [
+  'Ene',
+  'Feb',
+  'Mar',
+  'Abr',
+  'May',
+  'Jun',
+  'Jul',
+  'Ago',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dic',
+]
 const eventTypeVariant = (t?: string | null): Variant =>
-  t === 'patronal' || t === 'vigilia' || t === 'novena' ? 'amber' : t === 'reunion' || t === 'jornada' ? 'sky' : 'blue'
+  t === 'patronal' || t === 'vigilia' || t === 'novena'
+    ? 'amber'
+    : t === 'reunion' || t === 'jornada'
+      ? 'sky'
+      : 'blue'
 
 export default async function HomePage() {
   const payload = await getPayload({ config: await config })
 
-  const [eventsRes, groupsRes, newsRes, sectorsRes, radioRes, homeGlobal, settings, contactGlobal] =
-    await Promise.all([
+  const [
+    eventsRes,
+    groupsRes,
+    newsRes,
+    sectorsRes,
+    radioRes,
+    homeGlobal,
+    settings,
+    contactGlobal,
+    clergyProfiles,
+  ] = await Promise.all([
     // "Proximas actividades": solo de hoy en adelante. El corte es la
     // medianoche de El Salvador, asi lo de esta manana sigue en la portada
     // durante el resto del dia.
@@ -52,14 +82,34 @@ export default async function HomePage() {
       sort: 'startsAt',
       limit: 4,
     }),
-    payload.find({ collection: 'groups', where: { status: { equals: 'published' } }, sort: 'name', limit: 3 }),
-    payload.find({ collection: 'news', where: { status: { equals: 'published' } }, sort: '-publishedAt', limit: 3 }),
-    payload.find({ collection: 'sectors', where: { status: { equals: 'published' }, isFeatured: { equals: true } }, limit: 1 }),
+    payload.find({
+      collection: 'groups',
+      where: { status: { equals: 'published' } },
+      sort: 'name',
+      limit: 3,
+    }),
+    payload.find({
+      collection: 'news',
+      where: { status: { equals: 'published' } },
+      sort: '-publishedAt',
+      limit: 3,
+    }),
+    payload.find({
+      collection: 'sectors',
+      where: { status: { equals: 'published' }, isFeatured: { equals: true } },
+      limit: 1,
+    }),
     // La semana entera: la barra necesita poder resolver "ahora" y "lo que sigue".
-    payload.find({ collection: 'radio-programs', where: { status: { equals: 'published' } }, sort: 'startTime', limit: 100 }),
+    payload.find({
+      collection: 'radio-programs',
+      where: { status: { equals: 'published' } },
+      sort: 'startTime',
+      limit: 100,
+    }),
     payload.findGlobal({ slug: 'home' }),
     payload.findGlobal({ slug: 'settings' }),
     payload.findGlobal({ slug: 'contact' }),
+    getClergyProfiles(),
   ])
 
   // Hero editable desde el global `home`. Cada campo cae a su valor editorial
@@ -104,12 +154,14 @@ export default async function HomePage() {
   type Acceso = { href: string; title: string; desc: string; bg: string }
   const accesos: Acceso[] = [
     ...(hasMisas
-      ? [{
-          href: '/horarios',
-          title: 'Misas y sacramentos',
-          desc: 'Horarios, confesiones y celebraciones',
-          bg: 'linear-gradient(150deg,#1a4670,var(--color-navy))',
-        }]
+      ? [
+          {
+            href: '/horarios',
+            title: 'Misas y sacramentos',
+            desc: 'Horarios, confesiones y celebraciones',
+            bg: 'linear-gradient(150deg,#1a4670,var(--color-navy))',
+          },
+        ]
       : []),
     {
       href: '/sectores',
@@ -135,7 +187,9 @@ export default async function HomePage() {
   // segun la hora de El Salvador. Antes se tomaba el primer programa por fecha de
   // creacion y se lo rotulaba "Transmitiendo ahora", que era mentira.
   // Solo los que tienen hora usable: uno con el formato viejo no se puede ubicar.
-  const radioPrograms = radioRes.docs.map(toRadioProgramView).filter((p) => isValidTime(p.startTime))
+  const radioPrograms = radioRes.docs
+    .map(toRadioProgramView)
+    .filter((p) => isValidTime(p.startTime))
 
   // Enlace a YouTube desde los canales oficiales (Contact), si está cargado.
   const youtubeUrl =
@@ -144,18 +198,20 @@ export default async function HomePage() {
   // El `slug` va primero solo para usarlo de key de React: la agenda real
   // repite titulos (la novena va varios dias seguidos) y keyear por titulo
   // colisiona. El slug es unique en la coleccion.
-  const eventos: [string, string, string, string, string, string, Variant][] = eventsRes.docs.map((e) => {
-    const { month, day } = svParts(e.startsAt)
-    return [
-      e.slug,
-      String(day).padStart(2, '0'),
-      MES_CORTO[month],
-      e.title,
-      `${svTime(e.startsAt)} · ${e.locationName}`,
-      eventTypeLabel(e.eventType),
-      eventTypeVariant(e.eventType),
-    ]
-  })
+  const eventos: [string, string, string, string, string, string, Variant][] = eventsRes.docs.map(
+    (e) => {
+      const { month, day } = svParts(e.startsAt)
+      return [
+        e.slug,
+        String(day).padStart(2, '0'),
+        MES_CORTO[month],
+        e.title,
+        `${svTime(e.startsAt)} · ${e.locationName}`,
+        eventTypeLabel(e.eventType),
+        eventTypeVariant(e.eventType),
+      ]
+    },
+  )
 
   const noticias: [Variant, string, string, string, string, string][] = newsRes.docs.map((n) => [
     // news nunca cae en la variante 'live', asi que el cast a Variant es seguro.
@@ -175,7 +231,7 @@ export default async function HomePage() {
       {/* HERO — full-bleed (edge to edge); el contenido se alinea al container */}
       <HeroSlider images={heroImages}>
         <Container>
-          <div className="max-w-[680px] pb-8 pt-[210px] max-[600px]:pt-[130px]">
+          <div className="max-w-[680px] pb-7 pt-[150px] max-[600px]:pt-14">
             <span className="mb-4 inline-flex items-center gap-[10px] text-[14.5px] font-semibold text-white [text-shadow:0_1px_10px_rgba(5,23,51,.7)]">
               <span className="h-[2px] w-7 flex-none bg-amber" />
               {heroLocation}
@@ -195,12 +251,8 @@ export default async function HomePage() {
                   Horarios de misa
                 </Button>
               )}
-              <Button
-                href="/contacto"
-                variant={hasMisas ? 'outline-light' : 'amber'}
-                size="lg"
-              >
-                Conocé la parroquia
+              <Button href="/contacto" variant={hasMisas ? 'outline-light' : 'amber'} size="lg">
+                Contactá con la parroquia
               </Button>
             </div>
           </div>
@@ -219,7 +271,8 @@ export default async function HomePage() {
                 </span>
                 {misas.map((m) => (
                   <span key={m.id} className="text-[14px] text-[#c9d8ec]">
-                    <b className="font-semibold text-white">{m.label}</b> {m.time}
+                    <b className="font-semibold text-white">{m.label}</b>{' '}
+                    <ScheduleTimes value={m.time} />
                   </span>
                 ))}
               </div>
@@ -237,26 +290,45 @@ export default async function HomePage() {
             }`}
           >
             {accesos.map(({ href, title, desc, bg }) => (
-              <Link
-                key={title}
-                href={href}
-                className="group overflow-hidden rounded-xl border border-border transition-transform duration-200 hover:-translate-y-0.5"
-              >
-                <div className="h-[130px]" style={{ background: bg }} />
-                <div className="px-4 pb-4 pt-[13px]">
-                  <b className="block font-display text-[18.5px] font-medium text-navy">{title}</b>
-                  <span className="mt-[3px] block text-[13px] text-muted">{desc}</span>
-                </div>
-              </Link>
+              <Reveal key={title} className="h-full">
+                <Link
+                  href={href}
+                  className="card-hover group flex h-full items-start gap-4 rounded-lg border border-border bg-white p-5"
+                >
+                  <div
+                    className="grid h-12 w-12 shrink-0 place-items-center rounded-md text-white"
+                    style={{ background: bg }}
+                  >
+                    <Icon
+                      name={
+                        href === '/horarios'
+                          ? 'clock'
+                          : href === '/sectores'
+                            ? 'pin'
+                            : href === '/noticias'
+                              ? 'calendar'
+                              : 'chat'
+                      }
+                      className="h-6 w-6"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <b className="block font-display text-[18.5px] font-medium text-navy">
+                      {title}
+                    </b>
+                    <span className="mt-[3px] block text-[13px] text-muted">{desc}</span>
+                  </div>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </Container>
       </section>
 
       {/* EVENTOS */}
-      <section className="bg-bg-soft py-[clamp(56px,7vw,96px)]">
+      <section className="bg-bg-soft py-[clamp(36px,6vw,72px)]">
         <Container>
-          <Reveal className="mb-10 flex items-end justify-between gap-4">
+          <Reveal className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <h2 className="font-display text-[clamp(32px,4.2vw,52px)] font-medium leading-[1.04] tracking-[-.01em]">
               Próximas <em className="italic text-blue">actividades</em>
             </h2>
@@ -275,8 +347,12 @@ export default async function HomePage() {
                     }`}
                   >
                     <span className="grid h-16 w-16 flex-none place-items-center rounded-md bg-blue-tint text-center text-blue">
-                      <span className="block font-display text-[26px] font-semibold leading-none">{d}</span>
-                      <span className="mt-[2px] text-[11px] font-bold uppercase tracking-[.08em]">{m}</span>
+                      <span className="block font-display text-[26px] font-semibold leading-none">
+                        {d}
+                      </span>
+                      <span className="mt-[2px] text-[11px] font-bold uppercase tracking-[.08em]">
+                        {m}
+                      </span>
                     </span>
                     <div>
                       <h4 className="font-display text-[19px] font-semibold">{title}</h4>
@@ -299,17 +375,21 @@ export default async function HomePage() {
                     <div
                       className="absolute inset-0"
                       aria-hidden="true"
-                      style={{ background: 'linear-gradient(180deg, rgba(5,23,51,.25), rgba(5,23,51,.85))' }}
+                      style={{
+                        background: 'linear-gradient(180deg, rgba(5,23,51,.25), rgba(5,23,51,.85))',
+                      }}
                     />
                   </>
                 ) : (
                   <div
                     className="absolute inset-0"
                     aria-hidden="true"
-                    style={{ background: 'linear-gradient(160deg, var(--color-blue), var(--color-navy))' }}
+                    style={{
+                      background: 'linear-gradient(160deg, var(--color-blue), var(--color-navy))',
+                    }}
                   />
                 )}
-                <div className="relative p-9">
+                <div className="relative p-6 sm:p-8">
                   <span className="text-[12.5px] font-bold uppercase tracking-[.15em] text-sky-light">
                     Evento destacado
                   </span>
@@ -332,7 +412,7 @@ export default async function HomePage() {
       </section>
 
       {/* SUMATE — sectores + grupos */}
-      <section className="py-[clamp(56px,7vw,96px)]">
+      <section className="py-[clamp(36px,6vw,72px)]">
         <Container>
           <Reveal className="mb-10 max-w-[640px]">
             <h2 className="font-display text-[clamp(32px,4.2vw,52px)] font-medium leading-[1.04] tracking-[-.01em]">
@@ -342,7 +422,7 @@ export default async function HomePage() {
               Encontrá tu sector más cercano, sumate a un grupo y caminá con la comunidad.
             </p>
           </Reveal>
-          <div className="mb-4 flex items-center justify-between gap-4">
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-4">
             <h3 className="font-display text-[24px] font-medium">Sectores y ermitas</h3>
             <Link href="/sectores" className="whitespace-nowrap text-[15.5px] font-bold text-blue">
               Ver todos los sectores →
@@ -359,11 +439,12 @@ export default async function HomePage() {
                     Sector destacado
                   </span>
                   <h3 className="my-3 font-display text-[28px] font-medium">
-                    {featuredSector.number != null && `Sector #${featuredSector.number} — `}
                     {featuredSector.name}
                   </h3>
                   {featuredSector.summary && (
-                    <p className="text-[15px] leading-[1.55] text-muted">{featuredSector.summary}</p>
+                    <p className="text-[15px] leading-[1.55] text-muted">
+                      {featuredSector.summary}
+                    </p>
                   )}
                   <div className="my-5 flex flex-wrap gap-2">
                     {featuredSector.chapelName && (
@@ -385,7 +466,7 @@ export default async function HomePage() {
             </Reveal>
           )}
 
-          <div className="mb-4 mt-12 flex items-center justify-between gap-4">
+          <div className="mb-4 mt-12 flex flex-wrap items-center justify-between gap-4">
             <h3 className="font-display text-[24px] font-medium">Grupos y ministerios</h3>
             <Link href="/grupos" className="whitespace-nowrap text-[15.5px] font-bold text-blue">
               Ver todos los grupos →
@@ -403,7 +484,7 @@ export default async function HomePage() {
 
       {/* RADIO */}
       <section
-        className="py-[clamp(56px,7vw,96px)] text-white"
+        className="py-[clamp(36px,6vw,72px)] text-white"
         style={{ background: 'var(--color-navy)' }}
       >
         <Container>
@@ -423,7 +504,7 @@ export default async function HomePage() {
       </section>
 
       {/* NOTICIAS + MULTIMEDIA */}
-      <section className="bg-bg-soft py-[clamp(56px,7vw,96px)]">
+      <section className="bg-bg-soft py-[clamp(36px,6vw,72px)]">
         <Container>
           <div className="grid grid-cols-2 gap-8 max-[1040px]:grid-cols-1">
             <Reveal>
@@ -442,7 +523,9 @@ export default async function HomePage() {
                     </Badge>
                     <div>
                       <div className="text-[12.5px] font-semibold text-muted">{dt}</div>
-                      <h4 className="font-display text-[17px] font-semibold leading-[1.1]">{title}</h4>
+                      <h4 className="font-display text-[17px] font-semibold leading-[1.1]">
+                        {title}
+                      </h4>
                       <p className="mt-1 text-[13.5px] text-muted">{desc}</p>
                     </div>
                   </Link>
@@ -467,7 +550,8 @@ export default async function HomePage() {
                   className="absolute inset-0"
                   aria-hidden="true"
                   style={{
-                    background: 'radial-gradient(90% 70% at 82% 0%, rgba(97,194,230,.22), transparent 55%)',
+                    background:
+                      'radial-gradient(90% 70% at 82% 0%, rgba(97,194,230,.22), transparent 55%)',
                   }}
                 />
                 <span className="relative text-[12.5px] font-bold uppercase tracking-[.15em] text-sky-light">
@@ -492,7 +576,7 @@ export default async function HomePage() {
           un grid de dos con la derecha vacia, que es como estaba en produccion
           porque `sacraments` nunca se cargo. */}
       {(hasMisas || hasDevociones || hasSacramentos) && (
-        <section id="misas" className="scroll-mt-24 py-[clamp(56px,7vw,96px)]">
+        <section id="misas" className="scroll-mt-24 py-[clamp(36px,6vw,72px)]">
           <Container>
             <Reveal>
               <SectionHead
@@ -521,10 +605,12 @@ export default async function HomePage() {
                       {misas.map((m) => (
                         <div
                           key={m.id}
-                          className="flex items-center justify-between gap-4 rounded-md bg-white p-[16px_20px]"
+                          className="flex flex-wrap items-baseline justify-between gap-3 rounded-md bg-white p-[16px_20px]"
                         >
                           <span className="font-semibold">{m.label}</span>
-                          <span className="text-right font-extrabold text-blue">{m.time}</span>
+                          <span className="text-right font-extrabold text-blue">
+                            <ScheduleTimes value={m.time} />
+                          </span>
                         </div>
                       ))}
                     </div>
@@ -547,7 +633,10 @@ export default async function HomePage() {
                           {d.detail && <b className="block font-display text-[17px]">{d.detail}</b>}
                           <span className="text-[14.5px] text-muted">
                             {d.kind === 'confesion' && !d.detail ? 'Confesiones · ' : ''}
-                            {d.label} · <b className="font-extrabold text-blue">{d.time}</b>
+                            {d.label} ·{' '}
+                            <b className="font-extrabold text-blue">
+                              <ScheduleTimes value={d.time} />
+                            </b>
                           </span>
                         </div>
                       ))}
@@ -587,6 +676,7 @@ export default async function HomePage() {
           </Container>
         </section>
       )}
+      <ClergySection profiles={clergyProfiles} />
     </>
   )
 }

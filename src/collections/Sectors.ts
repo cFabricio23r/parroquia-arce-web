@@ -8,6 +8,8 @@ import { locationField } from '../fields/location'
 import { teamField } from '../fields/team'
 import { perseveranceField } from '../fields/perseverance'
 import { galleryField } from '../fields/gallery'
+import { patronField } from '../fields/patron'
+import { zoneField } from '../fields/zone'
 
 /**
  * Sector: la unidad territorial de la parroquia. Es la coleccion mas rica del
@@ -44,6 +46,8 @@ export const Sectors: CollectionConfig = {
                 { name: 'chapelName', type: 'text', label: 'Nombre de la ermita' },
               ],
             },
+            zoneField(),
+            patronField(),
             {
               name: 'summary',
               type: 'textarea',
@@ -53,11 +57,10 @@ export const Sectors: CollectionConfig = {
             {
               name: 'description',
               type: 'richText',
-              label: 'Descripción (campo viejo)',
+              label: 'Presentación',
               admin: {
-                hidden: true,
                 description:
-                  'Nadie lo llenó nunca: el cuerpo del sector es Historia. Se borra en una obra aparte, junto con Responsable y Colaboradores.',
+                  'Qué información ofrece el sector hoy. La historia de su fundación se carga por separado.',
               },
             },
             { name: 'history', type: 'richText', label: 'Historia' },

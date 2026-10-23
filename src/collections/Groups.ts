@@ -9,6 +9,7 @@ import { perseveranceField } from '../fields/perseverance'
 import { galleryField } from '../fields/gallery'
 import { patronField } from '../fields/patron'
 import { patronalFeastsField } from '../fields/patronalFeasts'
+import { ACTION_LINES } from '../lib/parish-structure'
 
 /**
  * Group / Ministry. Organizado en tabs: la info del grupo, los datos de reunion
@@ -48,6 +49,16 @@ export const Groups: CollectionConfig = {
                 { label: 'Servicio', value: 'servicio' },
                 { label: 'Formación', value: 'formacion' },
               ],
+            },
+            {
+              name: 'actionLine',
+              type: 'select',
+              label: 'Línea de acción',
+              admin: {
+                description:
+                  'Según el organigrama del plan pastoral. Los órganos de gobierno (Consejo Parroquial, Consejo Económico) no tienen línea.',
+              },
+              options: ACTION_LINES.map((l) => ({ label: l.label, value: l.value })),
             },
             {
               name: 'summary',

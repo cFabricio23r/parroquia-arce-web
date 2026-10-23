@@ -38,7 +38,7 @@ export function RadioLiveBar({ programs }: { programs: RadioProgramView[] }) {
           onClick={toggle}
           disabled={!available}
           aria-label={playing ? 'Pausar' : 'Reproducir'}
-          className="grid h-12 w-12 flex-none place-items-center rounded-full bg-amber text-white shadow-[0_10px_22px_-8px_rgba(232,143,33,.6)] transition-transform duration-150 hover:scale-105 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100"
+          className="grid h-12 w-12 flex-none place-items-center rounded-full focus-visible:outline-white bg-amber text-navy-deep shadow-[0_10px_22px_-8px_rgba(232,143,33,.6)] transition-transform duration-150 hover:scale-105 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" className="h-[19px] w-[19px]">
             {playing ? <path d="M7 5h4v14H7zM13 5h4v14h-4z" /> : <path d="M8 5v14l11-7z" />}

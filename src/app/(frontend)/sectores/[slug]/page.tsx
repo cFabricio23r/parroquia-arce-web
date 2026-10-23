@@ -14,6 +14,8 @@ import { SectorStats } from '@/components/community/SectorStats'
 import { SidebarCard } from '@/components/community/SidebarCard'
 import { ChapelCard } from '@/components/community/ChapelCard'
 import { SectorGroups } from '@/components/community/SectorGroups'
+import { PatronCard } from '@/components/community/PatronCard'
+import { pickGroupBody } from '@/lib/group-body'
 
 export const revalidate = 300
 
@@ -71,6 +73,7 @@ export default async function SectorDetalle({ params }: { params: Promise<{ slug
   if (!item) notFound()
 
   const chapels = await getChapels(item.id)
+  const { body, showHistorySection } = pickGroupBody(item.description, item.history)
 
   // La portada pasa a ser el fondo del hero. Cuando no hay, el hero cae al
   // degradado de siempre — que hoy es el caso de 2 de los 3 sectores, asi que el
@@ -206,16 +209,21 @@ export default async function SectorDetalle({ params }: { params: Promise<{ slug
         <Container>
           <div className="grid grid-cols-[1fr_300px] gap-12 max-[980px]:grid-cols-1">
             <div className="max-w-[70ch]">
-              {/* `history` es el cuerpo. `description` estaba vacio en el 100% de
-                  los sectores y ocupaba este lugar, asi que la pagina mostraba el
-                  texto de relleno mientras la historia real quedaba de segundona. */}
+              {/* La presentación y la historia se muestran sin repetir el cuerpo. */}
               <div className="richtext">
-                {item.history ? (
-                  <RichText data={item.history} />
+                {body ? (
+                  <RichText data={body} />
                 ) : (
                   <p className="text-muted">Pronto habrá más información sobre este sector.</p>
                 )}
               </div>
+
+              {showHistorySection && item.history && (
+                <section className="mt-10">
+                  <h2 className="mb-3 font-display text-[26px] font-medium">Historia</h2>
+                  <div className="richtext"><RichText data={item.history} /></div>
+                </section>
+              )}
 
               {chapels.length > 0 && (
                 <div className="mt-10">
@@ -261,7 +269,7 @@ export default async function SectorDetalle({ params }: { params: Promise<{ slug
                       {chapels.length === 0 && item.chapelName && (
                         <div>
                           <dt className="text-[12px] font-bold uppercase tracking-[.1em] text-muted">
-                            Ermita
+                            Lugar de reunión
                           </dt>
                           <dd className="mt-1">{item.chapelName}</dd>
                         </div>
@@ -282,6 +290,7 @@ export default async function SectorDetalle({ params }: { params: Promise<{ slug
                 {/* La perseverancia ya vive en SectorStats, arriba y mas grande.
                     Repetirla aca seria decir el mismo numero dos veces. */}
                 <SectorGroups groups={item.groups} />
+                <PatronCard patron={item.patron} />
                 {hasContact(item.contact) && (
                   <SidebarCard icon="phone" title="Contacto" className="mt-6">
                     <ContactLinks contact={item.contact} />

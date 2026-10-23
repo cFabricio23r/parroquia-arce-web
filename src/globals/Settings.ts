@@ -1,6 +1,7 @@
 import type { GlobalConfig } from 'payload'
 import { anyone } from '../access/anyone'
 import { canManageContent } from '../access/roles'
+import { socialLiveField, validateSocialLive } from '../fields/social-live'
 
 /**
  * Ajustes generales del sitio, editables sin deploy. Hoy: la radio (URL del
@@ -15,7 +16,9 @@ export const Settings: GlobalConfig = {
     read: anyone,
     update: canManageContent,
   },
+  hooks: { beforeChange: [validateSocialLive] },
   fields: [
+    socialLiveField,
     {
       name: 'radio',
       type: 'group',

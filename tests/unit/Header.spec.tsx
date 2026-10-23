@@ -15,21 +15,22 @@ describe('Header', () => {
 
   it('muestra todos los items de navegacion', () => {
     render(<Header hasSchedule />)
-    expect(screen.getAllByRole('link', { name: 'Horarios' }).length).toBeGreaterThan(0)
-    expect(screen.getAllByRole('link', { name: 'Noticias' }).length).toBeGreaterThan(0)
+    expect(screen.queryByRole('link', { name: 'Horarios' })).toBeNull()
+    expect(screen.queryByRole('link', { name: 'Noticias' })).toBeNull()
+    expect(screen.getAllByRole('link', { name: 'Actividad' }).length).toBeGreaterThan(0)
   })
 
   it('marca el item activo segun el pathname', () => {
-    mockPathname.mockReturnValue('/noticias')
+    mockPathname.mockReturnValue('/actividad')
     render(<Header hasSchedule />)
-    const activos = screen.getAllByRole('link', { name: 'Noticias' })
+    const activos = screen.getAllByRole('link', { name: 'Actividad' })
     expect(activos.every((el) => el.getAttribute('aria-current') === 'page')).toBe(true)
   })
 
   it('no marca activo un item que no corresponde', () => {
     mockPathname.mockReturnValue('/noticias')
     render(<Header hasSchedule />)
-    const otros = screen.getAllByRole('link', { name: 'Horarios' })
+    const otros = screen.getAllByRole('link', { name: 'Actividad' })
     expect(otros.every((el) => el.getAttribute('aria-current') === null)).toBe(true)
   })
 
@@ -76,20 +77,19 @@ describe('Header', () => {
     expect(screen.queryByRole('link', { name: 'Ver horarios de misa' })).toBeNull()
   })
 
-  it('apunta Horarios a la pagina de horarios cuando si hay horarios', () => {
+  it('conserva el CTA a horarios cuando hay datos', () => {
     render(<Header hasSchedule />)
-    const horarios = screen.getAllByRole('link', { name: 'Horarios' })
+    const horarios = screen.getAllByRole('link', { name: /Ver horarios/ })
     expect(horarios.length).toBeGreaterThan(0)
     expect(horarios.every((el) => el.getAttribute('href') === '/horarios')).toBe(true)
   })
 
   // Con `/#misas` el item nunca se marcaba activo, porque el pathname es '/'.
   // Con una ruta propia, si.
-  it('marca Horarios activo cuando se esta en /horarios', () => {
+  it('no restaura el item Horarios al visitar su pagina', () => {
     mockPathname.mockReturnValue('/horarios')
     render(<Header hasSchedule />)
-    const horarios = screen.getAllByRole('link', { name: 'Horarios' })
-    expect(horarios.every((el) => el.getAttribute('aria-current') === 'page')).toBe(true)
+    expect(screen.queryByRole('link', { name: 'Horarios' })).toBeNull()
   })
 
   it('conserva el resto de la navegacion sin horarios', () => {

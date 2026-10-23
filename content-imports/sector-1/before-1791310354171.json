@@ -1,0 +1,42 @@
+{
+  "id": 217,
+  "name": "Sector 1, Barrio El Centro",
+  "slug": "sector-1",
+  "number": 1,
+  "chapelName": null,
+  "zone": "zona-1",
+  "patron": {
+    "name": "San Juan María Vianney",
+    "image": null
+  },
+  "summary": null,
+  "description": null,
+  "history": null,
+  "perseverance": {
+    "count": null,
+    "label": "miembros que perseveran"
+  },
+  "groups": [],
+  "location": {
+    "address": null,
+    "mapUrl": null
+  },
+  "team": [],
+  "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null,
+    "socialLinks": []
+  },
+  "responsibleName": null,
+  "assistants": [],
+  "logo": null,
+  "cover": null,
+  "groupPhoto": null,
+  "gallery": [],
+  "isFeatured": false,
+  "status": "published",
+  "publishedAt": null,
+  "updatedAt": "2026-09-07T23:47:15.865Z",
+  "createdAt": "2026-08-14T00:42:41.122Z"
+}

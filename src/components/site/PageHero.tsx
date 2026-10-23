@@ -24,7 +24,7 @@ export function PageHero({
       style={{ background: 'linear-gradient(180deg, var(--color-bg-soft), #fff)' }}
     >
       <Container>
-        <div className="pb-12 pt-[54px]">
+        <div className="pb-8 pt-8 sm:pb-12 sm:pt-[54px]">
           <div className="mb-[18px] flex items-center gap-[9px] text-[13.5px] text-muted">
             {crumbs.map((c, i) => (
               <span key={i} className="flex items-center gap-[9px]">
@@ -42,7 +42,7 @@ export function PageHero({
           <h1 className="font-display text-[clamp(40px,5.4vw,68px)] font-medium leading-[1.02] tracking-[-.01em]">
             {title} <em className="italic text-blue">{emphasis}</em>
           </h1>
-          <p className="mt-4 max-w-[60ch] text-[19px] text-muted">{lead}</p>
+          <p className="mt-4 max-w-[60ch] text-[17px] leading-relaxed text-muted sm:text-[19px]">{lead}</p>
         </div>
       </Container>
     </section>

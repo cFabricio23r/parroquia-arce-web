@@ -22,6 +22,8 @@ import { AppInstalls } from './collections/AppInstalls'
 import { Home } from './globals/Home'
 import { Contact } from './globals/Contact'
 import { Settings } from './globals/Settings'
+import { Clergy } from './globals/Clergy'
+import { Activity } from './globals/Activity'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -47,7 +49,7 @@ export default buildConfig({
     PrayerRequests,
     AppInstalls,
   ],
-  globals: [Home, Contact, Settings],
+  globals: [Home, Contact, Settings, Clergy, Activity],
   // El panel lo usan voluntarios de la parroquia: la UI de Payload (botones,
   // columnas, filtros, mensajes de error, login) va toda en espanol. Se declara
   // `es` como unico idioma soportado para que no aparezca el selector.

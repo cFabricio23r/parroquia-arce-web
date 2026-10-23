@@ -14,6 +14,11 @@ const base = {
 } as Chapel
 
 describe('ChapelCard', () => {
+  it('no llama misas a una Hora Santa', () => {
+    render(<ChapelCard chapel={{ ...base, massSchedule: 'Hora Santa: jueves, 6:30 p.m.' }} />)
+    expect(screen.getByRole('heading', { name: 'Horarios y celebraciones' })).toBeDefined()
+    expect(screen.queryByText('Horario de misas')).toBeNull()
+  })
   it('muestra el nombre y el patrono', () => {
     render(<ChapelCard chapel={{ ...base, patronOrDedication: 'Inmaculada Concepción' }} />)
     expect(screen.getByRole('heading', { name: 'Ermita Concepción' })).toBeDefined()

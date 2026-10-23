@@ -111,11 +111,15 @@ export interface Config {
     home: Home;
     contact: Contact;
     settings: Setting;
+    clergy: Clergy;
+    activity: Activity;
   };
   globalsSelect: {
     home: HomeSelect<false> | HomeSelect<true>;
     contact: ContactSelect<false> | ContactSelect<true>;
     settings: SettingsSelect<false> | SettingsSelect<true>;
+    clergy: ClergySelect<false> | ClergySelect<true>;
+    activity: ActivitySelect<false> | ActivitySelect<true>;
   };
   locale: null;
   widgets: {
@@ -306,11 +310,25 @@ export interface Sector {
   number?: number | null;
   chapelName?: string | null;
   /**
+   * Agrupación de sectores según el organigrama del plan pastoral.
+   */
+  zone?: ('zona-1' | 'zona-2' | 'zona-3' | 'zona-4' | 'zona-5') | null;
+  /**
+   * Dejalo vacío si el grupo no tiene patrono asignado.
+   */
+  patron?: {
+    /**
+     * Ej.: San Jerónimo. Si son dos o más, cargalos como fiestas.
+     */
+    name?: string | null;
+    image?: (number | null) | Media;
+  };
+  /**
    * Texto corto para las tarjetas del listado.
    */
   summary?: string | null;
   /**
-   * Nadie lo llenó nunca: el cuerpo del sector es Historia. Se borra en una obra aparte, junto con Responsable y Colaboradores.
+   * Qué información ofrece el sector hoy. La historia de su fundación se carga por separado.
    */
   description?: {
     root: {
@@ -461,6 +479,10 @@ export interface Group {
    */
   slug: string;
   type?: ('pastoral' | 'ministerio' | 'comunidad' | 'servicio' | 'formacion') | null;
+  /**
+   * Según el organigrama del plan pastoral. Los órganos de gobierno (Consejo Parroquial, Consejo Económico) no tienen línea.
+   */
+  actionLine?: ('evangelizacion' | 'familia' | 'ninez-juventud-vocacion' | 'formacion-agentes') | null;
   /**
    * Texto corto para las tarjetas del listado.
    */
@@ -1057,6 +1079,13 @@ export interface SectorsSelect<T extends boolean = true> {
   slug?: T;
   number?: T;
   chapelName?: T;
+  zone?: T;
+  patron?:
+    | T
+    | {
+        name?: T;
+        image?: T;
+      };
   summary?: T;
   description?: T;
   history?: T;
@@ -1167,6 +1196,7 @@ export interface GroupsSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
   type?: T;
+  actionLine?: T;
   summary?: T;
   description?: T;
   history?: T;
@@ -1461,6 +1491,39 @@ export interface Contact {
  */
 export interface Setting {
   id: number;
+  /**
+   * Controla el anuncio flotante en la web. No modifica ni finaliza la transmisión en Facebook o YouTube.
+   */
+  socialLive?: {
+    youtube?: {
+      /**
+       * Automático requiere la conexión del canal. Manual permite anunciarlo al comenzar; Ocultar retira el anuncio.
+       */
+      mode?: ('auto' | 'manual' | 'off') | null;
+      /**
+       * Pegá el enlace del video específico, no el enlace del canal ni un enlace de compartir abreviado de Facebook.
+       */
+      url?: string | null;
+      /**
+       * Hora de finalización prevista. Al llegar esta hora se retira automáticamente el anuncio.
+       */
+      endsAt?: string | null;
+    };
+    facebook?: {
+      /**
+       * Automático requiere la conexión del canal. Manual permite anunciarlo al comenzar; Ocultar retira el anuncio.
+       */
+      mode?: ('auto' | 'manual' | 'off') | null;
+      /**
+       * Pegá el enlace del video específico, no el enlace del canal ni un enlace de compartir abreviado de Facebook.
+       */
+      url?: string | null;
+      /**
+       * Hora de finalización prevista. Al llegar esta hora se retira automáticamente el anuncio.
+       */
+      endsAt?: string | null;
+    };
+  };
   radio?: {
     /**
      * Si esta apagado, la web muestra la radio como "Fuera del aire" y deshabilita el play.
@@ -1483,6 +1546,115 @@ export interface Setting {
      * Icono cuadrado y simple para la pestana del navegador. Si se deja vacio, se usa el isotipo o el icono por defecto. Ojo: el navegador guarda el favicon en cache, asi que el cambio puede tardar en verse.
      */
     favicon?: (number | null) | Media;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "clergy".
+ */
+export interface Clergy {
+  id: number;
+  pastor?: {
+    /**
+     * Activá esta opción cuando el nombre y la presentación estén listos para mostrarse en la web.
+     */
+    published?: boolean | null;
+    name?: string | null;
+    role?: string | null;
+    photo?: (number | null) | Media;
+    /**
+     * Dos o tres frases para presentarlo en Inicio.
+     */
+    summary?: string | null;
+    /**
+     * Su vocación, trayectoria y llegada a la parroquia. Aparece en la página Nuestros sacerdotes.
+     */
+    biography?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
+  assistant?: {
+    /**
+     * Activá esta opción cuando el nombre y la presentación estén listos para mostrarse en la web.
+     */
+    published?: boolean | null;
+    name?: string | null;
+    role?: string | null;
+    photo?: (number | null) | Media;
+    /**
+     * Dos o tres frases para presentarlo en Inicio.
+     */
+    summary?: string | null;
+    /**
+     * Su vocación, trayectoria y llegada a la parroquia. Aparece en la página Nuestros sacerdotes.
+     */
+    biography?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "activity".
+ */
+export interface Activity {
+  id: number;
+  /**
+   * Permite mostrar u ocultar los filtros de fecha y tipo. Las publicaciones y el botón para cargar historial siguen disponibles. Guardá los cambios para aplicarlo.
+   */
+  showFilters?: boolean | null;
+  connection?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  /**
+   * Aparece arriba de las publicaciones de Actividad y se retira al vencer. Las fechas del selector usan la zona horaria de tu dispositivo.
+   */
+  notice?: {
+    enabled?: boolean | null;
+    title?: string | null;
+    message?: string | null;
+    /**
+     * Enlace completo que comience con https://.
+     */
+    url?: string | null;
+    /**
+     * Obligatorio al activar el aviso. Elegí una fecha y hora futura.
+     */
+    endsAt?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1567,6 +1739,24 @@ export interface ContactSelect<T extends boolean = true> {
  * via the `definition` "settings_select".
  */
 export interface SettingsSelect<T extends boolean = true> {
+  socialLive?:
+    | T
+    | {
+        youtube?:
+          | T
+          | {
+              mode?: T;
+              url?: T;
+              endsAt?: T;
+            };
+        facebook?:
+          | T
+          | {
+              mode?: T;
+              url?: T;
+              endsAt?: T;
+            };
+      };
   radio?:
     | T
     | {
@@ -1578,6 +1768,55 @@ export interface SettingsSelect<T extends boolean = true> {
     | {
         isotipo?: T;
         favicon?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "clergy_select".
+ */
+export interface ClergySelect<T extends boolean = true> {
+  pastor?:
+    | T
+    | {
+        published?: T;
+        name?: T;
+        role?: T;
+        photo?: T;
+        summary?: T;
+        biography?: T;
+      };
+  assistant?:
+    | T
+    | {
+        published?: T;
+        name?: T;
+        role?: T;
+        photo?: T;
+        summary?: T;
+        biography?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "activity_select".
+ */
+export interface ActivitySelect<T extends boolean = true> {
+  showFilters?: T;
+  connection?: T;
+  notice?:
+    | T
+    | {
+        enabled?: T;
+        title?: T;
+        message?: T;
+        url?: T;
+        endsAt?: T;
       };
   updatedAt?: T;
   createdAt?: T;

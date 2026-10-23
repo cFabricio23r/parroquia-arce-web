@@ -30,6 +30,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.claude/settings.local.json
 
 # vercel
 .vercel
@@ -51,3 +52,4 @@ node_modules/
 
 .vercel
 .env*
+/.yarn/

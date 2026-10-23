@@ -26,7 +26,7 @@ export function GroupCard({ group, as: Heading = 'h3' }: { group: Group; as?: 'h
   return (
     <Link
       href={`/grupos/${group.slug}`}
-      className="card-hover group flex h-full flex-col rounded-lg border border-border bg-white p-7"
+      className="card-hover group flex h-full flex-col rounded-lg border border-border bg-white p-6 sm:p-7"
     >
       <div className="flex items-start justify-between gap-3">
         <CardMark logo={group.logo} name={group.name} variant={meta?.variant} />

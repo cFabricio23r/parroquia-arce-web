@@ -1,0 +1,142 @@
+{
+  "updates": 74,
+  "newImages": [
+    [
+      "romero",
+      74
+    ],
+    [
+      "juanpablo",
+      75
+    ],
+    [
+      "joaquin",
+      76
+    ],
+    [
+      "carlos",
+      77
+    ],
+    [
+      "guadalupe",
+      78
+    ],
+    [
+      "transito",
+      79
+    ],
+    [
+      "auxiliadora",
+      80
+    ],
+    [
+      "jose",
+      81
+    ],
+    [
+      "ana",
+      82
+    ],
+    [
+      "rosario",
+      83
+    ],
+    [
+      "lourdes",
+      84
+    ],
+    [
+      "vianney",
+      85
+    ],
+    [
+      "fatima",
+      86
+    ],
+    [
+      "sagrado",
+      87
+    ]
+  ],
+  "linked": [
+    {
+      "sector": 23,
+      "media": 74
+    },
+    {
+      "sector": 21,
+      "media": 75
+    },
+    {
+      "sector": 20,
+      "media": 76
+    },
+    {
+      "sector": 19,
+      "media": 77
+    },
+    {
+      "sector": 17,
+      "media": 78
+    },
+    {
+      "sector": 16,
+      "media": 79
+    },
+    {
+      "sector": 13,
+      "media": 64
+    },
+    {
+      "sector": 11,
+      "media": 80
+    },
+    {
+      "sector": 9,
+      "media": 81
+    },
+    {
+      "sector": 7,
+      "media": 82
+    },
+    {
+      "sector": 6,
+      "media": 78
+    },
+    {
+      "sector": 5,
+      "media": 49
+    },
+    {
+      "sector": 4,
+      "media": 81
+    },
+    {
+      "sector": 3,
+      "media": 83
+    },
+    {
+      "sector": 2,
+      "media": 84
+    },
+    {
+      "sector": 1,
+      "media": 85
+    },
+    {
+      "sector": 8,
+      "media": 86
+    },
+    {
+      "sector": 15,
+      "media": 87
+    },
+    {
+      "sector": 22,
+      "media": 81
+    }
+  ],
+  "pending": [
+    "Sector 14: la fuente dice Divina Providencia sin identificar la representación concreta. No se asignó una advocación mariana por suposición."
+  ]
+}

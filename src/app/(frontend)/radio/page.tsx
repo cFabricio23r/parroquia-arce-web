@@ -59,7 +59,7 @@ export default async function RadioPage() {
       </section>
 
       {programs.length > 0 && (
-        <section className="py-[clamp(56px,7vw,96px)]">
+        <section className="py-[clamp(36px,6vw,72px)]">
           <Container>
             <Reveal>
               <SectionHead
@@ -75,7 +75,7 @@ export default async function RadioPage() {
         </section>
       )}
 
-      <section className="py-[clamp(56px,7vw,96px)]">
+      <section className="py-[clamp(36px,6vw,72px)]">
         <Container>
           <Reveal>
             <div

@@ -11,16 +11,16 @@ type Variant = 'primary' | 'navy' | 'sky' | 'amber' | 'soft' | 'ghost' | 'white'
  * `active:translate-y-px` quedaba corriendo a 200ms.
  */
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-pill font-bold leading-none whitespace-nowrap [transition:transform_.12s,box-shadow_.2s,background_.2s,color_.2s,border-color_.2s] active:translate-y-px [&_svg]:h-[18px] [&_svg]:w-[18px]'
+  'inline-flex min-h-11 items-center justify-center gap-2 rounded-pill font-bold leading-none whitespace-normal text-center [transition:transform_.12s,box-shadow_.2s,background_.2s,color_.2s,border-color_.2s] active:translate-y-px [&_svg]:h-[18px] [&_svg]:w-[18px]'
 
 /** Una entrada por variante de ds.css:109-124. Incluye padding y font-size propios. */
 const variants: Record<Variant, string> = {
   primary:
     'bg-blue text-white px-[22px] py-[13px] text-[15px] shadow-[0_10px_22px_-10px_rgba(19,76,146,.6)] hover:bg-blue-700',
   navy: 'bg-navy text-white px-[26px] py-[15px] text-[15.5px] hover:bg-navy-deep',
-  sky: 'bg-sky text-white px-[26px] py-[15px] text-[15.5px] shadow-[0_10px_22px_-10px_rgba(31,149,199,.55)] hover:bg-[#1A82AE]',
+  sky: 'bg-sky text-navy-deep px-[26px] py-[15px] text-[15.5px] shadow-[0_10px_22px_-10px_rgba(31,149,199,.55)] hover:bg-[#1A82AE]',
   amber:
-    'bg-amber text-white px-[26px] py-[15px] text-[15.5px] shadow-[0_10px_22px_-10px_rgba(232,143,33,.5)] hover:bg-[#D27E16]',
+    'bg-amber text-navy-deep px-[26px] py-[15px] text-[15.5px] shadow-[0_10px_22px_-10px_rgba(232,143,33,.5)] hover:bg-[#D27E16]',
   soft: 'bg-blue-soft text-blue px-[24px] py-[14px] text-[15px] hover:bg-[#CFEAF7]',
   ghost:
     'bg-white text-text border-[1.5px] border-border px-[24px] py-[13.5px] text-[15px] hover:border-sky hover:text-blue',
