@@ -37,13 +37,28 @@ describe('AppDownloadSections — descarga lista', () => {
     expect(container.textContent).not.toMatch(/Versión\s*·|undefined|null/)
   })
 
-  it('dibuja las capturas con su alt', () => {
+  it('dibuja las capturas con su alt, en una franja enfocable por teclado', () => {
     render(
       <AppDownloadSections
         download={{ ...lista, screenshots: [{ url: '/a.png', alt: 'Inicio de la app' }] }}
       />,
     )
     expect(screen.getByAltText('Inicio de la app')).toBeTruthy()
+    const franja = screen.getByRole('region', { name: 'Capturas de la app' })
+    expect(franja.getAttribute('tabindex')).toBe('0')
+  })
+
+  // Quien escanea el QR desde el celular tiene que ver el boton sin bajar cuatro tarjetas.
+  it('el boton de descarga va antes que la lista de lo que trae', () => {
+    render(<AppDownloadSections download={lista} />)
+    const boton = screen.getByRole('link', { name: /Descargar para Android/ })
+    const lista_ = screen.getByRole('list', { name: /Qué trae/ })
+    expect(boton.compareDocumentPosition(lista_) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+  })
+
+  it('no promete avisos que nadie va a mandar', () => {
+    const { container } = render(<AppDownloadSections download={lista} />)
+    expect(container.textContent).not.toMatch(/avisaremos/i)
   })
 })
 

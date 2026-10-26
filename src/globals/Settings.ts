@@ -2,6 +2,7 @@ import type { GlobalConfig } from 'payload'
 import { anyone } from '../access/anyone'
 import { canManageContent } from '../access/roles'
 import { socialLiveField, validateSocialLive } from '../fields/social-live'
+import { isDownloadUrl } from '../lib/app-download'
 
 /**
  * Ajustes generales del sitio, editables sin deploy: la radio (URL del stream +
@@ -69,7 +70,9 @@ export const Settings: GlobalConfig = {
           type: 'text',
           label: 'Enlace del APK',
           validate: (value: string | null | undefined) =>
-            !value?.trim() || value.trim().startsWith('https://') || 'El enlace tiene que empezar con https://',
+            !value?.trim() ||
+            isDownloadUrl(value.trim()) ||
+            'Tiene que ser un enlace completo que empiece con https://',
           admin: {
             description:
               'Formato: https://github.com/<cuenta>/parroquia-arce-releases/releases/latest/download/parroquia-ciudad-arce.apk — subí el APK siempre con ese mismo nombre y este enlace no cambia.',

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { deriveAppDownload, formatAppMeta } from '@/lib/app-download'
+import { deriveAppDownload, formatAppMeta, isDownloadUrl } from '@/lib/app-download'
 
 const url =
   'https://github.com/x/parroquia-arce-releases/releases/latest/download/parroquia-ciudad-arce.apk'
@@ -13,6 +13,11 @@ describe('deriveAppDownload', () => {
   it('no esta listo encendido y sin URL', () => {
     expect(deriveAppDownload({ app: { available: true, androidUrl: '' } }).ready).toBe(false)
     expect(deriveAppDownload({ app: { available: true, androidUrl: '   ' } }).ready).toBe(false)
+  })
+
+  it('no esta listo con https:// sin dominio', () => {
+    expect(deriveAppDownload({ app: { available: true, androidUrl: 'https://' } }).ready).toBe(false)
+    expect(deriveAppDownload({ app: { available: true, androidUrl: 'https:// x' } }).ready).toBe(false)
   })
 
   it('no esta listo con una URL http://', () => {
@@ -72,5 +77,14 @@ describe('formatAppMeta', () => {
   })
   it('nada', () => {
     expect(formatAppMeta({ version: null, sizeMb: null })).toBeNull()
+  })
+})
+
+describe('isDownloadUrl', () => {
+  it('acepta https con dominio', () => expect(isDownloadUrl(url)).toBe(true))
+  it('rechaza https sin dominio, con espacios o http', () => {
+    expect(isDownloadUrl('https://')).toBe(false)
+    expect(isDownloadUrl('https:// x')).toBe(false)
+    expect(isDownloadUrl('http://x.org/a.apk')).toBe(false)
   })
 })

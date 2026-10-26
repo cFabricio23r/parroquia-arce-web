@@ -67,15 +67,33 @@ export function AppDownloadSections({ download }: { download: AppDownload }) {
     <>
       <section aria-labelledby="app-descarga-titulo" className="py-[clamp(48px,6vw,80px)]">
         <Container>
-          <Reveal className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-start">
-            <div>
-              <h2
-                id="app-descarga-titulo"
-                className="font-display text-[clamp(28px,3.4vw,40px)] font-medium leading-[1.05]"
-              >
-                La vida parroquial, <em className="italic text-blue">en tu celular</em>
-              </h2>
-              <ul className="mt-7 grid gap-4">
+          <Reveal>
+            <h2
+              id="app-descarga-titulo"
+              className="font-display text-[clamp(28px,3.4vw,40px)] font-medium leading-[1.05]"
+            >
+              La vida parroquial, <em className="italic text-blue">en tu celular</em>
+            </h2>
+            {/* El boton va primero en el DOM: en el celular de quien escanea el QR
+                aparece arriba, sin bajar cuatro tarjetas. En escritorio la lista
+                vuelve a la izquierda con lg:order-first. */}
+            <div className="mt-7 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-start">
+              <div className="rounded-xl bg-bg-soft p-[clamp(22px,3vw,32px)]">
+                <a
+                  href={download.url}
+                  className="inline-flex min-h-14 w-full items-center justify-center rounded-pill bg-blue px-[30px] py-[17px] text-center text-[17px] font-bold text-white shadow-[0_10px_22px_-10px_rgba(19,76,146,.6)] [transition:background_.2s] hover:bg-blue-700"
+                >
+                  Descargar para Android
+                </a>
+                {meta && <p className="mt-3 text-center text-[15px] font-semibold">{meta}</p>}
+                <p className="mt-2 text-center text-[14px] text-muted">
+                  Te recomendamos usar Wi-Fi: el archivo es pesado para los datos móviles.
+                </p>
+                <p className="mt-6 border-t border-line-soft pt-5 text-center text-[15px] font-semibold text-text">
+                  Próximamente en Google Play y App Store.
+                </p>
+              </div>
+              <ul aria-label="Qué trae la app" className="grid gap-4 lg:order-first">
                 {FEATURES.map((f) => (
                   <li key={f.title} className="rounded-xl border border-border bg-white p-[18px_22px]">
                     <span className="block font-semibold">{f.title}</span>
@@ -83,24 +101,6 @@ export function AppDownloadSections({ download }: { download: AppDownload }) {
                   </li>
                 ))}
               </ul>
-            </div>
-            <div className="rounded-xl bg-bg-soft p-[clamp(22px,3vw,32px)]">
-              <a
-                href={download.url}
-                className="inline-flex min-h-14 w-full items-center justify-center rounded-pill bg-blue px-[30px] py-[17px] text-center text-[17px] font-bold text-white shadow-[0_10px_22px_-10px_rgba(19,76,146,.6)] [transition:background_.2s] hover:bg-blue-700"
-              >
-                Descargar para Android
-              </a>
-              {meta && <p className="mt-3 text-center text-[15px] font-semibold">{meta}</p>}
-              <p className="mt-2 text-center text-[14px] text-muted">
-                Te recomendamos usar Wi-Fi: el archivo es pesado para los datos móviles.
-              </p>
-              <p className="mt-6 border-t border-line-soft pt-5 text-center text-[15px] text-muted">
-                <span className="font-semibold text-text">
-                  Próximamente en Google Play y App Store.
-                </span>{' '}
-                Te avisaremos cuando esté en las tiendas.
-              </p>
             </div>
           </Reveal>
         </Container>
@@ -145,7 +145,13 @@ export function AppDownloadSections({ download }: { download: AppDownload }) {
             >
               Así se ve
             </h2>
-            <div className="mt-7 flex gap-4 overflow-x-auto pb-2">
+            {/* Enfocable para poder desplazarla con el teclado (axe: scrollable-region-focusable). */}
+            <div
+              role="region"
+              aria-label="Capturas de la app"
+              tabIndex={0}
+              className="mt-7 flex gap-4 overflow-x-auto pb-2"
+            >
               {download.screenshots.map((s) => (
                 // eslint-disable-next-line @next/next/no-img-element -- la media vive en Supabase, servida directo
                 <img

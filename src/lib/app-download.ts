@@ -17,6 +17,16 @@ export type AppDownload =
     }
   | { ready: false }
 
+/** `https://` con dominio de verdad: un prefijo solo dejaria un boton que no lleva a nada. */
+export function isDownloadUrl(value: string): boolean {
+  if (!value.startsWith('https://') || /\s/.test(value)) return false
+  try {
+    return new URL(value).hostname.length > 0
+  } catch {
+    return false
+  }
+}
+
 /**
  * Unica fuente de verdad de "la descarga de la app esta lista". La pagina /app,
  * el pie y la portada leen esto, nunca `settings.app.*` suelto: asi un enlace
@@ -25,7 +35,7 @@ export type AppDownload =
 export function deriveAppDownload(settings: Pick<Setting, 'app'> | null | undefined): AppDownload {
   const app = settings?.app
   const url = app?.androidUrl?.trim() ?? ''
-  if (app?.available !== true || !url.startsWith('https://')) return { ready: false }
+  if (app?.available !== true || !isDownloadUrl(url)) return { ready: false }
 
   const version = app.version?.trim() || null
   const size = typeof app.sizeMb === 'number' ? Math.round(app.sizeMb) : NaN
