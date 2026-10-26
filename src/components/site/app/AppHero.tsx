@@ -26,7 +26,7 @@ export function AppHero({ download }: { download: AppDownload }) {
                 Inicio
               </Link>
               <span className="opacity-50">/</span>
-              <span>App</span>
+              <span>App de la parroquia</span>
             </div>
 
             {download.ready ? (

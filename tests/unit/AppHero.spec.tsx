@@ -47,6 +47,9 @@ describe('AppHero', () => {
   it('apagada: mensaje y salidas utiles, sin descarga ni QR', () => {
     render(<AppHero download={off} />)
     expect(screen.getByRole('heading', { level: 1, name: /disponible muy pronto/ })).toBeTruthy()
+    expect(
+      screen.getByText('Mientras tanto, podés escuchar la radio y consultar los horarios aquí en la web.'),
+    ).toBeTruthy()
     expect(screen.getByRole('link', { name: 'Escuchá la radio' }).getAttribute('href')).toBe('/radio')
     expect(screen.getByRole('link', { name: 'Ver los horarios' }).getAttribute('href')).toBe('/horarios')
     expect(screen.queryByRole('link', { name: /Descargar/ })).toBeNull()
@@ -58,6 +61,7 @@ describe('AppHero', () => {
     ['apagada', off],
   ])('%s: migas con Inicio', (_n, download) => {
     render(<AppHero download={download} />)
+    expect(screen.getByText('App de la parroquia')).toBeTruthy()
     expect(screen.getByRole('link', { name: 'Inicio' }).getAttribute('href')).toBe('/')
   })
 })
