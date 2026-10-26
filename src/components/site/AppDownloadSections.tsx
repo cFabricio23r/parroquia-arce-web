@@ -96,8 +96,10 @@ export function AppDownloadSections({ download }: { download: AppDownload }) {
                 Te recomendamos usar Wi-Fi: el archivo es pesado para los datos móviles.
               </p>
               <p className="mt-6 border-t border-line-soft pt-5 text-center text-[15px] text-muted">
-                <span className="font-semibold text-text">Próximamente para iPhone.</span> Te
-                avisaremos cuando esté lista.
+                <span className="font-semibold text-text">
+                  Próximamente en Google Play y App Store.
+                </span>{' '}
+                Te avisaremos cuando esté en las tiendas.
               </p>
             </div>
           </Reveal>

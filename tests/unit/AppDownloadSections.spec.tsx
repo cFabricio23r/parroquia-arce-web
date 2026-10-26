@@ -23,11 +23,11 @@ describe('AppDownloadSections — descarga lista', () => {
     expect(pasos.textContent).toMatch(/apps desconocidas/)
   })
 
-  it('iPhone figura como proximamente, sin enlace', () => {
+  it('las tiendas figuran como proximamente, sin enlace', () => {
     render(<AppDownloadSections download={lista} />)
-    expect(screen.getByText(/Próximamente para iPhone/)).toBeTruthy()
+    expect(screen.getByText(/Próximamente en Google Play y App Store/)).toBeTruthy()
     const links = screen.getAllByRole('link')
-    expect(links.every((a) => !/iphone|app store/i.test(a.textContent ?? ''))).toBe(true)
+    expect(links.every((a) => !/google play|app store/i.test(a.textContent ?? ''))).toBe(true)
   })
 
   it('sin version ni peso no deja separadores sueltos', () => {

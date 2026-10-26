@@ -20,6 +20,8 @@ import { ClergySection } from '@/components/community/ClergySection'
 import { getClergyProfiles } from '@/lib/get-clergy'
 import { RadioLiveBar } from '@/components/site/radio/RadioLiveBar'
 import { isValidTime, toRadioProgramView } from '@/lib/radio-schedule'
+import { AppPromo } from '@/components/site/AppPromo'
+import { deriveAppDownload } from '@/lib/app-download'
 
 export const metadata: Metadata = { title: 'Inicio' }
 export const revalidate = 300
@@ -481,6 +483,8 @@ export default async function HomePage() {
           </div>
         </Container>
       </section>
+
+      <AppPromo download={deriveAppDownload(settings)} />
 
       {/* RADIO */}
       <section
