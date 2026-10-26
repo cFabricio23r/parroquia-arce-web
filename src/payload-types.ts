@@ -1535,6 +1535,31 @@ export interface Setting {
     streamUrl?: string | null;
   };
   /**
+   * Descarga de la app para Android en /app. El APK vive en un repo público de GitHub: aquí solo se carga el enlace.
+   */
+  app?: {
+    /**
+     * Si esta apagado, /app dice "muy pronto" y ni el pie ni la portada ofrecen la descarga.
+     */
+    available?: boolean | null;
+    /**
+     * Formato: https://github.com/<cuenta>/parroquia-arce-releases/releases/latest/download/parroquia-ciudad-arce.apk — subí el APK siempre con ese mismo nombre y este enlace no cambia.
+     */
+    androidUrl?: string | null;
+    /**
+     * Ej. 0.1.0. Se muestra debajo del botón de descarga.
+     */
+    version?: string | null;
+    /**
+     * Ej. 135. Se muestra redondeado, junto al aviso de usar Wi-Fi.
+     */
+    sizeMb?: number | null;
+    /**
+     * Opcional. Pantallas de la app, en el orden en que se muestran.
+     */
+    screenshots?: (number | Media)[] | null;
+  };
+  /**
    * Logo e icono del sitio. Editables sin un nuevo despliegue.
    */
   marca?: {
@@ -1762,6 +1787,15 @@ export interface SettingsSelect<T extends boolean = true> {
     | {
         available?: T;
         streamUrl?: T;
+      };
+  app?:
+    | T
+    | {
+        available?: T;
+        androidUrl?: T;
+        version?: T;
+        sizeMb?: T;
+        screenshots?: T;
       };
   marca?:
     | T

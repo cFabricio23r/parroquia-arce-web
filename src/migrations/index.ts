@@ -4,6 +4,7 @@ import * as migration_20260925_160000_social_live from './20260925_160000_social
 import * as migration_20260928_000000_activity_tools from './20260928_000000_activity_tools';
 import * as migration_20260928_130000_activity_filters_toggle from './20260928_130000_activity_filters_toggle';
 import * as migration_20261023_211157_app_installs from './20261023_211157_app_installs'
+import * as migration_20261025_000000_app_download from './20261025_000000_app_download'
 
 export const migrations = [
   {
@@ -32,4 +33,9 @@ export const migrations = [
     name: '20260928_130000_activity_filters_toggle',
   },
   { up: migration_20261023_211157_app_installs.up, down: migration_20261023_211157_app_installs.down, name: '20261023_211157_app_installs' },
+  {
+    up: migration_20261025_000000_app_download.up,
+    down: migration_20261025_000000_app_download.down,
+    name: '20261025_000000_app_download',
+  },
 ];
