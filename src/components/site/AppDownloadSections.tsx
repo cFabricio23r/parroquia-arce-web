@@ -17,7 +17,7 @@ const FEATURES = [
   { title: 'Radio parroquial en vivo', detail: 'Escuchá la emisora desde el celular.' },
   { title: 'Horarios y agenda', detail: 'Misas, confesiones y los eventos de la parroquia.' },
   {
-    title: 'Orar',
+    title: 'Rezar',
     detail: 'Lecturas del día, Liturgia de las Horas, Santo Rosario, oraciones y pedidos de oración.',
   },
   {
