@@ -37,31 +37,19 @@ describe('deriveAppDownload', () => {
       deriveAppDownload({
         app: { available: true, androidUrl: ` ${url} `, version: '0.1.0', sizeMb: 134.7 },
       }),
-    ).toEqual({ ready: true, url, version: '0.1.0', sizeMb: 135, screenshots: [] })
+    ).toEqual({ ready: true, url, version: '0.1.0', sizeMb: 135 })
   })
 
   it('version vacia y peso invalido quedan en null', () => {
     expect(
       deriveAppDownload({ app: { available: true, androidUrl: url, version: '  ', sizeMb: 0 } }),
-    ).toEqual({ ready: true, url, version: null, sizeMb: null, screenshots: [] })
+    ).toEqual({ ready: true, url, version: null, sizeMb: null })
   })
 
-  // Con depth bajo, Payload devuelve el id numerico en vez del objeto Media.
-  it('descarta capturas sin poblar o sin url', () => {
-    const d = deriveAppDownload({
-      app: {
-        available: true,
-        androidUrl: url,
-        screenshots: [
-          7,
-          { id: 1, url: '/a.png', alt: 'Inicio de la app', width: 1080, height: 2400 },
-          { id: 2, url: null, alt: 'x' },
-        ] as never,
-      },
-    })
-    expect(d.ready && d.screenshots).toEqual([
-      { url: '/a.png', alt: 'Inicio de la app', width: 1080, height: 2400 },
-    ])
+  it('la lista devuelve exactamente ready, url, version y sizeMb', () => {
+    expect(
+      deriveAppDownload({ app: { available: true, androidUrl: url, version: '1.0.0', sizeMb: 10 } }),
+    ).toEqual({ ready: true, url, version: '1.0.0', sizeMb: 10 })
   })
 })
 

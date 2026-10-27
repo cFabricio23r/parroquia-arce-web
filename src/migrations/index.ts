@@ -5,6 +5,7 @@ import * as migration_20260928_000000_activity_tools from './20260928_000000_act
 import * as migration_20260928_130000_activity_filters_toggle from './20260928_130000_activity_filters_toggle';
 import * as migration_20261023_211157_app_installs from './20261023_211157_app_installs'
 import * as migration_20261025_000000_app_download from './20261025_000000_app_download'
+import * as migration_20261026_000000_drop_settings_rels from './20261026_000000_drop_settings_rels'
 
 export const migrations = [
   {
@@ -37,5 +38,10 @@ export const migrations = [
     up: migration_20261025_000000_app_download.up,
     down: migration_20261025_000000_app_download.down,
     name: '20261025_000000_app_download',
+  },
+  {
+    up: migration_20261026_000000_drop_settings_rels.up,
+    down: migration_20261026_000000_drop_settings_rels.down,
+    name: '20261026_000000_drop_settings_rels',
   },
 ];

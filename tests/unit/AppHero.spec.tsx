@@ -8,7 +8,6 @@ const ready: AppDownload = {
   url: 'https://example.com/app.apk',
   version: '0.1.0',
   sizeMb: 135,
-  screenshots: [],
 }
 const off: AppDownload = { ready: false }
 
@@ -39,7 +38,7 @@ describe('AppHero', () => {
 
   it('lista sin version ni peso: no deja restos', () => {
     const { container } = render(
-      <AppHero download={{ ready: true, url: 'https://example.com/a.apk', version: null, sizeMb: null, screenshots: [] }} />,
+      <AppHero download={{ ready: true, url: 'https://example.com/a.apk', version: null, sizeMb: null }} />,
     )
     expect(container.textContent).not.toMatch(/Versión\s*·|undefined|null/)
   })

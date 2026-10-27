@@ -14,7 +14,7 @@ describe('AppPromo', () => {
   // Lleva a /app y no al APK: la persona lee primero como instalarla.
   it('lista: enlaza a /app, nunca al APK', () => {
     render(
-      <AppPromo download={{ ready: true, url, version: '0.1.0', sizeMb: 135, screenshots: [] }} />,
+      <AppPromo download={{ ready: true, url, version: '0.1.0', sizeMb: 135 }} />,
     )
     const link = screen.getByRole('link', { name: /Descargá la app/ })
     expect(link.getAttribute('href')).toBe('/app')

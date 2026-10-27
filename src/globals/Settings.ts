@@ -92,14 +92,6 @@ export const Settings: GlobalConfig = {
           min: 1,
           admin: { description: 'Ej. 135. Se muestra redondeado, junto al aviso de usar Wi-Fi.' },
         },
-        {
-          name: 'screenshots',
-          type: 'upload',
-          relationTo: 'media',
-          hasMany: true,
-          label: 'Capturas de la app',
-          admin: { description: 'Opcional. Pantallas de la app, en el orden en que se muestran.' },
-        },
       ],
     },
     {

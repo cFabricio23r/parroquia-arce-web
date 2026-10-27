@@ -1,19 +1,11 @@
 import type { Setting } from '@/payload-types'
 
-export type AppScreenshot = {
-  url: string
-  alt: string
-  width?: number | null
-  height?: number | null
-}
-
 export type AppDownload =
   | {
       ready: true
       url: string
       version: string | null
       sizeMb: number | null
-      screenshots: AppScreenshot[]
     }
   | { ready: false }
 
@@ -39,13 +31,7 @@ export function deriveAppDownload(settings: Pick<Setting, 'app'> | null | undefi
 
   const version = app.version?.trim() || null
   const size = typeof app.sizeMb === 'number' ? Math.round(app.sizeMb) : NaN
-  const screenshots = (app.screenshots ?? []).flatMap((s) =>
-    typeof s === 'object' && s && typeof s.url === 'string'
-      ? [{ url: s.url, alt: s.alt, width: s.width, height: s.height }]
-      : [],
-  )
-
-  return { ready: true, url, version, sizeMb: size >= 1 ? size : null, screenshots }
+  return { ready: true, url, version, sizeMb: size >= 1 ? size : null }
 }
 
 /** La linea bajo el boton: "Versión 0.1.0 · 135 MB", o lo que haya cargado. */

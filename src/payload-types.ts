@@ -1554,10 +1554,6 @@ export interface Setting {
      * Ej. 135. Se muestra redondeado, junto al aviso de usar Wi-Fi.
      */
     sizeMb?: number | null;
-    /**
-     * Opcional. Pantallas de la app, en el orden en que se muestran.
-     */
-    screenshots?: (number | Media)[] | null;
   };
   /**
    * Logo e icono del sitio. Editables sin un nuevo despliegue.
@@ -1795,7 +1791,6 @@ export interface SettingsSelect<T extends boolean = true> {
         androidUrl?: T;
         version?: T;
         sizeMb?: T;
-        screenshots?: T;
       };
   marca?:
     | T

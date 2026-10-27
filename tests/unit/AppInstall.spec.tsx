@@ -5,7 +5,7 @@ import type { AppDownload } from '@/lib/app-download'
 
 const url =
   'https://github.com/x/parroquia-arce-releases/releases/latest/download/parroquia-ciudad-arce.apk'
-const lista: AppDownload = { ready: true, url, version: '0.1.0', sizeMb: 135, screenshots: [] }
+const lista: AppDownload = { ready: true, url, version: '0.1.0', sizeMb: 135 }
 
 describe('AppInstall', () => {
   it('lista: region con los pasos, el aviso y el enlace final de descarga', () => {
