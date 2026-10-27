@@ -12,6 +12,9 @@ const STEPS = [
   'Volvé atrás y tocá «Instalar». Cuando termine, abrila desde el ícono de la parroquia.',
 ]
 
+// Indice del paso donde Android muestra el aviso de "fuente desconocida".
+const WARNING_STEP = 2
+
 export function AppInstall({ download }: { download: AppDownload }) {
   if (!download.ready) return null
 
@@ -25,32 +28,35 @@ export function AppInstall({ download }: { download: AppDownload }) {
           >
             Cómo instalarla
           </h2>
-          <div className="mt-7 grid gap-8 md:grid-cols-2 md:items-start">
-            <ol className="grid gap-4">
-              {STEPS.map((step, i) => (
-                <li key={step} className="flex gap-4 rounded-xl bg-white p-[18px_22px]">
-                  <span
-                    aria-hidden="true"
-                    className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-blue text-[16px] font-bold text-white"
-                  >
-                    {i + 1}
-                  </span>
-                  <span className="pt-1.5 text-[16px] leading-relaxed">{step}</span>
-                </li>
-              ))}
-            </ol>
-            <div>
-              <p className="text-[15px] text-muted">
-                Ese aviso es normal en las apps que no vienen de Play Store. La app es de la parroquia y
-                no pide pagos ni datos bancarios.
-              </p>
-              <a
-                href={download.url}
-                className="mt-6 inline-flex min-h-14 w-full items-center justify-center rounded-pill bg-blue px-[30px] py-[17px] text-center text-[17px] font-bold text-white shadow-[0_10px_22px_-10px_rgba(19,76,146,.6)] [transition:background_.2s] hover:bg-blue-700 sm:w-auto"
-              >
-                Descargar para Android
-              </a>
-            </div>
+          <ol className="mt-7 grid gap-4 md:grid-cols-2">
+            {STEPS.map((step, i) => (
+              <li key={step} className="flex gap-4 rounded-xl bg-white p-[18px_22px]">
+                <span
+                  aria-hidden="true"
+                  className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-blue text-[16px] font-bold text-white"
+                >
+                  {i + 1}
+                </span>
+                <div className="pt-1.5 text-[16px] leading-relaxed">
+                  <p>{step}</p>
+                  {/* El aviso va pegado al paso del aviso de Android, no suelto. */}
+                  {i === WARNING_STEP && (
+                    <p className="mt-2 text-[15px] text-muted">
+                      Ese aviso es normal en las apps que no vienen de Play Store. La app es de la
+                      parroquia y no pide pagos ni datos bancarios.
+                    </p>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ol>
+          <div className="mt-8">
+            <a
+              href={download.url}
+              className="inline-flex min-h-14 w-full items-center justify-center rounded-pill bg-blue px-[30px] py-[17px] text-center text-[17px] font-bold text-white shadow-[0_10px_22px_-10px_rgba(19,76,146,.6)] [transition:background_.2s] hover:bg-blue-700 sm:w-auto"
+            >
+              Descargar para Android
+            </a>
           </div>
         </Reveal>
       </Container>

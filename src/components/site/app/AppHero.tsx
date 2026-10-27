@@ -15,14 +15,16 @@ export function AppHero({ download }: { download: AppDownload }) {
   return (
     <section
       className="text-white"
-      style={{ background: 'radial-gradient(120% 80% at 85% 10%, #134C92 0%, #0A2448 45%, #051733 100%)' }}
+      style={{
+        background: 'radial-gradient(120% 80% at 85% 10%, #134C92 0%, #0A2448 45%, #051733 100%)',
+      }}
     >
       <Container>
         <div className="grid items-center gap-12 pb-14 pt-8 sm:pt-[54px] lg:grid-cols-[1.1fr_1fr] lg:pb-20">
           <div>
             {/* Migas: mismo markup que PageHero, en blanco sobre navy. */}
             <div className="mb-[18px] flex items-center gap-[9px] text-[13.5px] text-white/70">
-              <Link href="/" className="hover:text-white">
+              <Link href="/" className="-my-2 py-2 hover:text-white">
                 Inicio
               </Link>
               <span className="opacity-50">/</span>
@@ -44,10 +46,10 @@ export function AppHero({ download }: { download: AppDownload }) {
                   Descargar para Android
                 </a>
                 {meta && <p className="mt-3 text-[15px] font-semibold text-white">{meta}</p>}
-                <p className="mt-2 text-[14px] text-white/70">
+                <p className="mt-2 text-[16px] text-white/85">
                   Te recomendamos usar Wi-Fi: el archivo es pesado para los datos móviles.
                 </p>
-                <p className="mt-5 text-[15px] font-semibold text-white/90">
+                <p className="mt-5 text-[15px] text-white/80">
                   Próximamente en Google Play y App Store.
                 </p>
 
