@@ -11,7 +11,7 @@ describe('AppInstall', () => {
   it('lista: region con los pasos, el aviso y el enlace final de descarga', () => {
     render(<AppInstall download={lista} />)
     const region = screen.getByRole('region', { name: /Cómo instalarla/ })
-    expect(within(region).getAllByRole('listitem').length).toBeGreaterThanOrEqual(4)
+    expect(within(region).getAllByRole('listitem')).toHaveLength(4)
     expect(region.textContent).toMatch(/apps desconocidas/)
     const link = within(region).getByRole('link', { name: 'Descargar para Android' })
     expect(link.getAttribute('href')).toBe(url)
