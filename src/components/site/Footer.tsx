@@ -33,6 +33,7 @@ export async function Footer() {
     { href: '/eventos', label: 'Agenda de eventos' },
     ...(clergy.length ? [{ href: '/sacerdotes', label: 'Nuestros sacerdotes' }] : []),
     { href: '/noticias', label: 'Noticias y formación' },
+    { href: '/reflexiones', label: 'Reflexiones de la semana' },
     { href: '/radio', label: 'Radio parroquial' },
     ...(deriveAppDownload(settings).ready ? [{ href: '/app', label: 'Descargá la app' }] : []),
   ]

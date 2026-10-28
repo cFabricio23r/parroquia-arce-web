@@ -13,6 +13,7 @@ const NAV_BASE = [
   { href: '/grupos', label: 'Grupos' },
   { href: '/eventos', label: 'Eventos' },
   { href: '/radio', label: 'Radio' },
+  { href: '/reflexiones', label: 'Reflexiones' },
   { href: '/actividad', label: 'Actividad' },
   { href: '/contacto', label: 'Contacto' },
 ]

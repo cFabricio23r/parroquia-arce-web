@@ -20,6 +20,15 @@ describe('Header', () => {
     expect(screen.getAllByRole('link', { name: 'Actividad' }).length).toBeGreaterThan(0)
   })
 
+  it('incluye Reflexiones despues de Radio', () => {
+    render(<Header hasSchedule />)
+    const links = screen.getAllByRole('link').map((a) => a.textContent)
+    expect(links.indexOf('Reflexiones')).toBeGreaterThan(links.indexOf('Radio'))
+    expect(
+      screen.getAllByRole('link', { name: 'Reflexiones' })[0].getAttribute('href'),
+    ).toBe('/reflexiones')
+  })
+
   it('marca el item activo segun el pathname', () => {
     mockPathname.mockReturnValue('/actividad')
     render(<Header hasSchedule />)

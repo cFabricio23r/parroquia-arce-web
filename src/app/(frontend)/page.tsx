@@ -22,6 +22,8 @@ import { RadioLiveBar } from '@/components/site/radio/RadioLiveBar'
 import { isValidTime, toRadioProgramView } from '@/lib/radio-schedule'
 import { AppPromo } from '@/components/site/AppPromo'
 import { deriveAppDownload } from '@/lib/app-download'
+import { currentReflection, getReflections } from '@/lib/reflections'
+import { ReflectionFeature } from '@/components/reflections/ReflectionFeature'
 
 export const metadata: Metadata = { title: 'Inicio' }
 export const revalidate = 300
@@ -71,6 +73,7 @@ export default async function HomePage() {
     settings,
     contactGlobal,
     clergyProfiles,
+    reflectionsRes,
   ] = await Promise.all([
     // "Proximas actividades": solo de hoy en adelante. El corte es la
     // medianoche de El Salvador, asi lo de esta manana sigue en la portada
@@ -112,6 +115,8 @@ export default async function HomePage() {
     payload.findGlobal({ slug: 'settings' }),
     payload.findGlobal({ slug: 'contact' }),
     getClergyProfiles(),
+    // La portada no se cae si las reflexiones fallan: simplemente no hay tarjeta.
+    getReflections({ limit: 5, page: 1 }).catch(() => ({ docs: [], hasNextPage: false })),
   ])
 
   // Hero editable desde el global `home`. Cada campo cae a su valor editorial
@@ -129,6 +134,7 @@ export default async function HomePage() {
     heroImages.push({ url: hero.image.url, alt: hero.image.alt ?? '' })
   }
   const heroLocation = hero?.location || 'Parroquia Inmaculada Concepción de María · Ciudad Arce'
+  const reflection = currentReflection(reflectionsRes.docs, new Date())
   const radioLive = settings.radio?.available ?? true
 
   // Evento destacado: el marcado en el CMS, o el proximo evento como respaldo.
@@ -506,6 +512,9 @@ export default async function HomePage() {
           </Reveal>
         </Container>
       </section>
+
+      {/* REFLEXION DE LA SEMANA */}
+      <ReflectionFeature reflection={reflection} />
 
       {/* NOTICIAS + MULTIMEDIA */}
       <section className="bg-bg-soft py-[clamp(36px,6vw,72px)]">
