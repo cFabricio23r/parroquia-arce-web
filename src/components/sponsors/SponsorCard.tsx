@@ -2,6 +2,8 @@ import type { SponsorView } from '@/lib/sponsors'
 
 const linkBase =
   'inline-flex min-h-11 items-center gap-2 rounded-pill px-4 text-[14px] font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue [transition:background_.2s,color_.2s]'
+const filled = 'bg-blue text-white hover:bg-blue-700'
+const outlined = 'border border-blue text-blue hover:bg-blue-soft'
 
 /** Tarjeta de patrocinador de /patrocinadores. Solo pinta los botones de red que existen. */
 export function SponsorCard({ sponsor }: { sponsor: SponsorView }) {
@@ -35,7 +37,7 @@ export function SponsorCard({ sponsor }: { sponsor: SponsorView }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${name} en Facebook (se abre en otra pestaña)`}
-              className={`${linkBase} bg-blue text-white hover:bg-blue-700`}
+              className={`${linkBase} ${filled}`}
             >
               <svg
                 width="16"
@@ -57,7 +59,8 @@ export function SponsorCard({ sponsor }: { sponsor: SponsorView }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${name} en Instagram (se abre en otra pestaña)`}
-              className={`${linkBase} border border-blue text-blue hover:bg-blue-soft`}
+              // Solo, va lleno: un único botón con borde parece deshabilitado (igual que en la app).
+              className={`${linkBase} ${facebookUrl ? outlined : filled}`}
             >
               <svg
                 width="16"

@@ -14,6 +14,17 @@ describe('SponsorCard', () => {
     expect(screen.queryByRole('link', { name: /Facebook/ })).toBeNull()
   })
 
+  it('fills the Instagram button when it is the only one', () => {
+    const { rerender } = render(<SponsorCard sponsor={makeSponsor({ facebookUrl: null })} />)
+    const alone = screen.getByRole('link', { name: /Instagram/ })
+    expect(alone.className).toContain('bg-blue')
+    expect(alone.className).not.toContain('border-blue')
+    rerender(<SponsorCard sponsor={makeSponsor()} />)
+    const paired = screen.getByRole('link', { name: /Instagram/ })
+    expect(paired.className).toContain('border-blue')
+    expect(paired.className).not.toContain('bg-blue ')
+  })
+
   it('opens external links in a new tab safely', () => {
     render(<SponsorCard sponsor={makeSponsor()} />)
     const fb = screen.getByRole('link', {
