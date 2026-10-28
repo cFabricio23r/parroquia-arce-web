@@ -5,10 +5,11 @@ const TITLES = new Set(['hno.', 'hna.', 'fr.', 'hno', 'hna', 'fr'])
 /** "Hno. Nombre Apellido" -> "NA". Ignora Hno./Hna./Fr. */
 export function initials(name: string): string {
   const words = name.split(/\s+/).filter((w) => w && !TITLES.has(w.toLowerCase()))
-  return words
+  const out = words
     .slice(0, 2)
     .map((w) => w[0].toUpperCase())
     .join('')
+  return out || name.trim().charAt(0).toUpperCase()
 }
 
 /** Predicador: foto (con alt) o iniciales decorativas, y el nombre siempre visible. */

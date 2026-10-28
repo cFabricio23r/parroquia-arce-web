@@ -1,6 +1,6 @@
 import { getPayload } from 'payload'
 import config from '@/payload.config'
-import { svParts } from './sv-date'
+import { svParts, svStartOfToday } from './sv-date'
 import { MONTHS } from './months'
 
 /** Reflexion semanal lista para pintar (web). */
@@ -102,6 +102,15 @@ export function weekRangeLabel(weekOf: string): string {
   return `${start.getUTCDate()} de ${monthName(start)} al ${end.getUTCDate()} de ${monthName(end)}`
 }
 
+/**
+ * Instante (ISO) del inicio de MANANA en El Salvador. Las reflexiones con
+ * `weekOf` menor a esto ya empezaron su semana; las cargadas por adelantado no
+ * se ven. El Salvador no tiene horario de verano: un dia son 24 h.
+ */
+export function visibleUntil(now: Date): string {
+  return new Date(svStartOfToday(now).getTime() + 24 * 60 * 60 * 1000).toISOString()
+}
+
 /** Reflexiones publicadas, la mas reciente primero. Local API: filtra `status` a mano. */
 export async function getReflections({
   limit = 12,
@@ -113,7 +122,10 @@ export async function getReflections({
   const payload = await getPayload({ config: await config })
   const res = await payload.find({
     collection: 'reflections',
-    where: { status: { equals: 'published' } },
+    where: {
+      status: { equals: 'published' },
+      weekOf: { less_than: visibleUntil(new Date()) },
+    },
     sort: '-weekOf',
     depth: 1,
     limit,
@@ -130,7 +142,11 @@ export async function getReflectionBySlug(slug: string): Promise<ReflectionView 
   const payload = await getPayload({ config: await config })
   const res = await payload.find({
     collection: 'reflections',
-    where: { slug: { equals: slug }, status: { equals: 'published' } },
+    where: {
+      slug: { equals: slug },
+      status: { equals: 'published' },
+      weekOf: { less_than: visibleUntil(new Date()) },
+    },
     depth: 1,
     limit: 1,
   })

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 import { Container } from '@/components/ui/Container'
 import { PreacherBadge } from '@/components/reflections/PreacherBadge'
 import { ReflectionListItem } from '@/components/reflections/ReflectionListItem'
@@ -17,14 +18,12 @@ export default async function ReflexionesPage({
 }) {
   const { pagina } = await searchParams
   const n = Number.parseInt(pagina ?? '', 10)
-  const page = Number.isFinite(n) && n > 0 ? n : 1
+  const page = Number.isFinite(n) && n > 0 ? Math.min(n, 1000) : 1
 
   const { docs, hasNextPage } = await getReflections({ limit: PAGE_SIZE, page })
-  // Las cargadas por adelantado (weekOf futuro) no se muestran todavia.
+  if (page > 1 && docs.length === 0) notFound()
   const current = currentReflection(docs, new Date())
-  const visible = current
-    ? docs.filter((d) => d.weekOf.slice(0, 10) <= current.weekOf.slice(0, 10))
-    : []
+  const visible = docs
   const featured = page === 1 ? current : null
   const rest = visible.filter((d) => d.slug !== featured?.slug)
 
@@ -36,13 +35,13 @@ export default async function ReflexionesPage({
       >
         <Container>
           <div className="pb-8 pt-8 sm:pb-12 sm:pt-[54px]">
-            <div className="mb-[18px] flex items-center gap-[9px] text-[13.5px] text-muted">
+            <nav aria-label="Migas de pan" className="mb-[18px] flex items-center gap-[9px] text-[13.5px] text-muted">
               <Link href="/" className="hover:text-blue">
                 Inicio
               </Link>
               <span className="opacity-50">/</span>
               <span>Reflexiones</span>
-            </div>
+            </nav>
             <h1 className="font-display text-[clamp(40px,5.4vw,68px)] font-medium leading-[1.02]">
               Reflexión de la <em className="italic text-blue">semana</em>
             </h1>

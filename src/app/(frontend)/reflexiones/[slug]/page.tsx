@@ -44,7 +44,7 @@ export default async function ReflexionDetalle({
       <section className="bg-navy text-white">
         <Container>
           <div className="pb-[72px] pt-8 sm:pt-[54px]">
-            <div className="mb-[18px] flex flex-wrap items-center gap-[9px] text-[13.5px] text-white/70">
+            <nav aria-label="Migas de pan" className="mb-[18px] flex flex-wrap items-center gap-[9px] text-[13.5px] text-white/70">
               <Link href="/" className="hover:text-white">
                 Inicio
               </Link>
@@ -54,7 +54,7 @@ export default async function ReflexionDetalle({
               </Link>
               <span className="opacity-50">/</span>
               <span className="text-white">{r.title}</span>
-            </div>
+            </nav>
             <div className="text-[13px] font-bold uppercase tracking-[0.12em] text-sky-light">
               Reflexión de la semana · {weekRangeLabel(r.weekOf)}
             </div>
@@ -102,9 +102,13 @@ export default async function ReflexionDetalle({
                 <h2 id="anteriores" className="font-display text-[22px] font-medium">
                   Reflexiones anteriores
                 </h2>
-                {previous.map((p) => (
-                  <ReflectionListItem key={p.slug} reflection={p} />
-                ))}
+                <ul className="flex list-none flex-col gap-4 p-0">
+                  {previous.map((p) => (
+                    <li key={p.slug}>
+                      <ReflectionListItem reflection={p} />
+                    </li>
+                  ))}
+                </ul>
                 <Link href="/reflexiones" className="text-[15.5px] font-bold text-blue">
                   Ver todas las reflexiones →
                 </Link>

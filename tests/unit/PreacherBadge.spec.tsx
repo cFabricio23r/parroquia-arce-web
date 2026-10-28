@@ -7,6 +7,7 @@ describe('initials', () => {
     expect(initials('Hno. Nombre Apellido')).toBe('NA')
     expect(initials('Hna. Ana Pérez')).toBe('AP')
     expect(initials('Fr. Luis Gómez')).toBe('LG')
+    expect(initials('Hno.')).toBe('H')
   })
 })
 
