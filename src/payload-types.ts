@@ -71,6 +71,7 @@ export interface Config {
     media: Media;
     audio: Audio;
     news: News;
+    reflections: Reflection;
     formation: Formation;
     sectors: Sector;
     chapels: Chapel;
@@ -91,6 +92,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     audio: AudioSelect<false> | AudioSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
+    reflections: ReflectionsSelect<false> | ReflectionsSelect<true>;
     formation: FormationSelect<false> | FormationSelect<true>;
     sectors: SectorsSelect<false> | SectorsSelect<true>;
     chapels: ChapelsSelect<false> | ChapelsSelect<true>;
@@ -263,6 +265,68 @@ export interface News {
    * Destacar en la portada del sitio.
    */
   isFeatured?: boolean | null;
+  status: 'draft' | 'published' | 'archived';
+  /**
+   * Fecha que se muestra al publico.
+   */
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reflections".
+ */
+export interface Reflection {
+  id: number;
+  /**
+   * Ej.: "La santidad en lo de todos los días".
+   */
+  title: string;
+  /**
+   * Identificador para la URL. Solo minusculas, numeros y guiones.
+   */
+  slug: string;
+  /**
+   * La frase de la tarjeta. Sin frase, la tarjeta muestra el tema.
+   */
+  quote?: string | null;
+  /**
+   * Ej.: Mt 5, 3.
+   */
+  quoteRef?: string | null;
+  /**
+   * Ej.: Hno. Nombre Apellido.
+   */
+  preacherName: string;
+  /**
+   * Opcional. Sin foto se muestran las iniciales.
+   */
+  preacherPhoto?: (number | null) | Media;
+  /**
+   * Primer día de la semana de la reflexión. No aparece en el sitio antes de ese día.
+   */
+  weekOf: string;
+  audio: number | Audio;
+  /**
+   * Opcional. Sin dato no se muestra.
+   */
+  durationMinutes?: number | null;
+  body?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   status: 'draft' | 'published' | 'archived';
   /**
    * Fecha que se muestra al publico.
@@ -941,6 +1005,10 @@ export interface PayloadLockedDocument {
         value: number | News;
       } | null)
     | ({
+        relationTo: 'reflections';
+        value: number | Reflection;
+      } | null)
+    | ({
         relationTo: 'formation';
         value: number | Formation;
       } | null)
@@ -1092,6 +1160,26 @@ export interface NewsSelect<T extends boolean = true> {
   category?: T;
   cover?: T;
   isFeatured?: T;
+  status?: T;
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reflections_select".
+ */
+export interface ReflectionsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  quote?: T;
+  quoteRef?: T;
+  preacherName?: T;
+  preacherPhoto?: T;
+  weekOf?: T;
+  audio?: T;
+  durationMinutes?: T;
+  body?: T;
   status?: T;
   publishedAt?: T;
   updatedAt?: T;

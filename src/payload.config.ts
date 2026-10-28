@@ -11,6 +11,7 @@ import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Audio } from './collections/Audio'
 import { News } from './collections/News'
+import { Reflections } from './collections/Reflections'
 import { Formation } from './collections/Formation'
 import { Sectors } from './collections/Sectors'
 import { Groups } from './collections/Groups'
@@ -59,6 +60,7 @@ export default buildConfig({
     Media,
     Audio,
     News,
+    Reflections,
     Formation,
     Sectors,
     Chapels,
