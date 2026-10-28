@@ -60,4 +60,12 @@ describe('lectura y consumidores de sacerdotes', () => {
     render(await Footer())
     expect(screen.queryByRole('link', { name: 'Nuestros sacerdotes' })).toBeNull()
   })
+  it('el pie enlaza Reflexiones de la semana justo despues de Noticias y formación', async () => {
+    render(await Footer())
+    const links = screen.getAllByRole('link')
+    const i = links.findIndex((a) => a.textContent === 'Noticias y formación')
+    expect(i).toBeGreaterThan(-1)
+    expect(links[i + 1].textContent).toBe('Reflexiones de la semana')
+    expect(links[i + 1].getAttribute('href')).toBe('/reflexiones')
+  })
 })

@@ -26,21 +26,39 @@ describe('ReflectionFeature', () => {
 
   it('links the whole card to /reflexiones/{slug}', () => {
     render(<ReflectionFeature reflection={r()} />)
-    const link = screen.getByRole('link', { name: /Las Bienaventuranzas/ })
+    const link = screen.getByRole('link', { name: /Escuchar la reflexión/ })
     expect(link.getAttribute('href')).toBe('/reflexiones/tema')
-    expect(screen.getByText('Hno. Nombre Apellido')).toBeTruthy()
-    expect(screen.getByText(/25 al 31 de octubre/)).toBeTruthy()
+    expect(link.textContent).toContain('Hno. Nombre Apellido')
+    expect(link.textContent).toContain('Escuela de predicadores')
+    expect(link.textContent).toContain('Audio · 12 min')
+    expect(link.textContent).toContain('Semana del 25 al 31 de octubre')
+  })
+
+  it('has a section heading and a link to previous reflections', () => {
+    render(<ReflectionFeature reflection={r()} />)
+    expect(screen.getByRole('heading', { level: 2, name: 'Una palabra para tu semana' })).toBeTruthy()
+    expect(
+      screen.getByRole('link', { name: 'Ver reflexiones anteriores →' }).getAttribute('href'),
+    ).toBe('/reflexiones')
   })
 
   it('shows the topic as the big text when there is no quote', () => {
     render(<ReflectionFeature reflection={r()} />)
-    expect(screen.getByRole('heading', { name: 'Las Bienaventuranzas' })).toBeTruthy()
+    expect(screen.getByText('Las Bienaventuranzas').className).not.toContain('italic')
+    expect(screen.queryByText(/Tema:/)).toBeNull()
   })
 
-  it('shows the quote as the big text when present, topic stays visible', () => {
+  it('shows the quote in italic with the topic line when present', () => {
     render(<ReflectionFeature reflection={r({ quote: 'Dichosos los pobres', quoteRef: 'Mt 5,3' })} />)
-    expect(screen.getByRole('heading', { name: /Dichosos los pobres/ })).toBeTruthy()
-    expect(screen.getByText(/Las Bienaventuranzas/)).toBeTruthy()
-    expect(screen.getByText('Mt 5,3')).toBeTruthy()
+    expect(screen.getByText(/Dichosos los pobres/).className).toContain('italic')
+    expect(screen.getByText('Las Bienaventuranzas').parentElement?.textContent).toBe(
+      'Tema: Las Bienaventuranzas',
+    )
+    expect(screen.queryByText(/Sobre el tema/)).toBeNull()
+  })
+
+  it('omits the duration when missing', () => {
+    render(<ReflectionFeature reflection={r({ durationMinutes: null })} />)
+    expect(screen.getByText('Audio')).toBeTruthy()
   })
 })
