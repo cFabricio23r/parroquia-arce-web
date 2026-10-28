@@ -12,7 +12,9 @@ export const slugField = (from: 'title' | 'name'): Field => {
   const word = from === 'title' ? 'título' : 'nombre'
 
   const generate: FieldHook = async (args) => {
-    const { value, data, originalDoc, req, collection } = args
+    const { value, data, originalDoc, req, collection, operation } = args
+    // Un update parcial (API) que no manda el slug no lo toca: `data` trae solo lo enviado.
+    if (operation === 'update' && value === undefined) return undefined
     // `id` llega en runtime pero FieldHookArgs no lo tipa; originalDoc.id es el respaldo.
     const id =
       (args as { id?: number | string }).id ??

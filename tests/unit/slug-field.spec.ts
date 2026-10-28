@@ -27,6 +27,17 @@ describe('slugField hook', () => {
     expect(find).not.toHaveBeenCalled()
   })
 
+  it('en un update que no manda slug no toca el existente', async () => {
+    const { find, result } = run({
+      value: undefined,
+      data: { status: 'published' },
+      originalDoc: { id: 7, title: 'Título nuevo', slug: 'titulo-viejo' },
+      operation: 'update',
+    })
+    expect(await result).toBeUndefined()
+    expect(find).not.toHaveBeenCalled()
+  })
+
   it('arma el slug desde el título cuando está vacío', async () => {
     const { result } = run({ data: { title: 'Vía Crucis' } })
     expect(await result).toBe('via-crucis')
