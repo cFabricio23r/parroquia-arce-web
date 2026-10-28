@@ -15,6 +15,7 @@ export type ReflectionView = {
   weekOf: string
   /** Desempata dos reflexiones con el mismo `weekOf`. */
   publishedAt: string | null
+  createdAt: string | null
   audioUrl: string
   durationMinutes: number | null
   body: unknown | null
@@ -62,11 +63,15 @@ export function toReflectionView(doc: unknown): ReflectionView | null {
     preacherPhoto,
     weekOf,
     publishedAt: str(d.publishedAt),
+    createdAt: str(d.createdAt),
     audioUrl,
     durationMinutes: typeof d.durationMinutes === 'number' ? d.durationMinutes : null,
     body: d.body ?? null,
   }
 }
+
+/** Desempate: `publishedAt`, y si falta, `createdAt`. */
+const tieKey = (v: ReflectionView) => v.publishedAt ?? v.createdAt ?? ''
 
 /**
  * "La de esta semana": la de `weekOf` mas reciente que ya empezo, con "hoy"
@@ -85,7 +90,7 @@ export function currentReflection(items: ReflectionView[], now: Date): Reflectio
     }
     const a = dayKey(item.weekOf)
     const b = dayKey(best.weekOf)
-    if (a > b || (a === b && (item.publishedAt ?? '') > (best.publishedAt ?? ''))) best = item
+    if (a > b || (a === b && tieKey(item) > tieKey(best))) best = item
   }
   return best
 }
@@ -115,7 +120,8 @@ export function visibleUntil(now: Date): string {
 export async function getReflections({
   limit = 12,
   page = 1,
-}: { limit?: number; page?: number } = {}): Promise<{
+  before,
+}: { limit?: number; page?: number; before?: string } = {}): Promise<{
   docs: ReflectionView[]
   hasNextPage: boolean
 }> {
@@ -124,9 +130,10 @@ export async function getReflections({
     collection: 'reflections',
     where: {
       status: { equals: 'published' },
-      weekOf: { less_than: visibleUntil(new Date()) },
+      // `before` ("YYYY-MM-DD"): solo semanas anteriores a esa, sin pasar de lo ya visible.
+      weekOf: { less_than: before && before < visibleUntil(new Date()) ? before : visibleUntil(new Date()) },
     },
-    sort: '-weekOf',
+    sort: ['-weekOf', '-publishedAt', '-createdAt'],
     depth: 1,
     limit,
     page,
@@ -147,6 +154,7 @@ export async function getReflectionBySlug(slug: string): Promise<ReflectionView 
       status: { equals: 'published' },
       weekOf: { less_than: visibleUntil(new Date()) },
     },
+    sort: ['-weekOf', '-publishedAt', '-createdAt'],
     depth: 1,
     limit: 1,
   })

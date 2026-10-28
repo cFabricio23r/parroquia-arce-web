@@ -12,6 +12,7 @@ const r = (over: Partial<ReflectionView> = {}): ReflectionView => ({
   preacherPhoto: null,
   weekOf: '2026-10-25',
   publishedAt: null,
+  createdAt: null,
   audioUrl: 'https://x.test/a.mp3',
   durationMinutes: 12,
   body: null,

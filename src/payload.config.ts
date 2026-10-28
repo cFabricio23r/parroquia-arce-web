@@ -7,6 +7,7 @@ import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
+import { canManageComms } from './access/roles'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Audio } from './collections/Audio'
@@ -111,7 +112,10 @@ export default buildConfig({
     s3Storage({
       ...s3Shared,
       clientCacheKey: 's3:audio',
-      clientUploads: true,
+      // Solo comunicaciones/super-admin piden URLs firmadas (mismo permiso que crear audios).
+      clientUploads: {
+        access: ({ req }) => Boolean(canManageComms({ req } as Parameters<typeof canManageComms>[0])),
+      },
       collections: {
         audio: { generateFileURL: publicFileURL },
       },

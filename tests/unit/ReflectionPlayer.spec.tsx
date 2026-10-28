@@ -82,6 +82,14 @@ describe('ReflectionPlayer', () => {
     expect(screen.getByText('14:32')).toBeTruthy()
   })
 
+  it('omits aria-valuetext until the duration is known', () => {
+    const { container } = render(ui)
+    const range = screen.getByLabelText('Escuchá la reflexión')
+    expect(range.hasAttribute('aria-valuetext')).toBe(false)
+    withDuration(getAudio(container), 872)
+    expect(range.getAttribute('aria-valuetext')).toBe('0 segundos de 14 minutos 32 segundos')
+  })
+
   it('cycles playback speed 1x, 1.25x, 1.5x', () => {
     const { container } = render(ui)
     const btn = () => screen.getByRole('button', { name: /Velocidad de reproducción/ })

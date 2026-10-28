@@ -14,9 +14,9 @@ export function ReflectionListItem({ reflection: r }: { reflection: ReflectionVi
       <span className="font-display text-[22px] font-medium leading-tight text-text">
         {r.title}
       </span>
-      <span className="mt-auto pt-2">
+      <div className="mt-auto pt-2">
         <PreacherBadge name={r.preacherName} photo={r.preacherPhoto} tone="light" />
-      </span>
+      </div>
     </Link>
   )
 }

@@ -84,7 +84,9 @@ export function ReflectionPlayer({ src, title }: { src: string; title: string })
   }
 
   const rate = RATES[rateIndex]
-  const valueText = `${spokenDuration(current)} de ${spokenDuration(duration)}`
+  // Sin duracion conocida no hay nada que anunciar (evita "0 segundos de 0 segundos").
+  const valueText =
+    duration > 0 ? `${spokenDuration(current)} de ${spokenDuration(duration)}` : undefined
 
   return (
     <section

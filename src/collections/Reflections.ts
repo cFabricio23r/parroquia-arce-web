@@ -1,4 +1,4 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig, Field } from 'payload'
 import { publishedOnly } from '../access/publishedOnly'
 import { canManageComms } from '../access/roles'
 import { slugField } from '../fields/slug'
@@ -28,7 +28,17 @@ export const Reflections: CollectionConfig = {
       required: true,
       admin: { description: 'Ej.: "La santidad en lo de todos los días".' },
     },
-    slugField(),
+    (() => {
+      const base = slugField()
+      return {
+        ...base,
+        admin: {
+          ...base.admin,
+          description:
+            'La dirección de la reflexión en la web. Ejemplo: la-paz-del-resucitado (minúsculas, números y guiones).',
+        },
+      } as Field
+    })(),
     {
       name: 'quote',
       type: 'textarea',
@@ -66,7 +76,7 @@ export const Reflections: CollectionConfig = {
       admin: {
         date: { pickerAppearance: 'dayOnly' },
         description:
-          'Primer día de la semana de la reflexión. No aparece en el sitio antes de ese día.',
+          'Elegí el domingo con que empieza la semana de la reflexión. Se ve en el sitio y la app desde ese día; si la cargás antes, queda guardada y aparece sola.',
       },
     },
     {
@@ -75,6 +85,9 @@ export const Reflections: CollectionConfig = {
       relationTo: 'audio',
       label: 'Audio',
       required: true,
+      admin: {
+        description: 'El audio grabado, en MP3 o M4A. Podés subirlo acá mismo o elegir uno de Audios.',
+      },
     },
     {
       name: 'durationMinutes',
@@ -82,7 +95,14 @@ export const Reflections: CollectionConfig = {
       label: 'Duración (minutos)',
       min: 1,
       max: 120,
-      admin: { description: 'Opcional. Sin dato no se muestra.' },
+      validate: (value: number | null | undefined) => {
+        if (value != null && !Number.isInteger(value)) return 'Poné los minutos enteros, por ejemplo 12.'
+        return true
+      },
+      admin: {
+        step: 1,
+        description: 'Cuántos minutos dura, más o menos. Si lo dejás vacío, no se muestra.',
+      },
     },
     {
       name: 'body',

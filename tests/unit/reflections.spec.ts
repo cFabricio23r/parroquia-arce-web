@@ -15,6 +15,7 @@ const view = (over: Partial<ReflectionView> = {}): ReflectionView => ({
   preacherPhoto: null,
   weekOf: '2026-10-25',
   publishedAt: null,
+  createdAt: null,
   audioUrl: 'https://example.com/a.mp3',
   durationMinutes: null,
   body: null,
@@ -22,6 +23,23 @@ const view = (over: Partial<ReflectionView> = {}): ReflectionView => ({
 })
 
 describe('currentReflection', () => {
+  it('breaks a weekOf tie by createdAt when publishedAt is null', () => {
+    const items = [
+      view({ slug: 'old', weekOf: '2026-10-25', createdAt: '2026-10-20T10:00:00.000Z' }),
+      view({ slug: 'new', weekOf: '2026-10-25', createdAt: '2026-10-22T10:00:00.000Z' }),
+    ]
+    expect(currentReflection(items, new Date('2026-10-30T15:00:00Z'))?.slug).toBe('new')
+    expect(currentReflection([...items].reverse(), new Date('2026-10-30T15:00:00Z'))?.slug).toBe('new')
+  })
+
+  it('prefers publishedAt over createdAt for the tie', () => {
+    const items = [
+      view({ slug: 'a', publishedAt: '2026-10-26T00:00:00.000Z', createdAt: '2026-10-01T00:00:00.000Z' }),
+      view({ slug: 'b', publishedAt: '2026-10-24T00:00:00.000Z', createdAt: '2026-10-28T00:00:00.000Z' }),
+    ]
+    expect(currentReflection(items, new Date('2026-10-30T15:00:00Z'))?.slug).toBe('a')
+  })
+
   it('picks the latest published week that already started', () => {
     const items = [
       view({ slug: 'a', weekOf: '2026-10-18' }),

@@ -40,7 +40,7 @@ export default async function ReflexionesPage({
                 Inicio
               </Link>
               <span className="opacity-50">/</span>
-              <span>Reflexiones</span>
+              <span aria-current="page">Reflexiones</span>
             </nav>
             <h1 className="font-display text-[clamp(40px,5.4vw,68px)] font-medium leading-[1.02]">
               Reflexión de la <em className="italic text-blue">semana</em>
@@ -75,13 +75,13 @@ export default async function ReflexionesPage({
                       “{featured.quote}”
                     </span>
                   )}
-                  <span className="mt-6 block">
+                  <div className="mt-6">
                     <PreacherBadge
                       name={featured.preacherName}
                       photo={featured.preacherPhoto}
                       tone="dark"
                     />
-                  </span>
+                  </div>
                   <span className="mt-6 inline-block font-bold text-sky-light">
                     Escuchar la reflexión →
                   </span>

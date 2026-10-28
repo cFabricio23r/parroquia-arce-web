@@ -7,6 +7,7 @@ import { Container } from '@/components/ui/Container'
 import { ReflectionPlayer } from '@/components/reflections/ReflectionPlayer'
 import { PreacherBadge } from '@/components/reflections/PreacherBadge'
 import { ReflectionListItem } from '@/components/reflections/ReflectionListItem'
+import { hasRichText } from '@/lib/rich-text'
 import { getReflectionBySlug, getReflections, weekRangeLabel } from '@/lib/reflections'
 
 export const revalidate = 300
@@ -36,8 +37,8 @@ export default async function ReflexionDetalle({
   const r = await getReflectionBySlug(slug)
   if (!r) notFound()
 
-  const { docs } = await getReflections({ limit: 4 })
-  const previous = docs.filter((d) => d.slug !== r.slug).slice(0, 3)
+  // Solo semanas anteriores a esta (weekOf menor); la query ya filtra y ordena.
+  const { docs: previous } = await getReflections({ limit: 3, before: r.weekOf.slice(0, 10) })
 
   return (
     <article>
@@ -53,7 +54,9 @@ export default async function ReflexionDetalle({
                 Reflexiones
               </Link>
               <span className="opacity-50">/</span>
-              <span className="text-white">{r.title}</span>
+              <span aria-current="page" className="text-white">
+                {r.title}
+              </span>
             </nav>
             <div className="text-[13px] font-bold uppercase tracking-[0.12em] text-sky-light">
               Reflexión de la semana · {weekRangeLabel(r.weekOf)}
@@ -88,7 +91,7 @@ export default async function ReflexionDetalle({
         <Container>
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
             <div>
-              {r.body != null && (
+              {hasRichText(r.body) && (
                 <>
                   <h2 className="mb-4 font-display text-[28px] font-medium">Sobre el tema</h2>
                   <div className="richtext max-w-[70ch]">

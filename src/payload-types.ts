@@ -237,7 +237,7 @@ export interface News {
   id: number;
   title: string;
   /**
-   * Identificador para la URL. Solo minusculas, numeros y guiones.
+   * Identificador para la URL. Solo minúsculas, números y guiones.
    */
   slug: string;
   /**
@@ -284,7 +284,7 @@ export interface Reflection {
    */
   title: string;
   /**
-   * Identificador para la URL. Solo minusculas, numeros y guiones.
+   * La dirección de la reflexión en la web. Ejemplo: la-paz-del-resucitado (minúsculas, números y guiones).
    */
   slug: string;
   /**
@@ -304,12 +304,15 @@ export interface Reflection {
    */
   preacherPhoto?: (number | null) | Media;
   /**
-   * Primer día de la semana de la reflexión. No aparece en el sitio antes de ese día.
+   * Elegí el domingo con que empieza la semana de la reflexión. Se ve en el sitio y la app desde ese día; si la cargás antes, queda guardada y aparece sola.
    */
   weekOf: string;
+  /**
+   * El audio grabado, en MP3 o M4A. Podés subirlo acá mismo o elegir uno de Audios.
+   */
   audio: number | Audio;
   /**
-   * Opcional. Sin dato no se muestra.
+   * Cuántos minutos dura, más o menos. Si lo dejás vacío, no se muestra.
    */
   durationMinutes?: number | null;
   body?: {
@@ -343,7 +346,7 @@ export interface Formation {
   id: number;
   title: string;
   /**
-   * Identificador para la URL. Solo minusculas, numeros y guiones.
+   * Identificador para la URL. Solo minúsculas, números y guiones.
    */
   slug: string;
   /**
@@ -392,7 +395,7 @@ export interface Sector {
   id: number;
   name: string;
   /**
-   * Identificador para la URL. Solo minusculas, numeros y guiones.
+   * Identificador para la URL. Solo minúsculas, números y guiones.
    */
   slug: string;
   number?: number | null;
@@ -563,7 +566,7 @@ export interface Group {
   id: number;
   name: string;
   /**
-   * Identificador para la URL. Solo minusculas, numeros y guiones.
+   * Identificador para la URL. Solo minúsculas, números y guiones.
    */
   slug: string;
   type?: ('pastoral' | 'ministerio' | 'comunidad' | 'servicio' | 'formacion') | null;
@@ -726,7 +729,7 @@ export interface Chapel {
   id: number;
   name: string;
   /**
-   * Identificador para la URL. Solo minusculas, numeros y guiones.
+   * Identificador para la URL. Solo minúsculas, números y guiones.
    */
   slug: string;
   sector: number | Sector;
@@ -819,7 +822,7 @@ export interface Event {
   id: number;
   title: string;
   /**
-   * Identificador para la URL. Solo minusculas, numeros y guiones.
+   * Identificador para la URL. Solo minúsculas, números y guiones.
    */
   slug: string;
   eventType?:
@@ -877,7 +880,7 @@ export interface RadioProgram {
   id: number;
   title: string;
   /**
-   * Identificador para la URL. Solo minusculas, numeros y guiones.
+   * Identificador para la URL. Solo minúsculas, números y guiones.
    */
   slug: string;
   description?: string | null;
@@ -908,7 +911,7 @@ export interface RadioEpisode {
   id: number;
   title: string;
   /**
-   * Identificador para la URL. Solo minusculas, numeros y guiones.
+   * Identificador para la URL. Solo minúsculas, números y guiones.
    */
   slug: string;
   program: number | RadioProgram;

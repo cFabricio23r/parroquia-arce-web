@@ -5,7 +5,7 @@ import path from 'path'
 import { getPayload, type Payload } from 'payload'
 import config from '@/payload.config'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
-import { getReflections } from '@/lib/reflections'
+import { getReflectionBySlug, getReflections } from '@/lib/reflections'
 
 let payload: Payload
 let audioId: number | string
@@ -57,6 +57,7 @@ describe('Reflections collection', () => {
     const res = await payload.find({
       collection: 'reflections',
       overrideAccess: false,
+      where: { slug: { like: run } },
       limit: 100,
       depth: 0,
     })
@@ -66,11 +67,16 @@ describe('Reflections collection', () => {
   })
 
   it('getReflections returns published reflections with an https audio url', async () => {
-    const mine = reflexiones.length ? await payload.findByID({ collection: 'reflections', id: reflexiones[reflexiones.length - 1] }) : null
-    const { docs } = await getReflections({ limit: 100 })
-    const found = docs.find((d) => d.slug === mine?.slug)
-    expect(found).toBeDefined()
+    const draft = await crear('borrador2', 'draft')
+    const published = await crear('publicada2', 'published')
+    const found = await getReflectionBySlug(published.slug)
+    expect(found).not.toBeNull()
     expect(found?.audioUrl).toMatch(/^https:\/\//)
-    expect(docs.some((d) => d.slug === `${run}-borrador`)).toBe(false)
+    expect(await getReflectionBySlug(draft.slug)).toBeNull()
+    // Lista: sin traer 100 docs de la base compartida, solo las de esta corrida.
+    const { docs } = await getReflections({ limit: 100 })
+    const mine = docs.filter((d) => d.slug.startsWith(`${run}-`))
+    expect(mine.map((d) => d.slug)).toContain(published.slug)
+    expect(mine.map((d) => d.slug)).not.toContain(draft.slug)
   })
 })

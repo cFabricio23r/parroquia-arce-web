@@ -52,7 +52,7 @@ describe('Audio — coleccion de subida de audios', () => {
         data: { description: 'Esto no es un audio.' },
         file: { data, mimetype: 'image/png', name: unico('png'), size: data.length },
       }),
-    ).rejects.toThrow()
+    ).rejects.toThrow(/field is invalid: file/i)
   })
 
   // Guarda de regresion: audio usa una segunda instancia de s3Storage con

@@ -12,12 +12,12 @@ export const slugField = (): Field => ({
   unique: true,
   index: true,
   admin: {
-    description: 'Identificador para la URL. Solo minusculas, numeros y guiones.',
+    description: 'Identificador para la URL. Solo minúsculas, números y guiones.',
   },
   validate: (value: string | null | undefined) => {
     if (!value) return 'El slug es obligatorio.'
     if (!/^[a-z0-9-]+$/.test(value)) {
-      return 'Solo minusculas, numeros y guiones. Sin espacios ni acentos.'
+      return 'Solo minúsculas, números y guiones. Sin espacios ni tildes.'
     }
     return true
   },
