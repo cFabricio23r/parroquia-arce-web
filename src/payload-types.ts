@@ -72,6 +72,7 @@ export interface Config {
     audio: Audio;
     news: News;
     reflections: Reflection;
+    sponsors: Sponsor;
     formation: Formation;
     sectors: Sector;
     chapels: Chapel;
@@ -93,6 +94,7 @@ export interface Config {
     audio: AudioSelect<false> | AudioSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
     reflections: ReflectionsSelect<false> | ReflectionsSelect<true>;
+    sponsors: SponsorsSelect<false> | SponsorsSelect<true>;
     formation: FormationSelect<false> | FormationSelect<true>;
     sectors: SectorsSelect<false> | SectorsSelect<true>;
     chapels: ChapelsSelect<false> | ChapelsSelect<true>;
@@ -335,6 +337,36 @@ export interface Reflection {
    * Fecha que se muestra al publico.
    */
   publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Negocios que colaboran cada mes con la página. Los montos no se guardan aquí.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sponsors".
+ */
+export interface Sponsor {
+  id: number;
+  name: string;
+  /**
+   * Se muestra entero, sin recortar. Recordá completar la descripción (alt).
+   */
+  logo: number | Media;
+  /**
+   * Ej.: Panadería · Ciudad Arce.
+   */
+  category?: string | null;
+  blurb?: string | null;
+  /**
+   * Ej.: https://www.facebook.com/minegocio
+   */
+  facebookUrl?: string | null;
+  /**
+   * Ej.: https://www.instagram.com/minegocio
+   */
+  instagramUrl?: string | null;
+  active?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1012,6 +1044,10 @@ export interface PayloadLockedDocument {
         value: number | Reflection;
       } | null)
     | ({
+        relationTo: 'sponsors';
+        value: number | Sponsor;
+      } | null)
+    | ({
         relationTo: 'formation';
         value: number | Formation;
       } | null)
@@ -1185,6 +1221,21 @@ export interface ReflectionsSelect<T extends boolean = true> {
   body?: T;
   status?: T;
   publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sponsors_select".
+ */
+export interface SponsorsSelect<T extends boolean = true> {
+  name?: T;
+  logo?: T;
+  category?: T;
+  blurb?: T;
+  facebookUrl?: T;
+  instagramUrl?: T;
+  active?: T;
   updatedAt?: T;
   createdAt?: T;
 }

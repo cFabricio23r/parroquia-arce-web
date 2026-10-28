@@ -13,6 +13,7 @@ import { Media } from './collections/Media'
 import { Audio } from './collections/Audio'
 import { News } from './collections/News'
 import { Reflections } from './collections/Reflections'
+import { Sponsors } from './collections/Sponsors'
 import { Formation } from './collections/Formation'
 import { Sectors } from './collections/Sectors'
 import { Groups } from './collections/Groups'
@@ -62,6 +63,7 @@ export default buildConfig({
     Audio,
     News,
     Reflections,
+    Sponsors,
     Formation,
     Sectors,
     Chapels,
