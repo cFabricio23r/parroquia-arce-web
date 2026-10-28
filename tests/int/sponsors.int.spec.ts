@@ -71,4 +71,45 @@ describe('Sponsors collection', () => {
     expect(ids).toContain(activo.id)
     expect(ids).not.toContain(inactivo.id)
   })
+
+  it('returns the logo populated at depth 1', async () => {
+    const doc = await crear('depth1', { facebookUrl: 'https://www.facebook.com/depth1', active: true })
+    const res = await payload.find({
+      collection: 'sponsors',
+      overrideAccess: false,
+      where: { id: { equals: doc.id } },
+      depth: 1,
+    })
+    const logo = res.docs[0]?.logo
+    expect(typeof logo).toBe('object')
+    expect(typeof (logo as { url?: unknown }).url).toBe('string')
+    expect((logo as { alt?: unknown }).alt).toBeTruthy()
+  })
+
+  it('partial update { active: false } succeeds and hides the sponsor from anonymous reads', async () => {
+    const doc = await crear('parcial', { facebookUrl: 'https://www.facebook.com/parcial', active: true })
+    const updated = await payload.update({ collection: 'sponsors', id: doc.id, data: { active: false } })
+    expect(updated.active).toBe(false)
+    const res = await payload.find({
+      collection: 'sponsors',
+      overrideAccess: false,
+      where: { name: { like: run } },
+      limit: 100,
+      depth: 0,
+    })
+    expect(res.docs.map((d) => d.id)).not.toContain(doc.id)
+  })
+
+  it('rejects an update that clears both links', async () => {
+    const doc = await crear('sin-enlaces-update', { facebookUrl: 'https://www.facebook.com/borrar' })
+    const err = await payload
+      .update({
+        collection: 'sponsors',
+        id: doc.id,
+        data: { facebookUrl: null, instagramUrl: null },
+      })
+      .catch((e) => e)
+    expect(err).toBeInstanceOf(ValidationError)
+    expect(JSON.stringify(err.data.errors)).toContain('Cargá el enlace de Facebook o de Instagram')
+  })
 })

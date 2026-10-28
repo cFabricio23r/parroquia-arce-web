@@ -13,7 +13,7 @@ export function generateMetadata(): Metadata {
 }
 
 export default async function PatrocinadoresPage() {
-  const sponsors = await getActiveSponsors()
+  const sponsors = await getActiveSponsors().catch(() => [])
 
   return (
     <>
