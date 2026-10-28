@@ -29,6 +29,24 @@ import { Activity } from './globals/Activity'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+const publicFileURL = ({ filename, prefix }: { filename: string; prefix?: string }) =>
+  [process.env.S3_PUBLIC_URL, prefix, filename].filter(Boolean).join('/')
+
+const s3Shared = {
+  enabled: true,
+  bucket: process.env.S3_BUCKET || '',
+  config: {
+    // Supabase exige path-style; sin esto los uploads fallan con 404.
+    forcePathStyle: true,
+    region: process.env.S3_REGION || 'us-east-1',
+    endpoint: process.env.S3_ENDPOINT || '',
+    credentials: {
+      accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
+      secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
+    },
+  },
+}
+
 export default buildConfig({
   admin: {
     user: Users.slug,
@@ -71,36 +89,29 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
+    // Media: subida por el servidor (sin clientUploads), como siempre.
     s3Storage({
-      enabled: true,
-      // Subida directa del navegador al bucket. Es una opcion del plugin, no
-      // de cada coleccion: aplica tambien a media. Vercel limita el body de una
-      // funcion a 4.5 MB y un audio de reflexion lo supera. Requiere CORS con
-      // PUT para el dominio del sitio en el bucket de Supabase.
-      clientUploads: true,
+      ...s3Shared,
       collections: {
-        audio: {
-          generateFileURL: ({ filename, prefix }) =>
-            [process.env.S3_PUBLIC_URL, prefix, filename].filter(Boolean).join('/'),
-        },
         media: {
           // Sin esto, Payload sirve la media por /api/media/file/... y cada
           // imagen se come una invocacion de funcion en Vercel. El bucket
           // `media` es publico, asi que servimos directo desde Supabase.
-          generateFileURL: ({ filename, prefix }) =>
-            [process.env.S3_PUBLIC_URL, prefix, filename].filter(Boolean).join('/'),
+          generateFileURL: publicFileURL,
         },
       },
-      bucket: process.env.S3_BUCKET || '',
-      config: {
-        // Supabase exige path-style; sin esto los uploads fallan con 404.
-        forcePathStyle: true,
-        region: process.env.S3_REGION || 'us-east-1',
-        endpoint: process.env.S3_ENDPOINT || '',
-        credentials: {
-          accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
-          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
-        },
+    }),
+    // Audio: subida directa del navegador al bucket. `clientUploads` es una
+    // opcion del plugin (no de cada coleccion), por eso va en una segunda
+    // instancia: asi media no cambia. Vercel limita el body de una funcion a
+    // 4.5 MB y un audio de reflexion lo supera. Requiere CORS con PUT para el
+    // dominio del sitio en el bucket de Supabase.
+    s3Storage({
+      ...s3Shared,
+      clientCacheKey: 's3:audio',
+      clientUploads: true,
+      collections: {
+        audio: { generateFileURL: publicFileURL },
       },
     }),
   ],

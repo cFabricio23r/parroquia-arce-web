@@ -9,6 +9,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 let payload: Payload
 const creados: (number | string)[] = []
+const mediaCreados: (number | string)[] = []
 
 /** Nombre de archivo unico: la base se comparte con el contenido real. */
 const unico = (ext: string) =>
@@ -24,6 +25,9 @@ describe('Audio — coleccion de subida de audios', () => {
   afterAll(async () => {
     for (const id of creados) {
       await payload.delete({ collection: 'audio', id }).catch(() => undefined)
+    }
+    for (const id of mediaCreados) {
+      await payload.delete({ collection: 'media', id }).catch(() => undefined)
     }
   })
 
@@ -49,5 +53,18 @@ describe('Audio — coleccion de subida de audios', () => {
         file: { data, mimetype: 'image/png', name: unico('png'), size: data.length },
       }),
     ).rejects.toThrow()
+  })
+
+  // Guarda de regresion: audio usa una segunda instancia de s3Storage con
+  // clientUploads; media tiene que seguir subiendo por el servidor a Supabase.
+  it('keeps media uploading through the server with a public https url', async () => {
+    const data = fixture('pixel.png')
+    const doc = await payload.create({
+      collection: 'media',
+      data: { alt: 'Imagen de prueba' },
+      file: { data, mimetype: 'image/png', name: unico('png'), size: data.length },
+    })
+    mediaCreados.push(doc.id)
+    expect(doc.url).toMatch(/^https:\/\//)
   })
 })
