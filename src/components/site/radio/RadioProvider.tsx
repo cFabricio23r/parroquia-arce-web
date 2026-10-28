@@ -18,6 +18,7 @@ type RadioState = {
   volume: number
   error: string | null
   toggle: () => void
+  pause: () => void
   setVolume: (value: number) => void
 }
 
@@ -82,9 +83,17 @@ export function RadioProvider({
       .catch(fail)
   }, [available, playing, streamUrl, fail])
 
+  // Idempotente: si no suena, no hace nada.
+  const pause = useCallback(() => {
+    const audio = audioRef.current
+    if (!audio || !playing) return
+    audio.pause()
+    setPlaying(false)
+  }, [playing])
+
   const value = useMemo<RadioState>(
-    () => ({ available, playing, volume, error, toggle, setVolume: setVolumeState }),
-    [available, playing, volume, error, toggle],
+    () => ({ available, playing, volume, error, toggle, pause, setVolume: setVolumeState }),
+    [available, playing, volume, error, toggle, pause],
   )
 
   return (
