@@ -3,6 +3,7 @@ import { publishedOnly } from '../access/publishedOnly'
 import { canManageComms } from '../access/roles'
 import { slugField } from '../fields/slug'
 import { publishingFields } from '../fields/publishing'
+import { validateDurationMinutes } from '../lib/duration-minutes'
 
 export const Reflections: CollectionConfig = {
   slug: 'reflections',
@@ -95,10 +96,7 @@ export const Reflections: CollectionConfig = {
       label: 'Duración (minutos)',
       min: 1,
       max: 120,
-      validate: (value: number | null | undefined) => {
-        if (value != null && !Number.isInteger(value)) return 'Poné los minutos enteros, por ejemplo 12.'
-        return true
-      },
+      validate: validateDurationMinutes,
       admin: {
         step: 1,
         description: 'Cuántos minutos dura, más o menos. Si lo dejás vacío, no se muestra.',
