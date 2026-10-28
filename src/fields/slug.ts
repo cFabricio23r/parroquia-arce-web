@@ -13,9 +13,10 @@ export const slugField = (from: 'title' | 'name'): Field => {
 
   const generate: FieldHook = async (args) => {
     const { value, data, originalDoc, req, collection, operation } = args
-    // Un update parcial (API) que no manda el slug no lo toca: `data` trae solo lo enviado.
-    if (operation === 'update' && value === undefined) return undefined
-    // `id` llega en runtime pero FieldHookArgs no lo tipa; originalDoc.id es el respaldo.
+    // En un update sin slug en `data`, Payload pasa el guardado (getFallbackValue). Si no cambió, queda
+    // tal cual: un slug viejo que toSlug acomodaría (`misa--gallo`, más de 80) no puede cambiar solo.
+    if (operation === 'update' && value === originalDoc?.slug) return value
+    // Payload no pasa `id` a los hooks de campo; en un update sale de originalDoc.
     const id =
       (args as { id?: number | string }).id ??
       (originalDoc as { id?: number | string } | undefined)?.id
@@ -54,7 +55,7 @@ export const slugField = (from: 'title' | 'name'): Field => {
     unique: true,
     index: true,
     admin: {
-      description: `Se llena solo con el ${word} al guardar. Si ya está publicado, no lo cambies: cambia la dirección y los enlaces compartidos dejan de andar. Para hacer uno nuevo, borralo y guardá.`,
+      description: `Es la dirección de esta página en la web. No hace falta completarlo: se arma solo con el ${word} cuando guardás. Una vez publicada, no lo cambies, porque los enlaces ya compartidos dejarían de funcionar. Si lo dejás vacío y guardás, se genera de nuevo desde el ${word}.`,
     },
     hooks: { beforeValidate: [generate] },
     // El admin valida sin correr hooks: el vacío tiene que pasar, el hook lo llena después.

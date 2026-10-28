@@ -27,14 +27,15 @@ describe('slugField hook', () => {
     expect(find).not.toHaveBeenCalled()
   })
 
-  it('en un update que no manda slug no toca el existente', async () => {
+  it('en un update no toca un slug guardado aunque toSlug lo cambiaría', async () => {
+    // Payload pasa el slug guardado como `value` cuando no viene en `data`.
     const { find, result } = run({
-      value: undefined,
+      value: 'misa--gallo',
       data: { status: 'published' },
-      originalDoc: { id: 7, title: 'Título nuevo', slug: 'titulo-viejo' },
+      originalDoc: { id: 7, title: 'Título nuevo', slug: 'misa--gallo' },
       operation: 'update',
     })
-    expect(await result).toBeUndefined()
+    expect(await result).toBe('misa--gallo')
     expect(find).not.toHaveBeenCalled()
   })
 
