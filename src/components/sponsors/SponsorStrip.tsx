@@ -37,12 +37,13 @@ export function SponsorStrip({ sponsors }: { sponsors: SponsorView[] }) {
                 href="/patrocinadores"
                 className="flex h-[120px] flex-col items-center justify-center gap-[10px] rounded-md border border-line-soft bg-white px-3 text-text transition-colors hover:border-sky"
               >
-                {/* Caja fija + object-contain: el logo apaisado se ve entero. */}
+                {/* Caja fija + object-contain: el logo apaisado se ve entero.
+                    alt vacío: el nombre visible ya nombra el enlace; con el alt se leería dos veces. */}
                 <span className="grid h-[52px] w-full place-items-center overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={s.logo.url}
-                    alt={s.logo.alt}
+                    alt=""
                     className="h-full w-full object-contain"
                     loading="lazy"
                   />

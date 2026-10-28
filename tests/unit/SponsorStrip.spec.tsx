@@ -16,14 +16,17 @@ describe('SponsorStrip', () => {
     expect(screen.getByText('Con gratitud')).toBeTruthy()
   })
 
-  it('every logo links to /patrocinadores and keeps its alt', () => {
-    render(
+  it('every logo links to /patrocinadores, named once by the business', () => {
+    const { container } = render(
       <SponsorStrip
-        sponsors={[makeSponsor(), makeSponsor({
+        sponsors={[
+          makeSponsor(),
+          makeSponsor({
             id: '2',
             name: 'Ferretería Luz',
             logo: { url: 'https://example.supabase.co/f.png', alt: 'Logo de Ferretería Luz' },
-          })]}
+          }),
+        ]}
       />,
     )
     const tiles = screen
@@ -32,8 +35,12 @@ describe('SponsorStrip', () => {
     // 2 logos + the "Conocé a nuestros patrocinadores →" link
     expect(tiles.length).toBe(3)
     expect(screen.getByRole('link', { name: /Conocé a nuestros patrocinadores/ })).toBeTruthy()
-    const img = screen.getByAltText('Logo de Panadería San José')
-    expect(img.className).toContain('object-contain')
-    expect(img.closest('a')?.getAttribute('href')).toBe('/patrocinadores')
+    // The visible name labels the tile; the logo is decorative here so the name is not read twice.
+    const tile = screen.getByRole('link', { name: 'Ferretería Luz' })
+    expect(tile.getAttribute('href')).toBe('/patrocinadores')
+    const img = tile.querySelector('img')
+    expect(img?.getAttribute('alt')).toBe('')
+    expect(img?.className).toContain('object-contain')
+    expect(container.querySelectorAll('img').length).toBe(2)
   })
 })

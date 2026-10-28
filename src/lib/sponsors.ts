@@ -1,3 +1,4 @@
+import { cache } from 'react'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { isFacebookUrl, isInstagramUrl } from './sponsor-links'
@@ -46,8 +47,11 @@ export function toSponsorView(doc: unknown): SponsorView | null {
   }
 }
 
-/** Patrocinadores activos, por nombre. Local API con `overrideAccess: false`: aplica `activeOnly`. */
-export async function getActiveSponsors(): Promise<SponsorView[]> {
+/**
+ * Patrocinadores activos, por nombre. Local API con `overrideAccess: false`: aplica `activeOnly`.
+ * cache() deduplica dentro del request (la portada y el pie lo piden los dos).
+ */
+export const getActiveSponsors = cache(async (): Promise<SponsorView[]> => {
   const payload = await getPayload({ config: await config })
   const res = await payload.find({
     collection: 'sponsors',
@@ -57,4 +61,4 @@ export async function getActiveSponsors(): Promise<SponsorView[]> {
     limit: 100,
   })
   return res.docs.map(toSponsorView).filter((v): v is SponsorView => v !== null)
-}
+})
