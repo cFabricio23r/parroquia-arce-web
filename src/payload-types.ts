@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    audio: Audio;
     news: News;
     formation: Formation;
     sectors: Sector;
@@ -88,6 +89,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    audio: AudioSelect<false> | AudioSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
     formation: FormationSelect<false> | FormationSelect<true>;
     sectors: SectorsSelect<false> | SectorsSelect<true>;
@@ -191,6 +193,28 @@ export interface Media {
    * Fotógrafo o fuente, si corresponde.
    */
   credit?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "audio".
+ */
+export interface Audio {
+  id: number;
+  /**
+   * Contá qué es el audio. Ej.: Reflexión del Hno. … sobre las Bienaventuranzas.
+   */
+  description: string;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -909,6 +933,10 @@ export interface PayloadLockedDocument {
         value: number | Media;
       } | null)
     | ({
+        relationTo: 'audio';
+        value: number | Audio;
+      } | null)
+    | ({
         relationTo: 'news';
         value: number | News;
       } | null)
@@ -1022,6 +1050,24 @@ export interface MediaSelect<T extends boolean = true> {
   alt?: T;
   caption?: T;
   credit?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "audio_select".
+ */
+export interface AudioSelect<T extends boolean = true> {
+  description?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;

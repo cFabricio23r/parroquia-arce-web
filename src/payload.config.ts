@@ -9,6 +9,7 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import { Audio } from './collections/Audio'
 import { News } from './collections/News'
 import { Formation } from './collections/Formation'
 import { Sectors } from './collections/Sectors'
@@ -38,6 +39,7 @@ export default buildConfig({
   collections: [
     Users,
     Media,
+    Audio,
     News,
     Formation,
     Sectors,
@@ -71,7 +73,16 @@ export default buildConfig({
   plugins: [
     s3Storage({
       enabled: true,
+      // Subida directa del navegador al bucket. Es una opcion del plugin, no
+      // de cada coleccion: aplica tambien a media. Vercel limita el body de una
+      // funcion a 4.5 MB y un audio de reflexion lo supera. Requiere CORS con
+      // PUT para el dominio del sitio en el bucket de Supabase.
+      clientUploads: true,
       collections: {
+        audio: {
+          generateFileURL: ({ filename, prefix }) =>
+            [process.env.S3_PUBLIC_URL, prefix, filename].filter(Boolean).join('/'),
+        },
         media: {
           // Sin esto, Payload sirve la media por /api/media/file/... y cada
           // imagen se come una invocacion de funcion en Vercel. El bucket
