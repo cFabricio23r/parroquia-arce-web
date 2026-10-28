@@ -124,3 +124,15 @@ export async function getReflections({
     hasNextPage: res.hasNextPage,
   }
 }
+
+/** Una reflexion publicada por slug, o `null`. Local API: filtra `status` a mano. */
+export async function getReflectionBySlug(slug: string): Promise<ReflectionView | null> {
+  const payload = await getPayload({ config: await config })
+  const res = await payload.find({
+    collection: 'reflections',
+    where: { slug: { equals: slug }, status: { equals: 'published' } },
+    depth: 1,
+    limit: 1,
+  })
+  return toReflectionView(res.docs[0])
+}
