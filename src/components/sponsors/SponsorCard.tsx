@@ -11,16 +11,15 @@ export function SponsorCard({ sponsor }: { sponsor: SponsorView }) {
   return (
     <article className="flex h-full min-w-0 flex-col gap-[14px] rounded-lg border border-border bg-white p-6 shadow-sm">
       <div className="flex items-center gap-[14px]">
-        {/* Caja fija + object-contain: un banner apaisado se ve entero, sin deformar. */}
-        <div className="grid h-16 w-24 flex-none place-items-center overflow-hidden rounded-md border border-line-soft bg-white p-1">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={logo.url}
-            alt={logo.alt}
-            className="h-full w-full object-contain"
-            loading="lazy"
-          />
-        </div>
+        {/* Cuadrado (los logos suelen serlo) en la imagen misma + object-contain: se ve entero, sin
+            recorte ni deformar. Una caja grid con h-full dejaba que la imagen la desbordara. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={logo.url}
+          alt={logo.alt}
+          className="h-24 w-24 flex-none rounded-md border border-line-soft bg-white object-contain p-1"
+          loading="lazy"
+        />
         <div className="min-w-0">
           <h2 className="break-words font-display text-[22px] font-semibold leading-tight text-navy-deep">
             {name}

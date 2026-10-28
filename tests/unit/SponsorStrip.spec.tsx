@@ -22,6 +22,10 @@ describe('SponsorStrip', () => {
     expect(list?.className).toContain('grid-cols-2')
     expect(list?.className).toContain('md:grid-cols-3')
     expect(list?.className).toContain('lg:grid-cols-4')
+    // Cuadrado en la imagen misma: una caja grid con h-full recortaba el logo.
+    const img = container.querySelector('img')
+    expect(img?.className).toContain('aspect-square')
+    expect(img?.parentElement?.className).not.toContain('overflow-hidden')
     const name = screen.getByText('Panadería San José')
     expect(name.className).not.toContain('line-clamp-1')
   })

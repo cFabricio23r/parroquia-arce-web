@@ -37,17 +37,16 @@ export function SponsorStrip({ sponsors }: { sponsors: SponsorView[] }) {
                 href="/patrocinadores"
                 className="flex h-full flex-col items-center gap-4 rounded-lg border border-line-soft bg-white p-5 text-text transition-colors hover:border-sky"
               >
-                {/* Caja fija + object-contain: el logo apaisado se ve entero.
+                {/* Cuadrado (los logos suelen serlo) en la imagen misma + object-contain: se ve entero,
+                    sin recorte (con una caja grid, la fila tomaba el alto natural y overflow-hidden lo cortaba).
                     alt vacío: el nombre visible ya nombra el enlace; con el alt se leería dos veces. */}
-                <span className="grid h-[120px] w-full place-items-center overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={s.logo.url}
-                    alt=""
-                    className="h-full w-full object-contain"
-                    loading="lazy"
-                  />
-                </span>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={s.logo.url}
+                  alt=""
+                  className="aspect-square w-full rounded-md object-contain"
+                  loading="lazy"
+                />
                 <span className="max-w-full break-words text-center text-[16px] font-semibold leading-snug">
                   {s.name}
                 </span>
