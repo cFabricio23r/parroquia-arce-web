@@ -24,6 +24,17 @@
 - Comprobación real del adaptador el 28/9: filtro de fotos devuelve 9 resultados y continuación. Diagnóstico: publicaciones `ok`, directos `permissions`; falta habilitar el acceso a directos en Meta. No es un fallo de las variables de entorno.
 - QA con fixtures a 1440, 1040, 768, 390 y 320 px: filtros, paginación vacía, aviso y panel de diagnóstico; sin overflow horizontal. 297 pruebas unitarias aprobadas, TypeScript aprobado. Lint de archivos cambiados con configuración plana compatible, ya que el comando histórico del repo usa FlatCompat incompatible. No se ejecutaron tests de integración contra la base compartida.
 
+## Diagnóstico de directos de Facebook (28/10/2026)
+
+Consulta de solo lectura a Graph `v26.0` con el token configurado (sin imprimirlo):
+
+- Token válido, tipo `PAGE`, página «Parroquia de Ciudad Arce» (`413231642046564`), app «parroquia» (`4544728612439159`). Scopes: `pages_show_list`, `business_management`, `pages_read_engagement`, `public_profile`.
+- `/posts` responde 200. `/live_videos`, con o sin `broadcast_status`, responde 400 con código 10: *"To use live-video-api on behalf of people who are not admins, developers and testers of your app, your use of this endpoint must be reviewed and approved by Facebook."*
+- Causa: quien generó el token no tiene rol en la app (o la app está en modo live sin la revisión de la Live Video API). No es un permiso faltante del token ni un problema de las variables de entorno.
+- **El token vence el 27/11/2026** (`expires_at`); el acceso a datos, el 27/12/2026. Al vencer cae también `/actividad`.
+
+Arreglo propuesto, sin revisión de Meta: dar rol admin/developer en la app al administrador de la página, generar un token de usuario de larga duración y a partir de él el token de página (según la documentación de Meta, no tiene fecha de vencimiento), reemplazar `FACEBOOK_PAGE_ACCESS_TOKEN` en Vercel y `.env`, y repetir el diagnóstico. **No verificado:** si además hace falta `publish_video`, único permiso que lista la guía de la Live Video API. Si con rol sigue el código 10, la alternativa es la revisión de la app en Meta.
+
 ### Hallazgos externos al alcance
 
 Supabase Advisors reportó 39 tablas preexistentes sin RLS, además de advertencias de PostGIS. No se modificaron en esta tarea. La tabla nueva `activity` está protegida y su aviso informativo de RLS sin políticas es intencional: se accede exclusivamente mediante Payload. Revisar la exposición de las tablas existentes en una tarea separada: [RLS deshabilitado](https://supabase.com/docs/guides/database/database-linter?lint=0013_rls_disabled_in_public).
@@ -42,7 +53,7 @@ Supabase Advisors reportó 39 tablas preexistentes sin RLS, además de advertenc
 - Se comprueba el estado actual del video sin caché stale; un replay, evento futuro o video sin permiso de incrustación no genera anuncio. Facebook también consulta estado sin caché stale. Cada visitante activo consulta cada minuto: dimensionar cuotas antes de escalar tráfico.
 - `providers` informa `live`, `offline`, `unconfigured`, `unavailable` o `disabled`. No se devuelven tokens ni mensajes de error externos. Ante fallo del CMS el endpoint devuelve 503 con lista vacía.
 - La ventana empieza compacta, sin reproducir. Al abrir pausa la radio; cerrar/minimizar retira el iframe. Puede reabrirse desde el aviso. No reinicia la radio automáticamente. La expansión ocurre dentro del sitio, sin exigir soporte nativo de Picture-in-Picture.
-- Las publicaciones se verificaron con esta página y credenciales reales el 28/9/2026. Los directos de Facebook todavía responden con un problema de permisos; no presentar su detección automática como conectada hasta resolverlo y probar una transmisión. Los campos se contrastaron con el SDK oficial y las consultas reales indicadas arriba.
+- Las publicaciones se verificaron con esta página y credenciales reales el 28/9/2026. Los directos de Facebook todavía responden con un problema de permisos (causa concreta en el diagnóstico del 28/10/2026); no presentar su detección automática como conectada hasta resolverlo y probar una transmisión. Los campos se contrastaron con el SDK oficial y las consultas reales indicadas arriba.
 
 Fuentes: [YouTube search.list](https://developers.google.com/youtube/v3/docs/search/list), [videos.list](https://developers.google.com/youtube/v3/docs/videos/list), [Post en SDK oficial de Meta](https://github.com/facebook/facebook-nodejs-business-sdk/blob/main/src/objects/post.js), [paginación en SDK oficial](https://github.com/facebook/facebook-nodejs-business-sdk/blob/main/src/cursor.js), [Meta live_videos](https://developers.facebook.com/docs/graph-api/reference/page/live_videos/).
 
