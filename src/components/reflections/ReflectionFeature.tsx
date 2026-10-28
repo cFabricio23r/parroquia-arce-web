@@ -29,10 +29,13 @@ export function ReflectionFeature({ reflection: r }: { reflection: ReflectionVie
           className="flex flex-wrap overflow-hidden rounded-[26px] border border-line-soft bg-white shadow-[0_12px_28px_-14px_rgba(5,23,51,.18),0_3px_8px_rgba(5,23,51,.05)] transition-shadow hover:shadow-lg"
         >
           <div className="flex min-h-[260px] flex-[1_1_340px] flex-col justify-between gap-8 bg-navy p-[clamp(24px,4vw,40px)]">
-            <div>
-              <PreacherBadge name={r.preacherName} photo={r.preacherPhoto} tone="dark" />
-              <p className="mt-1 pl-14 text-[14px] text-[#B6C6DD]">Escuela de predicadores</p>
-            </div>
+            <PreacherBadge
+              name={r.preacherName}
+              photo={r.preacherPhoto}
+              tone="dark"
+              size="lg"
+              subtitle="Escuela de predicadores"
+            />
             <div className="flex items-center gap-[14px]">
               <span
                 aria-hidden="true"

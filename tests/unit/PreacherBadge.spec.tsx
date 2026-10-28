@@ -24,6 +24,25 @@ describe('PreacherBadge', () => {
     expect(screen.getByText('Hno. Nombre Apellido')).toBeTruthy()
   })
 
+  it('lg stacks a large photo over the name and subtitle', () => {
+    render(
+      <PreacherBadge
+        name="Hno. Nombre Apellido"
+        photo={{ url: 'https://x.test/p.jpg', alt: 'Retrato del hermano' }}
+        tone="dark"
+        size="lg"
+        subtitle="Escuela de predicadores"
+      />,
+    )
+    expect(screen.getByAltText('Retrato del hermano').className).toContain('h-28')
+    expect(screen.getByText('Escuela de predicadores')).toBeTruthy()
+  })
+
+  it('lg initials are large too', () => {
+    render(<PreacherBadge name="Hno. Nombre Apellido" photo={null} tone="dark" size="lg" />)
+    expect(screen.getByText('NA').className).toContain('h-28')
+  })
+
   it('falls back to aria-hidden initials', () => {
     render(<PreacherBadge name="Hno. Nombre Apellido" photo={null} tone="light" />)
     const el = screen.getByText('NA')
