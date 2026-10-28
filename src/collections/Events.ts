@@ -32,7 +32,7 @@ export const Events: CollectionConfig = {
           label: 'Información',
           fields: [
             { name: 'title', type: 'text', required: true, label: 'Título' },
-            slugField(),
+            slugField('title'),
             {
               name: 'eventType',
               type: 'select',

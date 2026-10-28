@@ -239,7 +239,7 @@ export interface News {
   id: number;
   title: string;
   /**
-   * Identificador para la URL. Solo minúsculas, números y guiones.
+   * Es la dirección de esta página en la web. No hace falta completarlo: se arma solo con el título cuando guardás. Una vez publicada, no lo cambies, porque los enlaces ya compartidos dejarían de funcionar. Si lo dejás vacío y guardás, se genera de nuevo desde el título.
    */
   slug: string;
   /**
@@ -286,7 +286,7 @@ export interface Reflection {
    */
   title: string;
   /**
-   * La dirección de la reflexión en la web. Ejemplo: la-paz-del-resucitado (minúsculas, números y guiones).
+   * Es la dirección de esta página en la web. No hace falta completarlo: se arma solo con el título cuando guardás. Una vez publicada, no lo cambies, porque los enlaces ya compartidos dejarían de funcionar. Si lo dejás vacío y guardás, se genera de nuevo desde el título.
    */
   slug: string;
   /**
@@ -378,7 +378,7 @@ export interface Formation {
   id: number;
   title: string;
   /**
-   * Identificador para la URL. Solo minúsculas, números y guiones.
+   * Es la dirección de esta página en la web. No hace falta completarlo: se arma solo con el título cuando guardás. Una vez publicada, no lo cambies, porque los enlaces ya compartidos dejarían de funcionar. Si lo dejás vacío y guardás, se genera de nuevo desde el título.
    */
   slug: string;
   /**
@@ -427,7 +427,7 @@ export interface Sector {
   id: number;
   name: string;
   /**
-   * Identificador para la URL. Solo minúsculas, números y guiones.
+   * Es la dirección de esta página en la web. No hace falta completarlo: se arma solo con el nombre cuando guardás. Una vez publicada, no lo cambies, porque los enlaces ya compartidos dejarían de funcionar. Si lo dejás vacío y guardás, se genera de nuevo desde el nombre.
    */
   slug: string;
   number?: number | null;
@@ -598,7 +598,7 @@ export interface Group {
   id: number;
   name: string;
   /**
-   * Identificador para la URL. Solo minúsculas, números y guiones.
+   * Es la dirección de esta página en la web. No hace falta completarlo: se arma solo con el nombre cuando guardás. Una vez publicada, no lo cambies, porque los enlaces ya compartidos dejarían de funcionar. Si lo dejás vacío y guardás, se genera de nuevo desde el nombre.
    */
   slug: string;
   type?: ('pastoral' | 'ministerio' | 'comunidad' | 'servicio' | 'formacion') | null;
@@ -761,7 +761,7 @@ export interface Chapel {
   id: number;
   name: string;
   /**
-   * Identificador para la URL. Solo minúsculas, números y guiones.
+   * Es la dirección de esta página en la web. No hace falta completarlo: se arma solo con el nombre cuando guardás. Una vez publicada, no lo cambies, porque los enlaces ya compartidos dejarían de funcionar. Si lo dejás vacío y guardás, se genera de nuevo desde el nombre.
    */
   slug: string;
   sector: number | Sector;
@@ -854,7 +854,7 @@ export interface Event {
   id: number;
   title: string;
   /**
-   * Identificador para la URL. Solo minúsculas, números y guiones.
+   * Es la dirección de esta página en la web. No hace falta completarlo: se arma solo con el título cuando guardás. Una vez publicada, no lo cambies, porque los enlaces ya compartidos dejarían de funcionar. Si lo dejás vacío y guardás, se genera de nuevo desde el título.
    */
   slug: string;
   eventType?:
@@ -912,7 +912,7 @@ export interface RadioProgram {
   id: number;
   title: string;
   /**
-   * Identificador para la URL. Solo minúsculas, números y guiones.
+   * Es la dirección de esta página en la web. No hace falta completarlo: se arma solo con el título cuando guardás. Una vez publicada, no lo cambies, porque los enlaces ya compartidos dejarían de funcionar. Si lo dejás vacío y guardás, se genera de nuevo desde el título.
    */
   slug: string;
   description?: string | null;
@@ -943,7 +943,7 @@ export interface RadioEpisode {
   id: number;
   title: string;
   /**
-   * Identificador para la URL. Solo minúsculas, números y guiones.
+   * Es la dirección de esta página en la web. No hace falta completarlo: se arma solo con el título cuando guardás. Una vez publicada, no lo cambies, porque los enlaces ya compartidos dejarían de funcionar. Si lo dejás vacío y guardás, se genera de nuevo desde el título.
    */
   slug: string;
   program: number | RadioProgram;

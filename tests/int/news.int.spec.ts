@@ -42,13 +42,13 @@ describe('News collection', () => {
     expect(doc.status).toBe('published')
   })
 
-  it('rechaza un slug con espacios o mayusculas', async () => {
-    await expect(
-      payload.create({
-        collection: 'news',
-        data: { title: 'Malo', slug: 'Slug Invalido', status: 'draft' },
-      }),
-    ).rejects.toThrow()
+  it('normaliza un slug con mayúsculas y espacios', async () => {
+    const doc = await payload.create({
+      collection: 'news',
+      data: { title: 'Malo', slug: `${run} Slug Invalido`, status: 'draft' },
+    })
+    created.push(doc.id)
+    expect(doc.slug).toBe(`${run}-slug-invalido`)
   })
 
   it('rechaza un slug duplicado', async () => {

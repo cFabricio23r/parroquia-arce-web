@@ -1,4 +1,4 @@
-import type { CollectionConfig, Field } from 'payload'
+import type { CollectionConfig } from 'payload'
 import { publishedOnly } from '../access/publishedOnly'
 import { canManageComms } from '../access/roles'
 import { slugField } from '../fields/slug'
@@ -29,17 +29,7 @@ export const Reflections: CollectionConfig = {
       required: true,
       admin: { description: 'Ej.: "La santidad en lo de todos los días".' },
     },
-    (() => {
-      const base = slugField()
-      return {
-        ...base,
-        admin: {
-          ...base.admin,
-          description:
-            'La dirección de la reflexión en la web. Ejemplo: la-paz-del-resucitado (minúsculas, números y guiones).',
-        },
-      } as Field
-    })(),
+    slugField('title'),
     {
       name: 'quote',
       type: 'textarea',

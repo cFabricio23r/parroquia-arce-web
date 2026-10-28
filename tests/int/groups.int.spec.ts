@@ -32,13 +32,13 @@ describe('Groups collection', () => {
     expect(doc.meeting?.day).toBe('Sábado')
   })
 
-  it('rechaza un slug invalido', async () => {
-    await expect(
-      payload.create({
-        collection: 'groups',
-        data: { name: 'Malo', slug: 'Slug Malo', status: 'draft' },
-      }),
-    ).rejects.toThrow()
+  it('normaliza un slug con mayúsculas y espacios', async () => {
+    const doc = await payload.create({
+      collection: 'groups',
+      data: { name: 'Malo', slug: `${run} Slug Malo`, status: 'draft' },
+    })
+    created.push(doc.id)
+    expect(doc.slug).toBe(`${run}-slug-malo`)
   })
 
   it('filtra por status published', async () => {

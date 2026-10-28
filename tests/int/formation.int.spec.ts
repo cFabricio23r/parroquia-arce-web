@@ -38,19 +38,19 @@ describe('Formation collection', () => {
     expect(doc.audience).toBe('jovenes')
   })
 
-  it('rechaza un slug con mayusculas o espacios', async () => {
-    await expect(
-      payload.create({
-        collection: 'formation',
-        data: {
-          title: 'Malo',
-          slug: 'Slug Malo',
-          status: 'draft',
-          category: 'recurso',
-          audience: 'general',
-        },
-      }),
-    ).rejects.toThrow()
+  it('normaliza un slug con mayúsculas y espacios', async () => {
+    const doc = await payload.create({
+      collection: 'formation',
+      data: {
+        title: 'Malo',
+        slug: `${run} Slug Malo`,
+        status: 'draft',
+        category: 'recurso',
+        audience: 'general',
+      },
+    })
+    created.push(doc.id)
+    expect(doc.slug).toBe(`${run}-slug-malo`)
   })
 
   it('filtra por status published', async () => {

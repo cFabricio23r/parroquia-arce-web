@@ -37,13 +37,13 @@ describe('Sectors collection', () => {
     expect(doc.contact?.whatsapp).toBe('0000-0000')
   })
 
-  it('rechaza un slug con mayusculas o espacios', async () => {
-    await expect(
-      payload.create({
-        collection: 'sectors',
-        data: { name: 'Malo', slug: 'Slug Malo', status: 'draft' },
-      }),
-    ).rejects.toThrow()
+  it('normaliza un slug con mayúsculas y espacios', async () => {
+    const doc = await payload.create({
+      collection: 'sectors',
+      data: { name: 'Malo', slug: `${run} Slug Malo`, status: 'draft' },
+    })
+    created.push(doc.id)
+    expect(doc.slug).toBe(`${run}-slug-malo`)
   })
 
   it('filtra por status published', async () => {

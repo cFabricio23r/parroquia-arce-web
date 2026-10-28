@@ -38,7 +38,7 @@ export const Sectors: CollectionConfig = {
           label: 'Información',
           fields: [
             { name: 'name', type: 'text', required: true, label: 'Nombre del sector / ermita' },
-            slugField(),
+            slugField('name'),
             {
               type: 'row',
               fields: [
