@@ -30,16 +30,16 @@ export function SponsorStrip({ sponsors }: { sponsors: SponsorView[] }) {
             Conocé a nuestros patrocinadores →
           </Link>
         </div>
-        <ul className="mt-7 grid grid-cols-[repeat(auto-fill,minmax(min(100%,170px),1fr))] gap-3">
+        <ul className="mt-7 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
           {sponsors.map((s) => (
             <li key={s.id}>
               <Link
                 href="/patrocinadores"
-                className="flex h-[120px] flex-col items-center justify-center gap-[10px] rounded-md border border-line-soft bg-white px-3 text-text transition-colors hover:border-sky"
+                className="flex h-full flex-col items-center gap-4 rounded-lg border border-line-soft bg-white p-5 text-text transition-colors hover:border-sky"
               >
                 {/* Caja fija + object-contain: el logo apaisado se ve entero.
                     alt vacío: el nombre visible ya nombra el enlace; con el alt se leería dos veces. */}
-                <span className="grid h-[52px] w-full place-items-center overflow-hidden">
+                <span className="grid h-[120px] w-full place-items-center overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={s.logo.url}
@@ -48,7 +48,9 @@ export function SponsorStrip({ sponsors }: { sponsors: SponsorView[] }) {
                     loading="lazy"
                   />
                 </span>
-                <span className="line-clamp-1 max-w-full text-[14px] font-semibold">{s.name}</span>
+                <span className="max-w-full break-words text-center text-[16px] font-semibold leading-snug">
+                  {s.name}
+                </span>
               </Link>
             </li>
           ))}

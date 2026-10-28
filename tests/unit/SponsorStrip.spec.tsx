@@ -16,6 +16,16 @@ describe('SponsorStrip', () => {
     expect(screen.getByText('Con gratitud')).toBeTruthy()
   })
 
+  it('large tiles: 2/3/4 per row and the name wraps instead of being cut to one line', () => {
+    const { container } = render(<SponsorStrip sponsors={[makeSponsor()]} />)
+    const list = container.querySelector('ul')
+    expect(list?.className).toContain('grid-cols-2')
+    expect(list?.className).toContain('md:grid-cols-3')
+    expect(list?.className).toContain('lg:grid-cols-4')
+    const name = screen.getByText('Panadería San José')
+    expect(name.className).not.toContain('line-clamp-1')
+  })
+
   it('every logo links to /patrocinadores, named once by the business', () => {
     const { container } = render(
       <SponsorStrip
