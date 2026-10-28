@@ -4,6 +4,7 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { Container } from '@/components/ui/Container'
 import { deriveSchedule } from '@/lib/parish-schedule'
+import { deriveAppDownload } from '@/lib/app-download'
 import { getClergyProfiles } from '@/lib/get-clergy'
 import { SocialIcon } from '@/components/ui/SocialIcon'
 import { Mark } from './Mark'
@@ -33,6 +34,7 @@ export async function Footer() {
     ...(clergy.length ? [{ href: '/sacerdotes', label: 'Nuestros sacerdotes' }] : []),
     { href: '/noticias', label: 'Noticias y formación' },
     { href: '/radio', label: 'Radio parroquial' },
+    ...(deriveAppDownload(settings).ready ? [{ href: '/app', label: 'Descargá la app' }] : []),
   ]
   return (
     <footer className="border-t border-white/10 bg-navy-deep text-[#B6C6DD]">
