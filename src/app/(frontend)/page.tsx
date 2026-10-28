@@ -24,6 +24,8 @@ import { AppPromo } from '@/components/site/AppPromo'
 import { deriveAppDownload } from '@/lib/app-download'
 import { currentReflection, getReflections } from '@/lib/reflections'
 import { ReflectionFeature } from '@/components/reflections/ReflectionFeature'
+import { SponsorStrip } from '@/components/sponsors/SponsorStrip'
+import { getActiveSponsors } from '@/lib/sponsors'
 
 export const metadata: Metadata = { title: 'Inicio' }
 export const revalidate = 300
@@ -74,6 +76,7 @@ export default async function HomePage() {
     contactGlobal,
     clergyProfiles,
     reflectionsRes,
+    sponsors,
   ] = await Promise.all([
     // "Proximas actividades": solo de hoy en adelante. El corte es la
     // medianoche de El Salvador, asi lo de esta manana sigue en la portada
@@ -117,6 +120,8 @@ export default async function HomePage() {
     getClergyProfiles(),
     // La portada no se cae si las reflexiones fallan: simplemente no hay tarjeta.
     getReflections({ limit: 5, page: 1 }).catch(() => ({ docs: [], hasNextPage: false })),
+    // Igual: si los patrocinadores fallan, la franja no aparece y la portada sigue.
+    getActiveSponsors().catch(() => []),
   ])
 
   // Hero editable desde el global `home`. Cada campo cae a su valor editorial
@@ -690,6 +695,7 @@ export default async function HomePage() {
         </section>
       )}
       <ClergySection profiles={clergyProfiles} />
+      <SponsorStrip sponsors={sponsors} />
     </>
   )
 }

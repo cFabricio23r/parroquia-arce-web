@@ -6,6 +6,7 @@ import { Container } from '@/components/ui/Container'
 import { deriveSchedule } from '@/lib/parish-schedule'
 import { deriveAppDownload } from '@/lib/app-download'
 import { getClergyProfiles } from '@/lib/get-clergy'
+import { getActiveSponsors } from '@/lib/sponsors'
 import { SocialIcon } from '@/components/ui/SocialIcon'
 import { Mark } from './Mark'
 
@@ -17,10 +18,12 @@ const PLATFORM_LABEL: Record<string, string> = {
 }
 export async function Footer() {
   const payload = await getPayload({ config: await config })
-  const [contact, settings, clergy] = await Promise.all([
+  const [contact, settings, clergy, sponsors] = await Promise.all([
     payload.findGlobal({ slug: 'contact' }),
     payload.findGlobal({ slug: 'settings' }),
     getClergyProfiles(),
+    // El pie no se cae si los patrocinadores fallan: simplemente no hay enlace.
+    getActiveSponsors().catch(() => []),
   ])
   const address = contact.address || 'Ciudad Arce, La Libertad · El Salvador'
   const channels = (contact.channels ?? []).filter((c) => c.url && c.platform)
@@ -35,6 +38,7 @@ export async function Footer() {
     { href: '/noticias', label: 'Noticias y formación' },
     { href: '/reflexiones', label: 'Reflexiones de la semana' },
     { href: '/radio', label: 'Radio parroquial' },
+    ...(sponsors.length ? [{ href: '/patrocinadores', label: 'Patrocinadores' }] : []),
     ...(deriveAppDownload(settings).ready ? [{ href: '/app', label: 'Descargá la app' }] : []),
   ]
   return (
