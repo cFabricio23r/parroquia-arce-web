@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useId, useRef, useState } from 'react'
 import { useRadio } from '@/components/site/radio/RadioProvider'
 import { formatClock, spokenDuration } from '@/lib/format-duration'
 
@@ -18,6 +18,7 @@ const secondary =
 export function ReflectionPlayer({ src, title }: { src: string; title: string }) {
   const { playing: radioPlaying, pause: pauseRadio } = useRadio()
   const audioRef = useRef<HTMLAudioElement>(null)
+  const progressId = useId()
   const [playing, setPlaying] = useState(false)
   const playingRef = useRef(false)
   playingRef.current = playing
@@ -45,7 +46,12 @@ export function ReflectionPlayer({ src, title }: { src: string; title: string })
     }
     pauseRadio()
     setFailed(false)
-    void Promise.resolve(audio.play()).catch(() => setFailed(true))
+    void Promise.resolve(audio.play()).catch((err: unknown) => {
+      // AbortError: play() interrumpido por un pause() rapido. No es un fallo de carga.
+      if (err instanceof DOMException && err.name === 'AbortError') return
+      if ((err as { name?: string } | null)?.name === 'AbortError') return
+      setFailed(true)
+    })
   }
 
   const seekTo = (value: number) => {
@@ -57,15 +63,24 @@ export function ReflectionPlayer({ src, title }: { src: string; title: string })
     setCurrent(next)
   }
 
+  // load() reinicia playbackRate al defaultPlaybackRate: mantener ambos.
+  const applyRate = (value: number) => {
+    const audio = audioRef.current
+    if (!audio) return
+    audio.defaultPlaybackRate = value
+    audio.playbackRate = value
+  }
+
   const cycleRate = () => {
     const next = (rateIndex + 1) % RATES.length
     setRateIndex(next)
-    if (audioRef.current) audioRef.current.playbackRate = RATES[next]
+    applyRate(RATES[next])
   }
 
   const retry = () => {
     setFailed(false)
     audioRef.current?.load()
+    applyRate(RATES[rateIndex])
   }
 
   const rate = RATES[rateIndex]
@@ -73,7 +88,7 @@ export function ReflectionPlayer({ src, title }: { src: string; title: string })
 
   return (
     <section
-      aria-label="Reproductor de la reflexión"
+      aria-label={`Reproductor: ${title}`}
       className="rounded-[20px] border border-border bg-white p-6 shadow-[0_30px_60px_-28px_rgba(5,23,51,.3)] sm:px-7"
     >
       <audio
@@ -94,7 +109,7 @@ export function ReflectionPlayer({ src, title }: { src: string; title: string })
       <div className="flex flex-wrap items-center gap-4">
         <button
           type="button"
-          aria-label="Atrasar 15 segundos"
+          aria-label="−15 segundos"
           className={secondary}
           onClick={() => seekTo((audioRef.current?.currentTime ?? current) - SKIP)}
         >
@@ -112,18 +127,18 @@ export function ReflectionPlayer({ src, title }: { src: string; title: string })
         </button>
         <button
           type="button"
-          aria-label="Adelantar 15 segundos"
+          aria-label="+15 segundos"
           className={secondary}
           onClick={() => seekTo((audioRef.current?.currentTime ?? current) + SKIP)}
         >
           +15
         </button>
         <div className="min-w-0 flex-1 basis-64">
-          <label htmlFor="reflection-progress" className="mb-1 block text-sm font-semibold text-blue">
+          <label htmlFor={progressId} className="mb-1 block text-sm font-semibold text-blue">
             Escuchá la reflexión
           </label>
           <input
-            id="reflection-progress"
+            id={progressId}
             type="range"
             min={0}
             max={duration}
@@ -140,7 +155,7 @@ export function ReflectionPlayer({ src, title }: { src: string; title: string })
         </div>
         <button
           type="button"
-          aria-label={`Velocidad de reproducción: ${rate}x`}
+          aria-label={`Velocidad de reproducción: ${rate}×`}
           className="inline-flex h-11 min-w-11 items-center justify-center rounded-full border border-border bg-blue-tint px-4 text-sm font-semibold text-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
           onClick={cycleRate}
         >
@@ -160,7 +175,6 @@ export function ReflectionPlayer({ src, title }: { src: string; title: string })
         </div>
       )}
       <p className="mt-4 text-sm text-muted">Si la radio está sonando, se pausa al darle play.</p>
-      <span className="sr-only">{title}</span>
     </section>
   )
 }

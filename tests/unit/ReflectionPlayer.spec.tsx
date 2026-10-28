@@ -55,8 +55,8 @@ describe('ReflectionPlayer', () => {
     const { container } = render(ui)
     const audio = getAudio(container)
     withDuration(audio, 100)
-    const fwd = screen.getByRole('button', { name: 'Adelantar 15 segundos' })
-    const back = screen.getByRole('button', { name: 'Atrasar 15 segundos' })
+    const fwd = screen.getByRole('button', { name: '+15 segundos' })
+    const back = screen.getByRole('button', { name: '−15 segundos' })
     audio.currentTime = 10
     fireEvent.click(fwd)
     expect(audio.currentTime).toBe(25)
@@ -85,13 +85,13 @@ describe('ReflectionPlayer', () => {
   it('cycles playback speed 1x, 1.25x, 1.5x', () => {
     const { container } = render(ui)
     const btn = () => screen.getByRole('button', { name: /Velocidad de reproducción/ })
-    expect(btn().getAttribute('aria-label')).toBe('Velocidad de reproducción: 1x')
+    expect(btn().getAttribute('aria-label')).toBe('Velocidad de reproducción: 1×')
     fireEvent.click(btn())
-    expect(btn().getAttribute('aria-label')).toBe('Velocidad de reproducción: 1.25x')
+    expect(btn().getAttribute('aria-label')).toBe('Velocidad de reproducción: 1.25×')
     expect(getAudio(container).playbackRate).toBe(1.25)
     fireEvent.click(btn())
     fireEvent.click(btn())
-    expect(btn().getAttribute('aria-label')).toBe('Velocidad de reproducción: 1x')
+    expect(btn().getAttribute('aria-label')).toBe('Velocidad de reproducción: 1×')
   })
 
   it('shows the retry message on media error', () => {
@@ -104,5 +104,36 @@ describe('ReflectionPlayer', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Reintentar' }))
     expect(HTMLMediaElement.prototype.load).toHaveBeenCalled()
     expect(screen.queryByText(/No pudimos cargar/)).toBeNull()
+  })
+
+  it('keeps the chosen speed after retry', () => {
+    const { container } = render(ui)
+    const audio = getAudio(container)
+    const speed = () => screen.getByRole('button', { name: /Velocidad de reproducción/ })
+    fireEvent.click(speed())
+    fireEvent.click(speed())
+    audio.playbackRate = 1 // lo que hace load() en un navegador real si no hay default
+    act(() => {
+      fireEvent(audio, new Event('error'))
+    })
+    fireEvent.click(screen.getByRole('button', { name: 'Reintentar' }))
+    expect(audio.playbackRate).toBe(1.5)
+    expect(audio.defaultPlaybackRate).toBe(1.5)
+  })
+
+  it('ignores AbortError from play() but shows the message for other rejections', async () => {
+    const play = HTMLMediaElement.prototype.play as unknown as ReturnType<typeof vi.fn>
+    play.mockImplementationOnce(() => Promise.reject(new DOMException('interrupted', 'AbortError')))
+    render(ui)
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'Reproducir la reflexión' }))
+    })
+    expect(screen.queryByText(/No pudimos cargar el audio/)).toBeNull()
+
+    play.mockImplementationOnce(() => Promise.reject(new DOMException('nope', 'NotSupportedError')))
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'Reproducir la reflexión' }))
+    })
+    expect(screen.getByText('No pudimos cargar el audio. Probá de nuevo en un momento.')).toBeTruthy()
   })
 })
