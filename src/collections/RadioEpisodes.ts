@@ -24,7 +24,7 @@ export const RadioEpisodes: CollectionConfig = {
   },
   fields: [
     { name: 'title', type: 'text', required: true, label: 'Título' },
-    slugField(),
+    slugField('title'),
     {
       name: 'program',
       type: 'relationship',

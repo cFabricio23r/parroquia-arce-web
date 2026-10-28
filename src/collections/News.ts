@@ -30,7 +30,7 @@ export const News: CollectionConfig = {
       label: 'Título',
       required: true,
     },
-    slugField(),
+    slugField('title'),
     {
       name: 'excerpt',
       type: 'textarea',

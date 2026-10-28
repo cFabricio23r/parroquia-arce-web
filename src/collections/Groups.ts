@@ -37,7 +37,7 @@ export const Groups: CollectionConfig = {
           label: 'Información',
           fields: [
             { name: 'name', type: 'text', required: true, label: 'Nombre del grupo' },
-            slugField(),
+            slugField('name'),
             {
               name: 'type',
               type: 'select',

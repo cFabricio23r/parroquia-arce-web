@@ -27,7 +27,7 @@ export const Chapels: CollectionConfig = {
   },
   fields: [
     { name: 'name', type: 'text', required: true, label: 'Nombre de la ermita' },
-    slugField(),
+    slugField('name'),
     {
       name: 'sector',
       type: 'relationship',

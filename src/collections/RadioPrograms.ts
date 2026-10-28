@@ -25,7 +25,7 @@ export const RadioPrograms: CollectionConfig = {
   },
   fields: [
     { name: 'title', type: 'text', required: true, label: 'Título' },
-    slugField(),
+    slugField('title'),
     { name: 'description', type: 'textarea', label: 'Descripción' },
     { name: 'hostName', type: 'text', label: 'Conduce' },
     {
