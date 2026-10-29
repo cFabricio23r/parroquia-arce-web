@@ -56,23 +56,57 @@ describe('detección de directos', () => {
     expect(result).toEqual({ state: 'unavailable', stream: null })
   })
   it('acepta solo LIVE de Facebook, construye el embed sin HTML remoto', async () => {
-    const fetcher = vi
-      .fn()
-      .mockResolvedValue(
-        response({
-          data: [
-            { id: '12345', status: 'LIVE', title: 'Misa', embed_html: '<script>bad</script>' },
-          ],
-        }),
-      )
+    const fetcher = vi.fn().mockResolvedValue(
+      response({
+        data: [
+          {
+            id: '12345',
+            status: 'LIVE',
+            title: 'Misa',
+            video: { id: '67890' },
+            embed_html: '<script>bad</script>',
+          },
+        ],
+      }),
+    )
     const result = await detectFacebook(
       { pageId: '123', token: 'secret', version: 'v99.0' },
       fetcher,
     )
-    expect(result.stream?.id).toBe('12345')
+    expect(result.stream?.id).toBe('67890')
     expect(JSON.stringify(result)).not.toContain('script')
     expect(fetcher.mock.calls[0][0].toString()).not.toContain('secret')
     expect(fetcher.mock.calls[0][1].cache).toBe('no-store')
+  })
+  it('enlaza el video de la emisión de Facebook, no el ID del LiveVideo', async () => {
+    const fetcher = vi.fn().mockResolvedValue(
+      response({
+        data: [{ id: '1588262840008875', status: 'LIVE', video: { id: '1586475646091024' } }],
+      }),
+    )
+    const result = await detectFacebook(
+      { pageId: '123', token: 'secret', version: 'v99.0' },
+      fetcher,
+    )
+    expect(new URL(fetcher.mock.calls[0][0]).searchParams.get('fields')).toContain('video{id}')
+    expect(result.stream?.url).toBe('https://www.facebook.com/watch/?v=1586475646091024')
+    expect(result.stream?.embedUrl).toContain('1586475646091024')
+    expect(JSON.stringify(result)).not.toContain('1588262840008875')
+  })
+  it('no anuncia una emisión de Facebook sin video enlazable', async () => {
+    const fetcher = vi.fn().mockResolvedValue(
+      response({
+        data: [
+          { id: '12345', status: 'LIVE' },
+          { id: '23456', status: 'LIVE', video: { id: 'x' } },
+        ],
+      }),
+    )
+    const result = await detectFacebook(
+      { pageId: '123', token: 'secret', version: 'v99.0' },
+      fetcher,
+    )
+    expect(result).toEqual({ state: 'offline', stream: null })
   })
   it('el modo oculto y manual nunca consultan el proveedor', async () => {
     const detector = vi.fn()

@@ -81,16 +81,19 @@ export async function detectFacebook(
   try {
     const url = new URL(`https://graph.facebook.com/${version}/${pageId}/live_videos`)
     url.search = new URLSearchParams({
-      fields: 'id,title,status',
+      fields: 'id,title,status,video{id}',
       broadcast_status: '["LIVE"]',
       limit: '10',
     }).toString()
     const data = (await json(url, fetcher, 0, token)) as {
-      data: { id: string; title?: string; status?: string }[]
+      data: { id: string; title?: string; status?: string; video?: { id?: string } }[]
     }
-    const live = data.data.find((item) => item.status === 'LIVE' && /^\d+$/.test(item.id))
-    return live
-      ? { state: 'live', stream: makeStream('facebook', live.id, live.title) }
+    // `id` es el LiveVideo (la emisión); el video que se ve y se incrusta es `video.id`.
+    const live = data.data.find(
+      (item) => item.status === 'LIVE' && /^\d+$/.test(item.video?.id ?? ''),
+    )
+    return live?.video?.id
+      ? { state: 'live', stream: makeStream('facebook', live.video.id, live.title) }
       : empty('offline')
   } catch {
     return empty('unavailable')
