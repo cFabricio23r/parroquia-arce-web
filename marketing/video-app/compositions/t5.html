@@ -4,7 +4,6 @@
     #root {
       position: absolute;
       inset: 0;
-      font-family: "Hanken Grotesk", sans-serif;
     }
     #t5-time {
       position: absolute;
@@ -34,15 +33,15 @@
     }
   </style>
   <div id="root" data-composition-id="t5" data-width="1080" data-height="1920">
-    <div id="t5-time" class="clip" data-start="0" data-duration="5.5" data-var-text="t5-time-text">8:00 p. m.</div>
-    <h2 id="t5-line" class="clip" data-start="0" data-duration="5.5"><span class="t5-w">Conocé</span> <span class="t5-w">tu</span> <span class="t5-w">sector</span> <span class="t5-w">y</span> <span class="t5-w">su</span> <span class="t5-w">ermita.</span></h2>
+    <div id="t5-time" class="clip" data-start="0" data-duration="4.5" data-var-text="t5-time-text">8:00 p. m.</div>
+    <h2 id="t5-line" class="clip" data-start="0" data-duration="4.5"><span class="t5-w">Conocé</span> <span class="t5-w">tu</span> <span class="t5-w">sector</span> <span class="t5-w">y</span> <span class="t5-w">su</span> <span class="t5-w">ermita.</span></h2>
   </div>
   <script>
     (function () {
       const tl = gsap.timeline({ paused: true });
       tl.fromTo("#t5-time", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0.15);
       tl.fromTo(".t5-w", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, ease: "power3.out", stagger: 0.067 }, 0.3);
-      tl.to(["#t5-time", ".t5-w"], { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in", stagger: 0.03 }, 4.95);
+      tl.to(["#t5-time", ".t5-w"], { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in", stagger: 0.03 }, 3.95);
       window.__timelines["t5"] = tl;
     })();
   </script>

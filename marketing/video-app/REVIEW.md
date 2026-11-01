@@ -1,6 +1,16 @@
 # REVIEW — Un día con la parroquia en el bolsillo
 
-**Entregado:** `renders/app-parroquia-vertical.mp4` · 1080×1920 · 30 fps · 36 s · 9.1 MB.
+**Entregado (v2):** `renders/app-parroquia-vertical-v2.mp4` · 1080×1920 · 30 fps · 38 s · 9.8 MB. (v1 sin voz: `renders/app-parroquia-vertical.mp4`.)
+
+## Cambios v2 (pedido: "me siento perdido, falta contexto y audio explicativo")
+- Intro de 4.2 s en el cuadro 0: "Parroquia de Ciudad Arce · ¡Nuestra parroquia ya tiene app!".
+- Locución en español (voz local Kokoro `ef_dora`, gratis) que explica cada pantalla; guion en `assets/voice/` (vo0–vo7):
+  ¿Ya conocés la app de la Parroquia Inmaculada Concepción de María? / Empezá el día leyendo el Evangelio y las lecturas de hoy. /
+  Escuchá la radio de la parroquia, en vivo, desde donde estés. / Mirá la agenda: misas, jornadas y actividades, mes a mes. /
+  Rezá el Rosario y la Liturgia de las Horas. / Y conocé tu sector, su ermita y sus grupos. / Tu parroquia, todo el día, en una sola app. /
+  Escaneá el código, o entrá a parroquiaciudadarce.org/app.
+- Voz normalizada a −16 LUFS, pico −1.6 dBFS (medido en el render). Efectos bajados a 0.3.
+- **No escuchado**: la pronunciación de la voz sintética no se verificó de oído ni con transcripción (sin acceso al modelo).
 
 ## Decisiones creativas
 - Historia A ("un día"): 5 horas del día = 5 pantallas reales de la app (Inicio/Evangelio, Radio, Agenda, Rezar, Sectores), frase "Tu parroquia, todo el día." y cierre con logo, QR y parroquiaciudadarce.org/app.

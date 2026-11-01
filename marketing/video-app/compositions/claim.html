@@ -33,19 +33,19 @@
     }
   </style>
   <div id="root" data-composition-id="claim" data-width="1080" data-height="1920">
-    <h2 id="claim-line" class="clip" data-start="0" data-duration="3">
+    <h2 id="claim-line" class="clip" data-start="0" data-duration="3.2">
       <span class="claim-w">Tu</span> <span class="claim-w">parroquia,</span><br />
       <span class="claim-w claim-accent">todo</span> <span class="claim-w claim-accent">el</span>
       <span class="claim-w claim-accent">día.</span>
     </h2>
-    <p id="claim-sub" class="clip" data-start="0" data-duration="3" data-var-text="claim-sub-text">En una sola app.</p>
+    <p id="claim-sub" class="clip" data-start="0" data-duration="3.2" data-var-text="claim-sub-text">En una sola app.</p>
   </div>
   <script>
     (function () {
       const tl = gsap.timeline({ paused: true });
       tl.fromTo(".claim-w", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, ease: "power3.out", stagger: 0.09 }, 0.3);
       tl.fromTo("#claim-sub", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.95);
-      tl.to([".claim-w", "#claim-sub"], { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in", stagger: 0.03 }, 2.45);
+      tl.to([".claim-w", "#claim-sub"], { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in", stagger: 0.03 }, 2.65);
       window.__timelines["claim"] = tl;
     })();
   </script>
