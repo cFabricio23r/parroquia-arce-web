@@ -1,5 +1,7 @@
 # Handoff — campaña de videos App + Web (para continuar en una sesión nueva)
 
+Leer también `marketing/DECISIONES.md` (propuestas, comentarios del usuario y guion de voz con tiempos).
+
 Rama de trabajo: `claude/agregar-skills-xvyvkt` (todo lo de abajo ya está subido ahí).
 
 ## Qué existe
