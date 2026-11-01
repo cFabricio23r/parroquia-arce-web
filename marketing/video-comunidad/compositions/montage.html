@@ -1,0 +1,66 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #09203e; }
+    .ph { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
+    .ph img { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    .scrim-top { position: absolute; left: 0; top: 0; width: 1080px; height: 760px; background: linear-gradient(rgba(5,23,51,0.78), rgba(5,23,51,0)); }
+    .scrim-bot { position: absolute; left: 0; top: 960px; width: 1080px; height: 960px; background: linear-gradient(rgba(5,23,51,0), rgba(5,23,51,0.82)); }
+    .cap { position: absolute; left: 64px; top: 1214px; padding-left: 22px; border-left: 6px solid #e88f21; font-family: "Hanken Grotesk", sans-serif; font-weight: 700; font-size: 34px; color: #fff; }
+    .label { position: absolute; left: 64px; top: 182px; font-family: "Hanken Grotesk", sans-serif; font-weight: 700; font-size: 32px; letter-spacing: 0.12em; text-transform: uppercase; color: #e88f21; }
+    .line { position: absolute; left: 64px; top: 228px; width: 952px; font-family: "Newsreader", serif; font-weight: 600; font-size: 76px; line-height: 1.04; letter-spacing: -0.01em; color: #fff; }
+    .w { display: inline-block; }
+
+    #mon-num { position: absolute; left: 64px; top: 210px; width: 960px; color: #fff; font-family: "Newsreader", serif; font-weight: 600; }
+    .mon-big { display: block; font-size: 340px; line-height: 0.9; letter-spacing: -0.03em; }
+    .mon-word { display: block; font-family: "Hanken Grotesk", sans-serif; font-weight: 700; font-size: 64px; letter-spacing: 0.04em; text-transform: uppercase; color: #ffffff; margin-top: 8px; }
+    #mon-n2 { position: absolute; left: 64px; top: 210px; width: 960px; color: #fff; font-family: "Newsreader", serif; font-weight: 600; }
+    #mon-q { position: absolute; left: 64px; top: 560px; width: 952px; font-family: "Newsreader", serif; font-weight: 600; font-size: 110px; line-height: 1.02; letter-spacing: -0.015em; color: #fff; }
+    #mon-dim { position: absolute; inset: 0; background: #051733; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="montage" data-width="1080" data-height="1920">
+        <div id="mon-ph0" class="clip ph" data-start="0.0" data-duration="1.8"><img id="mon-img0" src="assets/photos/m18.jpg" alt="Misa con la comunidad del Sector 15" /></div>
+    <div id="mon-cap0" class="clip cap" data-start="0.0" data-duration="1.8" style="z-index:5">Sector 15 · Flor Amarilla</div>
+    <div id="mon-ph1" class="clip ph" data-start="1.8" data-duration="1.8"><img id="mon-img1" src="assets/photos/m23.jpg" alt="Comunidad del Sector 8 reunida" /></div>
+    <div id="mon-cap1" class="clip cap" data-start="1.8" data-duration="1.8" style="z-index:5">Sector 8 · Las Cruces</div>
+    <div id="mon-ph2" class="clip ph" data-start="3.6" data-duration="1.8"><img id="mon-img2" src="assets/photos/m54.jpg" alt="Escuela de Predicadores en el Salón Monseñor Romero" /></div>
+    <div id="mon-cap2" class="clip cap" data-start="3.6" data-duration="1.8" style="z-index:5">Escuela de Predicadores</div>
+    <div id="mon-ph3" class="clip ph" data-start="5.4" data-duration="1.8"><img id="mon-img3" src="assets/photos/m11.jpg" alt="Comisión de Formación con sacerdotes y religiosas" /></div>
+    <div id="mon-cap3" class="clip cap" data-start="5.4" data-duration="1.8" style="z-index:5">Comisión de Formación</div>
+    <div id="mon-ph4" class="clip ph" data-start="7.2" data-duration="1.8"><img id="mon-img4" src="assets/photos/m15.jpg" alt="Altar de la ermita del Sector 22" /></div>
+    <div id="mon-cap4" class="clip cap" data-start="7.2" data-duration="1.8" style="z-index:5">Sector 22 · Ciudad Obrera</div>
+    <div id="mon-scrim" class="clip scrim-top" data-start="0" data-duration="9" style="z-index:3"></div>
+    <div id="mon-scrim2" class="clip scrim-bot" data-start="0" data-duration="9" style="z-index:3"></div>
+    <div id="mon-dimwrap" class="clip" data-start="0.4" data-duration="8.6" style="position:absolute;inset:0;z-index:4"><div id="mon-dim"></div></div>
+    <div id="mon-num" class="clip" data-start="0.5" data-duration="1.5" style="z-index:6"><span class="mon-big">22</span><span class="mon-word">sectores</span></div>
+    <div id="mon-n2" class="clip" data-start="2.0" data-duration="3.5" style="z-index:6"><span class="mon-big">24</span><span class="mon-word">grupos y ministerios</span></div>
+    <h2 id="mon-q" class="clip" data-start="6.1" data-duration="2.9" style="z-index:6"><span class="w mon-qw">¿Cómo</span> <span class="w mon-qw">enterarte</span> <span class="w mon-qw">de</span> <span class="w mon-qw">todo</span> <span class="w mon-qw">lo</span> <span class="w mon-qw">que</span> <span class="w mon-qw">pasa?</span></h2>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+            tl.fromTo("#mon-img0", { scale: 1.14, xPercent: -3 }, { scale: 1.04, xPercent: 0, duration: 1.8, ease: "none" }, 0.0);
+      tl.fromTo("#mon-cap0", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0.15);
+      tl.fromTo("#mon-img1", { scale: 1.14, xPercent: 3 }, { scale: 1.04, xPercent: 0, duration: 1.8, ease: "none" }, 1.8);
+      tl.fromTo("#mon-img1", { x: -260, filter: "blur(14px)" }, { x: 0, filter: "blur(0px)", duration: 0.28, ease: "power3.out" }, 1.8);
+      tl.fromTo("#mon-cap1", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 1.95);
+      tl.fromTo("#mon-img2", { scale: 1.14, xPercent: -3 }, { scale: 1.04, xPercent: 0, duration: 1.8, ease: "none" }, 3.6);
+      tl.fromTo("#mon-img2", { x: 260, filter: "blur(14px)" }, { x: 0, filter: "blur(0px)", duration: 0.28, ease: "power3.out" }, 3.6);
+      tl.fromTo("#mon-cap2", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 3.75);
+      tl.fromTo("#mon-img3", { scale: 1.14, xPercent: 3 }, { scale: 1.04, xPercent: 0, duration: 1.8, ease: "none" }, 5.4);
+      tl.fromTo("#mon-img3", { x: -260, filter: "blur(14px)" }, { x: 0, filter: "blur(0px)", duration: 0.28, ease: "power3.out" }, 5.4);
+      tl.fromTo("#mon-cap3", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 5.55);
+      tl.fromTo("#mon-img4", { scale: 1.14, xPercent: -3 }, { scale: 1.04, xPercent: 0, duration: 1.8, ease: "none" }, 7.2);
+      tl.fromTo("#mon-img4", { x: 260, filter: "blur(14px)" }, { x: 0, filter: "blur(0px)", duration: 0.28, ease: "power3.out" }, 7.2);
+      tl.fromTo("#mon-cap4", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 7.35);
+      tl.fromTo("#mon-num", { scale: 1.25, opacity: 0, transformOrigin: "0% 0%" }, { scale: 1, opacity: 1, duration: 0.35, ease: "expo.out" }, 0.5);
+      tl.to("#mon-num", { opacity: 0, filter: "blur(10px)", duration: 0.15, ease: "power2.in" }, 1.82);
+      tl.fromTo("#mon-n2", { scale: 1.25, opacity: 0, transformOrigin: "0% 0%" }, { scale: 1, opacity: 1, duration: 0.35, ease: "expo.out" }, 2.0);
+      tl.to("#mon-n2", { opacity: 0, filter: "blur(10px)", duration: 0.2, ease: "power2.in" }, 5.2);
+      tl.to("#mon-dim", { opacity: 0.45, duration: 0.3, ease: "power2.out" }, 0.4);
+      tl.to("#mon-dim", { opacity: 0, duration: 0.3, ease: "power2.inOut" }, 5.3);
+      tl.to("#mon-dim", { opacity: 0.6, duration: 0.4, ease: "power2.inOut" }, 5.8);
+      tl.fromTo(".mon-qw", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, ease: "power3.out", stagger: 0.07 }, 6.15);
+      window.__timelines["montage"] = tl;
+    })();
+  </script>
+</template>

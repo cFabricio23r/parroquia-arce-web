@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Newsreader"; font-weight: 600; font-style: normal; src: url("assets/fonts/newsreader-latin-600-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Hanken Grotesk"; font-weight: 500; font-style: normal; src: url("assets/fonts/hanken-grotesk-latin-500-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Hanken Grotesk"; font-weight: 700; font-style: normal; src: url("assets/fonts/hanken-grotesk-latin-700-normal.woff2") format("woff2"); }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #09203e; }
+      #root { position: relative; width: 1080px; height: 1920px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="43" data-width="1080" data-height="1920">
+      <div id="hook" data-composition-id="hook" data-composition-src="compositions/hook.html" data-start="0" data-duration="4" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="montage" data-composition-id="montage" data-composition-src="compositions/montage.html" data-start="4" data-duration="9" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="app" data-composition-id="app" data-composition-src="compositions/app.html" data-start="13" data-duration="19.4" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="claim" data-composition-id="claim" data-composition-src="compositions/claim.html" data-start="32.4" data-duration="4.2" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="endcard" data-composition-id="endcard" data-composition-src="compositions/endcard.html" data-start="36.6" data-duration="6.4" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
+
+      <audio id="vo-0" class="clip" src="assets/voice/v0.m4a" data-start="0.4" data-duration="2.581" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-1" class="clip" src="assets/voice/v1.m4a" data-start="4.2" data-duration="4.7" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-2" class="clip" src="assets/voice/v2.m4a" data-start="10.2" data-duration="2.432" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-3" class="clip" src="assets/voice/v3.m4a" data-start="13.15" data-duration="2.453" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-4" class="clip" src="assets/voice/v4.m4a" data-start="15.8" data-duration="2.41" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-5" class="clip" src="assets/voice/v5.m4a" data-start="19.0" data-duration="2.453" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-6" class="clip" src="assets/voice/v6.m4a" data-start="23.6" data-duration="2.517" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-7" class="clip" src="assets/voice/v7.m4a" data-start="28.2" data-duration="2.432" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-8" class="clip" src="assets/voice/v8.m4a" data-start="32.6" data-duration="3.8" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo-9" class="clip" src="assets/voice/v9.m4a" data-start="37.0" data-duration="4.2" data-track-index="3" data-volume="1"></audio>
+      <audio id="sfx-0" class="clip" src="assets/sfx/whoosh.mp3" data-start="5.75" data-duration="0.57" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-1" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="7.55" data-duration="0.57" data-track-index="5" data-volume="0.25"></audio>
+      <audio id="sfx-2" class="clip" src="assets/sfx/whoosh.mp3" data-start="9.35" data-duration="0.57" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-3" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="11.15" data-duration="0.57" data-track-index="5" data-volume="0.25"></audio>
+      <audio id="sfx-4" class="clip" src="assets/sfx/pop.mp3" data-start="4.52" data-duration="0.72" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-5" class="clip" src="assets/sfx/pop.mp3" data-start="6.02" data-duration="0.72" data-track-index="5" data-volume="0.25"></audio>
+      <audio id="sfx-6" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="18.2" data-duration="0.57" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-7" class="clip" src="assets/sfx/whoosh.mp3" data-start="22.8" data-duration="0.57" data-track-index="5" data-volume="0.25"></audio>
+      <audio id="sfx-8" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="27.4" data-duration="0.57" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-9" class="clip" src="assets/sfx/whoosh.mp3" data-start="32.0" data-duration="0.57" data-track-index="5" data-volume="0.25"></audio>
+      <audio id="sfx-10" class="clip" src="assets/sfx/chime.mp3" data-start="36.8" data-duration="2.5" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-11" class="clip" src="assets/sfx/pop.mp3" data-start="37.75" data-duration="0.72" data-track-index="5" data-volume="0.25"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

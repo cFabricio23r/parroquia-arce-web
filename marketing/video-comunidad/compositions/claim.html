@@ -1,0 +1,35 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #09203e; }
+    .ph { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
+    .ph img { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    .scrim-top { position: absolute; left: 0; top: 0; width: 1080px; height: 760px; background: linear-gradient(rgba(5,23,51,0.78), rgba(5,23,51,0)); }
+    .scrim-bot { position: absolute; left: 0; top: 960px; width: 1080px; height: 960px; background: linear-gradient(rgba(5,23,51,0), rgba(5,23,51,0.82)); }
+    .cap { position: absolute; left: 64px; top: 1214px; padding-left: 22px; border-left: 6px solid #e88f21; font-family: "Hanken Grotesk", sans-serif; font-weight: 700; font-size: 34px; color: #fff; }
+    .label { position: absolute; left: 64px; top: 182px; font-family: "Hanken Grotesk", sans-serif; font-weight: 700; font-size: 32px; letter-spacing: 0.12em; text-transform: uppercase; color: #e88f21; }
+    .line { position: absolute; left: 64px; top: 228px; width: 952px; font-family: "Newsreader", serif; font-weight: 600; font-size: 76px; line-height: 1.04; letter-spacing: -0.01em; color: #fff; }
+    .w { display: inline-block; }
+
+    #claim-a { position: absolute; left: 64px; top: 560px; width: 952px; font-family: "Newsreader", serif; font-weight: 600; font-size: 104px; line-height: 1.02; letter-spacing: -0.015em; color: #fff; }
+    #claim-b { position: absolute; left: 64px; top: 900px; width: 952px; font-family: "Newsreader", serif; font-weight: 600; font-size: 72px; line-height: 1.06; color: #e88f21; }
+    #claim-dim { position: absolute; inset: 0; background: #051733; opacity: 0.62; }
+  </style>
+  <div id="root" data-composition-id="claim" data-width="1080" data-height="1920">
+    <div id="claim-ph" class="clip ph" data-start="0" data-duration="4.2"><img id="claim-img" src="assets/photos/m30.jpg" alt="Comunidad del Sector 8 reunida" /></div>
+    <div id="claim-dimwrap" class="clip" data-start="0" data-duration="4.2" style="position:absolute;inset:0"><div id="claim-dim"></div></div>
+    <h2 id="claim-a" class="clip" data-start="0" data-duration="4.2"><span class="w claim-aw">La</span> <span class="w claim-aw">parroquia</span> <span class="w claim-aw">vive</span> <span class="w claim-aw">en</span> <span class="w claim-aw">sus</span> <span class="w claim-aw">comunidades.</span></h2>
+    <p id="claim-b" class="clip" data-start="0" data-duration="4.2"><span class="w claim-bw">Y</span> <span class="w claim-bw">ahora,</span> <span class="w claim-bw">también</span> <span class="w claim-bw">en</span> <span class="w claim-bw">tu</span> <span class="w claim-bw">bolsillo.</span></p>
+    <div id="claim-cap" class="clip cap" data-start="0" data-duration="4.2">Sector 8 · Las Cruces</div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#claim-img", { scale: 1.1, xPercent: 3 }, { scale: 1.0, xPercent: 0, duration: 4.2, ease: "none" }, 0);
+      tl.fromTo("#claim-img", { filter: "blur(14px)" }, { filter: "blur(0px)", duration: 0.25, ease: "power3.out" }, 0);
+      tl.fromTo(".claim-aw", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, ease: "power3.out", stagger: 0.08 }, 0.25);
+      tl.fromTo(".claim-bw", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, ease: "power3.out", stagger: 0.08 }, 2.0);
+      tl.to([".claim-aw", ".claim-bw", "#claim-cap"], { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in", stagger: 0.02 }, 3.8);
+      window.__timelines["claim"] = tl;
+    })();
+  </script>
+</template>
