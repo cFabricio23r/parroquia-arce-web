@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Newsreader"; font-weight: 500; font-style: normal; src: url("assets/fonts/newsreader-latin-500-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Newsreader"; font-weight: 600; font-style: normal; src: url("assets/fonts/newsreader-latin-600-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Hanken Grotesk"; font-weight: 500; font-style: normal; src: url("assets/fonts/hanken-grotesk-latin-500-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Hanken Grotesk"; font-weight: 700; font-style: normal; src: url("assets/fonts/hanken-grotesk-latin-700-normal.woff2") format("woff2"); }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #09203e; }
+      #root { position: relative; width: 1080px; height: 1920px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="36" data-width="1080" data-height="1920">
+      <div id="stage" data-composition-id="stage" data-composition-src="compositions/stage.html" data-start="0" data-duration="36" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="t1" data-composition-id="t1" data-composition-src="compositions/t1.html" data-start="0" data-duration="6" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 2"></div>
+      <div id="t2" data-composition-id="t2" data-composition-src="compositions/t2.html" data-start="6" data-duration="5.5" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 2"></div>
+      <div id="t3" data-composition-id="t3" data-composition-src="compositions/t3.html" data-start="11.5" data-duration="5.5" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 2"></div>
+      <div id="t4" data-composition-id="t4" data-composition-src="compositions/t4.html" data-start="17" data-duration="5.5" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 2"></div>
+      <div id="t5" data-composition-id="t5" data-composition-src="compositions/t5.html" data-start="22.5" data-duration="5.5" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 2"></div>
+      <div id="claim" data-composition-id="claim" data-composition-src="compositions/claim.html" data-start="28" data-duration="3" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 2"></div>
+      <div id="endcard" data-composition-id="endcard" data-composition-src="compositions/endcard.html" data-start="31" data-duration="5" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index: 2"></div>
+
+      <audio id="sfx-swap-1" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="5.8" data-duration="0.57" data-track-index="5" data-volume="0.4"></audio>
+      <audio id="sfx-swap-2" class="clip" src="assets/sfx/whoosh.mp3" data-start="11.3" data-duration="0.57" data-track-index="5" data-volume="0.35"></audio>
+      <audio id="sfx-swap-3" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="16.8" data-duration="0.57" data-track-index="5" data-volume="0.4"></audio>
+      <audio id="sfx-swap-4" class="clip" src="assets/sfx/whoosh.mp3" data-start="22.3" data-duration="0.57" data-track-index="5" data-volume="0.35"></audio>
+      <audio id="sfx-exit" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="27.85" data-duration="0.57" data-track-index="5" data-volume="0.45"></audio>
+      <audio id="sfx-mark" class="clip" src="assets/sfx/chime.mp3" data-start="31.2" data-duration="2.5" data-track-index="6" data-volume="0.4"></audio>
+      <audio id="sfx-qr" class="clip" src="assets/sfx/pop.mp3" data-start="32.15" data-duration="0.72" data-track-index="7" data-volume="0.4"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

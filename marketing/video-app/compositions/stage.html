@@ -1,0 +1,123 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    #stage-ground {
+      position: absolute;
+      inset: 0;
+      background: #fbe6cc;
+    }
+    #stage-sun {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 200px;
+      margin: -100px 0 0 -100px;
+      border-radius: 50%;
+      background: #e88f21;
+    }
+    #stage-view {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 430px;
+      bottom: 0;
+      overflow: hidden;
+    }
+    #stage-phone {
+      position: absolute;
+      left: 276px;
+      top: 40px;
+      width: 528px;
+      height: 1041px;
+      padding: 14px;
+      border-radius: 60px;
+      background: #051733;
+      box-shadow: 0 30px 70px rgba(5, 23, 51, 0.28);
+    }
+    #stage-screen {
+      position: relative;
+      width: 500px;
+      height: 1013px;
+      border-radius: 46px;
+      overflow: hidden;
+      background: #f4fbff;
+    }
+    .stage-shot {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 500px;
+      height: 1013px;
+      object-fit: cover;
+    }
+  </style>
+  <div id="root" data-composition-id="stage" data-width="1080" data-height="1920">
+    <div id="stage-ground"></div>
+    <div id="stage-sun"></div>
+    <div id="stage-view" data-layout-allow-overflow data-layout-allow-overlap>
+      <div id="stage-phone">
+        <div id="stage-screen">
+          <img id="shot-inicio" class="stage-shot" src="assets/inicio.jpg" alt="Pantalla Inicio de la app" />
+          <img id="shot-radio" class="stage-shot" src="assets/radio.jpg" alt="Pantalla Radio de la app" />
+          <img id="shot-agenda" class="stage-shot" src="assets/agenda.jpg" alt="Pantalla Agenda de la app" />
+          <img id="shot-rezar" class="stage-shot" src="assets/rezar.jpg" alt="Pantalla Rezar de la app" />
+          <img id="shot-sectores" class="stage-shot" src="assets/sectores.jpg" alt="Pantalla Sectores y ermitas de la app" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // One entry per hour of the day. focusY = y of the card in the 720x1459 screenshot.
+      const scenes = [
+        { t: 0.0, shot: "#shot-inicio", ground: "#fbe6cc", sun: [150, 1100], sunColor: "#e88f21", focusY: 385, s: 1.6 },
+        { t: 6.0, shot: "#shot-radio", ground: "#dff4fc", sun: [150, 640], sunColor: "#e88f21", focusY: 640, s: 1.55 },
+        { t: 11.5, shot: "#shot-agenda", ground: "#61c2e6", sun: [930, 640], sunColor: "#e88f21", focusY: 740, s: 1.6 },
+        { t: 17.0, shot: "#shot-rezar", ground: "#e88f21", sun: [930, 1100], sunColor: "#fbe6cc", focusY: 560, s: 1.4 },
+        { t: 22.5, shot: "#shot-sectores", ground: "#09203e", sun: [930, 560], sunColor: "#f4fbff", focusY: 450, s: 1.5 },
+      ];
+      const SCALE = 500 / 720; // screenshot → screen
+      const BEZEL = 14;
+      const TARGET = 480; // card centre lands at 430 + 40 + 480 = 950 px
+      const cam = (sc) => ({ scale: sc.s, y: TARGET - (BEZEL + sc.focusY * SCALE) * sc.s });
+
+      gsap.set("#stage-phone", { transformOrigin: "50% 0%" });
+      tl.set(".stage-shot", { x: 560 }, 0);
+      tl.set("#shot-inicio", { x: 0 }, 0);
+      tl.set("#stage-sun", { x: 150, y: 1180 }, 0);
+      // dawn: the sun is already low on the left at frame 0 and keeps rising a little
+      tl.to("#stage-sun", { y: 1100, duration: 1.6, ease: "power2.out" }, 0);
+
+      scenes.forEach((sc, i) => {
+        const t0 = sc.t;
+        if (i > 0) {
+          const prev = scenes[i - 1];
+          // camera back out, then the tab changes and the sky floods to the next hour
+          tl.to("#stage-phone", { scale: 1, y: 0, duration: 0.55, ease: "power2.inOut" }, t0 - 0.85);
+          tl.to(prev.shot, { x: -560, duration: 0.55, ease: "power3.inOut" }, t0 - 0.25);
+          tl.fromTo(sc.shot, { x: 560 }, { x: 0, duration: 0.55, ease: "power3.inOut" }, t0 - 0.25);
+          tl.to("#stage-ground", { backgroundColor: sc.ground, duration: 0.55, ease: "power2.inOut" }, t0 - 0.25);
+          tl.to("#stage-sun", { x: sc.sun[0], y: sc.sun[1], backgroundColor: sc.sunColor, duration: 1.0, ease: "power2.inOut" }, t0 - 0.6);
+        }
+        // punch in on the card that proves the line
+        tl.to("#stage-phone", { ...cam(sc), duration: 0.6, ease: "power2.inOut" }, t0 + (i === 0 ? 1.6 : 1.7));
+      });
+
+      // claim: camera out, phone leaves downwards
+      tl.to("#stage-phone", { scale: 1, y: 0, duration: 0.55, ease: "power2.inOut" }, 27.15);
+      tl.to("#stage-phone", { y: 1500, scale: 0.92, duration: 0.5, ease: "power3.in" }, 27.75);
+      tl.to("#stage-sun", { y: 300, duration: 0.6, ease: "power2.inOut" }, 27.75);
+      // end card: the moon travels to the centre and becomes the parish mark
+      tl.to("#stage-sun", { x: 540, y: 430, duration: 0.7, ease: "power3.inOut" }, 30.5);
+      tl.to("#stage-sun", { opacity: 0, duration: 0.2, ease: "power1.out" }, 31.2);
+
+      window.__timelines["stage"] = tl;
+    })();
+  </script>
+</template>
