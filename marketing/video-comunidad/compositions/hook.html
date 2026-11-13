@@ -1,0 +1,29 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #09203e; }
+    .ph { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
+    .ph img { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    .scrim-top { position: absolute; left: 0; top: 0; width: 1080px; height: 760px; background: linear-gradient(rgba(5,23,51,0.78), rgba(5,23,51,0)); }
+    .scrim-bot { position: absolute; left: 0; top: 960px; width: 1080px; height: 960px; background: linear-gradient(rgba(5,23,51,0), rgba(5,23,51,0.82)); }
+    .cap { position: absolute; left: 64px; top: 1214px; padding-left: 22px; border-left: 6px solid #e88f21; font-family: "Hanken Grotesk", sans-serif; font-weight: 700; font-size: 34px; color: #fff; }
+    .label { position: absolute; left: 64px; top: 182px; font-family: "Hanken Grotesk", sans-serif; font-weight: 700; font-size: 32px; letter-spacing: 0.12em; text-transform: uppercase; color: #e88f21; }
+    .line { position: absolute; left: 64px; top: 228px; width: 952px; font-family: "Newsreader", serif; font-weight: 600; font-size: 76px; line-height: 1.04; letter-spacing: -0.01em; color: #fff; }
+    .w { display: inline-block; }
+</style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div id="hook-ph" class="clip ph" data-start="0" data-duration="4"><img id="hook-img" src="assets/photos/m22.jpg" alt="Comunidad de la Renovación Carismática alabando en el templo" /></div>
+    <div id="hook-scrim" class="clip scrim-top" data-start="0" data-duration="4"></div>
+    <div id="hook-scrim2" class="clip scrim-bot" data-start="0" data-duration="4"></div>
+    <div id="hook-label" class="clip label" style="color:#ffffff" data-start="0" data-duration="4">Parroquia Inmaculada Concepción de María</div>
+    <h1 id="hook-line" class="clip line" data-start="0" data-duration="4" style="font-size: 96px"><span class="w hook-w">Así</span> <span class="w hook-w">se</span> <span class="w hook-w">vive</span> <span class="w hook-w">la</span> <span class="w hook-w">fe</span> <span class="w hook-w">en</span> <span class="w hook-w">Ciudad</span> <span class="w hook-w">Arce.</span></h1>
+    <div id="hook-cap" class="clip cap" data-start="0" data-duration="4">Renovación Carismática Católica</div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#hook-img", { scale: 1.12, xPercent: -3 }, { scale: 1.0, xPercent: 0, duration: 4, ease: "none" }, 0);
+      tl.to(["#hook-label", ".hook-w", "#hook-cap"], { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in", stagger: 0.02 }, 3.6);
+      window.__timelines["hook"] = tl;
+    })();
+  </script>
+</template>

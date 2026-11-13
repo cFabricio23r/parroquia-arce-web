@@ -1,0 +1,49 @@
+<html data-composition-variables='[{"id":"t1-time-text","type":"string","label":"Hora","default":"6:00 a. m."}]'>
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+    }
+    #t1-time {
+      position: absolute;
+      left: 96px;
+      top: 196px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 34px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #134c92;
+    }
+    #t1-line {
+      position: absolute;
+      left: 96px;
+      top: 250px;
+      width: 900px;
+      font-family: "Newsreader", serif;
+      font-weight: 600;
+      font-size: 78px;
+      line-height: 1.04;
+      letter-spacing: -0.01em;
+      color: #09203e;
+    }
+    .t1-w {
+      display: inline-block;
+    }
+  </style>
+  <div id="root" data-composition-id="t1" data-width="1080" data-height="1920">
+    <div id="t1-time" class="clip" data-start="0" data-duration="5.0" data-var-text="t1-time-text">6:00 a. m.</div>
+    <h2 id="t1-line" class="clip" data-start="0" data-duration="5.0"><span class="t1-w">Empezá</span> <span class="t1-w">el</span> <span class="t1-w">día</span> <span class="t1-w">con</span> <span class="t1-w">el</span> <span class="t1-w">Evangelio.</span></h2>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#t1-time", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0.15);
+      tl.fromTo(".t1-w", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, ease: "power3.out", stagger: 0.067 }, 0.3);
+      tl.to(["#t1-time", ".t1-w"], { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in", stagger: 0.03 }, 4.45);
+      window.__timelines["t1"] = tl;
+    })();
+  </script>
+</template>
+</html>

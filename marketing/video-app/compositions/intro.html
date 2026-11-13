@@ -1,0 +1,49 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+    }
+    #intro-kicker {
+      position: absolute;
+      left: 96px;
+      top: 196px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 34px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #134c92;
+    }
+    #intro-title {
+      position: absolute;
+      left: 96px;
+      top: 250px;
+      width: 900px;
+      font-family: "Newsreader", serif;
+      font-weight: 600;
+      font-size: 84px;
+      line-height: 1.04;
+      letter-spacing: -0.01em;
+      color: #09203e;
+    }
+    .intro-w {
+      display: inline-block;
+    }
+  </style>
+  <div id="root" data-composition-id="intro" data-width="1080" data-height="1920">
+    <div id="intro-kicker" class="clip" data-start="0" data-duration="4.2" data-var-text="intro-kicker-text">Parroquia de Ciudad Arce</div>
+    <h1 id="intro-title" class="clip" data-start="0" data-duration="4.2">
+      <span class="intro-w">¡Nuestra</span> <span class="intro-w">parroquia</span> <span class="intro-w">ya</span>
+      <span class="intro-w">tiene</span> <span class="intro-w">app!</span>
+    </h1>
+  </div>
+  <script>
+    (function () {
+      // frame 0 is the thumbnail: everything is already on screen
+      const tl = gsap.timeline({ paused: true });
+      tl.to(["#intro-kicker", ".intro-w"], { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in", stagger: 0.03 }, 3.75);
+      window.__timelines["intro"] = tl;
+    })();
+  </script>
+</template>
